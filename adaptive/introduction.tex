@@ -91,7 +91,7 @@ where $\omega_k = 2\pi k/n, ~ k\in F_n$,  the set of Fourier frequencies. To be 
 \label{eq:smoothing estimator}
     \hat{f}(\omega_j; m) = \frac{1}{2\pi(2m+1)} \sum_{|k|\le m} I(\omega_{j+k}).
 \end{equation}
-Note that even though the values of $j+k$ can fall outside $F_n$, it is enough to evaluate periodograms at Fourier frequencies $F_n$ since $I(\omega)$ is $2\pi$-periodic in $\omega$. The effectiveness of reducing variance via smoothing lies in the fact that $d(\omega_j), d(\omega_k)$ are asymptotically independent if $k\notin \{-j, j\}$. Since our theory development is based in the asymptotically independence, we change the smoothing set a little bit to make sure that $\{-j, j\}$ would not appear at the same time in the index set. Also, we exclude frequency $0, \frac{\pi}{2}, -\pi$ out to avoid degenerated limiting distribution. Then we can present the smoothing periodogran estimator as 
+Note that even though the values of $j+k$ can fall outside $F_n$, it is enough to evaluate periodograms at Fourier frequencies $F_n$ since $I(\omega)$ is $2\pi$-periodic in $\omega$. The effectiveness of reducing variance via smoothing lies in the fact that $d(\omega_j), d(\omega_k)$ are asymptotically independent if $k\notin \{-j, j\}$. Since our theory development is based on the asymptotically independence, we change the smoothing set a little bit to make sure that $\{-j, j\}$ would not appear at the same time in the index set. Also, we exclude frequency $0, \frac{\pi}{2}, -\pi$ to avoid degenerate limiting distribution. Then we can present the smoothing periodogram estimator as 
 \begin{equation}
 g(\omega_j; m) = \frac{1}{m}\sum_{ k\in \mathcal{B}_j^m} I(\omega_k). 
 \end{equation}
@@ -105,13 +105,13 @@ in fact the expression for $\mathcal{B}_j^m$ is quite simple
 \{j, j-1, \cdots, j-m\}& j<0.
 \end{cases}
 \end{equation}
-as pointed before, we use $2\pi$-periodic in $\omega$ if index falls out of $F_n$. For simplicity, we ignore the m in subscription in $\mathcal{B}_j^m$ and we always let it be $\mathcal{B}_j$. We introduce set $\mathcal{B}_j$ mainly for the purpose of ensuring all $H(\omega_j)$ are asymptotically independents with similar distribution. We exclude pairs like $\{j, -j \}$ and for simplicity, we do not consider frequency $\omega_0, \omega_{[n/2]}$ since they have degenerate limiting distribution, theory can be easily extended to both cases though. In the next section, we will answer the question: what variances should thresholding estimator adapt to. \par 
+as pointed before, we use $2\pi$-periodic in $\omega$ if index falls out of $F_n$. For simplicity, we ignore the m in subscription in $\mathcal{B}_j^m$ and we always let it be $\mathcal{B}_j$. We introduce set $\mathcal{B}_j$ mainly for the purpose of ensuring all $H(\omega_j)$ are asymptotically independents with similar distribution. We exclude pairs like $\{j, -j \}$ and for simplicity, we do not consider frequency $\omega_0, \omega_{[n/2]}$ since they have degenerate limiting distribution. The theory can be easily extended to both cases though. In the next section, we will answer the question: what kind of variance should our thresholding estimator adapt to. \par 
 
 
-\subsection{What Is the Variance should Thresholding Value be Adaptive to?}
+\subsection{What Variance should thresholding Value be Adaptive to?}
 In order to derive adaptive thresholding for spectral density estimation, the first question is 
 which variance should the estimator be adaptive to? 
-Different from i.i.d. Gaussian case, to describe the variance of spectral density, we need to consider the asymptotic distribution of discrete Fourier transformation. We listed Theorem 4.4.1 in  \cite{brillinger2001time} as following lemma 
+Different from i.i.d. Gaussian case, to describe the variance of spectral density, we need to consider the asymptotic distribution of discrete Fourier transformation. We listed Theorem 4.4.1 in  \cite{brillinger2001time} as the following lemma 
 \begin{assumption}\label{assumption:finite_auto}
 $\sum_{\ell=-\infty}^\infty \|\Gamma(\ell)\|<\infty$. 
 \end{assumption}
@@ -145,13 +145,13 @@ For $k \notin \{j, -j\}$,
 $\begin{bmatrix}
 \mathcal{X}^\top c_j\\
 \mathcal{X}^\top s_j
-\end{bmatrix}$ is asymptotically independent with 
+\end{bmatrix}$ is asymptotically independent of 
 $\begin{bmatrix}
 \mathcal{X}^\top c_k\\
 \mathcal{X}^\top s_k
 \end{bmatrix} $. Here the convergence is convergence in distribution. 
 \end{lem} 
-This lemma indicates that if we restrict our focus to $\mathcal{B}_j$, all $I(\omega_k), k\in \mathcal{B}_j^m$ are asymptotically independently distributed and within a neighborhood, the asymptotic distribution are very similar to each other, in other words, behave like i.i.d. data. This explains why smoothing periodogram can effectively reduce the variance. What is more, we can treat the spectral density as the expectation of limiting distribution. Let 
+This lemma indicates that if we restrict our focus to $\mathcal{B}_j$, all $I(\omega_k), k\in \mathcal{B}_j^m$ are asymptotically independently distributed and within a neighborhood, their asymptotic distributions are very similar to each other, in other words, behave like i.i.d. data. This explains why smoothing periodogram can effectively reduce the variance. What is more, we can treat the spectral density as the expectation of limiting distribution. Let 
 $d_{\infty}(\omega_j)$ be the variable whose distribution is the limiting distribution of $d(\omega_j)$, then 
 \[
 f(\omega_j) = \E(d_{\infty}(\omega_j)d^\dag_{\infty}(\omega_j)).
@@ -162,7 +162,7 @@ Now it is clear that the thresholding estimator should adapt to:
 \Var(\mathbf{Re}(d_{\infty}(\omega_j)d^\dag_{\infty}(\omega_j))_{rs}); 
 \Var(\mathbf{Im}(d_{\infty}(\omega_j)d^\dag_{\infty}(\omega_j))_{rs})
 \]
-for position $(r,s)$'s real and imaginary part respectively. Asymptotically, the formation of the problem is almost the same as what proposed by \cite{cai2011adaptive}: we use sample average of data to estimate its expectation and try to let our estimator be adaptive to its variances. Rearranging those expression for Gaussian forth moments in appendix  , we can express the variances for real and imaginary part of $(d_{\infty}(\omega_j)d_{\infty}(\omega_j)^\dag)_{rs}$ as 
+for position $(r,s)$'s real and imaginary part respectively. Asymptotically, the formation of the problem is almost the same as what is proposed by \cite{cai2011adaptive}: we use sample average of data to estimate its expectation and try to let our estimator be adaptive to its variances. Rearranging those expressions for Gaussian forth moments in appendix, we can express the variances for real and imaginary part of $(d_{\infty}(\omega_j)d_{\infty}(\omega_j)^\dag)_{rs}$ as 
 \begin{equation}
 \label{eq:variance_of_periodogram}
 \begin{array}{cc}
@@ -177,12 +177,12 @@ and
 & = \frac{1}{2}\left[f_{rr}(\omega_j)f_{ss}(\omega_j)+\mathbf{Im}(f(\omega_j)_{rs})^2-\mathbf{Re}(f_{rs}(\omega_j))^2\right].
 \end{array}
 \end{equation}
-As mentioned above, the key ingredient in theoretical development of \cite{cai2011adaptive} is that variances of each position $y_1y_1^\top$ for p variate Gaussian variable $y_1$,  is at the same order of product of two diagonal elements. However, variances of both part does not meet this condition. We provide a counter example in Appendix \ref{sec:counter_example} to demonstrate this. 
-This is not only that we utilize the framework provided by \cite{cai2011adaptive}, we also try to avoid diminishing variance in the estimator which may cause instability at least in theory. \par 
+As mentioned above, the key ingredient in the theoretical development of \cite{cai2011adaptive} is that variances of each position $y_1y_1^\top$ for p variate Gaussian variable $y_1$,  is in the same order of products of two diagonal elements. However, variances of both parts do not meet this condition. We provide a counter example in Appendix \ref{sec:counter_example} to demonstrate this phenomenon.
+We not only utilize the framework provided by \cite{cai2011adaptive}, but also try to avoid diminishing variances in the estimator, which may cause instability in the theory. \par 
 
 \textbf{Notation.} Throughout this paper, $\mathbb{Z}$, $\mathbb{R}$ and $\mathbb{C}$  denote the sets of integers, real numbers and complex numbers, respectively. We use 
-$\mathbf{Re}(c)$, $\mathbf{Im}(c)$ to present the real and imaginary part of complex number $c$ respectively and $|c|$ to denote its modulus(absoslute value for real number). We use $\|v\|$ to denote $\ell_2$-norm of a vector $v$. For a matrix $A$, $\|A\|_1$, $\|A\|_{\infty}$, $\|A\|$ and $\|A\|_F$ will denote maximum complex modulus column sum norm, maximum complex modulus row sum norm, { spectral norm} $\sqrt{\Lambda_{\max}(A^\dag A)}$ and Frobenius norm $\sqrt{\text{tr}(A^\dag A)}$, respectively, where $A^\dag$ is conjugate transpose of $A$. We also let $\lambda_{\text{max}}(A)$ denote the spectral radius of a $n \times n$ matrix $A$, i.e., $\lambda_{\text{max}}(A) = \max(|\lambda_1|, \cdots |\lambda_n|)$, where $\lambda_i$s are the eigenvalues of matrix $A$. If $A$ is symmetric or Hermitian, we denote its maximum and minimum eigenvalues by $\Lambda_{\min}(A)$ and $\Lambda_{\max}(A)$. We use $e_i$ to denote the $i^{th}$ unit vector in $\mathbb{R}^p$, for $i = 1, 2, \ldots, p$. For vectors $v_i \in \mathbb{R}^p, i=1,\ldots, n$, we use $[v_1:\ldots:v_n]$ to denote the $p \times n$ matrix formed  by horizontally stacking these column vectors $v_i$, and  $[v_1^\top;\ldots; v_n^\top]$ to denote the $n\times p$ matrix by vertically stacking row vectors $v_i^\top$. Let $vec(A)$ represent the vector got from vectorization of a matrix $A$ by stacking all its columns. We use $rk(A)$ to denote the rank of a matrix $A$. For a complex vector $v\in \mathbb{C}^p$ and any $q > 0$, we define $\|v\|_q:= (\sum_{i=1}^p |v_i|^q)^{1/q}$. We use $\|v\|_0$ to denote the number of non-zero elements in $v$. Note that when $0\le q<1$, it is not really a norm since triangle inequality does not hold, but we keep the notation of a norm for convenience . Then we define the induced matrix norm, $\|A\|_{\alpha, \beta} = \sup_{x\neq 0}\|Ax\|_\alpha/\|x\|_\beta$, for any  $\alpha>0, \beta>0$. We will also use $\|A\|_\alpha$ to denote the induced norm $\|A\|_{\alpha, \alpha}$ for any $\alpha > 0$ and any complex matrix $A \in \mathbb{C}^{p \times p}$. Also, to be succinct, we use $\|A\|_{\rm{max}} :=\max_{r,s}|A_{rs}|$. 
-Throughout the paper, we write $A \succsim B$ if there exists a  universal constant $c > 0$, not depending on model dimension or any model parameters, such that $A \ge cB$. We use $A \asymp B$ to denote $A \succsim B$ and $B \succsim A$.  We let $e_i$ bet the vector of length $p$, with only ith element to be 1 while others are zero. Also, we let $E_p$ be the set containing $e_1, \cdots, e_p$. 
+$\mathbf{Re}(c)$, $\mathbf{Im}(c)$ to present the real and imaginary part of complex number $c$ respectively and $|c|$ to denote its modulus(absolute value for real number). We use $\|v\|$ to denote $\ell_2$-norm of a vector $v$. For a matrix $A$, $\|A\|_1$, $\|A\|_{\infty}$, $\|A\|$ and $\|A\|_F$ will denote maximum complex modulus column sum norm, maximum complex modulus row sum norm, { spectral norm} $\sqrt{\Lambda_{\max}(A^\dag A)}$ and Frobenius norm $\sqrt{\text{tr}(A^\dag A)}$, respectively, where $A^\dag$ is the conjugate transpose of $A$.  We use $e_i$ to denote the $i^{th}$ unit vector in $\mathbb{R}^p$, for $i = 1, 2, \ldots, p$. For vectors $v_i \in \mathbb{R}^p, i=1,\ldots, n$, we use $[v_1:\ldots:v_n]$ to denote the $p \times n$ matrix formed  by horizontally stacking these column vectors $v_i$, and  $[v_1^\top;\ldots; v_n^\top]$ to denote the $n\times p$ matrix by vertically stacking row vectors $v_i^\top$. Let $vec(A)$ represent the vector obtained from vectorization of a matrix $A$ by stacking all its columns. We use $rk(A)$ to denote the rank of a matrix $A$. For a complex vector $v\in \mathbb{C}^p$ and any $q > 0$, we define $\|v\|_q:= (\sum_{i=1}^p |v_i|^q)^{1/q}$. We use $\|v\|_0$ to denote the number of non-zero elements in $v$. Note that when $0\le q<1$, it is not really a norm, for triangle inequality does not hold, but we keep the notation of a norm for convenience. Then we define the induced matrix norm, $\|A\|_{\alpha, \beta} = \sup_{x\neq 0}\|Ax\|_\alpha/\|x\|_\beta$, for any  $\alpha>0, \beta>0$. We will also use $\|A\|_\alpha$ to denote the induced norm $\|A\|_{\alpha, \alpha}$ for any $\alpha > 0$ and any complex matrix $A \in \mathbb{C}^{p \times p}$. Also, to be succinct, we use $\|A\|_{\rm{max}} :=\max_{r,s}|A_{rs}|$. 
+Throughout the paper, we write $A \succsim B$ if there exists a  universal constant $c > 0$, not depending on model dimension or any model parameters, such that $A \ge cB$. We use $A \asymp B$ to denote $A \succsim B$ and $B \succsim A$.  We let $e_i$ be the vector of length $p$, with only the i th element to be 1 while others are zero. Also, we let $E_p$ be the set containing $e_1, \cdots, e_p$. 
 
 
 

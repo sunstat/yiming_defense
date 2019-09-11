@@ -245,45 +245,45 @@ Warning--I didn't find a database entry for "de2008tensor"
 Warning--empty journal in battaglino2019faster
 Warning--empty journal in schacke2013kronecker
 Warning--empty institution in Tropp2019-SketchingScientificSimulation
-You've used 101 entries,
+You've used 102 entries,
             2773 wiz_defined-function locations,
-            1189 strings with 23468 characters,
-and the built_in function-call counts, 49546 in all, are:
-= -- 4521
-> -- 2812
-< -- 79
-+ -- 952
-- -- 849
-* -- 4005
-:= -- 7489
-add.period$ -- 324
-call.type$ -- 101
-change.case$ -- 577
-chr.to.int$ -- 99
-cite$ -- 205
-duplicate$ -- 2260
-empty$ -- 4032
-format.name$ -- 1022
-if$ -- 10480
+            1193 strings with 23553 characters,
+and the built_in function-call counts, 49849 in all, are:
+= -- 4544
+> -- 2822
+< -- 81
++ -- 956
+- -- 852
+* -- 4023
+:= -- 7538
+add.period$ -- 327
+call.type$ -- 102
+change.case$ -- 580
+chr.to.int$ -- 100
+cite$ -- 207
+duplicate$ -- 2280
+empty$ -- 4064
+format.name$ -- 1026
+if$ -- 10543
 int.to.chr$ -- 3
 int.to.str$ -- 1
-missing$ -- 104
-newline$ -- 520
-num.names$ -- 404
-pop$ -- 1136
+missing$ -- 106
+newline$ -- 525
+num.names$ -- 408
+pop$ -- 1147
 preamble$ -- 1
-purify$ -- 481
+purify$ -- 484
 quote$ -- 0
-skip$ -- 1776
+skip$ -- 1789
 stack$ -- 0
-substring$ -- 2121
-swap$ -- 298
-text.length$ -- 25
+substring$ -- 2123
+swap$ -- 300
+text.length$ -- 26
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 1081
+type$ -- 1087
 warning$ -- 3
-while$ -- 460
+while$ -- 463
 width$ -- 0
-write$ -- 1325
+write$ -- 1338
 (There were 58 error messages)

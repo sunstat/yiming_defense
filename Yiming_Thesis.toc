@@ -33,7 +33,7 @@
 \contentsline {section}{\numberline {2.1}Introduction}{76}
 \contentsline {subsection}{\numberline {2.1.1}Why Adaptive Thresholding?}{77}
 \contentsline {subsection}{\numberline {2.1.2}Periodogram Smoothing}{80}
-\contentsline {subsection}{\numberline {2.1.3}What Is the Variance should Thresholding Value be Adaptive to?}{82}
+\contentsline {subsection}{\numberline {2.1.3}What Variance should thresholding Value be Adaptive to?}{82}
 \contentsline {section}{\numberline {2.2}Background and Methods}{85}
 \contentsline {subsection}{\numberline {2.2.1}Modified Periodogram and Its Smoothing Estimator}{85}
 \contentsline {subsection}{\numberline {2.2.2}Method: Adaptive Thresholding}{87}
@@ -41,7 +41,7 @@
 \contentsline {paragraph}{Adaptive Estimator}{88}
 \contentsline {section}{\numberline {2.3}Theoretical Properties}{89}
 \contentsline {subsection}{\numberline {2.3.1}Bounding the Bias}{89}
-\contentsline {paragraph}{Bias for Smoothing Modified Peridogram}{90}
+\contentsline {paragraph}{Bias for Smoothing Modified Periodogram}{90}
 \contentsline {paragraph}{Bias for Variance Estimation}{90}
 \contentsline {subsection}{\numberline {2.3.2}Deviation Bound}{91}
 \contentsline {subsection}{\numberline {2.3.3}Main Results}{95}
@@ -55,6 +55,7 @@
 \contentsline {subsection}{\numberline {2.B.1}Proof for Lemma 2.3.5\hbox {}}{101}
 \contentsline {section}{\numberline {2.C}Technical Lemmas}{102}
 \contentsline {subsection}{\numberline {2.C.1}\bf Fourth Moments of Multivariate Normal Distribution}{102}
+\contentsline {subsection}{\numberline {2.C.2}Variance of }{103}
 \contentsline {section}{\numberline {2.D}Technical Results for Toeplitz Matrixz}{103}
 \contentsline {section}{\numberline {2.E}An Example Explaining Why We Modify the Periodogram}{105}
 \contentsline {chapter}{\numberline {3}Low-Rank Tucker Approximation of a Tensor From Streaming Data}{107}

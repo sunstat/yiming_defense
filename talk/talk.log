@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  11 SEP 2019 02:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  11 SEP 2019 13:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1451,9 +1451,13 @@ d on input line 610.
 ] (./talk.toc)
 [39
 
-] (./talk.bbl (./talk.toc) [40
+] [40
 
-]) [41
+] [41
+
+] (./talk.bbl (./talk.toc) [42
+
+]) [43
 
 ]
 \tf@nav=\write6
@@ -1465,11 +1469,11 @@ d on input line 610.
 \tf@snm=\write8
 \openout8 = `talk.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 645.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 645.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 663.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 663.
  (./talk.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 645.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 645.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 663.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 663.
 Package rerunfilecheck Info: File `talk.out' has not changed.
 (rerunfilecheck)             Checksum: 80A49FCA131CC505ECBCD9ABC94E7D10;303.
 
@@ -1478,11 +1482,11 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 23936 strings out of 492649
- 479647 string characters out of 6129622
- 583248 words of memory out of 5000000
- 27092 multiletter control sequences out of 15000+600000
- 24004 words of font info for 80 fonts, out of 8000000 for 9000
+ 23966 strings out of 492649
+ 480078 string characters out of 6129622
+ 583312 words of memory out of 5000000
+ 27112 multiletter control sequences out of 15000+600000
+ 27801 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,20n,67p,793b,709s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pf
@@ -1507,10 +1511,10 @@ ive/2018/texmf-dist/fonts/type1/public/amsfonts/euler/eusb10.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/loca
 l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/
 local/texlive/2018/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb>
-Output written on talk.pdf (41 pages, 3977877 bytes).
+Output written on talk.pdf (43 pages, 3980482 bytes).
 PDF statistics:
- 534 PDF objects out of 1000 (max. 8388607)
- 414 compressed objects within 5 object streams
- 103 named destinations out of 1000 (max. 500000)
+ 548 PDF objects out of 1000 (max. 8388607)
+ 426 compressed objects within 5 object streams
+ 108 named destinations out of 1000 (max. 500000)
  130 words of extra memory for PDF output out of 10000 (max. 10000000)
 

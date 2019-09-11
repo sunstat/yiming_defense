@@ -83,13 +83,17 @@
 \headcommand {\sectionentry {3}{A Small Example to Connect Two Researches}{39}{A Small Example to Connect Two Researches}{0}}
 \headcommand {\slideentry {3}{0}{1}{39/39}{}{0}}
 \headcommand {\beamer@framepages {39}{39}}
-\headcommand {\beamer@sectionpages {39}{39}}
-\headcommand {\beamer@subsectionpages {39}{39}}
-\headcommand {\sectionentry {4}{*}{40}{*}{0}}
-\headcommand {\slideentry {4}{0}{1}{40/40}{}{0}}
+\headcommand {\slideentry {3}{0}{2}{40/40}{}{0}}
 \headcommand {\beamer@framepages {40}{40}}
-\headcommand {\beamer@partpages {1}{41}}
-\headcommand {\beamer@subsectionpages {39}{41}}
+\headcommand {\slideentry {3}{0}{3}{41/41}{}{0}}
+\headcommand {\beamer@framepages {41}{41}}
 \headcommand {\beamer@sectionpages {39}{41}}
-\headcommand {\beamer@documentpages {41}}
-\headcommand {\gdef \inserttotalframenumber {39}}
+\headcommand {\beamer@subsectionpages {39}{41}}
+\headcommand {\sectionentry {4}{*}{42}{*}{0}}
+\headcommand {\slideentry {4}{0}{1}{42/42}{}{0}}
+\headcommand {\beamer@framepages {42}{42}}
+\headcommand {\beamer@partpages {1}{43}}
+\headcommand {\beamer@subsectionpages {39}{43}}
+\headcommand {\beamer@sectionpages {39}{43}}
+\headcommand {\beamer@documentpages {43}}
+\headcommand {\gdef \inserttotalframenumber {41}}

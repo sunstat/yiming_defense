@@ -1,17 +1,17 @@
 \section{Theoretical Properties}\label{sec:theory}
-In this section, we analyze asymptotic properties of adaptive thresholded averaged modified periodograms. We fisrt need to present the bound for bias for average modified peridogran and variance. Then we build concentration inequality for estimator of both of them. 
+In this section, we analyze asymptotic properties of adaptive thresholding average modified periodograms. First we need to present the bound for bias in the average modified periodogram and variance estimator. Then we build concentration inequality for estimators of both of them. 
 
 
 \subsection{Bounding the Bias}
-Although the modified periodograms $H(\omega_k), k\in \mathcal{B}_j$  are asymptotically independent, and behave like i.i.d., we need to quantify the bias from two sources. One is from the gap between finite sample to the limiting distribution; the other is from the fact that the limiting distributions are not exactly identical. In this section, we list the results of bounding the bias for both smoothing modified periodograms and variance estimator. \par 
+Although the modified periodograms $H(\omega_k), k\in \mathcal{B}_j$  are asymptotically independent, and behave like i.i.d., we need to quantify the bias from two sources. One is from the gap between the finite sample to the limiting distribution; the other is from the fact that the limiting distributions are not exactly identical. In this section, we list the results of bounding the bias for both smoothing modified periodograms and variance estimator. \par 
 
-As many algorithms requiring standadization, our process requires some condition in the minimal value of diagonal of spectral  density. 
+Our process requires some conditions in the minimal value of diagonal of spectral density. 
 \begin{assumption}
 $\min_{r=1}^p f_{rr}(\omega_j) \ge \phi_0 > 0$.
 \end{assumption}
 For simplicity we give a deterministic lower bound for diagonal elements in spectral density. 
 
-\paragraph{Bias for Smoothing Modified Peridogram} Similar to \cite{sun2018large}, two quantities are needed that capture the strength of temporal and contemporaneous dependence in the multivariate time series $\{X_t\}_{t \in \mathbb{Z}}$ , which are 
+\paragraph{Bias for Smoothing Modified Periodogram} Similar to \cite{sun2018large}, two quantities are needed that capture the strength of temporal and contemporaneous dependence in the multivariate time series $\{X_t\}_{t \in \mathbb{Z}}$ , which are 
 \begin{eqnarray}
 \Omega_{n} = \max_{1 \le r,s \le p} \sum_{\ell=-n}^n |\ell| |\Gamma_{rs}(\ell)|, ~~~~ L_n = \max_{1 \le r,s \le p}\sum_{|\ell|>n} |\Gamma_{rs}(\ell)|.
 \end{eqnarray}
@@ -23,7 +23,7 @@ For any $j\in F_n$, $1\le r, s\le p$,
 &\max\left\{\left|\mathbb{E}[{\bf Re}(g_{rs}(\omega_j))] - {\bf Re}(f_{rs}(\omega_j))\right|, \left|\mathbb{E}[{\bf Im}(g_{rs}(\omega_j))] - {\bf Im}(f_{rs}(\omega_j))\right|\right\} \le B_f,
 \end{aligned}
 \end{equation}
-where $B_f = \frac{m}{n}\Omega_n(f_X) + \frac{1}{2\pi}\left(\frac{\Omega_n(f_X)}{n}+L_n(f_X)\right) +\frac{\Omega_n}{2\pi n}$.
+where $B_f = \frac{m}{n}\Omega_n + \frac{1}{2\pi}\left(\frac{\Omega_n}{n}+L_n\right) +\frac{\Omega_n}{2\pi n}$.
 \end{lem}
 The technique for proof starts with triangular inequality, 
 \begin{equation}
@@ -32,7 +32,7 @@ The technique for proof starts with triangular inequality,
 &\le \left|\E[{\bf Re}(g_{rs}(\omega_j))] - \E[{\bf Re}(\hat{f}_{rs}(\omega_j))]\right|+\left|\E[{\bf Re}(\hat{f}_{rs}(\omega_j))] - {\bf Re}(f_{rs}(\omega_j))\right|, 
 \end{aligned}
 \end{equation}
-where the bound for the second part is already shown in \cite{sun2018large}, and the first part we handle with properties of toeplitz matrices. We defer the detailed the proof to Appendix. 
+where the bound for the second part is already shown in \cite{sun2018large}, and the first part we handle properties of toeplitz matrices. We defer the detailed proof to Appendix. 
 \paragraph{Bias for Variance Estimation}
 \begin{lem}
 \label{lemma:theta_bias}
@@ -55,14 +55,14 @@ and
 Assuming $\Omega_n,  f_{rr}$ is bounded, then the bias in variance estimation has the same order of bias for estimator $g_{rs}(\omega_j)$: $\mathcal{O}(m/n)$. 
 \end{remark}
 The proof is deferred to Appendix. 
-Based on the bound for variance estimation, we here present another useful result. Since our intuition is that asymptotically, modified peridodogram are behaving like i.i.d. within $\mathcal{B}_j$ assuming $n\rightarrow \infty$. Thus,  
+Based on the bound for variance estimation, we here present another useful result. Since our intuition is that asymptotically modified periodograms are behaving like i.i.d. within $\mathcal{B}_j$. Thus,  
 \begin{equation}
 \begin{aligned}
 & \Var({\bf Re}(g_{rs}(\omega_j))) \approx \frac{1}{m} \theta^{(r)}_{j, rs}\\ 
 & \Var({\bf Im}(g_{rs}(\omega_j))) \approx \frac{1}{m} \theta^{(i)}_{j, rs}.
 \end{aligned}
 \end{equation}
-Following lemma justifies and quantifies above intuition. 
+The following lemma justifies and quantifies the above intuition. 
 \begin{lem}
 For $1\le r, s\le p$, 
 \label{lemma: variance_ratio_error}
@@ -77,13 +77,13 @@ where $B_\delta = 4\delta_1/\phi_0 + 3\delta_1^2/\phi_0^2$, $\delta_1, \delta_2$
 
 
 \subsection{Deviation Bound} 
-In previous section,  we show the upper bound for bias for $g_{rs}(\omega_j)$, $\hat{\theta}^{(r)}_{j, rs}$ and $\hat{\theta}^{(i)}_{j, rs}$. This section we build the non-asymptotic analysis for those estimators. Those non-asymptotic analysis will lead to 
+In the previous section,  we have shown the upper bound for bias for $g_{rs}(\omega_j)$, $\hat{\theta}^{(r)}_{j, rs}$ and $\hat{\theta}^{(i)}_{j, rs}$. In this section, we will build the non-asymptotic analysis for those estimators. The non-asymptotic analysis will lead to the
 main theory for consistency of our adaptive thresholding estimators. 
 
 
 \begin{lem}
 \label{lemma: deviation_variance}
-There exits constants $c_1, c_2$ s.t.
+There exit constants $c_1, c_2$ s.t.
 \begin{equation}
 \begin{aligned}
 & \mathbb{P}\left(\left|\hat{\theta}^{(r)}_{j, rs} - \theta^{(r)}_{j, rs}\right|\ge  
@@ -93,7 +93,7 @@ B_\theta + \eta \right) \le  c_1\exp(-c_2m\min\left(\eta, \eta^2\right)).\\
 \end{aligned}
 \end{equation}
 \end{lem}
-The next lemma is the key element for theoretical development. It is a finite sample result, so the bound seems to be complicated, in the later asymptotic analysis, it will becomes much simpler. 
+The next lemma constitutes the key element for theoretical development. It is a non-asymptotic analysis. 
 \begin{lem}
 For $j\in F_n$, and $\omega_j \notin \{0, -\pi\}$,  $1\le r, s\le p$, 
 assuming $B_\delta\le 3$ and $B_\theta/\phi_0^2<1/4$, given $\eta\le 1$, there exist universal positive constants $c_1, c_2$, s.t. 
@@ -105,11 +105,11 @@ assuming $B_\delta\le 3$ and $B_\theta/\phi_0^2<1/4$, given $\eta\le 1$, there e
 \end{equation}
 \end{lem}
 \begin{remark}
-The condition like $B_\delta\le 3$ and $B_\theta/\phi_0^2<1/4$ are only set for convenience of proof. In later main theory section, asymptotically, they both go to zero. 
+The conditions like $B_\delta\le 3$ and $B_\theta/\phi_0^2<1/4$ are only set for convenience of proof. In the later main results section, asymptotically, they both go to zero. 
 \end{remark}
 
 \begin{proof}
-We will focus in the proof for  real part. We first handle the bias. 
+We will focus on the proof for the real part. First we handle the bias. 
 Define event $\mathcal{A}_j$ and $\mathcal{B}_j$ as 
 \begin{equation}
 \begin{aligned}
@@ -117,18 +117,18 @@ Define event $\mathcal{A}_j$ and $\mathcal{B}_j$ as
 & \mathcal{B}_j = \{\hat{\theta}^{(r)}_{j, rs}\ge (1/4 + B_\theta/\phi_0^2) \theta^{(r)}_{j, rs} \}.
 \end{aligned}
 \end{equation}
-With lemma \ref{lemma: deviation_variance} and the fact that $\theta^{(r)}_{j, rs}$ is the same order $f_{rr}(\omega_j)f_{ss}(\omega_j)$:
+Given lemma \ref{lemma: deviation_variance} and the fact that $\theta^{(r)}_{j, rs}$ is at the same order of $f_{rr}(\omega_j)f_{ss}(\omega_j)$:
 \begin{equation}
 f_{rr}(\omega_j)f_{ss}(\omega_j)\le \theta^{(r)}_{j, rs}\le  2f_{rr}(\omega_j)f_{ss}(\omega_j). 
 \end{equation}
-We could show that there exists universal constants $c_1, c_2$ only depending on $\phi_0$
+We can show that there exist universal constants $c_1, c_2$ only depending on $\phi_0$
 \begin{equation}
 \begin{aligned}
 &\mathbb{P} (\mathcal{A}_j^c) \le \mathbb{P}\left(|\hat{\theta}^{(r)}_{j, rs} - \theta^{(r)}_{j, rs}|\ge (3 +B_\theta/\phi_0^2 )f_{rr}(\omega_j)f_{ss}(\omega_j)\right)\\
 & \le c_1\exp\{-c_2m\}.
 \end{aligned}
 \end{equation}
-Similarly we could get same bound for $\mathbb{P}(\mathcal{B}_j^c)$. From now on we restrict our analysis on the event $\mathcal{A}_j$ and $\mathcal{B}_j$. \par 
+Similarly we can obtain the same bound for $\mathbb{P}(\mathcal{B}_j^c)$. From now on we restrict our analysis to the event $\mathcal{A}_j$ and $\mathcal{B}_j$. \par 
 By triangular inequality,  
 \begin{equation}
 \begin{aligned}
@@ -154,7 +154,7 @@ On event  $\mathcal{A}_j$,
 \sqrt{\frac{\hat{\theta}^{(r)}_{j, rs}}{\theta^{(r)}_{j, rs}}} \le 2. 
 \]
 
-We write the left part of the result for real part as  
+We write the left part of the result for the real part as  
 \begin{equation}
 \begin{aligned}
 & \left|\frac{{\bf Re}(g_{rs}(\omega_j)) - {\bf Re}(f_{rs}(\omega_j))}{\sqrt{\hat{\theta}^{(r)}_{j,rs}}}\right|  \\
@@ -188,16 +188,16 @@ In order to analyze the effectiveness of this estimator like consistency in $L_2
 \begin{equation}
 \mathcal{U}(q, c_0(p), \omega) = \left\{f(\omega): \sum_{s=1}^p |f_{rs}(\omega)|^q \le c_0(p) ~\text{for all}~ r\right \}. 
 \end{equation}
-\cite{sun2018large} shows that generalized thresholding estimator can achieve $L_2$ and Frobenius norm estimation consistency. For adaptive thresholding, we follow the analogous of \cite{cai2011adaptive}, defining the following sparse class:
+\cite{sun2018large} show that a generalized thresholding estimator can achieve $L_2$ and Frobenius norm estimation consistency. For adaptive thresholding, we follow the analogous of \cite{cai2011adaptive}, defining the following sparse class:
 \begin{equation}
 \begin{aligned}
 \label{eq:sparse_class}
 \mathcal{U}^a(q, c_0(p), \omega) = \left\{f(\omega): \max_{r=1}^p\sum_{s=1}^p (f_{rr}(\omega)f_{ss}(\omega))^{(1-q)/2} |f_{rs}(\omega)|^q \le c_0(p)\right \}.  
 \end{aligned}
 \end{equation}
-There are detailed discussion in \cite{cai2011adaptive}
-how $\mathcal{U}^a$ compared to $\mathcal{U}$. Assuming $\max_{r=1}^n f_{rr}(\omega_j)\le M$, is bounded, then
-$\mathcal{U}(q, c_0(p), \omega) \subset \mathcal{U}^a(q, c_0(p), \omega) $. Although \cite{sun2018large} lets the $\max_{r=1}^p f_{rr}(\omega_j)$ grow with dimension but the rate for growth must be controlled in order to let thresholding value go to zero asymptotically. While in this paper,  the adaptive thresholding estimator does not put any constraint in the growth rate for this statistic, but instead, we need a lower bound for $\min_{r=1}^p f_{rr}(\omega_j)$ or control decay rate to zero. But this lower bound only appears in the bias term. 
+There are detailed discussions by \cite{cai2011adaptive}
+on how $\mathcal{U}^a$ is compared to $\mathcal{U}$. Assuming $\max_{r=1}^n f_{rr}(\omega_j)\le M$, is bounded, then
+$\mathcal{U}(q, c_0(p), \omega) \subset \mathcal{U}^a(q, c_0(p), \omega) $. Although \cite{sun2018large} let the $\max_{r=1}^p f_{rr}(\omega_j)$ grow with dimension but the rate for growth must be controlled in order to let the thresholding value go to zero asymptotically. While in this paper,  the adaptive thresholding estimator does not put any constraint on the growth rate for this statistic, but instead, we need a lower bound for $\min_{r=1}^p f_{rr}(\omega_j)$ or control the decay rate to zero. But this lower bound only occurs in the bias term. 
 
 \subsection{Consistency Under Weak Sparsity}
 
@@ -212,7 +212,7 @@ there exist universal constants $c_1, c_2 > 0$ such that choosing a threshold
 \end{equation}
 where $B_f = \frac{m}{n}\Omega_n(f_X) + \frac{1}{2\pi}\left(\frac{\Omega_n(f_X)}{n}+L_n(f_X)\right) +\frac{\Omega_n}{2\pi n}$, 
 assuming $f(\omega_j)\in \mathcal{U}^a(q, c_0(p), \omega)$, 
-the estimation error of adaptive thresholded averaged modified periodogram satisfies 
+the estimation error of adaptive thresholding average modified periodogram satisfies 
 \begin{equation}
 \begin{aligned}
 \mathbb{P}\left(\left\|T_{\lambda}(\hat{f}(\omega_j)) - f(\omega_j)\right\|\ge 7 \lambda^{(1-q)/2} \right)
@@ -222,7 +222,7 @@ the estimation error of adaptive thresholded averaged modified periodogram satis
 \end{prop}
 
 \begin{remark}
-$B_f = \mathcal{O}(\frac{\Omega_n m}{n}/\phi_0)$, as shown in \cite{sun2018large}, in many linear process, $\Omega_n$ is uniformally bounded. Also, if we set $m=\mathcal{O}(\sqrt{n})$, then $\log p/m \rightarrow 0$ if $p = \mathcal{O}(n^\delta)$ for any positive delta which is the same as modern high dimensional setting. Then it is not hard to find a sequence of thresholding value $\lambda$ goes to zero, as $n\rightarrow \infty$ and $p\rightarrow \infty$, 
+$B_f = \mathcal{O}(\frac{\Omega_n m}{n}/\phi_0)$, as shown in \cite{sun2018large}, in many linear processes, $\Omega_n$ is uniformly bounded. Also, if we set $m=\mathcal{O}(\sqrt{n})$, then $\log p/m \rightarrow 0$ if $p = \mathcal{O}(n^\delta)$ for any positive delta which is the same as modern high dimensional setting. Then it is not hard to find a sequence of thresholding value $\lambda$ go to zero, as $n\rightarrow \infty$ and $p\rightarrow \infty$, 
 \end{remark}
 
 

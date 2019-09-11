@@ -625,7 +625,7 @@ Fix $\mathbf{x} \in \reals^{\prod_{n=1}^N d_n}$. Generate random matrix
 \begin{equation}
 \begin{aligned}
 & \E \left\| \frac{1}{\sqrt{k}}\M{\Omega}^\top \mathbf{x} \right\|^2 = \|\mathbf{x}\|^2  \\
-& \var(\|\textup{TRP}(\mathbf{x})\|^2) = \frac{1}{k}(\Delta^N-3)\|\mathbf{x}\|_4^4 + \frac{2}{k}\|\mathbf{x}\|_2^4 
+& \var(\|\frac{1}{\sqrt{k}}\M{\Omega}^\top \mathbf{x}\|^2) = \frac{1}{k}(\Delta^N-3)\|\mathbf{x}\|_4^4 + \frac{2}{k}\|\mathbf{x}\|_2^4 
 \end{aligned}
 \end{equation}
 \end{thm}
@@ -635,6 +635,24 @@ Fix $\mathbf{x} \in \reals^{\prod_{n=1}^N d_n}$. Generate random matrix
 
 \section{A Small Example to Connect Two Researches}
 
+
+\begin{frame}{A small example to connect two researches}
+Suppose we have a p-variate time series $\{\mathcal{X}_t\}$ which reveal its column one by one. 
+
+\bit 
+\item Before we know the exactly number of time points, we cannot calculate Fourier coefficients (depends in sample size)
+\item the data matrix $\mathcal{X}$ is too big to store 
+\eit
+\end{frame}
+
+
+\begin{frame}{Sketching $\mathcal{X}$}
+Using sketching algorithm \citeb{tropp2017practical} to get an approximation of $\mathcal{X}$ : $\hat{\mathcal{X}}$. 
+$\hat{d}_j = \hat{\mathcal{X}}^\top e_j$.  Simple observation: $\|e_j\| = 1$, which does averaging will not make error bound worse. 
+\[
+\|\hat{d}_j - d\| \le \|\hat{\mathcal{X}} - \mathcal{X}\|. 
+\]
+\end{frame}
 
 
 

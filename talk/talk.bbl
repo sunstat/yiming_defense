@@ -39,4 +39,11 @@ Sun, Y., Guo, Y., Tropp, J.~A., \& Udell, M. (2018).
 \newblock Tensor random projection for low memory dimension reduction.
 \newblock In {\em NeurIPS Workshop on Relational Representation Learning}.
 
+\bibitem[\protect\citeauthoryear{Tropp, Yurtsever, Udell \& Cevher}{Tropp
+  et~al.}{2017}]{tropp2017practical}
+Tropp, J.~A., Yurtsever, A., Udell, M., \& Cevher, V. (2017).
+\newblock Practical sketching algorithms for low-rank matrix approximation.
+\newblock {\em SIAM Journal on Matrix Analysis and Applications}, {\em
+  38\/}(4), 1454--1485.
+
 \end{thebibliography}
