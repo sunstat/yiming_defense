@@ -78,20 +78,18 @@
 \headcommand {\beamer@framepages {37}{37}}
 \headcommand {\slideentry {2}{0}{22}{38/38}{}{0}}
 \headcommand {\beamer@framepages {38}{38}}
-\headcommand {\slideentry {2}{0}{23}{39/39}{}{0}}
+\headcommand {\beamer@sectionpages {16}{38}}
+\headcommand {\beamer@subsectionpages {16}{38}}
+\headcommand {\sectionentry {3}{A Small Example to Connect Two Researches}{39}{A Small Example to Connect Two Researches}{0}}
+\headcommand {\slideentry {3}{0}{1}{39/39}{}{0}}
 \headcommand {\beamer@framepages {39}{39}}
-\headcommand {\beamer@sectionpages {16}{39}}
-\headcommand {\beamer@subsectionpages {16}{39}}
-\headcommand {\sectionentry {3}{A Connection of These Two}{40}{A Connection of These Two}{0}}
-\headcommand {\slideentry {3}{0}{1}{40/40}{}{0}}
+\headcommand {\beamer@sectionpages {39}{39}}
+\headcommand {\beamer@subsectionpages {39}{39}}
+\headcommand {\sectionentry {4}{*}{40}{*}{0}}
+\headcommand {\slideentry {4}{0}{1}{40/40}{}{0}}
 \headcommand {\beamer@framepages {40}{40}}
-\headcommand {\beamer@sectionpages {40}{40}}
-\headcommand {\beamer@subsectionpages {40}{40}}
-\headcommand {\sectionentry {4}{*}{41}{*}{0}}
-\headcommand {\slideentry {4}{0}{1}{41/41}{}{0}}
-\headcommand {\beamer@framepages {41}{41}}
-\headcommand {\beamer@partpages {1}{42}}
-\headcommand {\beamer@subsectionpages {40}{42}}
-\headcommand {\beamer@sectionpages {40}{42}}
-\headcommand {\beamer@documentpages {42}}
-\headcommand {\gdef \inserttotalframenumber {40}}
+\headcommand {\beamer@partpages {1}{41}}
+\headcommand {\beamer@subsectionpages {39}{41}}
+\headcommand {\beamer@sectionpages {39}{41}}
+\headcommand {\beamer@documentpages {41}}
+\headcommand {\gdef \inserttotalframenumber {39}}

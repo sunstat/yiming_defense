@@ -1,4 +1,4 @@
 \beamer@sectionintoc {1}{Multivariate Spectral Density Estimation Under Weak Sparsity}{2}{0}{1}
 \beamer@sectionintoc {2}{Low Rank Tucker Approximation of a Tensor from Streaming Data}{16}{0}{2}
-\beamer@sectionintoc {3}{A Connection of These Two}{40}{0}{3}
-\beamer@sectionintoc {4}{*}{41}{0}{4}
+\beamer@sectionintoc {3}{A Small Example to Connect Two Researches}{39}{0}{3}
+\beamer@sectionintoc {4}{*}{40}{0}{4}
