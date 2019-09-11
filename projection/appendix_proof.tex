@@ -1,0 +1,195 @@
+\section{Proof for Bias and Variance Analysis}
+\label{sec:appendix_proof}
+
+
+Before presenting the proof for the main theory, we first define some new notations. Since these notations will only be used in technical proofs, we do not include them in the main body. 
+
+\subsection*{Extra Notations for Technical Proofs} 
+For a vector $\mathbf{x}$ with length $\prod_{n=1}^N d_n$, for simplicity, we introduce the multi-index for it: let $\mathbf{x}_{r_1, \cdots, r_N},\forall r_n \in [d_n]$, represents the $(1 + \sum_{n = 1}^N(r_n -1)s_n)^{th}$ element, where $s_n = \prod_{n+1}^Nd_n$, for $n < N$ and $1$ for $n = N$. For vector $\mathbf{r}_1$, $\mathbf{r}_2$, we say $\mathbf{r}_1 = \mathbf{r}_2$ if and only if 
+all their elements are the same. 
+\par 
+
+Also, we let $\mathop{\mathbf{vec}}(\mathbf{A})$ be the vectorization operator for any matrix $\mathbf{A}\in \mathbb{R}^{d\times k}$, which stacks all columns of matrix $\mathbf{A}$ and returns a vector of length $kd$, 
+$[\mathbf{A}(\cdot, 1); \cdots; \mathbf{A}(\cdot, k); ]$. Here we use semi-colon to denote the vertical stack of vectors $\mathbf{x}$ and $\mathbf{y}$ as $[\mathbf{x}; \mathbf{y}]$. As comparison, we use comma to mean stack row vector horizontally like $[\mathbf{x}^\top, \mathbf{y}^\top]$. 
+
+
+
+
+
+\subsection*{Proof for Theorem \ref{thm: norm-preserve}}
+\begin{proof}
+
+We first give a sufficient condition for general random matrix to let  \eqref{eq:lemma-invariant-length-statement} be held, then we show that Khatri-Rao map with condition in Lemma \ref{lemma: norm-preserve} satisfies these two general sufficient conditions. \par 
+
+
+
+Consider a general random matrix $\mathbf{A}\in \mathbb{R}^{k \times d}$ and $\mathbf{x} \in \mathbb{R}^d$.
+we claim if ~$\mathbb{E}{\mathbf{A}^2(r,s)}=1, \forall r,s $ and $\mathbb{E}{\mathbf{A}(r,s_1)\mathbf{A}(r,s_2)} = 0, \forall r \in[k], s_1\neq s_2 \in[d]$,
+then $\mathbb{E}\| \frac{1}{\sqrt{k}}\mathbf{y}\|_2^2 = \|\mathbf{x}\|_2^2$, when $\mathbf{y}=\mathbf{A}\mathbf{x}$. To see why, it suffices to show that $\mathbb{E} y_r^2 = \|x\|^2_2$.
+\begin{equation} \label{eq:row-length}
+\begin{aligned}
+&\mathbb{E}{y_r^2} = \mathbb{E}{\sum_{s_1=1}^d\sum_{s_2=1}^d \mathbf{A}(r,s_1)\mathbf{A}(r,s_2)x_{s_1}x_{s_2}} \\
+&= \sum_{s=1}^d \mathbf{A}^2(r,s)x_s^2 = \|\mathbf{x}\|^2_2,  \nonumber
+\end{aligned}
+\end{equation}
+where the first equation in the second line comes from the fact that $\mathbb{E} {\mathbf{A}(r,s_1)\mathbf{A}(r,s_2)}  = 0$ for $s_1\neq s_2$ and the second equation in the second line comes from that $\mathbb{E}{\mathbf{A}^2(r,s)} =1$.
+
+Then, we will prove Lemma \ref{lemma: norm-preserve} by induction. 
+We first show that for two matrices $\mathbf{B}_1 \in \mathbb{R}^{d_1\times k}, \mathbf{B}_2 \in \mathbb{R}^{d_2\times k}$ whose entries satisfy the two conditions in lemma \ref{lemma: norm-preserve}: $\mathbb{E} \mathbf{B}^2_{n}(r,s)=1$
+and  $\mathbb{E} [ \mathbf{B}_{n}(r_1,s)\mathbf{B}_{n}(r_2,s)] =0$ for $n=1,2, s\in [d], r, r_1\neq r_2\in [d_n]$, we have $\mathbf{A} = (\mathbf{B}_1 \odot\mathbf{B}_2 )^\top $ satifies the two sufficient conditions stated previously. It suffices to restrict our focus to the first row of $\mathbf{\Omega}$ and we apply the multi-index to it. For any $1\le r_1\le d_1, 1\le r_2\le d_2$, 
+\begin{equation}
+\begin{aligned}
+&\mathbb{E}  \mathbf{A}^2_{1}(k_1,k_2) = \mathbb{E} \mathbf{B}^2_{1}(k_1,1)\mathbf{B}^2_{2}(k_2,1)\\
+& =  \mathbb{E} \mathbf{B}^2_{1}(k_1,1) \mathbb{E} \mathbf{B}^2_{2}(k_1,1) = 1.  ~(\text{independence bewteen} ~ \mathbf{B}_i, i=1,2 )
+\nonumber
+\end{aligned}
+\end{equation}
+To avoid confusion in notation, we argue that $ \mathbf{A}(1,\cdot)$ is the first row vector of $ \mathbf{A}$ of size $d_1d_2$, and we apply the multi-index to it.  Also, for two different elements in the first row of $\mathbf{A}$: $ \mathbf{A}_{1}(k_1,k_2) \mathbf{A}_{1}(s_1,s_2)$ at least one of $k_1\neq s_1$, $k_2\neq s_2$ hold. Without losing generality, assuming $k_1\neq s_1$, 
+
+\begin{equation}
+\begin{aligned}
+&\mathbb{E}  \mathbf{A}_{1}(k_1,k_2) \mathbf{A}_{1}(s_1,s_2)  = \mathbb{E} \mathbf{B}_{1}(k_1,1)\mathbf{B}_{2}(k_2,1)\mathbf{B}_{1}(s_1,1)\mathbf{B}_{2}(s_2,1)\\
+& =  \mathbb{E} \mathbb{E}\left[ \mathbf{B}_{1}(k_1,1)\mathbf{B}_{1}(k_2,1)\mathbf{B}_{2}(k_2,1)\mathbf{B}_{2}(s_2,1)  \mid  \mathbf{B}_{2}(k_2,1)\mathbf{B}_{2}(s_2,1)\right]\\
+& =  \mathbb{E}  \mathbf{B}_{2}(k_2,1)\mathbf{B}_{2}(s_2,1) \mathbb{E}\left[ \mathbf{B}_{1}(k_1,1)\mathbf{B}_{1}(s_1,1) \right]  = 0,
+\nonumber
+\end{aligned}
+\end{equation}
+where we use the fact that entries within/across $B_i$ are independent with each other and have zero expectation. \par 
+
+Notice that two conditions for $\mathbf{A}  =  (\mathbf{B}_1 \odot\mathbf{B}_2 )^\top$ directly show that $\mathbf{B}_1 \odot\mathbf{B}_2$ satisfies two conditions in Theorem \ref{thm: norm-preserve}, we could use a standard mathematical induction argument to finish the proof for $\textup{TRP}$. For TRP(T), 
+\begin{equation}
+\begin{aligned}
+&\mathbb{E}\|\textup{TRP}_T(\mathbf{x})\|^2_2=\frac{1}{T} \mathbb{E}\|\sum_{t=1}^T f^{(t)}_{\text{TRP}}(\mathbf{x})\|^2_2\\
+&= \frac{1}{T}\sum_{t=1}^T\mathbb{E} \|f^{(t)}_{\text{TRP}}(\mathbf{x})\|^2_2= \|x\|^2_2,
+\nonumber 
+\end{aligned}
+\end{equation}
+where in the second line we use the fact that each $f^{(t)}_{\text{TRP}}$ is independent with each other.
+\end{proof}
+
+
+Next we introduce a lemma which shows that by bounding the deviation for the norm square of each vector, we could also bound the deviation for inner product. Although it is commonly known in any random projection literature, for completeness, we still list the lemma with proof here. 
+
+
+
+
+\subsection*{Proof for Theorem \ref{thm:variance}}
+\begin{proof}
+Let $\mathbf{y}=\mathbf{Ax}$. We know from Lemma \ref{lemma: norm-preserve} that $\mathbb{E}\|\textup{TRP}(\mathbf{x})\|^2_2 = \frac{1}{k}\mathbb{E}\|\mathbf{Ax}\|^2= \|\mathbf{x}\|^2_2$. 
+Notice 
+\[
+\mathbb{E}(\|\textup{TRP}_T(\mathbf{x})\|^2_2) = \|\mathbf{x}\|^2_2, 
+\]
+and $\mathbb{E} y_1^2=\|x\|_2^2$ as shown in the poof of Lemma \ref{thm: norm-preserve}. It is easy to see that
+\[
+\mathbb{E}\|\mathbf{y}\|^4_2 = \sum_{i=1}^k \mathbb{E} y_i^4 + \sum_{i\neq j} \mathbb{E} y_i^2y_j^2.
+\]
+Again, as shown in Lemma \ref{lemma: norm-preserve}, $\mathbb{E} y_i^2y_j^2 =\mathbb{E} y_i^2 \mathbb{E} y_j^2 = \|\mathbf{x}\|^4$. To find $\mathbb{E}\|\mathbf{y}\|^4_2$, it suffices to find $\mathbb{E} y_1^4$ by noticing that $y_i$ are iid random variables. Let $\Omega$ be the set containing all corresponding multi-index vector for $\{1,\cdots, \prod_{n=1}^N d_n\}$. 
+\begin{equation}
+\begin{aligned}
+&y_1^4 = \left[\sum_{\mathbf{r}\in \Omega} \mathbf{A}(1,\mathbf{r}) x_{\mathbf{r}}\right]^4 = \sum_{\mathbf{r}\in \Omega} \mathbf{A}^4(1,\mathbf{r}) x^4_{\mathbf{r}} + 3\sum_{\mathbf{r}_1 \neq \mathbf{r}_2 \in \Omega} \mathbf{A}^2(1,\mathbf{r}_1) x^2_{\mathbf{r}_1}\mathbf{A}^2(1,\mathbf{r}_2) x^2_{\mathbf{r}_2}\\
+&+6\sum_{\mathbf{r}_1 \neq \mathbf{r}_2 \neq \mathbf{r}_3 \in \Omega} \mathbf{A}^2(1,\mathbf{r}_1) x_\mathbf{\mathbf{r}_1} \mathbf{A}(1,\mathbf{r}_2)x_{\mathbf{r}_2}\mathbf{A}(1,\mathbf{r}_3)x_{\mathbf{r_3}}+4\sum_{\mathbf{r}_1 \neq \mathbf{r}_2 \in \Omega} \mathbf{A}^3(1,\mathbf{r}_1) x^3_{\mathbf{r}_1}\mathbf{A}(1,\mathbf{r}_2) x_{\mathbf{r}_2}\\
+&+\sum_{\mathbf{r}_1 \neq \mathbf{r}_2 \neq \mathbf{r}_3\neq \mathbf{r}_4 \in \Omega} \mathbf{A}(1,\mathbf{r}_1) x_{\mathbf{r}_1}\mathbf{A}(1,\mathbf{r}_2) x_{\mathbf{r}_2}\mathbf{A}(1,\mathbf{r}_3) x_{\mathbf{r}_3}\mathbf{A}(1,\mathbf{r}_4) x_{\mathbf{r}_4}.\nonumber
+\end{aligned}
+\end{equation}
+It is not hard to see that except for the first line, the expectation of second and third line is zero. 
+\[
+\mathbb{E} \mathbf{A}^4(1,\mathbf{r}) = \mathbb{E} \mathbf{A}^4_1 (1, r_1) \cdots \mathbf{A}^4_N(1, r_N) = \Delta^N. 
+\]
+Also with proof in Lemma \ref{lemma: norm-preserve}, 
+\[
+\mathbb{E} \mathbf{A}^2(1,\mathbf{r}_1)\mathbf{A}^2(1,\mathbf{r}_2) = \mathbb{E} \mathbf{A}^2(1,\mathbf{r}_1) \mathbb{E}  \mathbf{A}^2(1,\mathbf{r}_2)  = 1.
+\]
+Combining these two together, we have 
+\begin{equation}
+\begin{aligned}
+&\mathbb{E}\|\textup{TRP}(\mathbf{x})\|^4 = \frac{1}{k^2}\left[k(\Delta^N-3)\|\mathbf{x}\|_4^4 +3k\|\mathbf{x}\|_2^4  +(k-1)k \|\mathbf{x}\|_2^4\right]\\
+& =  \frac{1}{k}\left[(\Delta^N-3)\|\mathbf{x}\|_4^4 +2\|\mathbf{x}\|_2^4\right]+\|\mathbf{x}\|_2^4.  \nonumber 
+\end{aligned}
+\end{equation}
+Therefore, 
+\[
+\textrm{Var}(\|\textup{TRP}(\mathbf{x})\|^2_2) = \mathbb{E}\|\textup{TRP}(\mathbf{x})\|^4_2 -  (\mathbb{E}\|\textup{TRP}(\mathbf{x})\|^2_2)^2 = \frac{1}{k}\left[(\Delta^N-3)\|\mathbf{x}\|_4^4 +2\|\mathbf{x}\|_2^4\right].
+\]
+Now we switch to see how much variance could be reduced by the variance reduction method. With Lemma \ref{lemma: norm-preserve}, we already know that $\mathbb{E} \|\textup{TRP}_T(\mathbf{x})\|^2_2= \|\mathbf{x}\|_2^2$. The rest is to calculate $\mathbb{E} \|\textup{TRP}_T(\mathbf{x})\|^4_2$ out.
+\begin{equation}
+\begin{aligned}
+&\|\textup{TRP}_T(\mathbf{x})\|^4_2 = \frac{1}{T^2}\left[\sum_{t=1}^T \|f^{(t)}_{\text{TRP}}(\mathbf{x})\|^2_2+\sum_{t_1 \neq t_2} \langle f^{(t_1)}_{\text{TRP}}(\mathbf{x}), f^{(t_2)}_{\text{TRP}}(\mathbf{x}) \rangle \right]^2\\
+&= \frac{1}{T^2} \left[ \sum_{t=1}^T \|f^{(t)}_{\text{TRP}}(\mathbf{x})\|^4_2+\sum_{t_1\neq t_2}\|\textup{TRP}^{(t_1)}(\mathbf{x})\|^2_2\|\textup{TRP}^{(t_2)}(\mathbf{x})\|^2_2 +2\sum_{t_1\neq t_2}\langle f^{(t_1)}_{\text{TRP}}(\mathbf{x}), f^{(t_2)}_{\text{TRP}}(\mathbf{x}) \rangle^2 +\text{rest} \right].\nonumber 
+\end{aligned}
+\end{equation}
+It is not hard to show that $\mathbb{E}(\text{rest}) = 0$. Following the definition of $\mathbf{y}$, 
+
+\begin{equation}
+\mathbb{E} \|\textup{TRP}^{(t_1)}(\mathbf{x})\|^2_2\|\textup{TRP}^{(t_2)}(\mathbf{x})\|^2_2= \|\mathbf{x}\|_2^4, \nonumber 
+\end{equation}
+and 
+\begin{equation}
+\begin{aligned}
+&\mathbb{E} \langle f^{(t_1)}_{\text{TRP}}(\mathbf{x}), f^{(t_2)}_{\text{TRP}}(\mathbf{x}) \rangle^2\\ &=\frac{1}{k^2} \mathbb{E} \left[ \sum_{i=1}^k y^{(t_1)}_i y^{(t_2)}_i \right]^2 = \frac{1}{k}  \mathbb{E} [y^{(t_1)}_1 y^{(t_2)}_1]^2 = \frac{1}{k}\|x\|_2^4. \nonumber 
+\end{aligned}
+\end{equation}
+Combining all these together, we could show that 
+\begin{equation}
+\begin{aligned}
+\textrm{Var}(\|\textup{TRP}_T(\mathbf{x})\|_2^2) &= \mathbb{E}\|\textup{TRP}_T(\mathbf{x})\|^4_2 -  (\mathbb{E}\|\textup{TRP}_T(\mathbf{x})\|^2_2)^2\\ 
+&= \frac{1}{T^2} \left[ \frac{T}{k}\left[(\Delta^N-3)\|\mathbf{x}\|_4^4 +2\|\mathbf{x}\|_2^4 \right]\right.\\
+&\left. +T(T-1)\|\mathbf{x}\|_2^4+T\|\mathbf{x}\|_2^4+\frac{2T(T-1)}{k}\|\mathbf{x}\|_2^4 \right] - \|\mathbf{x}\|_2^4 \\ 
+&= \frac{1}{Tk}(\Delta^N-3)\|\mathbf{x}\|_4^4 + \frac{2}{k}\|\mathbf{x}\|_2^4. \nonumber
+\end{aligned}
+\end{equation}
+\end{proof}
+
+\subsection*{Proof for Lemma \ref{lemma:inner_prod_var}} 
+Let $\mathbf{u} = \mathbf{A}\mathbf{x}$, $\mathbf{v} = \mathbf{A}\mathbf{y}$. Then,  
+
+\begin{equation}
+\begin{aligned}
+(u_1 v_1)^2 &= [\sum_{r \in \Omega} \mathbf{A}(1,\mathbf{r}) x_\mathbf{r}]^2 [\sum_{r \in \Omega} \mathbf{A}(1,\mathbf{r}) 
+y_\mathbf{r}]^2 \\  
+&= \sum_{\mathbf{r}} \mathbf{A}(1,\mathbf{r})^4 x_{\mathbf{r}}^2 y_{\mathbf{r}}^2 +
+ \sum_{\mathbf{r}_1 \neq \mathbf{r}_2} \mathbf{A}(1, \mathbf{r}_1)^2 \mathbf{A}(1, \mathbf{r}_2)^2 x_{\mathbf{r}_1}^2 y_{\mathbf{r}_2}^2 \\
+&+ 2\sum_{\mathbf{r}_1 \neq \mathbf{r}_2 } \mathbf{A}(1, \mathbf{r}_1)^2 \mathbf{A}(1, \mathbf{r}_2)^2 x_{\mathbf{r}_1} x_{\mathbf{r}_2} y_{\mathbf{r}_1} y_{\mathbf{r}_2} + \dots \\ 
+\end{aligned}
+\end{equation} 
+
+Therefore, 
+
+\begin{equation}
+\begin{aligned}
+\mathbb{E}(\langle \textup{TRP}(\mathbf{x}) \textup{TRP},(\mathbf{y}) \rangle)^2 
+&= \frac{1}{k} [ (\Delta^N - 3) \sum_{\mathbf{r}}x_{\mathbf{r}_1}^2y_{\mathbf{r}_2}^2  + \|\mathbf{x}\|_2^2\|\mathbf{y}\|^2_2 + 2 \langle \mathbf{x}, \mathbf{y} \rangle^2 ]
+\end{aligned} 
+\end{equation} 
+
+Similar from line ??,It is not hard to see that except for the first line, the expectation of second and third line is zero. 
+\[
+\mathbb{E} \mathbf{A}^4(1,\mathbf{r}) = \mathbb{E} \mathbf{A}^4_1 (1, r_1) \cdots \mathbf{A}^4_N(1, r_N) = \Delta^N. 
+\]
+Also with proof in Lemma \ref{lemma: norm-preserve}, 
+\[
+\mathbb{E} \mathbf{A}^2(1,\mathbf{r}_1)\mathbf{A}^2(1,\mathbf{r}_2) = \mathbb{E} \mathbf{A}^2(1,\mathbf{r}_1) \mathbb{E}  \mathbf{A}^2(1,\mathbf{r}_2)  = 1.
+\]
+
+Then after combining the results from , 
+\begin{equation}
+\begin{aligned}
+\textrm{Var}(\langle \textup{TRP}(\mathbf{x}) \textup{TRP},(\mathbf{y}) \rangle) &= \mathbb{E}(\langle \textup{TRP}(\mathbf{x}) \textup{TRP},(\mathbf{y}) \rangle)^2 - (\mathbb{E}\langle \textup{TRP}(\mathbf{x}) \textup{TRP},(\mathbf{y}) \rangle)^2 \\
+&= \frac{1}{k} [ (\Delta^N - 3) \sum_{\mathbf{r}}x_{\mathbf{r}}^2y_{\mathbf{r}}^2  + \|\mathbf{x}\|_2^2\|\mathbf{y}\|^2_2 + \langle \mathbf{x}, \mathbf{y} \rangle^2 ]
+\end{aligned}
+\end{equation} 
+
+
+\begin{definition}
+	\label{def:generalized-sub-exponential-mc}
+	A random variable $x$ is said to satisfy the generalized-sub-exponential moment condition with constant $\alpha$, if for general positive integer $k$, there exists a general constant $C$(not depending on k), s.t. 
+	\begin{equation}
+	\mathbb{E} |x|^k \le (Ck)^{k \alpha}
+	\end{equation}
+\end{definition}
+
+
+
+
+\clearpage
+

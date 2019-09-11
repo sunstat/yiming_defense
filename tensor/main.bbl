@@ -1,0 +1,210 @@
+\begin{thebibliography}{10}
+
+\bibitem{achlioptas2003database}
+{\sc D.~Achlioptas}, {\em Database-friendly random projections:
+  {Johnson-Lindenstrauss} with binary coins}, Journal of computer and System
+  Sciences, 66 (2003), pp.~671--687.
+
+\bibitem{ailon2009fast}
+{\sc N.~Ailon and B.~Chazelle}, {\em The fast {Johnson--Lindenstrauss}
+  transform and approximate nearest neighbors}, SIAM Journal on computing, 39
+  (2009), pp.~302--322.
+
+\bibitem{arora2009computational}
+{\sc S.~Arora and B.~Barak}, {\em Computational complexity: a modern approach},
+  Cambridge University Press, 2009.
+
+\bibitem{austin2016parallel}
+{\sc W.~Austin, G.~Ballard, and T.~G. Kolda}, {\em Parallel tensor compression
+  for large-scale scientific data}, in Parallel and Distributed Processing
+  Symposium, 2016 IEEE International, IEEE, 2016, pp.~912--922.
+
+\bibitem{ballester2019tthresh}
+{\sc R.~Ballester-Ripoll, P.~Lindstrom, and R.~Pajarola}, {\em Tthresh: Tensor
+  compression for multidimensional visual data}, IEEE transactions on
+  visualization and computer graphics,  (2019).
+
+\bibitem{baskaran2012efficient}
+{\sc M.~Baskaran, B.~Meister, N.~Vasilache, and R.~Lethin}, {\em Efficient and
+  scalable computations with sparse tensors}, in High Performance Extreme
+  Computing (HPEC), 2012 IEEE Conference on, IEEE, 2012, pp.~1--6.
+
+\bibitem{battaglino2018practical}
+{\sc C.~Battaglino, G.~Ballard, and T.~G. Kolda}, {\em A practical randomized
+  cp tensor decomposition}, SIAM Journal on Matrix Analysis and Applications,
+  39 (2018), pp.~876--901.
+
+\bibitem{battaglino2019faster}
+{\sc C.~Battaglino, G.~Ballard, and T.~G. Kolda}, {\em Faster parallel tucker
+  tensor decomposition using randomization},  (2019).
+
+\bibitem{boutsidis2013improved}
+{\sc C.~Boutsidis and A.~Gittens}, {\em Improved matrix algorithms via the
+  subsampled randomized hadamard transform}, SIAM Journal on Matrix Analysis
+  and Applications, 34 (2013), pp.~1301--1340.
+
+\bibitem{cichocki2013tensor}
+{\sc A.~Cichocki}, {\em Tensor decompositions: a new concept in brain data
+  analysis?}, arXiv preprint arXiv:1305.0395,  (2013).
+
+\bibitem{clarkson2017low}
+{\sc K.~L. Clarkson and D.~P. Woodruff}, {\em Low-rank approximation and
+  regression in input sparsity time}, Journal of the ACM (JACM), 63 (2017),
+  p.~54.
+
+\bibitem{cormode2008finding}
+{\sc G.~Cormode and M.~Hadjieleftheriou}, {\em Finding frequent items in data
+  streams}, Proceedings of the VLDB Endowment, 1 (2008), pp.~1530--1541.
+
+\bibitem{de2000multilinear}
+{\sc L.~De~Lathauwer, B.~De~Moor, and J.~Vandewalle}, {\em A multilinear
+  singular value decomposition}, SIAM journal on Matrix Analysis and
+  Applications, 21 (2000), pp.~1253--1278.
+
+\bibitem{de2008tensor}
+{\sc V.~De~Silva and L.-H. Lim}, {\em Tensor rank and the ill-posedness of the
+  best low-rank approximation problem}, SIAM Journal on Matrix Analysis and
+  Applications, 30 (2008), pp.~1084--1127.
+
+\bibitem{2017arXiv171209473D}
+{\sc H.~{Diao}, Z.~{Song}, W.~{Sun}, and D.~P. {Woodruff}}, {\em {Sketching for
+  Kronecker Product Regression and P-splines}}, arXiv e-prints,  (2017),
+  arXiv:1712.09473, p.~arXiv:1712.09473,
+  \url{https://arxiv.org/abs/1712.09473}.
+
+\bibitem{halko2011finding}
+{\sc N.~Halko, P.-G. Martinsson, and J.~A. Tropp}, {\em Finding structure with
+  randomness: Probabilistic algorithms for constructing approximate matrix
+  decompositions}, SIAM review, 53 (2011), pp.~217--288.
+
+\bibitem{hurrell2013community}
+{\sc J.~W. Hurrell, M.~M. Holland, P.~R. Gent, S.~Ghan, J.~E. Kay, P.~J.
+  Kushner, J.-F. Lamarque, W.~G. Large, D.~Lawrence, K.~Lindsay, et~al.}, {\em
+  The community earth system model: a framework for collaborative research},
+  Bulletin of the American Meteorological Society, 94 (2013), pp.~1339--1360.
+
+\bibitem{kay2015community}
+{\sc J.~Kay, C.~Deser, A.~Phillips, A.~Mai, C.~Hannay, G.~Strand, J.~Arblaster,
+  S.~Bates, G.~Danabasoglu, J.~Edwards, et~al.}, {\em The community earth
+  system model (cesm) large ensemble project: A community resource for studying
+  climate change in the presence of internal climate variability}, Bulletin of
+  the American Meteorological Society, 96 (2015), pp.~1333--1349.
+
+\bibitem{kaya2016high}
+{\sc O.~Kaya and B.~U{\c{c}}ar}, {\em High performance parallel algorithms for
+  the tucker decomposition of sparse tensors}, in Parallel Processing (ICPP),
+  2016 45th International Conference on, IEEE, 2016, pp.~103--112.
+
+\bibitem{kolda2009tensor}
+{\sc T.~G. Kolda and B.~W. Bader}, {\em Tensor decompositions and
+  applications}, SIAM review, 51 (2009), pp.~455--500.
+
+\bibitem{kolda2008scalable}
+{\sc T.~G. Kolda and J.~Sun}, {\em Scalable tensor decompositions for
+  multi-aspect data mining}, in 2008 Eighth IEEE International Conference on
+  Data Mining, IEEE, 2008, pp.~363--372.
+
+\bibitem{lapointe2015differential}
+{\sc S.~Lapointe, B.~Savard, and G.~Blanquart}, {\em Differential diffusion
+  effects, distributed burning, and local extinctions in high karlovitz
+  premixed flames}, Combustion and flame, 162 (2015), pp.~3341--3355.
+
+\bibitem{li2015input}
+{\sc J.~Li, C.~Battaglino, I.~Perros, J.~Sun, and R.~Vuduc}, {\em An
+  input-adaptive and in-place approach to dense tensor-times-matrix multiply},
+  in High Performance Computing, Networking, Storage and Analysis, 2015
+  SC-International Conference for, IEEE, 2015, pp.~1--12.
+
+\bibitem{li2006very}
+{\sc P.~Li, T.~J. Hastie, and K.~W. Church}, {\em Very sparse random
+  projections}, in Proceedings of the 12th ACM SIGKDD international conference
+  on Knowledge discovery and data mining, ACM, 2006, pp.~287--296.
+
+\bibitem{malik2018low}
+{\sc O.~A. Malik and S.~Becker}, {\em Low-rank tucker decomposition of large
+  tensors using tensorsketch}, in Advances in Neural Information Processing
+  Systems, 2018, pp.~10116--10126.
+
+\bibitem{muthukrishnan2005data}
+{\sc S.~Muthukrishnan et~al.}, {\em Data streams: Algorithms and applications},
+  Foundations and Trends{\textregistered} in Theoretical Computer Science, 1
+  (2005), pp.~117--236.
+
+\bibitem{oymak2015universality}
+{\sc S.~Oymak and J.~A. Tropp}, {\em Universality laws for randomized dimension
+  reduction, with applications}, Information and Inference: A Journal of the
+  IMA,  (2015).
+
+\bibitem{rudelson2012row}
+{\sc M.~Rudelson}, {\em Row products of random matrices}, Advances in
+  Mathematics, 231 (2012), pp.~3199--3231.
+
+\bibitem{sun2008incremental}
+{\sc J.~Sun, D.~Tao, S.~Papadimitriou, P.~S. Yu, and C.~Faloutsos}, {\em
+  Incremental tensor analysis: Theory and applications}, ACM Transactions on
+  Knowledge Discovery from Data (TKDD), 2 (2008), p.~11.
+
+\bibitem{sun2018tensor}
+{\sc Y.~Sun, Y.~Guo, J.~A. Tropp, and M.~Udell}, {\em Tensor random projection
+  for low memory dimension reduction}, in NeurIPS Workshop on Relational
+  Representation Learning, 2018,
+  \url{https://r2learning.github.io/assets/papers/CameraReadySubmission%2041.pdf}.
+
+\bibitem{tropp2011improved}
+{\sc J.~A. Tropp}, {\em Improved analysis of the subsampled randomized hadamard
+  transform}, Advances in Adaptive Data Analysis, 3 (2011), pp.~115--126.
+
+\bibitem{tropp2017practical}
+{\sc J.~A. Tropp, A.~Yurtsever, M.~Udell, and V.~Cevher}, {\em Practical
+  sketching algorithms for low-rank matrix approximation}, SIAM Journal on
+  Matrix Analysis and Applications, 38 (2017), pp.~1454--1485.
+
+\bibitem{tropp2018more}
+{\sc J.~A. Tropp, A.~Yurtsever, M.~Udell, and V.~Cevher}, {\em More practical
+  sketching algorithms for low-rank matrix approximation}, Tech. Report
+  2018-01, California Institute of Technology, Pasadena, California, 2018.
+
+\bibitem{tropp2019streaming}
+{\sc J.~A. Tropp, A.~Yurtsever, M.~Udell, and V.~Cevher}, {\em Streaming
+  low-rank matrix approximation with an application to scientific simulation},
+  Submitted to SISC,  (2019), \url{https://arxiv.org/abs/1902.08651}.
+
+\bibitem{tsourakakis2010mach}
+{\sc C.~E. Tsourakakis}, {\em Mach: Fast randomized tensor decompositions}, in
+  Proceedings of the 2010 SIAM International Conference on Data Mining, SIAM,
+  2010, pp.~689--700.
+
+\bibitem{tucker1966some}
+{\sc L.~R. Tucker}, {\em Some mathematical notes on three-mode factor
+  analysis}, Psychometrika, 31 (1966), pp.~279--311.
+
+\bibitem{vannieuwenhoven2012new}
+{\sc N.~Vannieuwenhoven, R.~Vandebril, and K.~Meerbergen}, {\em A new
+  truncation strategy for the higher-order singular value decomposition}, SIAM
+  Journal on Scientific Computing, 34 (2012), pp.~A1027--A1052.
+
+\bibitem{vasilescu2002multilinear}
+{\sc M.~A.~O. Vasilescu and D.~Terzopoulos}, {\em Multilinear analysis of image
+  ensembles: Tensorfaces}, in European Conference on Computer Vision, Springer,
+  2002, pp.~447--460.
+
+\bibitem{wang2015fast}
+{\sc Y.~Wang, H.-Y. Tung, A.~J. Smola, and A.~Anandkumar}, {\em Fast and
+  guaranteed tensor decomposition via sketching}, in Advances in Neural
+  Information Processing Systems, 2015, pp.~991--999.
+
+\bibitem{woodruff2014sketching}
+{\sc D.~P. Woodruff et~al.}, {\em Sketching as a tool for numerical linear
+  algebra}, Foundations and Trends{\textregistered} in Theoretical Computer
+  Science, 10 (2014), pp.~1--157.
+
+\bibitem{woolfe2008fast}
+{\sc F.~Woolfe, E.~Liberty, V.~Rokhlin, and M.~Tygert}, {\em A fast randomized
+  algorithm for the approximation of matrices}, Applied and Computational
+  Harmonic Analysis, 25 (2008), pp.~335--366.
+
+\bibitem{zhou2014decomposition}
+{\sc G.~Zhou, A.~Cichocki, and S.~Xie}, {\em Decomposition of big tensors with
+  low multilinear rank}, arXiv preprint arXiv:1412.1885,  (2014).
+
+\end{thebibliography}

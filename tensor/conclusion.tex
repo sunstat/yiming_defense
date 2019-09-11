@@ -1,0 +1,14 @@
+\section{Conclusion}
+This paper proposes a practical one-pass algorithm to compute the
+Tucker decomposition of a tensor with provable guarantees.
+Our algorithm uses a dimension reduction map to summarize the data in a linear sketch.
+This sketch can be efficiently stored or transmitted, which enables applications in modern large-scale setting, including streaming and distributed data storage, or computational environment with limited memory.
+We give the first comprehensive error analysis for one-pass Tucker decomposition algorithm in \ref{thm:low_rank_err}
+and \ref{thm:fix_rank_err} for the tensor
+approximation with error growing only linearly with the order $N$ of the tensor. In practice, our algorithm significantly outperforms the current state-of-the-art one-pass Tucker decomposition algorithm \cite{malik2018low} in the limited memory setting and noisy setting with much greater stability. Also, our one-pass achieves the same performance in \cite{malik2018low}'s suggested setting when the memory requirement is much higher than our suggested setting.
+Our algorithm is available as an open-source python package.
+% no acknowledgements in anonymous submission
+% \subsubsection*{Acknowledgements}
+% The authors would like to thank Guillaume Blanquart for discussing the applications of our sketching algorithm in combustion simulation data. The research is sponsored by ...
+
+%\clearpage

@@ -1,0 +1,68 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    OLD SAMPLE SPLITTING ALGORITHM    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\iffalse
+\begin{algorithm}
+\caption{Sample splitting} \label{al1}
+\begin{tabbing}
+   \enspace Initial two sets $\{J\}_{1, \nu} = 0$, $\{J\}_{2, \nu} = \{-m, \cdots,  m\}\setminus \{0\}$\\
+   \enspace Randomly select pairs of symmetric elements from $\{J\}_{2, \nu}$, e.g. $\{-1, 1\}$ and put them into \\\
+   $\{J\}_{1, \nu}$ until the sizes of the two sets are balanced\\
+   \enspace At the end, $\{J\}_{2, \nu} \leftarrow \{J\}_{2, \nu}\cup \{0\}$
+\enspace 
+\end{tabbing}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Tuning threshold value} \label{al2}
+\begin{tabbing}
+   \enspace Calculate periodograms $I(\omega_j)$ for multiple time series data, where $j \in \{1, \cdots, [n/2]\}$\\
+   \enspace For $j \in \{1, \cdots, [n/2]\}$ \\
+   \qquad Split the periodograms in the smoothing span from $j-m, \cdots, j+m$, which is used for the \\\
+   estimation of $f(\omega_j)$, into two pieces for $N$ times according to Algorithm \ref{al1}.\\
+   \qquad For $\nu = 1$ to $\nu = N$ \\\
+   \qquad\qquad Calculate $S_{\lambda}(\hat{f}_{1,\nu}(\omega_j))$, $\hat{f}_{2,\nu}(\omega_j)$, $\hat{R}(\omega_j,\lambda)$ for each $\lambda_j$ in a set of grids \\
+   \qquad Find $\hat{\lambda}_j$ which minimize $\hat{R}(\omega_j,\lambda)$
+\enspace 
+\end{tabbing}
+\end{algorithm}
+
+
+Let $\hat{f}_{1,\nu}(\omega_j), ~ \hat{f}_{2,\nu}(\omega_j)$ be the empirical spectral densities based on the $m_1$ and $m_2$ periodograms split above. Let $\hat{\lambda}_j = \argmin \hat{R}(\omega_j,\lambda)$, where
+\begin{align*}
+\hat{R}(\omega_j,\lambda) := \frac 1 N \sum_{\nu = 1}^N \|T_{\lambda}(\hat{f}_{1,\nu}(\omega_j)) - \hat{f}_{2,\nu}(\omega_j)\|_F^2.
+\end{align*}
+
+
+Then for each frequency $j \in \{1, \cdots, [n/2]\}$, we follow Algorithm \ref{al2} to get an estimate of $\lambda$.
+
+----------------------------------
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SIMULATION: PERFORMANCE METRICS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\iffalse
+
+{\color{red} 
+---------------------
+
+[Yiming]: Current F1 measures are low, especially for VAR setting. Can we try the following global (across freqs) measures of precision/recall and see if the results improve?
+
+\begin{eqnarray}
+    && \text{precision} = % n^{-1}\sum_{j  \in F_n} 
+    \frac{\# \{(r,s): ~ r \neq s,  |\hat{f}_{rs}(\omega_j)|\neq 0 \mbox{ for some $\omega_j$}, ~ |f_{rs}(\omega_j)|\neq 0  \mbox{ for some $\omega_j$}\}}{\# \{(r,s): ~ |\hat{f}_{rs}(\omega_j)|\neq 0 \mbox{ for some $\omega_j$} \}} \nonumber \\
+    && \text{recall} = \frac{\# \{(r,s): ~ r \neq s, |\hat{f}_{rs}(\omega_j)|\neq 0 \mbox{ for some $\omega_j$} , ~ |f_{rs}(\omega_j)|\neq 0 \mbox{ for some $\omega_j$} \}}{\# \{(r,s): ~ |f_{rs}(\omega_j)|\neq 0 \mbox{ for some $\omega_j$} \}} \nonumber \\
+    && \text{F1} =  2\times (\text{precision} \cdot \text{recall})/(\text{precision} + \text{recall}). \nonumber 
+\end{eqnarray}
+
+In other words, we define the true graph of marginal dependence among the $p$ time series as  $G := \{ (r,s):  r \neq s, f_{rs}(\omega_j) \neq 0 \mbox{ for some $\omega_j$} \}$ and the estimated graph $\hat{G}$ accordingly. Then we report precision, recall and F1 measures of the estimated graph $\hat{G}$.
+
+-------------------------
+
+}
+\fi

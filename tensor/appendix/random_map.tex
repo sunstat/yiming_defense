@@ -1,0 +1,26 @@
+\section{Scrambled Subsampled Randomized Fourier Transform} \label{appendix: ssrft}
+
+In order to reduce the cost of storing the test matrices, in particular, $\mathbf{\Omega}_1, \dots, \mathbf{\Omega}_N$, we can use the Scrambled Subsampled Randomized Fourier Transform (SSRFT). To reduce the dimension of a matrix, $\mathbf{X} \in \mathbb{R}^{m \times n}$, along either the row or the column to size $k$, we define the SSRFT map $\mathbf{\Xi}$ as: 
+\begin{equation}
+\mathbf{\Xi} = \begin{cases}\mathbf{R}\mathbf{F}^\top \mathbf{\Pi}\mathbf{F}\mathbf{\Pi}^\top \in \mathbb{F}^{k \times m} & \text{(Row linear transform)}\\ 
+(\widebar{\mathbf{R}}\widebar{\mathbf{F}}^\top\widebar{\mathbf{\Pi}}\widebar{\mathbf{F}}\widebar{\mathbf{\Pi}}^\top)^\top \in \mathbb{F}^{n \times k} & \text{(Column linear transform)} , \nonumber
+\end{cases}
+\end{equation}
+where $\mathbf{\Pi}, \mathbf{\Pi}' \in \mathbb{R}^{m \times m}, \widebar{\mathbf{\Pi}}, \widebar{\mathbf{\Pi}}' \in \mathbb{R}^{n \times n}$ are signed permutation matrices. That is, the matrix has exactly one non-zero entry, 1 or -1 with equal probability, in each row and column. $\mathbf{F} \in \mathbb{F}^{m \times m}, \mathbf{F} \in \mathbb{F}^{n \times n}$ denote the discrete cosine transform ($\mathbb{F} = \mathbb{R}$) or the discrete fourier transform ($\mathbb{F} = \mathbb{C}$). The matrix $\mathbf{R}, \widebar{\mathbf{R}}$ is the restriction to $k$ coordinates chosen uniformly at random. 
+
+In practice, we implement the SSRFT as in  Algorithm \ref{alg:ssrft}. It takes only $\mathcal{O}(m)$ or $\mathcal{O}(n)$ bits to store $\mathbf{\Xi}$, compared to $\mathcal{O}(km)$ or $\mathcal{O}(kn)$ for Gaussian or uniform random map. The cost of applying $\mathbf{\Xi}$ to a vector is $\mathcal{O}(n\log n)$ or $\mathcal{O}(m \log m)$ arithmetic operations for fast Fourier transform and $\mathcal{O}(n\log  k)$ or $\mathcal{O}(m \log k)$ for fast cosine transform. Though in practice, SSRFT behaves similarly to the Gaussian random map, its analysis is less comprehensive \cite{boutsidis2013improved,tropp2011improved, ailon2009fast} than the Gaussian case. 
+
+\begin{algorithm}[ht!] 
+\begin{algorithmic}[1]
+\caption{Scrambled Subsampled Randomized Fourier Transform (Row Linear Transform)}\label{alg:ssrft}
+\Require{$\mathbf{X} \in \mathbb{R}^{m \times n}, \mathcal{F} = \mathbb{R}$, \textbf{randperm} creates a random permutaion vector, and \textbf{randsign} creates a random sign vector. \textbf{dct} denotes the discrete cosine transform.}
+\Function{SSRFT}{$\mathbf{X}$}
+\State \textbf{coords} $\leftarrow$ \textbf{randperm}(m,k) 
+\State $\textbf{perm}_{j} \leftarrow \textbf{randperm}(m)$ for $j = 1,2$
+\State $\textbf{sgn}_{j} \leftarrow \textbf{randsign}(m)$ for $j = 1,2$
+\State $\mathbf{X} \leftarrow \textbf{dct}(\textbf{sgn}_1 \cdot \mathbf{X}[\textbf{perm}_1,:])$   \Comment{elementwise product}
+\State $\mathbf{X} \leftarrow \textbf{dct}(\textbf{sgn}_2 \cdot \mathbf{X}[\textbf{perm}_2,:])$
+\State \Return $\mathbf{X}[\textbf{coords},:]$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}

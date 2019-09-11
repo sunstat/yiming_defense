@@ -1,0 +1,418 @@
+\section{Appendix: Additional Proofs of Technical Results}\label{Appendix:proof_technical_lemmas}
+\label{sec:proof_for_technical_lemmas}
+
+\begin{lem}
+\label{lemma:q_norm_eq}
+For any matrix $A\in \mathbb{C}^{p \times p}$ and  $0\le q<1$, define $\|A\|_q:= \max_{\|x\|_q=1} \|Ax\|_q$, where $q$ norm for vector is defined as $\|x\|_q= (\sum_{i=1}^p |x_i|^q)^{1/q}$ for any vector x of length $p$(Again, it is indeed a norm iff $q\ge 1$). Then 
+\begin{equation}
+\max_{s=1}^p  \sum_{r=1}^p |A_{rs}|^q = \|A\|_q^q. \nonumber
+\end{equation}
+\begin{proof}
+First, for two vectors $v_1, v_2\in \mathbb{C}^p$, $\|v_1+v_2\|_q^q\le \|v_1\|_q^q + \|v_2\|_q^q$ for $0\le q<1$, since for scalars $x,y\in \mathbb{C}$, $|x+y|^q \le |x|^q+|y|^q$. Then let $A_i$ be the $i^{th}$ column of $A$. Based on the definition of $\|A\|_q$, we have 
+\begin{equation*}
+\begin{aligned}
+& \|A\|_q^q = \max_{\|x\|_q = 1} \|\sum_{i=1}^p A_ix_i\|_q^q \\
+& \le  \max_{\|x\|_q = 1} \sum_{i=1}^p \|A_ix_i\|_q^q  = \sum_{i=1}^p |x_i|^q\|A_i\|_q^q\\
+&\le (\max_{i=1}^p \|A_i\|_q^q) \sum_{i=1}^p\|x_i\|^q = \max_{i=1}^p \|A_i\|_q^q.
+\end{aligned}
+\end{equation*}
+Noticing if we set $x$ above as the indicator vector $e_r$, where $r=\argmax_i \|A_i\|^q $, the equality holds, we finish the proof.  
+\end{proof}
+\end{lem}
+
+\begin{lem}
+\label{lemma:spectral_simple} 
+For any matrix $A\in \mathbb{R}^{p\times p}$, and a positive constant $\epsilon$, we could find a matrix $E$ such that $A+E$ has distinct eigenvalues and $\|E\|\le \epsilon$. 
+\begin{proof}
+Consider the Schur decomposition(\citep{golub2012matrix}) of $A$ as $A=QUQ^\dag$ where $Q$ is an unitary matrix and $U$ is an upper triangular matrix. Construct a diagonal matrix
+$D$ with each element less than $\epsilon$ and make $U_{i,i} + D_{i,i}$ distinct. Set $E = QDQ^\dag$, we have $A+QDQ^\dag = Q (E+D)Q^\dag$ with eigenvalues as $U_{i,i} + D_{i,i}, i=1,\dots p$ which are distinct. By setting $E= QDQ^\dag$ and noticing $\|E\| = \|QDQ^\dag\| = \|D\|\le \epsilon$ we complete the proof. 
+\end{proof}
+\begin{remark}
+$\lambda_{\text{max}}(A)$ is continuous mapping from the set of $p\times p$ complex matrices to the set of real numbers. Thus, we can always find perturbation $\|E\|$ small enough to guarantee $\|A+E\|<1$. To quantify this, we can apply the result from \citet{bhatia1990bounds} for perturbation bound on potentially non-symmetric matrices
+\begin{equation}
+\label{eq:eigen_bound}
+|\lambda_{\textup{max}}(A+E)-\lambda_{\textup{max}}(A)|\le 12\|A\|^{1-1/p}\|E\|^{1/p}.
+\end{equation}
+\end{remark}
+\end{lem}
+
+
+\iffalse
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Pf: bounding bias
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Proof for proposition \ref{prop:bias_bound}}
+\begin{proof}
+It suffices to show that for any unit vector $v,u$, 
+\begin{equation}
+\begin{aligned}
+\left|v^\top \left[\mathbb{E}\hat{f}(\omega_j) - f(\omega_j)\right]u\right| \le \frac{m}{n}\Omega_n(f) + \frac{1}{2\pi}\left(\frac{\Omega_n(f)}{n}+L_n(f)\right). 
+\end{aligned}
+\end{equation}
+Recall 
+\begin{equation}
+\hat{f}(\omega_j) = \frac{1}{2\pi}\frac{1}{2m+1} \sum_{\ell =-m}^m I(\omega_{j+\ell}), 
+\end{equation}
+we could have 
+\begin{equation}
+\label{eq:mul_dev}
+\begin{aligned}
+\left|v^\top \left[\mathbb{E}\hat{f}(\omega_j) - f(\omega_j)\right]u\right| 
+&\le \left|v^\top \left[\frac{1}{2\pi}\mathbb{E}I(\omega_j) - f(\omega_j)\right]u\right|\\
+&+\frac{1}{2\pi(2m+1)} \sum_{\ell = -m}^m |v^\top\left[\mathbb{E}I(\omega_{j+\ell}) - I(\omega_{j})\right]u|.
+\end{aligned}
+\end{equation}
+With definition of $I_n(\omega_j)$ in \eqref{eq:single_periodogram}, we have 
+\begin{equation}
+\label{eq:mul_dev1}
+\begin{aligned}
+\left|\frac{1}{2\pi} v^\top \left[\mathbb{E} I(\omega_j) - 2\pi f(\omega_j)\right]u\right| &= \frac{1}{2\pi}\left|\sum_{|k|\le n} \frac{k}{n}  (v^\top \Gamma(k)u) e^{-i\omega_j k}+\sum_{|k|>n} (v^\top \Gamma(k)u) e^{-i\omega_jk}\right|\\
+&\le \frac{1}{2\pi} \left [\sum_{|k|\le n} \frac{k}{n}  \|\Gamma(k)\|+ \sum_{|k|>n}\|\Gamma(k)\|\right]\\
+&= \frac{1}{2\pi}\left(\frac{\Omega_n(f)}{n} + L_n(f)\right).
+\end{aligned}
+\end{equation}
+Noticing $|e^{ix} - e^{iy}|\le \sqrt{2} |x-y|$ and $|\omega_j-\omega_q| = 2\pi \frac{|j-q|}{n}$, 
+\begin{equation}
+\label{eq:mul_dev2}
+\begin{aligned}
+&\left|\frac{1}{2\pi} v^\top \left[\mathbb{E} I(\omega_j) - \mathbb{E} I(\omega_q) \right]u\right| \\
+&= \frac{1}{2\pi}\left|\sum_{|k|\le n} \left(1-\frac{k}{n}\right) (v^\top \Gamma(k)u) (e^{-i\omega_jk} - e^{-i\omega_qk})\right|\\
+&\le \frac{1}{2\pi} \sum_{|k|\le n} \sqrt{2} \|\Gamma(k)\| |k||\omega_j - \omega_q| \\
+&= \sqrt{2} |j-q| \frac{\Omega_n(f)}{n}. 
+\end{aligned}
+\end{equation}
+Plug \eqref{eq:mul_dev1} and \eqref{eq:mul_dev2} and into \eqref{eq:mul_dev},  
+\begin{equation}
+\begin{aligned}
+&\left|v^\top \left[\mathbb{E}\hat{f}(\omega_j) - f(\omega_j)\right]u\right| \le \frac{1}{2\pi}\left(\frac{\Omega_n(f)}{n} + L_n(f)\right)\\
+&+\sqrt{2} \left(\frac{\sum_{|\ell|\le m} |\ell|}{2m+1}\right)\frac{\Omega_n(f)}{n}\\
+&\le \frac{m}{n}\Omega_n(f) + \frac{1}{2\pi}\left(\frac{\Omega_n(f)}{n}+L_n(f)\right).
+\end{aligned}
+\end{equation}
+\end{proof}
+\fi
+
+\begin{lem}
+\label{lemma:orthogonal-cos-sin}
+For any $j, k$ in $F_n$, the inner product between $C_j$ and $S_k$ can only have the  following forms:
+\begin{enumerate}
+\item[(a)] $C^{\top}_j S_k = 0$
+\item[(b)] 
+\begin{equation*}
+\begin{aligned}
+C_j^\top C_k = 0 ~~\text{if}~~ |j|\neq |k|; ~~~~  C_j^\top C_j = 
+\begin{cases}
+1 & ~\text{if}~ j\in \{0, \frac{n}{2}\}\\
+\frac{1}{2} & \text{otherwise}
+\end{cases}; ~~~C_j^\top C_{-j} = 
+\begin{cases}
+1 & ~\text{if}~ j=0\\
+\frac{1}{2} & \text{otherwise}
+\end{cases}
+\end{aligned}
+\end{equation*}
+\item[(c)] 
+\begin{equation*}
+\begin{aligned}
+S_j^\top S_k = 0 ~~\text{if}~~ |j|\neq |k|; ~~~~  S_j^\top S_j = 
+\begin{cases}
+0 & ~\text{if}~ j\in \{0, \frac{n}{2}\}\\
+\frac{1}{2} & \text{otherwise}
+\end{cases}; ~~~S_j^\top S_{-j} = 
+\begin{cases}
+0 & ~\text{if}~ j=0\\
+-\frac{1}{2} & \text{otherwise}.
+\end{cases}
+\end{aligned}
+\end{equation*}
+\end{enumerate}
+%For convenience in expression, we allow $j=k=0$ appears in both cases where $j=k$ or $j=-k$. Also, notice in the case where $j=-k$, $j$ or $k$ can not take value of $\frac{n}{2}$ given the domain of $F_n$.  
+
+\begin{proof}
+We first state Lagrange's trigonometric identities: 
+\begin{equation}
+\label{eq:cos_series}
+\sum_{\ell=1}^n \cos(\ell\theta) = 
+\begin{cases}
+n & \theta = 2k\pi ~\text{for some integer}~ k \\
+-\frac{1}{2}+\frac{\sin\left(n+\frac{1}{2}\right)\theta}{2\sin \frac{\theta}{2}}  & \text{otherwise}
+\end{cases}
+\end{equation}
+and 
+\begin{equation}
+\label{eq:sin_series}
+\sum_{\ell=1}^n \sin(\ell\theta) =
+\begin{cases}
+0 & \theta = 2k\pi ~\text{for some integer}~ k \\ 
+\frac{\cos (\frac{1}{2}\theta)}{2\sin (\frac{1}{2}\theta)}-\frac{\cos\left(n+\frac{1}{2}\right)\theta}{2\sin \frac{\theta}{2}} & \text{otherwise}
+\end{cases}
+\end{equation}
+Now we consider a special case where we set $\mathbf{\theta} = \omega_j = \frac{2j\pi}{n}, j\in \mathbb{Z}$. Here we relax $j\in F_n$ to all integers. After this relaxation, we can write $\omega_j+\omega_k = \omega_{j+k}$ and $\omega_j-\omega_k = \omega_{j-k}$. Using \eqref{eq:cos_series} and \eqref{eq:sin_series}, 
+for any $\omega_j$, $ j \in \mathbb{Z}$, and fixed $n$, we have the following identities
+\begin{equation}
+\label{eq:omega_cos}
+\sum_{\ell=1}^n \cos(\ell\omega_j) = 
+\begin{cases}
+n &  \mbox{if } j \equiv 0\pmod{n} \\
+0  & \text{otherwise}
+\end{cases},
+\end{equation}
+\begin{equation}
+\label{eq:omega_sin}
+\sum_{\ell=1}^n \sin(\ell\omega_j) = 0.
+\end{equation}\par
+Now we prove (a), (b) and (c).
+
+\begin{enumerate}
+\item[(a)] For any $j$ and $k$ in $F_n$, \eqref{eq:omega_sin} implies
+\begin{equation}
+\begin{aligned}
+\label{eq:case_a_proof}
+&C_j^\top S_k = \frac{1}{2n}\sum_{\ell=1}^n [\sin(\ell (\omega_j+\omega_k))-\sin(\ell (\omega_k-\omega_j))] \\
+& = \frac{1}{2n}\left[\sum_{\ell=1}^n \sin(\ell \omega_{j+k}) - \sum_{\ell=1}^n \sin(\ell \omega_{k-j})\right] = 0
+\end{aligned}
+\end{equation}
+\item[(b)] For any $j,k\in F_n$, 
+\begin{equation}
+\label{eq:case_b_proof}
+C_j^\top C_k = \frac{1}{2n}\left(\sum_{\ell=1}^n \cos (\ell\omega_{j+k}) + \sum_{\ell=1}^n \cos (\ell\omega_{j-k})\right)
+\end{equation}
+For the case $j=k$ or $j=-k$, we have
+\begin{equation}
+\label{eq:j=k_cos}
+C_j^\top C_k = \frac{1}{2n} \left(\sum_{\ell=1}^n\cos (\ell\omega_{2k}) + \sum_{\ell=1}^n \cos (\ell\omega_{0})\right).
+\end{equation}
+\eqref{eq:cos_series} implies that if $j \in \left\{ 0,\frac{n}{2}\right\}$, \eqref{eq:j=k_cos} is 1. In other cases, $0<2k<n$, \eqref{eq:omega_cos} implies that $\sum_{\ell=1}^n \cos(\ell\omega_{2k})=0$ which further shows that the right hand side in \eqref{eq:j=k_cos} is $1/2$. \par  
+
+For the other cases, since $-n<j+k<n$ and $-n<j-k<n$, 
+$j+k\not \equiv 0 \pmod{n}$ and $j-k \not \equiv 0 \pmod{n}$, the right hand side in equation \eqref{eq:case_b_proof} becomes 0. 
+\item[(c)] for any $j,k\in F_n$, 
+\begin{equation}
+\label{eq:case_c_proof}
+C_j^\top C_k + S_j^\top S_k = \frac{1}{n}\sum_{\ell=1}^n \cos (\ell\omega_j) \cos (\ell\omega_k) + \sin (\ell\omega_j)\sin (\ell\omega_k) = \frac{1}{n}\sum_{\ell=1}^n \cos (\ell\omega_{j-k})
+\end{equation}
+If $k=j$, the right hand side in \eqref{eq:case_c_proof} is 1 and in other cases, the right hand side is 0. Then plugging in  the value of $C_j^\top C_k$ listed in case (a), we complete  our proof for case (c). 
+\end{enumerate}
+\end{proof}
+\end{lem}
+
+
+\begin{lem}
+\label{lemma:maximum_L2_Q}
+$\|Q_{F_n}\|= 1$
+where 
+\begin{equation}
+Q_{F_n} = \begin{bmatrix}
+C_{-[\frac{n-1}{2}]}^\top\\ 
+S_{-[\frac{n-1}{2}]}^\top \\
+\vdots \\
+C_{[\frac{n}{2}]}^\top\\ 
+S_{[\frac{n}{2}]}^\top \\
+\end{bmatrix}
+\end{equation}
+and each $C_j, S_j, j\in F_n$ follow the definition in \eqref{eq:cos_sin_coef} 
+\begin{proof}
+Since row permutation does not change the $L_2$ norm of a matrix, we can stack rows in $Q_{F_n}$ such that $S_j,C_j,S_{-j}, C_{-j}$ appear adjacently, if there exists such a pair $\{j, -j\}$. Then $\|Q_{F_n}\|=\|Q^\top_{F_n}\| = \sqrt{\lambda_{\max}(Q_{F_n}Q_{F_n}^\top)}$. Lemma \ref{lemma:orthogonal-cos-sin} implies that $Q_{F_n}Q_{F_n}^\top$ can only be block-wise diagonal with three possible blocks:
+\begin{equation*}
+B_1=\begin{bmatrix}
+1&0\\
+0&0
+\end{bmatrix}, ~~B_2 = \begin{bmatrix}
+\frac{1}{2} & 0 & \frac{1}{2} & 0\\
+0 & \frac{1}{2} & 0 & -\frac{1}{2}\\
+\frac{1}{2} & 0 & \frac{1}{2} & 0 \\
+0 & -\frac{1}{2} & 0 & \frac{1}{2}
+\end{bmatrix}, ~~
+B_3 = \begin{bmatrix}
+\frac{1}{2} & 0\\
+0 & \frac{1}{2}
+\end{bmatrix}.
+\end{equation*}
+Here $B_1$ corresponds to the block formed with $C_0, S_0$, $B_2$ corresponds to the block formed of $C_j, S_j, C_{-j}, S_{-j}, j\neq 0$ and $B_3$ corresponds to the block formed of single j: $C_j, S_j$. 
+It can be checked that $\|B_i\| \le 1$ for $i=1,2,3$. 
+It follows that $\|Q_{F_n}\|= \sqrt{\lambda_{\max}(Q_{F_n}Q_{F_n}^\top )} \le \max_{i=1}^3 \|B_i\|=1$, completing our proof. 
+\end{proof}
+\end{lem}
+
+
+\begin{lem}
+\label{lemma:max-L2-norm}
+\[
+\|\cov(vec(\mathcal{\mathcal{X}}^\top), vec(\mathcal{\mathcal{X}}^\top))\|  \le 2\pi \vertiii{f},
+\]
+where $\vertiii{f}=\esssup_{\omega \in [-\pi, \pi]}\|f(\omega)\|$. 
+\begin{proof}
+The proof follows from Proposition 2.3 in \citet{Basu2015}. 
+\end{proof}
+\end{lem}
+
+\begin{lem}
+\label{lemma:max-L2-norm-Y}
+For any matrix $A_{p\times m}$, the time series $Y_t = A^\top {X}_t$ satisfies
+\begin{equation}
+\vertiii{f_Y} \le \|A\|^2 \vertiii{f}. \nonumber
+\end{equation}
+\begin{proof}
+%After transformation, the new data matrix takes the form $\mathcal{Y} = [{X}_1^\top A: \dots: {X}_n^\top A]^\top$. 
+The autocovariance function of the time series  $Y_t$ can be written as 
+\begin{equation}
+    \Gamma_Y(\ell) = \cov(A^\top {X}_t, A^\top {X}_{t-\ell}) = A^\top \Gamma_{X}(\ell) A,
+\end{equation}
+which immediately leads to  
+\begin{equation}
+f_Y(\omega) = \sum_{\ell=-\infty}^\infty A^\top \Gamma_{X}(\ell)A e^{-\iu\omega\ell} = A^\top  f(\omega)A.
+\end{equation}
+Thus for any $\omega \in [-\pi, \pi]$, $\|f_Y(\omega)\| \le \|A\|^2\vertiii{f}$. Taking supremum over $\omega$ on the left side completes the proof. 
+\end{proof}
+\end{lem}
+
+\begin{lem}
+\label{lemma:linear_assumption}
+For stationary linear processes $\Gamma(\ell)$ is well defined, and Assumption \ref{assumption:finite_auto} holds.
+\begin{proof}
+Since $(\sum_{i=1}^n |a_i|)^2 \ge \sum_{i=1}^n a_i^2$, we have 
+\begin{equation}
+\sum_{\ell=0}^\infty \|B_\ell\|_F \le \sum_{\ell=0}^\infty \sum_{1\le i,j\le p} |B_{\ell, (i,j)}|<\infty. \nonumber
+\end{equation}
+Then by equivalence of norms, it follows that
+\begin{equation}
+\sum_{\ell=0}^\infty \|B_\ell\| < \infty.
+\end{equation}
+Noticing for $h>0$, $\Gamma(h) = \Gamma^\top(-h)$, we have $\|\Gamma(h)\| = \|\Gamma(-h)\|$ for $h\ge 0$. Therefore, 
+\begin{equation}
+\begin{aligned}
+\label{eq:finite_sum_auto}
+&\sum_{\ell = -\infty}^\infty \|\Gamma(\ell)\| \le 2\sum_{\ell=0}^\infty \|\Gamma(\ell)\|
+= 2\sum_{\ell = 0}^\infty \|\sum_{t=0}^\infty B_{t+\ell} B_{t}^\top \| \\
+&<2\sum_{\ell = 0}^\infty \sum_{t=0}^\infty \|B_{\ell+t}\|\|B_\ell^\top\| = 
+2\sum_{t_1=0}^\infty \sum_{t_2=0}^\infty \|B_{t_1}\|\|B_{t_2}\|=2\left[\sum_{t=0}^\infty \|B_t\|\right]^2<\infty.
+\end{aligned}
+\end{equation}
+\end{proof}
+\end{lem}
+
+
+\begin{lem}
+\label{lemma:L2_convergence_truncate}
+\begin{equation}
+\lim_{L\rightarrow \infty}\mathbb{E} \left[ \|vec(\mathcal{\mathcal{X}}_{(L)}^\top) - vec(\mathcal{\mathcal{X}}^\top)\|^2 \right]  = 0, \nonumber
+\end{equation}
+where $\mathcal{\mathcal{X}}_{n\times p} = [{X}_1: \ldots : {X}_n]^\top$ is a $n \times p$ data matrix with $n$ consecutive observations from a stationary linear process defined in \eqref{eq:infinite_ma}.
+\begin{proof}
+Since
+\begin{equation}
+\|vec(\mathcal{\mathcal{X}}_{(L)}^\top) - vec(\mathcal{\mathcal{X}}^\top)\|^2 = \sum_{t=1}^n \|{X}_t-{X}_{(L), t}\|^2, \nonumber
+\end{equation}
+it suffices to show that $\lim_{L\rightarrow \infty}\mathbb{E} \left[ \|{X}_{(L), t} - {X}_t\|^2 \right] = 0$ for any given $t\in \{1,\dots, n\}$. It follows that 
+\begin{equation}
+\label{eq:dct_dominant}
+\|{X}_{(L), t}-{X}_t\|^2 = \sum_{\ell_1=L+1}^\infty \sum_{\ell_2=L+1}^\infty \varepsilon_{t-{\ell_1}}^\top B^\top_{\ell_1} B_{\ell_2}\varepsilon_{t-{\ell_2}} \le \sum_{\ell_1=0}^\infty \sum_{\ell_2=0}^\infty\|B_{\ell_1}\|\|B_{\ell_2}\|\|\varepsilon_{t-{\ell_1}}\|
+\|\varepsilon_{t-{\ell_1}}\|.
+\end{equation}
+Since each coordinate of $\varepsilon_t$ has finite second moment ($1$ to be precise), we let 
+$\mathbb{E}\|\varepsilon_{t-{\ell_1}}\| = c_\varepsilon <\infty $. Then the expected value of right part in \eqref{eq:dct_dominant} is
+\begin{equation}
+c_\varepsilon^2 \sum_{\ell_1=0}^{\infty}\sum_{\ell_2=0}^{\infty} \|B_{\ell_1}\| \|B_{\ell_2}\| = c_\varepsilon^2(\sum_{\ell=0}^\infty \|B_{\ell}\|)^2<\infty, \nonumber
+\end{equation}
+where the last inequality was established in the proof of lemma \ref{lemma:linear_assumption}. Then we apply dominated convergence theorem to show that 
+\begin{equation*}
+\begin{aligned}
+&\mathbb{E} \left[\|{X}_{(L), t}-{X}_t\|^2 \right] = \sum_{\ell_1=L+1}^\infty \sum_{\ell_2=L+1}^\infty \mathbb{E}\left[ \varepsilon_{t-{\ell_1}}^\top B^\top_{\ell_1} B_{\ell_2}\varepsilon_{t-{\ell_2}} \right]\\
+& = \sum_{\ell=L+1}^\infty \mathbb{E} \left[ \varepsilon_{t-\ell}^\top B^\top_{\ell} B_{\ell} \varepsilon_{t-\ell} \right] \le c_\varepsilon^2 (\sum_{\ell=L+1}^\infty \|B_\ell\|)^2,
+\end{aligned}
+\end{equation*}
+because $\sum_{\ell=0}^\infty \|B_\ell\|<\infty$, above goes to zero when $L\rightarrow \infty$. 
+\end{proof}
+\end{lem}
+\begin{remark}
+The above convergence argument immediately implies several useful results,
+\begin{enumerate}
+    \item $vec(\mathcal{\mathcal{X}}_{(L)}^\top)\overset{\mathbb{P}}{\to} vec(\mathcal{\mathcal{X}}^\top)$
+    \item For any real matrix $A_{np\times np}$, 
+    \begin{equation*}
+       \lim_{L\rightarrow \infty}\mathbb{E} \left[ vec(\mathcal{\mathcal{X}}_{(L)}^\top)^\top A ~ vec(\mathcal{\mathcal{X}}_{(L)}^\top)\right] =  \mathbb{E} \left[ vec(\mathcal{\mathcal{X}}^\top)^\top A ~ vec(\mathcal{\mathcal{X}}^\top)\right]
+    \end{equation*}
+This is because
+\begin{equation}
+\label{eq:cross_terms_bound}
+\begin{aligned}
+& \left|\mathbb{E} \left[ vec(\mathcal{X}_{(L)}^\top)^\top A ~ vec(\mathcal{X}_{(L)}^\top)\right] - \mathbb{E} \left[ vec(\mathcal{X}^\top)^\top A ~ vec(\mathcal{X}^\top)\right]\right| \\
+\le & \left|\mathbb{E} \left[ vec(\mathcal{X}_{(L)}^\top)^\top A  \left(vec(\mathcal{X}_{(L)}^\top)-vec(\mathcal{X}^\top)\right)\right] \right|+ \left| \mathbb{E} \left[ \left(vec(\mathcal{X}_{(L)}^\top)-vec(\mathcal{X}^\top)\right)^\top A ~ vec(\mathcal{X}^\top )\right]\right|.
+\end{aligned}
+\end{equation}
+Applying Cauchy-Schwarz inequality to the first part in second line of \eqref{eq:cross_terms_bound}, we get 
+\begin{equation*}
+\begin{aligned}
+&\left|\mathbb{E} \left[ vec(\mathcal{\mathcal{X}}_{(L)}^\top)^\top A  \left(vec(\mathcal{X}_{(L)}^\top)-vec(\mathcal{\mathcal{X}}^\top)\right)\right]\right|^2 \\
+&\le \|A\| \mathbb{E} \left[ \|vec(\mathcal{X}_{(L)}^\top)\|^2\right] \mathbb{E} \left[ \left\|\left(vec(\mathcal{X}_{(L)}^\top)-vec(\mathcal{\mathcal{X}}^\top)\right)\right\|^2\right].
+\end{aligned}
+\end{equation*}
+In addition, from Lemma \ref{lemma:L2_convergence_truncate}, we have 
+$\mathbb{E} \left[ \|vec(\mathcal{\mathcal{X}}_{(L)}^\top)\|^2\right]\rightarrow \mathbb{E} \left[ \|vec(\mathcal{\mathcal{X}}^\top)\|^2\right] $ and \\
+ $ \mathbb{E} \left[ \|\left(vec(\mathcal{X}_{(L)}^\top)-vec(\mathcal{\mathcal{X}}^\top)\right)\|^2\right]\rightarrow 0$. This implies that the first part in second line of \eqref{eq:cross_terms_bound} converges to zero when $L$ goes to infinity. A similar argument ensures that the second part in second line of \eqref{eq:cross_terms_bound} goes to zero as well, completing our proof.
+\end{enumerate}
+\end{remark}
+
+\begin{lem}
+\label{lemma:spectral_convergence}
+$\lim_{L\rightarrow \infty}\vertiii{f_{(L)}} = \vertiii{f}$.
+\begin{proof}
+Let $\Gamma_{(L)}(h)$ and $f_{(L)}(\omega)$ be the autocovariance function and spectral density of the truncated process $X_{(L),t}$. 
+We list expressions for $\Gamma_{(L)}(h)$
+and $\Gamma(h)$ in order to make a comparison later where we focus on the case $h>0$ (as pointed before, $\Gamma(h) = \Gamma^\top(-h)$ for $h>0$)
+\begin{equation}
+\begin{aligned}
+&\Gamma(h) = \mathbb{E} X_t X_{t-h}^\top = \mathbb{E}\left(\sum_{\ell=0}^\infty B_\ell \varepsilon_{t-\ell}\right) 
+\left(\sum_{\ell=0}^\infty B_\ell \varepsilon_{t-h-\ell}\right)^\top = \sum_{\ell=0}^\infty B_{\ell+h}B_{\ell}^\top, \nonumber 
+\end{aligned}
+\end{equation}
+and 
+\begin{equation}
+\begin{aligned}
+&\Gamma_L(h) = \mathbb{E} X_t X_{t-h}^\top = \mathbb{E}\left(\sum_{\ell=0}^L B_\ell \varepsilon_{t-\ell}\right) 
+\left(\sum_{\ell=0}^L B_\ell \varepsilon_{t-h-\ell}\right)^\top = \sum_{\ell=0}^{L-h} B_{\ell+h}B_{\ell}^\top, \nonumber 
+\end{aligned}
+\end{equation}
+which indicates $\Gamma_L(h)= 0$ if $h>L$. \par 
+
+Now we show that $\|\Gamma_{(L)}(h) - \Gamma(h)\|$ goes to zero with $L\rightarrow \infty$. Since we consider $L$ goes to inftty, we assume $L>|h|$. Without losing generality, for any given positive integer $h$, 
+\begin{equation*}
+\begin{aligned}
+\lim_{L\rightarrow \infty}\|\Gamma_{(L)}(h) - \Gamma(h)\|& = \lim_{L\rightarrow \infty} \left\|\sum_{\ell= L - h +1}^\infty B_{\ell+h} B_{\ell}^\top \right\| \\ 
+&\le \lim_{L\rightarrow \infty}\sum_{\ell=L-h+1}^\infty \|B_\ell\|  \|B_{\ell+h}\|\\ 
+&\le \lim_{L\rightarrow \infty} \left(\sum_{\ell=0}^\infty \|B_{\ell}\|\right) \left(\sum_{\ell=L+1}^\infty \|B_{\ell}\|\right)  =0.
+\end{aligned}
+\end{equation*}
+The last equality comes from the fact that $\sum_{\ell=0}^\infty \|B_\ell\|<\infty$. 
+Considering the relation that $\Gamma(h)=\Gamma^\top(-h)$, for $h<0$, following also holds: 
+\begin{equation}
+\lim_{L\rightarrow \infty} \|\Gamma_{L}(h)-\Gamma(h)\| = 0.
+\end{equation}
+Based on the expression of $\Gamma(h)$ and $\Gamma_L(h)$, we have
+\begin{equation*}
+\begin{aligned}
+\max\left\{\sum_{h=-\infty}^\infty \|\Gamma(h)\|, \sum_{h=-\infty}^\infty\|\Gamma_{(L)}(h)\|\right\}\le 2(\sum_{\ell=0}^\infty \|B_\ell\|)^2<\infty,
+\end{aligned}
+\end{equation*}
+which in turn implies 
+\begin{equation}
+\label{eq:autocovariance_dct}
+\sum_{h=-\infty}^\infty \|\Gamma_{(L)}(h) - \Gamma(h)\| \le 2(\sum_{\ell=0}^\infty \|B_\ell\|)^2<\infty.
+\end{equation}
+Therefore, by dominant convergence theorem, 
+\begin{equation*}
+\begin{aligned}
+&\lim_{L\rightarrow \infty}\esssup_{\omega\in [-\pi, \pi]}\|f_{(L)}(\omega)-f(\omega)\|\le \lim_{L\rightarrow \infty}\sum_{h=-\infty}^\infty \|\Gamma_{(L)}(h)-\Gamma(h)\|\\
+& = \sum_{h=-\infty}^\infty  \lim_{L\rightarrow \infty}  \|\Gamma_{(L)}(h)-\Gamma(h)\| = 0,
+\end{aligned}
+\end{equation*}
+Finally
+\begin{equation*}
+\begin{aligned}
+\lim_{L\rightarrow \infty}\left|\vertiii{f_{(L)}} - \vertiii{f}\right| &=\lim_{L\rightarrow \infty} \left|\esssup_{\omega\in [-\pi, \pi] }\|f_{(L)}(\omega)\|-\esssup_{\omega\in [-\pi, \pi] }\|f(\omega)\| \right|\\
+&\le \lim_{L\rightarrow \infty} \esssup_{\omega \in [-\pi, \pi]}\|f_{(L)}(\omega)-f(\omega)\| =0, 
+\end{aligned}
+\end{equation*}
+which completes the proof.  
+\end{proof}
+\end{lem}

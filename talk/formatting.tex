@@ -1,0 +1,72 @@
+% Fonts.
+%\usefonttheme{serif}
+%\usepackage{palatino}
+% \usepackage{mathpazo}
+% \usepackage{eulervm}
+%\usepackage[T1]{fontenc}
+\usepackage{appendixnumberbeamer} % number appendix separately
+
+% show one fewer toc level
+\addtocounter{tocdepth}{-1}
+
+% Template changes.
+%\iffalse % Don't show TOC between sections
+\let\oldsection\section
+\renewcommand{\section}[1]{\oldsection{#1}
+\begin{frame}
+    \frametitle{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+\end{frame}
+}
+%\fi
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=1.2cm, text margin right=1.2cm}
+%\usecolortheme[rgb={0.6,0,0}]{structure}
+
+% \setbeamertemplate{frametitle} {
+%   \vskip 0.65cm
+%   \hskip -0.4cm
+%   {\large\bf \insertframetitle}
+% }
+
+\setbeamertemplate{frametitle} {
+  \begin{center}
+  {\large\bf \insertframetitle}
+  \end{center}
+}
+
+\setbeamertemplate{itemize items}[default]
+
+\setlength{\parskip}{4pt}
+
+\newcommand\footlineon{
+  \setbeamertemplate{footline} {
+    \begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.2cm]{structure}
+      \scriptsize \insertshortauthor
+      \hfill
+      {\insertframenumber}
+    \end{beamercolorbox}
+    \vskip 0.08cm
+  }
+}
+\footlineon
+
+\usepackage[longnamesfirst]{natbib}
+\bibliographystyle{newapa}
+% make bibliography entries smaller
+\renewcommand\bibfont{\scriptsize}
+% If you have more than one page of references, you want to tell beamer
+% to put the continuation section label from the second slide onwards
+\setbeamertemplate{frametitle continuation}[from second]
+% Now get rid of all the colours
+\setbeamercolor*{bibliography entry title}{fg=black}
+\setbeamercolor*{bibliography entry author}{fg=black}
+\setbeamercolor*{bibliography entry location}{fg=black}
+\setbeamercolor*{bibliography entry note}{fg=black}
+% and kill the abominable icon
+\setbeamertemplate{bibliography item}{}
+\bibpunct{}{}{,}{a}{}{;}
+
+\newcommand{\citemanual}[1]{\small{\textcolor{grey}{(#1)}}}
+\newcommand{\citeb}[1]{\textcolor{grey}{[\citet{#1}]}}

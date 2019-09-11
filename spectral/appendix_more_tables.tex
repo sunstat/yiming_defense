@@ -1,0 +1,23 @@
+\section{Appendix: Additional Table and Graphs}\label{appendix:more_tables}
+This section contains a table on precision, recall and F1 measures of the three different types of thresholding methods in selecting the non-zero entries of the spectral density matrices of VMA and VAR models of different dimension using different  sample sizes. The simulation settings are described in Section \ref{sec:simulation}. 
+
+We also present enlarged images of the adjacency matrices of coherence networks obtained using adaptive lasso thresholding and shrinkage methods on the real data analysis in Section \ref{sec:realdata}. These images contain names of brain regions so that interesting strong connectivity patterns between regions can be identified easily.
+
+\input{three_metric_ho_table.tex}
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=1.1\textwidth]{img/al_hm_0.pdf}
+    \caption{Heat map of absolute coherence matrix (at frequency $0$) estimated using adaptive lasso thresholding of averaged periodogram.}
+    \label{fig:realdatafullalasso}
+\end{figure}
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=1.1\textwidth]{img/sh_hm_0.pdf}
+    \caption{Heat map of absolute coherence matrix (at frequency $0$) estimated using diagonal shrinkage of averaged periodogram.}
+    \label{fig:realdatafullshrinkage}
+\end{figure}
+
+
+

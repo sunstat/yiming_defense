@@ -1,0 +1,161 @@
+\section{Background and Methods}\label{sec:model-methods}
+Consider a $p$-dimensional weakly stationary real-valued time series $X_t = (X_{t1}, \ldots, X_{tp})^\top, ~ t\in \mathbb{Z}$. Let  $\mathcal{X} = [X_1:\ldots:X_n]^\top$  be the \textit{data matrix} containing $n$ consecutive observations from the time series $\{X_t\}$ in its rows. We assume $\mathbb{E} X_t = 0, ~ t=1,\ldots,n$ for ease of exposition. In practice, multivariate time series are often de-meaned before performing correlation based analysis. Weak stationarity implies that $\cov(X_t, X_{t-\ell}) = \mathbb{E} X_t X_{t-\ell}^\top$ only depends on $\ell$, so we can define autocovariance as function of the lag $\ell$, viz., $\Gamma(\ell) = \cov(X_t, X_{t-\ell})$. Spectral density aggregates information of autocovariance of different lag orders $\ell$  at a specific frequency $\omega \in [-\pi, \pi]$ as 
+\begin{equation}
+f(\omega) = \frac{1}{2\pi}\sum_{\ell=-\infty}^\infty \Gamma(\ell) e^{-\iu \ell \omega }. 
+\end{equation}
+Note that the autocovariance functions of different lags can be recovered from the spectral density using the transformation  $\Gamma(\ell) =  \int_{-\pi}^{\pi} f(\omega) e^{i\ell \omega} d\omega$, for any $\ell \in \mathbb{Z}$.
+
+% {\color{red} [for Sumanta: Add when spectral density exists (square summable autocovariance), when continuous etc. Connection to short-range dependence processes and strength of dependence. This connects to discussion in next paragraph on $\Omega_n$, $L_n$ and $\mathcal{M}(f_X)$. Add older references to bias-variance expressions.]}
+
+
+For the matrix-valued spectral density function $f$ over $[-\pi, \pi]$, we define, for $q \ge 0$,
+\begin{equation}
+\vertiii{f}_q = \esssup_{\omega \in [-\pi, \pi]}\|f(\omega)\|_q. \nonumber
+\end{equation}
+Following \cite{Basu2015}, we will also use 
+$\vertiii{f}: = \vertiii{f}_2 = \esssup_{\omega \in [-\pi, \pi]}\|f(\omega)\| $
+as a measure of stability of the time series $X_t$. Larger values of $\vertiii{f}$ are associated with processes having stronger temporal and cross-sectional  dependence and less stability. Since every coordinate of the spectral density matrix is calculated using at most two components of the $p$-dimensional time series $X_t$ and $f(\omega)$ is non-negative definite, a smaller measure of stability, viz. $\max_{1 \le r \le p} \esssup_\omega \|f_{rr}(\omega)\|$ can be also used in our error bound analysis instead, although we present our results in terms of $\vertiii{f}$ for ease of exposition.
+
+In many applications, in particular functional connectivity analyses in neuroscience, it is of interest to estimate standardized spectral density or coherence matrix, an analogue of correlation in the frequency domain,  defined as 
+\begin{equation}
+\label{def:coherance}
+g_{rs}(\omega) = \frac{f_{rs}(\omega)}{\sqrt{f_{rr}(\omega)f_{ss}(\omega)}},
+\end{equation}
+assuming $f_{rr}(\omega) \neq 0$ for all $1\le r\le p$. 
+
+
+\subsection{Background: Periodogram Smoothing and Shrinkage}\label{sec:model_method_background}
+
+
+\begin{algorithm2e}[t]\small
+	\DontPrintSemicolon 
+	\KwIn{$j, m, N$, periodograms at Fourier frequency $\{ I(\omega_k) \}_{k \in F_n}$, finite grid of thresholds $\mathcal{L}$}
+	\For{$\lambda \in \mathcal{L}$}{
+		\For{$\nu \gets 1$ \textbf{to} $N$}{
+			Randomly divide $\{j-m, \ldots, j, \ldots, j+m\}$ into two subsets $J_1$ and $J_2$ such that $\left||J_1| - |J_2| \right| \le 1$ and for any $k \in F_n$, $k \in J_1$ iff $-k \in J_1$ \;
+			$\hat{f}_{1, \nu} (\omega_j) \gets \sum_{k \in J_1} I(\omega_k)$, ~~ $\hat{f}_{2, \nu} (\omega_j) \gets \sum_{k \in J_2} I(\omega_k)$\;
+			$\hat{R}_{\nu}(\omega_j, \lambda) \gets \left\| T_\lambda (\hat{f}_{1,\nu} (\omega_j)) - \hat{f}_{2,\nu}(\omega_j)\right\|^2_F$\;
+		}
+		$\hat{R}(\omega_j, \lambda) \gets \sum_{\nu=1}^N \hat{R}_{\nu}(\omega_j, \lambda) / N$
+		
+	}
+	\KwOut{$\hat{\lambda}_j := \hat{\lambda}(\omega_j) = \argmin_{\lambda \in \mathcal{L}} \hat{R}(\omega_j, \lambda)$}
+	\caption{Threshold Selection by Frequency Domain Sample-splitting}
+	\label{alg:sample-split}
+	\label{al1}
+\end{algorithm2e}
+
+The classical estimate of spectral density is based on the periodogram \citep{brockwell2013time, rosenblatt1985stationary} defined as
+\begin{equation}
+\label{eq:single_periodogram}
+I(\omega)=\sum_{|\ell|<n} \hat{\Gamma}(\ell)e^{-\iu\ell\omega},
+\end{equation}
+where $\hat{\Gamma}(\ell) = n^{-1}\sum_{t=\ell+1}^{n} X_t X_{t-\ell}^\top$ for $\ell\ge 0$, and 
+ $\hat{\Gamma}(\ell) = n^{-1}\sum_{t=1}^{n+\ell} X_t X_{t-\ell}^\top$ for $\ell<0$. 
+Note the connection between periodogram and discrete Fourier transformation (DFT)  $d(\omega) = \mathcal{X}^\top(C(\omega)-iS(\omega))$ , where 
+\begin{equation}
+\label{eq:cos_sin_coef}
+\begin{aligned}
+C(\omega) = \frac{1}{\sqrt{n}} (1, \cos \omega, \dots, \cos (n-1)\omega)^\top,\\
+S(\omega) = \frac{1}{\sqrt{n}} (1, \sin \omega, \dots, \sin (n-1)\omega)^\top.
+\end{aligned}
+\end{equation}
+% For brevity, we write $C_j$ for $C_j(\omega)$ throughout the technical sections. 
+We can rewrite $I(\omega)$ as $d(\omega) d(\omega)^\dag$. 
+%It is customary to use these frequencies since we get some orthogonal discrete Fourier coefficient detailed discussed in lemma \ref{lemma:orthogonal-cos-sin}. Orthogonality here brings great convenience in building lemma \ref{lemma:maximum_L2_Q}. 
+In classical asymptotic analysis of time series ($p$ fixed, $n \rightarrow \infty$), it is known that $\frac{1}{2\pi}I(\omega)$ is asymptotically unbiased for $f(\omega)$ but not consistent due to non-diminishing variance.
+For instance, for i.i.d Gaussian white noise  
+$X_t \overset{i.i.d}{\sim}\mathcal{N}(0,\sigma^2I)$, the variance of $I(\omega)$ is of the order $\sigma^4$ [Proposition 10.3.2,  \citet{brockwell2013time}].  To achieve consistency, it is common to resort to smoothing periodograms over nearby frequencies. In this paper, we focus on the simplest form of smoothing, viz. averaging, of periodograms 
+
+
+\begin{equation}
+\label{eq:general_smoothing_estimator}
+    \hat{f}(\omega; m) = \frac{1}{2\pi(2m+1)} \sum_{|k|\le m} I(\omega+\omega_k),
+\end{equation}
+where $\omega_k = 2\pi k/n, ~ k\in F_n$,  the set of Fourier frequencies. To be precise, $F_n$ denotes the set  $\left\{-[\frac{n-1}{2}], \dots, [\frac{n}{2}]\right\}$ where $[x]$ is the integer part of $x$. $F_n$ contains exactly the same frequencies used to calculate discrete Fourier transformation. It is common to evaluate the periodogram at these Fourier frequencies, in which case the smoothing periodogram in \eqref{eq:general_smoothing_estimator} becomes
+\begin{equation}
+\label{eq:smoothing estimator}
+    \hat{f}(\omega_j; m) = \frac{1}{2\pi(2m+1)} \sum_{|k|\le m} I(\omega_{j+k}).
+\end{equation}
+Note that even though the values of $j+k$ can fall outside $F_n$, it is enough to evaluate periodograms at Fourier frequencies $F_n$ since $I(\omega)$ is $2\pi$-periodic in $\omega$. Theorem 10.4.1 in \citet{brockwell2013time} shows that if $m = o(\sqrt{n})$, \eqref{eq:smoothing estimator} is a consistent estimator. As in general nonparametric function estimation, one can replace the weights $1/(2m+1)$ in \eqref{eq:smoothing estimator} by a more general kernel function. For more details, we refer the  readers to \cite{brockwell2013time}. To make notations simpler, in this paper we will omit the subscript $m$ and use $\hat{f}(\omega_j)$ whenever $m$ is clear from the context. 
+
+%[{\color{red}{Add details on Shrinkage Estimation}}]
+\par
+This nonparametric smoothing method can be unstable for high-dimensional multivariate spectral density estimation since smoothed periodograms start to become ill-conditioned. Generalizing shrinkage estimation strategy for high-dimensional covariance matrix \citep{ledoit2004well}, \citet{bohm2009shrinkage} proposed shrinking averaged periodogram to estimate spectral density in high-dimension. The idea of shrinkage method is to reduce condition numbers for smoothed periodograms. In particular, the authors changed the estimation target to $f^0(\omega) = \mathbb{E} \hat{f}(\omega)$ and argued that $f^0(\omega)$ is close enough to $f(\omega)$ asymptotically. Subsequently, they considered a Hilbert space for square complex random matrices with inner product defined as  $\mathbb{E}\langle A,B\rangle$ where $A,B$ are two  matrices and 
+\begin{equation}
+\langle A,B \rangle = \frac{1}{p} \text{tr}(A^\dag B).\nonumber %, ~~~~ \|A\|^2 = \left[ \frac{1}{p} \text{tr}(A^\dag A)\right]. 
+\end{equation} 
+In this Hilbert space and with the fact that $\hat{f}(\omega)$ is an unbiased estimator for $f^0(\omega)$,  \citet{bohm2009shrinkage} applied the projection argument similar to \citet{ledoit2004well} to build the shrinkage estimator for $f^0(\omega)$. To this end, the authors first projected $f^0(\omega)$ on the space spanned by the identity matrix as $\mu(\omega) I_p$, where $I_p$ is the identity matrix and $ \mu(\omega)= \frac{1}{p} \text{tr}(f(\omega))$. Then the shrinkage estimator is defined as the minimizer of the convex program 
+\begin{equation}
+\hat{f}^\star(\omega) = \argmin_{\tilde{f}(\omega) \in S(\omega)} \frac 1 p \|f^0(\omega) - \tilde{f}(\omega)\|^2_F, \nonumber
+\end{equation}
+where 
+\begin{equation}
+S(\omega) = \rho(\omega) \mu(\omega)I_p + (1-\rho(\omega)) \hat{f}(\omega), ~~~~ 0\le \rho(\omega)\le 1. \nonumber
+\end{equation}
+\citet{bohm2009shrinkage} derived an explicit formula 
+%of $\rho$:
+%\begin{equation}
+$\rho(\omega) = {\alpha^2(\omega)}/{\delta^2(\omega)}$,
+%\end{equation}
+where 
+\begin{equation*}
+    \alpha^2(\omega) = \frac 1 p \|f^0(\omega) - \mu(\omega)I_p\|^2_F,~~
+    \beta^2(\omega) = \frac 1 p \|f^0(\omega)-\hat{f}(\omega)\|^2_F,
+\end{equation*}
+and $\delta^2(\omega) = \alpha^2(\omega)+\beta^2(\omega)$. 
+\iffalse
+\begin{equation}
+\begin{aligned}
+&\alpha^2(\omega) = \frac 1 p \|f^0(\omega) - \mu(\omega)I_p\|^2_F,\\
+&\beta^2(\omega) = \frac 1 p \|f^0(\omega)-\hat{f}(\omega)\|^2_F,\\
+& \delta^2(\omega) = \alpha^2(\omega)+\beta^2(\omega).
+\end{aligned}
+\end{equation}
+\fi
+Then they plugged in estimators of $\alpha(\omega), \beta(\omega), \delta(\omega)$ into the above formula to get the final data-driven estimator of spectral density. \par
+
+\subsection{Method: Thresholding Averaged Periodogram} \label{sec:method_threshold}
+In this section, we present our proposed thresholding estimators. We restrict our methodology description and theoretical development on the finite grid of Fourier frequencies for convenience, although all our theoretical results hold for any arbitrary frequency $\omega \in [-\pi, \pi]$. We briefly explain why all theoretical developments still hold for thresholding on smoothed periodograms at a  general frequency defined in \eqref{eq:general_smoothing_estimator}. The key property we used to develop error bound analysis for thresholding estimators is orthogonality of $d(\omega_j), j\in F_n$. For general frequency $\omega$, we can show that $d(\omega+\omega_j), j=-m,\cdots, 0, \cdots, m$, are also orthogonal to each other. Based on this property, we could follow all arguments for Fourier  frequencies to achieve the same theoretical results. 
+
+
+We propose \textit{\underline{hard thresholding}} of averaged periodograms, i.e., 
+\begin{equation}
+T_{\lambda}(\hat{f}_{rs}(\omega_j))= \begin{cases}
+\hat{f}_{rs}(\omega_j) & \mbox{ if } |\hat{f}_{rs}(\omega_j)|\ge \lambda \\
+0 & \mbox{ if } |\hat{f}_{rs}(\omega_j)| < \lambda,
+\end{cases}
+\end{equation}
+where $\lambda > 0$ is a threshold chosen by the user, and can potentially be a frequency dependent number $\lambda_j$. $T_\lambda(\cdot)$ is a thresholding operator on spectral density, $T_{\lambda}(\hat{f}_{rs}(\omega_j))$ represents the $(r,s)^{th}$ element of the thresholded matrix, where $1 \le r, s \le p$. For notational convenience, we will often use $\hat{f}_{\lambda, rs}(\cdot)$ instead of $T_{\lambda}(\hat{f}_{rs}(\cdot))$.
+
+Following \citet{rothman2009generalized},  we also propose a variety of \textit{\underline{generalized thresholding operators}} $S_\lambda(.)$ that combine the benefits of shrinkage and thresholding. In particular, we consider elememt-wise shrinkage operator $S_\lambda(.)$ satisfying the following three conditions for any $z \in \mathbb{C}$: 
+\begin{enumerate}[(1)]
+\item $|S_\lambda(z)|\le |z|$,
+\item $S_\lambda(z) = 0$ if $|z|\le \lambda$,
+\item $|S_\lambda(z)-z|\le \lambda $.
+\end{enumerate}
+Similar to hard thresholding $T_\lambda(.)$, we apply this operator to individual elements of averaged periodogram. It turns out conditions (1)-(3) are satisfied by a number of thresholding and shrinkage procedures. 
+% Here we deal with complex numbers, thus we may have more ways to define thresholding and shrinkage procedure. \cite{rothman2009generalized} presents two commonly used examples: soft thresholding (or lasso) and adaptive lasso for real numbers which may be extended to complex number case. 
+In particular, the hard thresholding operator $T_\lambda(.)$ satisfies these conditions. In addition, generalizing \citet{rothman2009generalized} to the case of complex variables, we propose a soft thresholding (lasso) operator  
+\begin{equation}
+S_\lambda^s(z) = \frac{z}{|z|} \left(|z|-\lambda\right)_+, ~~ z \in \mathbb{C}, \nonumber
+\end{equation}
+and adaptive lasso operator 
+\begin{equation}
+S_\lambda^{\text{AL}} = \frac{z}{|z|} \left(|z| - \lambda^{(\eta+1)}|z|^{-\eta}\right)_+,  ~~ z \in \mathbb{C}. \nonumber
+\end{equation}
+
+Our proposed hard and soft thresholding procedures require selection of two tuning parameters: (i) smoothing span $m$ and (ii) level of threshold $\lambda$. In Section \ref{sec:theory}, we provide a detailed discussion of the theoretical choices of these parameters that ensure consistent estimation in high-dimensional regime. In the next subsection \ref{sec:tuning-parameter}, we discuss how to choose these two parameters in a data-driven fashion. The adaptive lasso based soft thresholding method has a third tuning parameter $\eta$. In our numerical and real data analyses, we set $\eta = 2$ following the suggestion of \cite{rothman2009generalized}, although a more general sample-splitting based choice along the line of Algorithm \ref{al1} can be adopted in practice.
+
+\smallskip
+
+When the thresholded spectral density matrices are sparse, they can be used to construct networks to visualize and analyze marginal dependence relationships among the component time series. However, just like thresholded covariance matrix estimators, thresholding individual entries does not necessarily ensure that the thresholded spectral density matrix estimate is positive definite. Our operator norm consistency results in Section \ref{sec:theory} implies that as long as the true spectral density is positive definite and the sample size is large enough, the thresholded estimate is positive definite with high probability. However, in finite sample, this is a limitation since the estimates cannot be directly used to calculate inverse spectral density and partial coherence. On the other hand, regularization is required to calculate inverse spectral density in high-dimension, and a more principled approach along the line of graphical lasso can be used to directly regularize entries of the inverse spectral density \citep{jung2015learning, jung2015graphical}. We expect that the key concentration inequalities developed in our analysis will be useful in the estimation of inverse spectral density as well.
+
+
+\iffalse
+In order to take the heterogeneity of cross-spectral density across different coordinates of the spectral density matrix into consideration, we develop a strategy simiilar to adaptive thresholding proposed in \citet{cai2011adaptive}, where the thresholds are  proportional to the variances of the elements at different positions. Formally, the adaptive threshold for position $r,s$ at frequency $\omega_j$ is defined as  
+\begin{align*}
+    \lambda_{j(r,s)} = \delta_j\sqrt{\frac{\theta_{(r,s)}\text{log }p}{n}}, ~~~~\mbox{ for all $\omega_j$}
+\end{align*}
+where $\theta_{(k,l)} := Var(\hat{f}_{(k,l)})$ which also needs to be estimated and $\delta_j$ is a tuning parameter. 
+\fi

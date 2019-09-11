@@ -1,0 +1,173 @@
+\usepackage{amsmath,amsbsy,amsgen,amscd,amssymb,amsthm,bm,xspace}
+\usepackage{graphicx}
+\usepackage{setspace} % for single/double spacing
+
+% for tensors
+\usepackage{stmaryrd}
+\usepackage[mathscr]{euscript}
+
+% \usepackage{subfig}
+% \usepackage{float}
+% \usepackage{caption} % causes weird compile problem?
+% \usepackage[font=small,margin=0.25in,labelfont={sc},labelsep={colon}]{caption}
+% \usepackage{subcaption}
+
+\usepackage{thmtools}
+\usepackage{thm-restate}
+\theoremstyle{definition}
+\declaretheorem[name=Theorem,numberwithin=section]{thm}
+\declaretheorem[name=Lemma,numberwithin=section]{lem}
+\declaretheorem[name=Assumption,numberwithin=section]{assumption}
+
+% algorithms
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithm,algorithmicx}
+\algrenewcommand\alglinenumber[1]{\sf\tiny\color{medblue}{#1}\quad}
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}
+\algrenewcommand\algorithmicensure{\textbf{Output:}}
+\renewcommand{\thealgorithm}{} % don't number algorithms
+
+%\usepackage[usenames,dvipsnames]{xcolor} % loaded in document class
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+
+% colors
+\definecolor{dkred}{rgb}{.5,0,0}
+\definecolor{dark-gray}{gray}{0.3}
+\definecolor{dkgray}{rgb}{.4,.4,.4}
+\definecolor{gray}{rgb}{.4,.4,.4}
+\definecolor{grey}{rgb}{.4,.4,.4}
+\definecolor{dkblue}{rgb}{0,0,.5}
+\definecolor{medblue}{rgb}{0,0,.75}
+\definecolor{rust}{rgb}{0.5,0.1,0.1}
+
+% emphasis
+\newcommand{\require}[1]{\textcolor{red}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\good}[1]{\textcolor{blue}{#1}}
+\newcommand{\bad}[1]{\textcolor{dkred}{#1}}
+\newcommand{\bred}[1]{\textcolor{red}{\textbf{#1}}}
+
+% notes
+\newcommand{\mnote}[1]{\textcolor{purple}{\textbf{[MU: #1]}}}
+
+% formatting
+\newcommand{\comment}[1]{\setstretch{0.5}\vfill\textcolor{grey}{\scriptsize{Comments: #1}}\\}
+\newcommand{\source}[1]{\vfill\textcolor{grey}{\scriptsize{Source: #1}}}
+\newcommand{\pitem}{\pause \item}
+
+%%%%%% from the paper
+
+\newcommand{\beas}{\begin{eqnarray*}}
+\newcommand{\eeas}{\end{eqnarray*}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+\newcommand{\bbm}{\begin{bmatrix}}
+\newcommand{\ebm}{\end{bmatrix}}
+
+% text abbrevs
+
+%%% Modern composition rules set these Latin abbreviations in roman text.
+%%% Exempli gratia and id est have a comma afterward.
+%%% cf. The Chicago Manual of Style.
+
+\newcommand{\cf}{cf.}
+\newcommand{\eg}{e.g.}
+\newcommand{\ie}{i.e.}
+\newcommand{\etc}{etc.}
+
+\newcommand{\ones}{\mathbf 1}
+
+% std math stuff
+\newcommand{\reals}{{\mbox{\bf R}}}
+\newcommand{\integers}{{\mbox{\bf Z}}}
+\newcommand{\posint}{{\mbox{\bf N}}}
+\newcommand{\eqbydef}{\mathrel{\stackrel{\Delta}{=}}}
+\newcommand{\complex}{{\mbox{\bf C}}}
+\newcommand{\sym}{{\mbox{\bf S}}}  % symmetric matrices
+
+% lin alg stuff
+\newcommand{\Span}{\mathop{\bf span}}
+\newcommand{\range}{\mathop{\bf range}}
+\newcommand{\rank}{\mathop{\bf rank}}
+\newcommand{\nullspace}{{\mathop {\bf null}}}
+\newcommand{\tr}{\mathop{\bf tr}}
+\newcommand{\Tr}{\mathop{\bf tr}}
+\newcommand{\diag}{\mathop{\bf diag}}
+\newcommand{\lambdamax}{{\lambda_{\rm max}}}
+\newcommand{\lambdamin}{\lambda_{\rm min}}
+\newcommand{\ms}{\mathop{\bf MaxSingVec}}
+
+% norm
+\newcommand{\twonorm}[1]{\left\|#1\right\|_2}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\fronorm}[1]{\left\|#1\right\|_{\mbox{\tiny{F}}}}
+\newcommand{\opnorm}[1]{\left\|#1\right\|_{\mbox{\tiny{\textup{op}}}}}
+\newcommand{\nucnorm}[1]{\left\|#1\right\|_*}
+\newcommand{\arbnorm}[1]{\left\|#1\right\|_\alpha}
+\newcommand{\darbnorm}[1]{\left\|#1\right\|^*_\alpha}
+% probability stuff
+\newcommand{\Expect}{\mathop{\bf E{}}}
+\newcommand{\Prob}{\mathop{\bf Prob}}
+\newcommand{\erf}{\mathop{\bf erf}}
+\newcommand{\sign}{\mathop{\bf sign}}
+
+% convexity & optimization stuff
+\newcommand{\Co}{{\mathop {\bf Co}}}
+\newcommand{\co}{{\mathop {\bf Co}}}
+\newcommand{\Var}{\mathop{\bf var{}}}
+\newcommand{\dist}{\mathop{\bf dist{}}}
+\newcommand{\Ltwo}{{\bf L}_2}
+%\renewcommand{\QED}{~~\rule[-1pt]{8pt}{8pt}}\def\qed{\QED}
+\newcommand{\approxleq}{\mathrel{\smash{\makebox[0pt][l]{\raisebox{-3.4pt}{\small$\sim$}}}{\raisebox{1.1pt}{$<$}}}}
+\newcommand{\argmin}{\mathop{\rm argmin}}
+\newcommand{\epi}{\mathop{\bf epi}}
+%\newcommand{\hypo}{\mathop{\bf hypo}}
+\newcommand{\var}{\mathop{\bf var}}
+\newcommand{\Card}{\mathop{\bf card}}
+\newcommand{\vol}{\mathop{\bf vol}}
+\newcommand{\card}{\mathop{\bf card}}
+\newcommand{\conv}{\mathop{\bf conv}}
+\newcommand{\dom}{\mathop{\bf dom}}
+\newcommand{\aff}{\mathop{\bf aff}}
+\newcommand{\cl}{\mathop{\bf cl}}
+\newcommand{\Angle}{\mathop{\bf angle}}
+\newcommand{\intr}{\mathop{\bf int}}
+\newcommand{\relint}{\mathop{\bf rel int}}
+\newcommand{\bd}{\mathop{\bf bd}}
+\newcommand{\vect}{\mathop{\bf vec}}
+\newcommand{\dsp}{\displaystyle}
+\newcommand{\foequal}{\simeq}
+\newcommand{\VOL}{{\mbox{\bf vol}}}
+\newcommand{\argmax}{\mathop{\rm argmax}}
+\newcommand{\xopt}{x^{\rm opt}}
+\newcommand{\prox}{{\bf prox}}
+\newcommand{\conj}{{\bf conj}}
+\newcommand{\update}{\mathop{\bf update}}
+\newcommand{\indicator}{{\bf 1}}
+
+% for statistics
+\newcommand{\huber}{\mathop{\bf huber}}
+\newcommand{\sort}{\mathop{\bf sort}}
+\newcommand{\round}{\mathop{\bf round}}
+
+
+% for prettiness
+\newcommand{\half}{(1/2)}
+
+% for tucker apx talk
+\newcommand{\M}[1]{\mathbf{#1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\V}[1]{\mathbf{#1}}
+\newcommand{\T}[2][]{\boldsymbol{#1\mathscr{\MakeUppercase{#2}}}}
+\newcommand{\vc}{\mathop{\mathbf{vec}}}
+\newcommand{\cov}{\mbox{Cov}}

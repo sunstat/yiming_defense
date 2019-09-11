@@ -1,0 +1,469 @@
+\section{Introduction}
+% \subsection{Motivation}
+
+% Why tensor data & tensor decomposition
+Large-scale datasets with natural tensor (multidimensional array) structure
+arise in a wide variety of applications including
+computer vision \cite{vasilescu2002multilinear},
+neuroscience \cite{cichocki2013tensor},
+scientific simulation \cite{austin2016parallel},
+sensor networks \cite{sun2008incremental},
+and data mining \cite{kolda2008scalable}.
+In many cases, these tensors are too large to manipulate, to transmit,
+or even to store in a single machine.
+Luckily, tensors often exhibit a low-rank structure,
+and can be approximated by a low-rank tensor factorization,
+such as CANDECOMP/PARAFAC (CP), tensor train, or Tucker factorization~\cite{kolda2009tensor}.
+These factorizations reduce the storage costs
+by exposing the latent structure.
+Sufficiently low rank tensors can be compressed by several orders of magnitude
+with negligible loss.
+% not relevant for us - aid interpretability.
+However, computing these factorizations can require
+substantial computational resources.
+Indeed, one particular challenge is that these large tensors
+may not fit in main memory on our computer.
+
+In this paper, we develop a new algorithm to compute a low-rank Tucker
+approximation for a tensor from streaming data,
+using storage proportional to the degrees of freedom in the output Tucker approximation.
+The algorithm forms a linear sketch of the tensor,
+and operates on the sketch to compute a low-rank Tucker approximation.
+Importantly, the main computational work is all performed on
+a small tensor, of size proportional to the core tensor of the Tucker factorization.
+We derive detailed probabilistic error bounds on the quality of the approximation
+in terms of the tail energy of any matricization of the target tensor.
+
+This algorithm is useful in at least three concrete problem settings:
+\begin{enumerate}
+\item{\bf Streaming:} Data from the tensor is generated sequentially.
+At each time stamp, we may observe
+a low dimensional slice,
+an individual entry,
+or an additive update to the tensor
+(the so-called ``turnstile'' model \cite{muthukrishnan2005data}).
+For example, each slice of the tensor may represent a subsequent
+time step in a simulation, or sensor measurements at a particular time.
+In the streaming setting,
+the complete tensor is not stored; indeed, it may be much larger than
+available computing resources.
+
+Our algorithm can approximate tensors revealed via streaming updates
+by sketching the updates and storing the sketch.
+Linearity of the sketch guarantees that sketching commutes with
+slice, entrywise, or additive updates.
+Our method forms an approximation of the tensor
+only after all the data has been observed,
+rather than approximating the tensor-observed-so-far at any time.
+This protocol allows for offline data analysis,
+including many scientific applications.
+Conversely, this protocol is not suitable for real-time monitoring.
+% * You could reconstruct at any time, but error guarantee doesn't hold (without union bound),
+% also reconstructing is not hyper fast (but not hyper slow).
+
+\item{\bf Limited memory:} Data describing the tensor is stored on a hard disk
+of a computer with much smaller RAM.
+This setting reduces to the streaming setting by streaming the data
+from disk.
+\item {\bf Distributed:} Data describing the tensor may
+be stored on many different machines.
+Communicating data between these machines may be costly due to low
+network bandwidth or high latency.
+Our algorithm can approximate tensors stored in a distributed computing enviroment
+by sketching the data on each slave machine and transmitting the sketch to a master,
+which computes the sum of the sketches.
+Linearity of the sketch guarantees that
+the sum of the sketches is the sketch of the full tensor.
+\end{enumerate}
+In the streaming setting, the tensor is not stored, so
+we require an algorithm that can compute an approximation from a single pass over the data.
+In constrast, multiple passes over the data are possible in
+the memory-limited or distributed settings.
+
+
+% In contrast, in our work, sketching serves to store the information of the tensor efficiently by only a linear transformation (only matrix multiplication involved).
+% Probabilistic guarantees are provided along the line of techniques developed in \cite{tropp2018more} with careful analysis in tensor operations. After collecting all sketches, the whole optimization process (ALS) in our algorithm happens within the \textit{core sketch} which has a much smaller size compared to original tensor, ensuring low memory and time cost.
+
+
+% The paper \cite{malik2018low} follows what we will call the ``sketch-and-solve'' paradigm.
+% In this paradigm, we seek a model (low-rank Tucker approximation)
+% that accurately predicts the data (entries of the full tensor).
+% This problem can be viewed as an overconstrained optimization problem.
+% The idea of sketch-and-solve is to reduce the number of constraints:
+% we seek a model (low-rank Tucker approximation) whose sketch
+% matches the sketch of the original tensor.
+% In contrast, in our work, we view the tensor as a linear operator.
+% The sketch captures the action of the operator on a low-dimensional subspace.
+% The reconstruction procedure uses basic linear algebra to construct
+% a low-rank operator with the same action.
+
+% Most existing methods follow a sketch-and-solve style,
+% where they apply randomized algorithms
+% to solve the least square problem or singular value decomposition
+% appearing in the optimization stage, i.e. the alternative least square (ALS) in Tucker decomposition.
+% And all their probabilistic guarantees come from the theory
+% developed in randomized least square and singular value decomposition.
+
+This paper presents algorithms for all these settings,
+% : a single-pass method for streaming data, and a two-pass method that produces a more accurate approximation,
+among other contributions:
+\begin{itemize}
+	\item We present a new method to form a linear sketch of an unknown tensor.  This sketch captures both the principal subspaces of the tensor along each mode, and the action of the tensor that links these subspaces.
+	This tensor sketch can be formed from any	dimension reduction map. Those sketches themselves  are useful in many application even without forming Tucker decomposition like in video clustering. 
+
+	\item We develop a practical one-pass algorithm
+	to compute a low rank Tucker approximation from streaming data.
+	The algorithm sketches the tensor and then recovers a low rank Tucker approximation from this sketch.
+%	\mnote{Somewhere we should say why there's no need to know the size of the tensor in advance.} Discussion in the sketching section, and handled by idea similar to resizing a Hash table
+
+	\item We propose a two-pass algorithm that improves on the  one-pass method.
+	Both the one-pass and two-pass methods are appropriate in a limited memory or distributed data setting.
+
+	\item We develop provable probabilistic guarantees on the performance of both the
+	one-pass and two-pass algorithms
+	when the tensor sketch is composed of Gaussian dimension reduction maps.
+	%It is the first theoretical analysis for one-pass Tucker decomposition.
+
+	\item We exhibit several random maps that can be used to sketch the tensor.
+	Compared to the Gaussian map,
+	others are cheaper to store, easier to apply, and deliver similar performance
+	experimentally in tensor approximation error.
+	In particular, we demonstrate the effective performance of a
+	row-product random matrix, which we call the Tensor Random Projection (TRP),
+	which uses exceedingly low storage.
+
+	\item We perform a comprehensive simulation study with synthetic data,
+	and consider applications to several real datasets,
+	to demonstrate the practical performance of our method.
+	Our methods reduce approximation error compared to
+	the only existing one-pass Tucker approximation algorithm \cite{malik2018low}
+	by more than an order of magnitude given the same storage budget.
+
+	\item We have developed and released an open-source package in python that implements our algorithms.
+\end{itemize}
+
+\section{Background and Related Work}
+
+\subsection{Notation}
+Our paper follows the notation of \cite{kolda2009tensor}.
+We denote \textit{scalar}, \textit{vector}, \textit{matrix}, and \textit{tensor} variables
+respectively by lowercase letters ($x$), boldface lowercase letters ($\mathbf{x}$),
+boldface capital letters  ($\mathbf{X}$),  and boldface Euler script letters ($\T{X}$).
+For two vectors $\mathbf{x}$ and $\mathbf{y}$,
+we write $\mathbf{x} \succ \mathbf{y}$ if $\mathbf{x}$ is greater than $\mathbf{y}$ elementwise and $\mathbf{x} \prec \mathbf{y}$ as the opposite. 
+
+Define $[N] := \{1,\dots, N\}$.
+For a matrix $\mathbf{X} \in \mathbb{R}^{m \times n}$,
+we denote its $i^{th}$ row, $j^{th}$ column,
+and $(i,j)^{th}$ element
+as $\mathbf{X}(i,.)$, $\mathbf{X}(.,j)$, and $\mathbf{X}(i,j)$, respectively,
+for $i \in [m]$, $j \in [n]$.
+We use $\mathbf{X}^\dag \in \mathbb{R}^{n \times m}$ to denote the
+\textit{Moore--Penrose pseudoinverse} of the matrix $\mathbf{X} \in \mathbb{R}^{m \times n}$.
+In particular, $\mathbf{X}^\dag = (\mathbf{X}^\top \mathbf{X})^{-1}\mathbf{X}^T$
+if $m \geq n$ and $\mathbf{X}$ has full column rank;
+$\mathbf{X}^\dag = \mathbf{X}^T(\mathbf{XX}^T)^{-1}$,
+if $m < n$ and $\mathbf{X}$ has full row rank. 
+
+\subsubsection{Tail energy}
+To state our results, we will need a tensor equivalent for the decay in the
+spectrum of a matrix.
+For each unfolding $\mathbf{X}^{(n)}$,
+define the $\rho$\textit{th tail energy}
+\begin{equation}
+(\tau_\rho^{(n)})^2 := \sum_{k>\rho}^{\min(I_n,I_{(-n)})} \sigma_{k}^2(\mathbf{X}^{(n)}), \nonumber
+\end{equation}
+where $\sigma_{k}(\mathbf{X}^{(n)})$ is the $k$th largest singular value of $\mathbf{X}^{(n)}$.
+
+
+
+\subsubsection{Kronecker and Khatri-Rao product}
+For two matrices $\mathbf{A} \in \mathbb{R}^{I \times J}$ and $\mathbf{B} \in \mathbb{R}^{K \times L}$,
+we define the \textit{Kronecker product}
+$\mathbf{A} \otimes \mathbf{B} \in \mathbb{R}^{IK \times JL}$ as
+\begin{equation}\label{kronecker}
+\mathbf{A} \otimes \mathbf{B} = \left[
+\begin{array}{ccc}
+\mathbf{A}(1,1)\mathbf{B}  & \cdots & \mathbf{A}(1,J)\mathbf{B} \\
+\vdots & \ddots & \vdots \\
+\mathbf{A}(I,1)\mathbf{B} & \cdots &   \mathbf{A}(I,J)\mathbf{B}
+\end{array}
+\right].
+\end{equation}
+For $J = L$, we define the \textit{Khatri-Rao product} as $\mathbf{A} \odot \mathbf{B}$, i.e. the ``matching column-wise'' Kronecker product.
+The resulting matrix of size $(IJ) \times K$ is defined as
+\[\mathbf{A} \odot \mathbf{B} = [\mathbf{A}(\cdot,1) \otimes \mathbf{B}(\cdot,1) \cdots \mathbf{A}(\cdot,K) \otimes \mathbf{B}(\cdot,K) ] \]
+
+%\mnote{The formula below has the wrong dimensions.
+%Shouldn't we be taking Kronecker products of pairs of %\emph{columns}?}
+%\begin{equation}\label{khatri-rao}
+%\mathbf{A} \odot \mathbf{B} = \left[
+%\begin{array}{ccc}
+%\mathbf{A}(1,1)\mathbf{B}(\cdot,1)   & \cdots & \mathbf{A}(1,K)\mathbf{B}(\cdot,K) \\
+%\vdots & \ddots & \vdots \\
+%\mathbf{A}(I,1)\mathbf{B}(\cdot, 1) & \cdots &   \mathbf{A}(I,K)\mathbf{B}(\cdot,K)
+%\end{array}
+%\right].
+%\end{equation}
+
+\subsubsection{Tensor basics}
+For a tensor $\T{X} \in \mathbb{R}^{I_1 \times \cdots \times I_N}$,
+its \textit{mode} or \textit{order} is the number $N$ of dimensions.
+If $I = I_1 = \cdots I_N$, we denote $\mathbb{R}^{I_1 \times \cdots \times I_N}$ as $\mathbb{R}^{I^N}$.
+The inner product of two tensors $\T{X}, \T{Y}$ is defined as
+$\langle\T{X}, \T{Y}\rangle = \sum_{i_1=1}^{I_1}\cdots \sum_{i_N=1}^{I_N}\T{X}_{i_1\dots i_N}\T{Y}_{i_1\dots i_N}$.
+The \textit{Frobenius norm} of $\T{X}$ is
+$\|\T{X}\|_F = \sqrt{\langle\T{X},\T{X}\rangle}$.
+
+\subsubsection{Tensor unfoldings}
+Let $\bar{I} = \Pi_{j = 1}^N I_j $ and $I_{(-n)} = \Pi_{j \neq n} I_j $,
+and let $\vc(\T{X})$ denote the vectorization of $\T{X}$.
+The \textit{mode-$n$ unfolding} of $\T{X}$ is the matrix
+$\mathbf{X}^{(n)} \in \mathbb{R}^{I_n \times I_{(-n)}}$.
+The inner product for tensors matches that of any mode-$n$ unfolding:
+\begin{equation}
+\label{eq:F_norm_equivalent}
+\langle \T{X}, \T{Y}\rangle = \langle \mathbf{X}^{(n)}, \mathbf{Y}^{(n)}\rangle = \rm{Tr}((\mathbf{X}^{(n)})^\top \mathbf{Y}^{(n)}).
+\end{equation}
+
+\subsubsection{Tensor rank}
+The \textit{mode-$n$ rank} is the rank of the mode-$n$ unfolding.
+We say the \textit{rank} of $\T{X}$ is
+$\mathbf{r}(\T{X}) = (r_1,\dots, r_N)$ if its \textit{mode-n rank} is $r_n$ for each $n\in [N]$.
+This notion of rank corresponds to the size of the core tensor in a Tucker factorization
+of $\T{X}$.
+A \emph{superdiagonal} tensor generalizes a diagonal matrix:
+all entries are zero except for the entries
+whose indices in each dimension are equal.
+
+\subsubsection{Tensor contractions}
+Write $\T{G} =\T{X} \times_n \mathbf{U}$ for the \textit{mode-$n$ (matrix) product}
+of $\T{X}$ with $\mathbf{U} \in \mathbb{R}^{J \times I_n}$.
+That is, $\T{G} =\T{X} \times_n \mathbf{U} \; \iff \; \mathbf{G}^{(n)} = \mathbf{U}\mathbf{X}^{(n)}$.
+The tensor $\T{G}$ has dimension $I_1 \times \cdots \times I_{n-1} \times J \times I_{n+1} \times \cdots \times I_N$.
+Mode products with respect to different modes commute:
+for $\mathbf{U} \in \mathbb{R}^{J_1 \times I_n}$, $\mathbf{V} \in \mathbb{R}^{J_2 \times I_m}$
+\[
+\T{X} \times_n \mathbf{U} \times_m \mathbf{V} = \T{X} \times_m \mathbf{V} \times_n \mathbf{U}
+\quad \text{if} \quad n \ne m.
+\]
+Mode products along the same mode simplify:
+for $\T{A} \in \mathbb{R}^{J_1 \times I_n}$, $\T{B} \in \mathbb{R}^{J_2 \times J_1}$,
+\[
+\label{eq: tensor_product_association}
+\T{X}\times_n \mathbf{A} \times_n \mathbf{B} = \T{X}\times_n (\mathbf{BA}).
+\]
+% We provide a more detailed review of tensor arithmetic in \ref{sec:review_tensor}.
+
+\subsection{Tucker Approximation}
+Given a tensor $\T{X}\in\mathbb{R}^{I_1\times \dots \times I_N}$
+and target rank $\mathbf{r}=(r_1,\dots, r_N)$,
+the idea of Tucker approximation is finding a \emph{core tensor}
+$\T{G}\in \mathbb{R}^{r_1 \times \cdots \times r_N}$
+and matrices with  orthogonal columns $\mathbf{U}_n \in \mathbb{R}^{I_n \times r_n}$ for $n\in [N]$,
+called \emph{factor matrices}, so that
+\begin{equation}
+\T{X} \approx \T{G}\times_1 \mathbf{U}_1 \times \cdots \times_N \mathbf{U}_N. \nonumber
+\end{equation}
+For brevity, we define
+$\llbracket\T{G}; \mathbf{U}_1, \cdots, \mathbf{U}_N \rrbracket
+= \T{G}\times_1 \mathbf{U}_1\times_2 \cdots\times_N \mathbf{U}_N$.
+% The core tensor $\T{G}\in \mathbb{R}^{r_1 \times \cdots \times r_N}$ and
+% factors $\mathbf{U}_n \in \mathbb{R}^{I_n \times r_n}$ for $n\in [N]$ are the solution to
+Any best rank-$\mathbf{r}$ Tucker approximation is of the form
+$\llbracket\T{G}^\star; \mathbf{U}_1^\star, \cdots, \mathbf{U}_N^\star \rrbracket$,
+where $\T{G}^\star, \mathbf{U}_n^\star$ solve the problem
+\begin{equation}
+\begin{array}{ll}
+\label{eq:tucker_optimization}
+\mbox{minimize} & \|\T{X} -\T{G}\times_1 \times \dots \mathbf{U}_{n+1} \times_N \mathbf{U}_N\|_F^2 \qquad \\
+\mbox{subject to} & \mathbf{U}_n^\top \mathbf{U}_n = \mathbf{I}.
+\end{array}
+\end{equation}
+The problem \ref{eq:tucker_optimization} is a challenging nonconvex optimization problem.
+Moreover, the solution is not unique \cite{kolda2009tensor}.
+We use the notation $\llbracket\T{X} \rrbracket_\mathbf{r}$
+to represent a best rank-$\mathbf{r}$ Tucker approximation of the tensor $\T{X}$,
+which in general we cannot compute.
+
+\subsubsection{HOSVD}
+The standard approach to computing a rank $\mathbf{r} = (r_1, \ldots, r_N)$ Tucker approximation for a tensor $\mathscr{X}$
+begins with the higher order singular value decomposition (HOSVD) \cite{de2000multilinear,tucker1966some},
+(Algorithm \ref{alg:hosvd}): %, which has two steps:
+% \begin{enumerate}
+% \item \emph{Factors.} For each $n \in [N]$, compute the top $r_n$ left singular vectors $\mathbf{U}_n$ of the unfolding $\mathscr{X}^{(n)}$.
+% \item \emph{Core.} Contract these with $\mathscr{X}$ to form the core
+% $\T{G} = \mathscr{X} \times_1 \mathbf{U_1}^T \cdots \times_N \mathbf{U_N}^T$.
+% \end{enumerate}
+\begin{algorithm}[ht]
+  \caption{Higher order singular value decomposition (HOSVD)
+	\cite{de2000multilinear,tucker1966some}
+	\label{alg:hosvd}}
+  \textbf{Given:} tensor $\T{X}$, target rank $\V{r} = (r_1, \ldots, r_N)$
+  \begin{enumerate}
+  \item \emph{Factors.} For $n \in [N]$, compute the top $r_n$ left singular vectors $\M{U}_n$
+  of $\M{X}^{(n)}$.
+  \item \emph{Core.} Contract these with $\mathscr{X}$ to form the core
+  \[
+  \T{G} = \T{X} \times_1 \M{U}_1^T \cdots \times_N \M{U}_N^T.
+  \]
+  \end{enumerate}
+  \textbf{Return:} Tucker approximation $\T{X}_{\rm{HOSVD}} = \llbracket\T{G}; \M{U}_1, \ldots, \M{U}_N \rrbracket$
+\end{algorithm}
+
+The HOSVD can be computed in two passes over the tensor
+\cite{zhou2014decomposition, battaglino2019faster}.
+We describe this method briefly here, and in more detail in the next section.
+In the first pass, sketch each matricization $\M{X}^{(n)}$, $n \in [N]$,
+and use randomized linear algebra
+(\eg, the randomized range finder of \cite{halko2011finding})
+to (approximately) recover its range $\mathbf{U}_n$.
+% approximates the span of the fibers of the tensor along the $n$th mode.
+To form the core $\T{X} \times_1 \M{U}_1^T \cdots \times_N \M{U}_N^T$
+requires a second pass over $\T{X}$, since the factor matrices $\M{U}_n$
+depend on $\T{X}$.
+The main algorithmic contribution of this paper is to develop a method to
+approximate both the factor matrices and the core in just one pass over $\T{X}$.
+
+\subsubsection{ST-HOSVD} 
+\cite{vannieuwenhoven2012new} proposes a sequentially truncated higher-order singular value decomposition which enjoys the same approximation compared to HOSVD, but requires less operators. The idea, is to update the low rank approximation of the target tensor $\T{X}$ when we get factor matrix in Algorithm \ref{alg:hosvd} for the following factor extraction. Readers can go to \cite{vannieuwenhoven2012new} for more details. 
+
+
+\subsubsection{HOOI}
+The higher order orthogonal iteration (HOOI) \cite{de2000multilinear} (\ref{alg:hooi})
+improves on the resulting Tucker factorization
+by repeatedly minimizing the objective of \ref{eq:tucker_optimization}
+over the the core and the factor matrices.
+% This algorithm repeatedly minimizes the objective of \ref{eq:tucker_optimization}
+% over each of $\mathbf{U}_1, \dots, \mathbf{U}_N, \T{G}$
+% in a round-robin manner:
+% \begin{enumerate}
+% 	\item \emph{Factors.} For $n \in [N]$,
+% \begin{equation} \label{eq: tucker-stage-1}
+% 	\mathbf{U}_n \leftarrow \argmin_{\substack{\mathbf{U} \in \mathbb{R}^{I_n \times r_n}\\ \mathbf{U}_n^\top \mathbf{U}_n = I}} \|( \otimes_{\substack{i = 1 \\i \neq n}}^N \mathbf{U}_i )\mathbf{G}^{(n)\top} \mathbf{U}_n^\top - \mathbf{X}^{(n)\top} \|_F^2,
+% \end{equation}
+% 	\item \emph{Core.}
+% 	\begin{equation}
+% \label{eq: tucker-stage-2}
+% \T{G} \leftarrow \argmin_{\T{Z} \in \mathbb{R}^{r_1 \times \cdots \times r_N}} \| (\otimes_{i = 1}^N \mathbf{U}_i )\vc(\T{Z})- \vc(\T{X}) \|_2^2.
+% \end{equation}
+% \end{enumerate}
+% until convergence.
+\begin{algorithm}[ht]
+	\caption{Higher order orthogonal iteration (HOOI)
+	\cite{de2000multilinear}
+	\label{alg:hooi}}
+	\textbf{Given:} tensor $\T{X}$, target rank $\V{r} = (r_1, \ldots, r_N)$ \\
+	Initialize: compute $\T{X} \approx \llbracket\T{G}; \M{U}_1, \ldots, \M{U}_N \rrbracket$ using HOSVD \\
+	Repeat:
+\begin{enumerate}
+	\item \emph{Factors.} For each $n \in [N]$,
+	\begin{equation}
+	\label{eq:factor-update}
+	\mathbf{U}_n \leftarrow \argmin_{ \M{U_n} }
+		% \substack{\M{U_n} \in \reals^{I_n \times r_n}\\
+		%           \mathbf{U}_n^\top \mathbf{U}_n = I}}
+	\left\| \llbracket\T{G}; \M{U}_1, \ldots, \M{U}_N \rrbracket - \T{X} \right\|_F^2,
+	\end{equation}
+	\item \emph{Core.}
+	\begin{equation}
+	\label{eq:core_update}
+	\T{G} \leftarrow \argmin_{\T{G}} % \in \mathbb{R}^{r_1 \times \cdots \times r_N}}
+	\left\| \llbracket\T{G}; \M{U}_1, \ldots, \M{U}_N \rrbracket - \T{X} \right\|_F^2.
+	\end{equation}
+\end{enumerate}
+\textbf{Return:} Tucker approximation $\T{X}_{\rm{HOOI}} = \llbracket\T{G}; \M{U}_1, \ldots, \M{U}_N \rrbracket$
+\end{algorithm}
+Notice the core update \eqref{eq:core_update}
+admits the closed form solution
+$\T{G} \leftarrow \T{X}\times_1 \mathbf{U}_1^\top \cdots \times_N \mathbf{U}_N^\top$,
+which motivates the second step of HOSVD.
+% Hence the least squares problem in \M{eq: tucker-stage-1}
+% computes the leading left eigenvectors of
+% \[
+% \T{X}\times_1 \mathbf{U}_1^\top \times \cdots \times_{n-1} \mathbf{U}_{n-1}^\top \times_{n+1} \mathbf{U}_{n+1}^\top \times \cdots \times_N \mathbf{U}_N^\top.
+% \]
+% This observation leads to the widely-used Higher-Order Orthogonal Iteration method (HOOI) \cite{de2000multilinear},
+% presented as \ref{alg:hooi} in \ref{appendix:more_algorithms}.
+
+\subsection{Previous Work}\label{sec: previous_work}
+
+% The standard approach to computing a low rank Tucker approximation for a tensor $\mathscr{X}$
+% begins with the higher order singular value decomposition (HOSVD) \cite{de2000multilinear,tucker1966some},
+% which has two steps:
+% 1) Compute for each unfolding $\mathscr{X}^{(n)}$ its top left singular vectors $U_n$.
+% These span of $U_n$ approximates the span of the fibers of the tensor along the $n$th mode.
+% 2) Contract these with $\mathscr{X}$ to form the core.
+% The higher order orthogonal iteration (HOOI) \cite{de2000multilinear}
+% improves on the resulting Tucker factorization
+% by repeatedly solving least squares problems over the the core and the factor matrices.
+
+% The papers \cite{zhou2014decomposition, battaglino2019faster} give randomized methods
+% that improve on HOSVD:
+% they suggest sketching $\mathscr{X}^{(n)}$
+% and performing step 1) on the sketched unfoldings, which have approximately the same span.
+% % \cite{zhou2014decomposition} proposes an additional refinement step to converge to the performance of HOSVD;
+% % while \cite{battaglino2019faster} concentrates on the distributed data setting.
+% However, step 2) requires a new pass over the tensor $\mathscr{X}$, making this
+% approach infeasible in the streaming setting.
+% In contrast, our paper shows how to use a sketch to approximate step 2) as well,
+% which enables Tucker approximation with a single (streaming) pass over the data.
+% battaglino2018practical says: Note that we simply add a TTM-Sketch operation prior to the MTFSBC.
+
+The only previous work on streaming Tucker approximation is \cite{malik2018low},
+which develops a streaming method called Tucker TensorSketch (T.-TS) \cite[Algorithm 2]{malik2018low}.
+T.-TS improves on HOOI by sketching the data matrix in the least squares problems.
+However, the success of the approach depends on the quality of the initial
+core and factor matrices, and the alternating least squares algorithm takes
+several iterations to converge.
+
+In contrast, our work is motivated by HOSVD (not HOOI),
+and requires no initialization or iteration.
+We treat the tensor as a \emph{multilinear} operator.
+The sketch identifies a low-dimensional subspace \emph{for each input argument}
+that captures the action of the operator.
+The reconstruction produces a low-Tucker-rank multilinear operator
+with the same action on this low-dimensional tensor product space.
+% sketching to collect information about the action of the operator along each dimension,
+% and recovers an approximation via linear algebraic operations.
+This linear algebraic view allows us to develop the
+first guarantees on approximation error for this class of problems\footnote{
+The guarantees in \cite{malik2018low} hold only when a new sketch is applied
+for each subsequent least squares solve;
+the resulting algorithm cannot be used in a streaming setting.
+In contrast, the practical streaming method T.-TS fixes the sketch for each mode,
+and so has no known guarantees.
+Interestingly, experiments in \cite{malik2018low} show that the method achieves
+lower error using a fixed sketch (with no guarantees) than using fresh sketches at each iteration.
+}.
+Moreover, we show in numerical experiments that
+our algorithm achieves a better approximation of the original tensor given the same memory resources.
+
+More generally, there is a large literature on randomized algorithms
+for matrix factorizations and for solving optimization problems;
+see e.g. the review articles \cite{halko2011finding, woodruff2014sketching}.
+%contain a comprehensive review of randomized methods for matrix approximations.
+In particular, our method is strongly motivated by the recent papers \cite{tropp2018more, tropp2019streaming},
+which provide methods for one-pass matrix approximation.
+%This idea motivates our one-pass Tucker decomposition based on factor sketches and the core sketch.
+The novelty of this paper is in our design of a core sketch (and reconstruction) for
+the Tucker decomposition,
+together with provable performance guarantees.
+The proof requires a careful accounting of the errors resulting from
+the factor sketches and from the core sketch.
+The structure of the Tucker sketch guarantees that these errors are independent.
+
+Many researchers have used randomized algorithms to compute tensor decompositions.
+For example, \cite{wang2015fast, battaglino2018practical} apply sketching techniques to the CP decomposition,
+while \cite{tsourakakis2010mach} suggests sparsifying the tensor. Several papers aim to make Tucker decomposition efficient in the limited-memory or distributed settings \cite{baskaran2012efficient, zhou2014decomposition,
+austin2016parallel, kaya2016high, li2015input, battaglino2019faster}.
+%Although our method is memory-efficient and adapts to the distributed setting, this is not our focus.
+
+% Finally, we return to make a few detailed comments on \cite{malik2018low}.
+% %\cite{malik2018low} employs a particular sketch called \textit{TensorSketch} (\ref{appendix: TensorSketch}).
+% The guarantees in their paper hold only when a new sketch is applied for each subsequent least squares solve;
+% the resulting algorithm cannot be used in a streaming setting.
+% In contrast, the practical streaming method T.-TS fixes the sketch, and so has no known statistical guarantees.
+% TensorSketch enables \cite{malik2018low} to form sketches with much less storage compared to normal sketching method in ALS. To make ALS one-pass, \cite{malik2018low} fixed the sketching matrix to be the same through \eqref{eq: tucker-stage-1}, which has no statistical guarantees since theory in \cite{diao2017sketching} requires generating new sketching matrix for each step in every iteration in ALS.
+% Surprisingly, the simulation study in \cite{malik2018low} demonstrates that
+% T.-TS outperforms the method regenerating sketching matrix at each step, which is actually a multi-pass method with statistical guarantees. Fixing the sketch matrices for each iteration enables T.-TS to reduce lots of storage. However,  the method we propose, as stated in the introduction part, all optimization steps happen in the core sketch, which makes our algorithm enjoy memory and time efficiency. We make a detailed comparison between T.-TS and our method in time and storage cost, and in simulation and real data later.

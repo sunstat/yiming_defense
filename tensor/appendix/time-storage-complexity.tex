@@ -1,0 +1,70 @@
+\section{Time and Storage Complexity}\label{appendix: time-complexity}
+\subsection{Comparison Between \cref{alg:one_pass_fix_rank_appro} and T.-TS \cite{malik2018low}}
+Here we compare the time and storage complexity of the two extant methods for
+streaming Tucker approximation: our one-pass method, and T.-TS \cite{malik2018low}.
+
+To compare the storage and time costs of both T.-TS and the one-pass algorithm,
+we separate the cost into two parts:
+one for forming the sketch,
+the other for each iteration of ALS.
+Assume the tensor to approximate has equal side lengths $I_1=\cdots = I_N = I$
+and that the target rank for each mode is $R$.
+
+The suggested default parameters for the sketch in \cite{malik2018low}
+are $J_1 = 10R^{N-1}$ and $J_2 = 10R^{N}$.
+Our suggested default parameters are $k=2r, s=2k+1$. Under the choice of the default parameter, we compare the the cost of storage and time in \cref{tab:storage-comparison} and \cref{tab:time-comparison}. In most problems with data not perfectly low Tucker rank, i.e. $R > 4$, the suggested default setting of T.-TS typically leads to a higher storage cost. Moreover, our algorithm uses less storage and is faster to compute, particularly for tensors with many modes $N$.
+
+However, the evaluation of the two algorithms should not be solely based on their default setups. If the memory constraint is set to be the same, our one-pass algorithm performs much better in the low-memory case, but slightly worse in the case with very high-memory as in \cref{fig:vary-memory}. The memory of our suggested setting typically implies a much smaller memory usage than their suggested setting.
+
+\subsection{Computational Complexity of \cref{alg:one_pass_fix_rank_appro}}
+Here, we will derive a fine-grained computation complexity for our one pass fixed-rank approximation algorithm.
+
+In the sketching stage of the streaming algorithm, we need to first compute the factor sketches, $\mathbf{G}_n = \mathbf{X}\mathbf{\Omega}_n, n \in [N]$ with $kN\hat{I}$ flops in total. Then, we need to compute the core tensor sketch $\mathscr{Z}$ by recursively multiplying $\mathscr{X}$ by $\mathbf{\Phi}_n, n \in [N]$. We can find the upper bound for the number of flops to be $\frac{s(1-\delta_1^N)}{1-\delta_1}\bar{I}$. Then, in the approximation stage, we first perform "economy size" QR factorizations on $\mathbf{G}_1, \dots, \mathbf{G}_N$ with $\mathscr{O}(k^2(\sum_{n =1}^N I_n))$ to find the orthonormal bases $\mathbf{Q}_1, \dots, \mathbf{Q}_N$. To find the linkage tensor $\mathscr{W}$, we need to recursively solve linear square problems, with $\frac{k^2s^N(1-(k/s)^N)}{1-k/s}$ flops. Overall, the sketch computation dominates the total time complexity.
+
+The higher order SVD directly acts on $\mathscr{X}$ by first computing the SVD for each unfolding in $\mathscr{O}(kN\bar{I})$, and then multiplying $\mathscr{X}$ by $\mathbf{U}_1^\top, \dots, \mathbf{U}_N^\top$ in $\mathcal{O}(\frac{k(1-\delta_1^N)\bar{I}}{1-\delta_1})$. The total time cost is less than the streaming algorithm with a constant factor. Note: we can use the randomized SVD in the first step to improve the computational cost to $\bar{I}N\log k + \sum_{n = 1}^N(I_{n}+I_{(-n)})k^2$ \cite{halko2011finding}.
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{c c c c }
+		Algorithm  & & Storage Cost ($I=o(r^{2N})$) \\
+		\hline
+
+		\multirow{2}{*}{T.-TS} & Sketching & $\mathcal{O}(r^{2N})$ \\
+		& Recovery &  $\mathcal{O}(r^{2N})$ & \\
+		\hline\hline
+		\multirow{2}{*}{\cref{alg:one_pass_low_rank_appro} (One Pass)} & Sketching &  $\mathcal{O}(4^Nr^N)$  \\
+		& Recovery  & $\mathcal{O}(4^Nr^N)$  \\
+		\hline
+	\end{tabular}
+	\caption{Storage complexity of \cref{alg:one_pass_low_rank_appro} and T.-TS
+	on tensor $\T{X} \in \mathbb{R}^{I \times \dots \times I}$.
+	\cref{alg:one_pass_low_rank_appro} uses parameters $(k,s) = (2r, 4r+1)$
+	and uses a TRP composed of Gaussian DRMs inside the Tucker sketch.
+	T.-TS uses default values for hyper-parameters: $J_1=10r^{N-1}, J_2=10r^{N}$.}
+	\label{tab:storage-comparison}
+\end{table}
+
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{c c c c }
+		Algorithm  & & Time Cost ($I = o(r^{2N})$) \\
+		\hline
+
+		\multirow{2}{*}{T.-TS} & Sketching & $\mathcal{O}(N\rm{nnz}(\T{X}))$ \\
+		& Recovery &  $\mathcal{O}(NIr^N+Nr^{2N-1}+r^{2N})$ & \\
+		\hline\hline
+		\multirow{2}{*}{\cref{alg:one_pass_low_rank_appro} (One Pass)} & Sketching &  $\mathcal{O}(Nr~ \rm{nnz}(\T{X})))$  \\
+		& Recovery  & $\mathcal{O}(Nr^{N+1})$  \\
+		\hline
+	\end{tabular}
+	\caption{Time complexity of \cref{alg:one_pass_low_rank_appro} and T.-TS
+	on tensor $\T{X} \in \mathbb{R}^{I \times \dots \times I}$.
+	\cref{alg:one_pass_low_rank_appro} uses parameters $(k,s) = (2r, 4r+1)$
+	and uses a TRP composed of Gaussian DRMs inside the Tucker sketch.
+	T.-TS uses default values for hyper-parameters: $J_1=10r^{N-1}, J_2=10r^{N}$.
+	}
+	\label{tab:time-comparison}
+\end{table}
+
+\mnote{Instead of "Proposed", we should be clear about which of our algorithms we're referring to.}

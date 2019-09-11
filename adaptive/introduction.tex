@@ -1,0 +1,194 @@
+\section{Introduction}\label{introduction}
+Consider a $p$-dimensional real-valued time series $X_t = (X_{t1}, \ldots, X_{tp})^\top, ~ t\in \mathbb{Z}$. It is called weakly stationary if $\E X_t = \E X_s$ and  autocovariance $\Gamma(\ell) = \cov (X_t, X_{t-\ell})$ only depends on the lag $\ell$.  
+If for any finite sequence $X_{t_1}, \cdots, X_{t_n})$ and any integer $\tau$, 
+$(X_{t_1}, \cdots, X_{t_n})$ has the same joint distribution with  $(X_{t_1+\tau}, \cdots, X_{t_n+\tau})$,  we say the process is strongly stationary. If the joint distribution is multivariate Gaussian, we call this process as Gaussian process where weak stationarity is equivalent to strong stationarity. \par 
+
+For completeness of this chapter, we restate the definition for spectral density for stationary time series in first chapter here. We assume $\mathbb{E} X_t = 0, ~ t=1,\ldots,n$ for ease of exposition. In practice, multivariate time series are often de-meaned before performing correlation based analysis. Strong/Weak stationarity for Gaussian process implies that $\Gamma(\ell) = \cov(X_t, X_{t-\ell}) = \mathbb{E} X_t X_{t-\ell}^\top$ only depends on $\ell$. Spectral density aggregates information of autocovariance of different lag orders $\ell$  at a specific frequency $\omega \in [-\pi, \pi]$ as 
+\begin{equation}
+\label{eq:def_spectral_density}
+f(\omega) = \frac{1}{2\pi}\sum_{\ell=-\infty}^\infty \Gamma(\ell) e^{-\iu \ell \omega }. 
+\end{equation}
+Note that the autocovariance functions of different lags can be recovered from the spectral density using the transformation  $\Gamma(\ell) =  \int_{-\pi}^{\pi} f(\omega) e^{i\ell \omega} d\omega$, for any $\ell \in \mathbb{Z}$.\par 
+Spectral density matrix in Gaussian process is a generalization to covariance matrix for Guassian distribution. For multi-variate Gaussian variable $x$,  position $(r,s)$ for covariance matrix: $\Sigma_{r, s}$ is zero iff variable $x_r, x_s$ are independent with each other. For p dimensional Gaussian process , this equivalent certificate for marginal independence becomes $f_{rs}(\omega) = 0$ for all frequency $\omega\in [-\pi, \pi)$ iff time series $X_r$ is independent of $X_s$. \par 
+Recently, researchers have made progresses in developing methods with theoretical support in high-dimension for spectral density estimation for high dimensional time series data, assuming weak sparsity in spectral density, i.e. the $L_1$ norm of the spectral density matrix is small. For example, \cite{fiecas2018spectral, sun2018large} follow a similar path to build theory: first build concentration inequality for smoothing periodogram, then utilize weak sparsity property to demonstrate consistency in estimation. The difference mainly lays in the way of building concentration inequality part, or in other words, the way of measuring the dependency in the data. \cite{fiecas2018spectral} directly uses the magnitude of autocovariance as the measure while \cite{sun2018large} follows the way of measuring dependency from frequency domain perspective as \cite{Basu2015}. Those thresholding
+schemes are adaptive to heterogeneity in frequencies, not to variability of the individual entries. In other words, in terms of fixed frequency, they do universal thresholding for the spectral density matrix. In the next subsection, we explain why we need adaptive thresholding for estimating spectral matrix for each fixed frequency. 
+
+\subsection{Why Adaptive Thresholding?}
+As pointed by \cite{cai2011adaptive}, universal thresholding was firstly proposed by \cite{donoho1994ideal} for estimating sparse normal mean vectors in the context of wavelet function estimation where noise  is homoscedastic. Although in many cases, the universal thresholding can achieve good theoretical property for heteroscedastic problem within certain weakly sparse space by setting the thresholding value proportional to an upper bound of the standard deviation of the noise.  For example, consider following sparse multivariate Gaussian mean estimation. Suppose that we have n observation of p-variate Gaussian distribution as follows. 
+\[
+y_i \overset{i.i.d}{\sim} \mathcal{N}\left(\mu, 
+\begin{bmatrix}
+\sigma^2_1 & 0 & \cdots & 0\\  
+0 & \sigma^2_2 & \cdots & 0\\
+\vdots & \vdots & \ddots\\
+0 & 0& 0& \sigma^2_p
+\end{bmatrix}\right),
+\]
+Each position in the Gaussian vector has different unknown variance $\sigma_j^2$. But if we assume $ \sigma_j$ are uniformly bounded i.e., $\max_j \sigma_j\le B$ for some positive number $B$, 
+let $\bar{y}_j = \frac{1}{n}\sum_{i=1}^n y_{ij}$,  and we have 
+\begin{equation}
+\Prob( |\bar{y}_j  - \mu_j |\ge \eta)\le 2 \exp(-n\eta^2/2\sigma_j^2). 
+\end{equation} 
+Combine these with techniques introduced in \cite{bickel2008covariance}, if we choose 
+threshold to be at order as $B\sqrt{\frac{\log p}{n}}$, we can have asymptotic consistency in estimation of $\mu$ if 
+\[
+\mu \in \left\{\mu \in \mathbb{R}^p, \sum_{j=1}^p |\mu_j|^q \le c(p)\right\}, 
+\]
+for some $0\le q<1$ and $c(p)$ is the measure for weak sparsity. The key assumption is that $\sigma_js$ are uniformly bounded. But it is apparent, if $\sigma_j$ variates too much or is not bounded, the argument in \cite{bickel2008covariance} will not work and the accuracy in estimation will get hurt.  So people resort to adaptive thresholding: set the thresholding value to be proportional to an estimator of $\sigma_j$ , say sample standard deviation $\sqrt{\sum_{i=1}^n (y_{ij} - \bar{y}_j)^2/(n-1)}$.  \par 
+ Now we go to a more relevant case. 
+Consider a number of i.i.d normal distributed $y_i$ with 
+\[
+y_i \overset{i.i.d}{\sim} \mathcal{N}(0, \Sigma_{p\times p}),
+\]
+if we want to estimate each position $r, s$ of $\Sigma$: $\Sigma_{rs}$, the estimation problem can be treated as estimating the expectation of $(y_{i}y^\top_{i})_{rs}$. Then maximum likelihood estimator (MLE) is simply the sample average. Suppose the covariance matrix has a weakly sparse structure i.e., a relatively small $L_1$ norm, \cite{bickel2008covariance} proposes to apply universal thresholding 
+and they assume diagonal elements for $\Sigma$ are uniformly bounded.  Compared to above sparse mean estimation for multi-variate Gaussian, now it is like the case where we estimate the expectation of a $p^2$ 
+random vector $(y_jy_j^\top)_{rs}$, and $\sigma_{rs}^2 = \Var[(y_{i}y^\top_{i})_{rs}] = \Sigma_{rr}\Sigma_{ss} + \Sigma^2_{rs} \le 2\Sigma_{rr}\Sigma_{ss}$. Now it becomes clear why \cite{bickel2008covariance} requires an upper bound for $\Sigma_{rr}$: $2\max_{r=1}^p \Sigma^2_{rr}$ is an upper bound for variance of the target. To conquer the shortcomings we mentioned above about universal thresholding, \cite{cai2011adaptive} proposed adaptive thresholding estimator by setting thresholding value proportional to sample standard deviation of sequence $[(y_1y_1^\top)_{rs}, \cdots, (y_ny_n^\top)_{rs}]$ for $n$ observations. \par 
+Now let us go to our case.  As we will introduce later, the spectral density $f(\omega_j)$ can be taken as expectation of $d_\infty (\omega_j) d^\top_\infty (\omega_j)$ where $d_\infty (\omega_j)$ has the distribution same as limiting distribution of discrete Fourier coefficient. Then it is almost same as covariance setting although it is complex matrix not real anymore. \cite{sun2018large} proposes hard thresholding in the modulus of the estimator. With Cauchy-Schwarz inequality, 
+\[
+\E |( (d(\omega_j)_\infty d(\omega_j)_\infty^\top)_{rs}|^2 \le \E d_{\infty, ss}^2(\omega_j) d_{\infty, rr}^2(\omega_j)\le \esssup_{\omega} \|f(\omega)\|. 
+\]
+Although \cite{sun2018large} allows $\esssup_{\omega} \|f(\omega)\|$ grow with $n,p$, this upper bound appears in the thresholding value, and its growth rate is required to be controlled.  As discussed before, it is better to replace this upper bound with the estimated variance.  We list our contributions to solve those problems mentioned. 
+
+\begin{itemize}
+\item we clearly define the adaptive thresholding estimation problem, and show what variance should our estimator be adaptive to.
+\item we propose a modified version of periodogram which assists us to develop the theory for consistent estimation of adaptive thresholding estimator under high dimensional setting.
+\item non-asymptotic bound analysis is provided for our adaptive thresholding estimator which relaxes the constraint in operator norm of spectral density for universal thresholding proposed by \cite{sun2018large} and achieves better error bound.
+\end{itemize}
+
+
+
+
+\subsection{Periodogram Smoothing}
+Let  $\mathcal{X} = [X_1:\ldots:X_n]^\top$  be the \textit{data matrix} containing $n$ consecutive observations from the time series $\{X_t\}$ in its rows. The classical estimate of spectral density is based on the periodogram \citep{brockwell2013time, rosenblatt1985stationary} defined as
+\begin{equation}
+\label{eq:single_periodogram}
+I(\omega)=\sum_{|\ell|<n} \hat{\Gamma}(\ell)e^{-\iu\ell\omega},
+\end{equation}
+where $\hat{\Gamma}(\ell) = n^{-1}\sum_{t=\ell+1}^{n} X_t X_{t-\ell}^\top$ for $\ell\ge 0$, and 
+ $\hat{\Gamma}(\ell) = n^{-1}\sum_{t=1}^{n+\ell} X_t X_{t-\ell}^\top$ for $\ell<0$. It is noticed that the periodogram can be written as outer product of 
+Discrete Fourier Transformation(DFT): 
+\[
+I(\omega) = d(\omega) d^\dag(\omega), 
+\]
+where $d(\omega)$ is defined as $d(\omega) = \mathcal{X}^\top(C(\omega)-iS(\omega))$ , where 
+\begin{equation}
+\label{eq:cos_sin_coef}
+\begin{aligned}
+C(\omega) = \frac{1}{\sqrt{n}} (1, \cos \omega, \dots, \cos (n-1)\omega)^\top,\\
+S(\omega) = \frac{1}{\sqrt{n}} (1, \sin \omega, \dots, \sin (n-1)\omega)^\top.
+\end{aligned}
+\end{equation}
+This leads to fast computation with fast Fourier transformation. For brevity,  we let $c_j = C(\omega_j)$ and $s_j = S(\omega_j)$. 
+ 
+It is common to resort to smoothing periodograms over nearby frequencies to achieve asymptotic consistency. The simplest smoothing is 
+
+\begin{equation}
+\label{eq:general_smoothing_estimator}
+    \hat{f}(\omega; m) = \frac{1}{2\pi(2m+1)} \sum_{|k|\le m} I(\omega+\omega_k),
+\end{equation}
+where $\omega_k = 2\pi k/n, ~ k\in F_n$,  the set of Fourier frequencies. To be precise, $F_n$ denotes the set  $\left\{-[\frac{n-1}{2}], \dots, [\frac{n}{2}]\right\}$ where $[x]$ is the integer part of $x$. $F_n$ contains exactly the same frequencies used to calculate discrete Fourier transformation. It is common to evaluate the periodogram at these Fourier frequencies, in which case the smoothing periodogram in \eqref{eq:general_smoothing_estimator} becomes
+\begin{equation}
+\label{eq:smoothing estimator}
+    \hat{f}(\omega_j; m) = \frac{1}{2\pi(2m+1)} \sum_{|k|\le m} I(\omega_{j+k}).
+\end{equation}
+Note that even though the values of $j+k$ can fall outside $F_n$, it is enough to evaluate periodograms at Fourier frequencies $F_n$ since $I(\omega)$ is $2\pi$-periodic in $\omega$. The effectiveness of reducing variance via smoothing lies in the fact that $d(\omega_j), d(\omega_k)$ are asymptotically independent if $k\notin \{-j, j\}$. Since our theory development is based in the asymptotically independence, we change the smoothing set a little bit to make sure that $\{-j, j\}$ would not appear at the same time in the index set. Also, we exclude frequency $0, \frac{\pi}{2}, -\pi$ out to avoid degenerated limiting distribution. Then we can present the smoothing periodogran estimator as 
+\begin{equation}
+g(\omega_j; m) = \frac{1}{m}\sum_{ k\in \mathcal{B}_j^m} I(\omega_k). 
+\end{equation}
+where $\mathcal{B}_j^m$ is a set containing all indices nearest to $j$ excluding $0, [n/2]$ and all possible pairs $\{j, -j\}$. Assuming $m<n/2$,
+in fact the expression for $\mathcal{B}_j^m$ is quite simple
+\begin{equation}
+\label{eq:def_neb}
+\mathcal{B}_j^m = 
+\begin{cases}
+\{j, j+1, \cdots, j+m\}& j>0 \\
+\{j, j-1, \cdots, j-m\}& j<0.
+\end{cases}
+\end{equation}
+as pointed before, we use $2\pi$-periodic in $\omega$ if index falls out of $F_n$. For simplicity, we ignore the m in subscription in $\mathcal{B}_j^m$ and we always let it be $\mathcal{B}_j$. We introduce set $\mathcal{B}_j$ mainly for the purpose of ensuring all $H(\omega_j)$ are asymptotically independents with similar distribution. We exclude pairs like $\{j, -j \}$ and for simplicity, we do not consider frequency $\omega_0, \omega_{[n/2]}$ since they have degenerate limiting distribution, theory can be easily extended to both cases though. In the next section, we will answer the question: what variances should thresholding estimator adapt to. \par 
+
+
+\subsection{What Is the Variance should Thresholding Value be Adaptive to?}
+In order to derive adaptive thresholding for spectral density estimation, the first question is 
+which variance should the estimator be adaptive to? 
+Different from i.i.d. Gaussian case, to describe the variance of spectral density, we need to consider the asymptotic distribution of discrete Fourier transformation. We listed Theorem 4.4.1 in  \cite{brillinger2001time} as following lemma 
+\begin{assumption}\label{assumption:finite_auto}
+$\sum_{\ell=-\infty}^\infty \|\Gamma(\ell)\|<\infty$. 
+\end{assumption}
+
+\begin{lem}
+\label{lemma:asy_dis_dft}
+Suppose $\mathcal{\mathcal{X}}_{n\times p} = [X_1:\ldots:X_n]^\top$ is a data matrix from a strongly stationary  Gaussian time series $X_t$, and assumption \ref{assumption:finite_auto} is satisfied, we have for all $j\in F_n$ with $\omega_j \neq 0$ or $\pi$, 
+\begin{equation}
+\label{eq:limiting_dist}
+d(\omega_j) = 
+\begin{bmatrix}
+\mathbf{Re}(d(\omega_j))\\
+\mathbf{Im}(d(\omega_j))
+\end{bmatrix}=
+\begin{bmatrix} 
+\mathcal{X}^\top c_j\\
+\mathcal{X}^\top s_j
+\end{bmatrix}  \overset{d}{\rightarrow} \mathcal{N}\left(0, \frac{1}{2}\begin{bmatrix}
+\mathbf{Re}(f(\omega_j) & -\mathbf{Im}(f(\omega_j))\\
+\mathbf{Im}(f(\omega_j)) & \mathbf{Re}(f(\omega_j))
+\end{bmatrix}
+\right).
+\end{equation}
+For $\omega_j = 0$ or $\omega_j = \pi$, 
+\begin{equation}
+\mathcal{X}^\top c_j
+\overset{d}{\rightarrow} \mathcal{N}\left(0, f(\omega_j)
+\right).
+\end{equation}
+For $k \notin \{j, -j\}$,  
+$\begin{bmatrix}
+\mathcal{X}^\top c_j\\
+\mathcal{X}^\top s_j
+\end{bmatrix}$ is asymptotically independent with 
+$\begin{bmatrix}
+\mathcal{X}^\top c_k\\
+\mathcal{X}^\top s_k
+\end{bmatrix} $. Here the convergence is convergence in distribution. 
+\end{lem} 
+This lemma indicates that if we restrict our focus to $\mathcal{B}_j$, all $I(\omega_k), k\in \mathcal{B}_j^m$ are asymptotically independently distributed and within a neighborhood, the asymptotic distribution are very similar to each other, in other words, behave like i.i.d. data. This explains why smoothing periodogram can effectively reduce the variance. What is more, we can treat the spectral density as the expectation of limiting distribution. Let 
+$d_{\infty}(\omega_j)$ be the variable whose distribution is the limiting distribution of $d(\omega_j)$, then 
+\[
+f(\omega_j) = \E(d_{\infty}(\omega_j)d^\dag_{\infty}(\omega_j)).
+\]
+
+Now it is clear that the thresholding estimator should adapt to: 
+\[
+\Var(\mathbf{Re}(d_{\infty}(\omega_j)d^\dag_{\infty}(\omega_j))_{rs}); 
+\Var(\mathbf{Im}(d_{\infty}(\omega_j)d^\dag_{\infty}(\omega_j))_{rs})
+\]
+for position $(r,s)$'s real and imaginary part respectively. Asymptotically, the formation of the problem is almost the same as what proposed by \cite{cai2011adaptive}: we use sample average of data to estimate its expectation and try to let our estimator be adaptive to its variances. Rearranging those expression for Gaussian forth moments in appendix  , we can express the variances for real and imaginary part of $(d_{\infty}(\omega_j)d_{\infty}(\omega_j)^\dag)_{rs}$ as 
+\begin{equation}
+\label{eq:variance_of_periodogram}
+\begin{array}{cc}
+&\Var(\mathbf{Re}(d_{\infty}(\omega_j)d^\dag_{\infty}(\omega_j))_{rs})      \\
+& = \frac{1}{2}\left[f_{rr}(\omega_j)f_{ss}(\omega_j)+\mathbf{Re}(f_{rs}(\omega_j))^2-\mathbf{Im}(f_{rs}(\omega_j))^2\right]
+\end{array}
+\end{equation}
+and 
+\begin{equation}
+\begin{array}{cc}
+&\Var(\mathbf{Im}(d_{\infty}(\omega_j)d^\dag_{\infty}(\omega_j))_{rs})      \\
+& = \frac{1}{2}\left[f_{rr}(\omega_j)f_{ss}(\omega_j)+\mathbf{Im}(f(\omega_j)_{rs})^2-\mathbf{Re}(f_{rs}(\omega_j))^2\right].
+\end{array}
+\end{equation}
+As mentioned above, the key ingredient in theoretical development of \cite{cai2011adaptive} is that variances of each position $y_1y_1^\top$ for p variate Gaussian variable $y_1$,  is at the same order of product of two diagonal elements. However, variances of both part does not meet this condition. We provide a counter example in Appendix \ref{sec:counter_example} to demonstrate this. 
+This is not only that we utilize the framework provided by \cite{cai2011adaptive}, we also try to avoid diminishing variance in the estimator which may cause instability at least in theory. \par 
+
+\textbf{Notation.} Throughout this paper, $\mathbb{Z}$, $\mathbb{R}$ and $\mathbb{C}$  denote the sets of integers, real numbers and complex numbers, respectively. We use 
+$\mathbf{Re}(c)$, $\mathbf{Im}(c)$ to present the real and imaginary part of complex number $c$ respectively and $|c|$ to denote its modulus(absoslute value for real number). We use $\|v\|$ to denote $\ell_2$-norm of a vector $v$. For a matrix $A$, $\|A\|_1$, $\|A\|_{\infty}$, $\|A\|$ and $\|A\|_F$ will denote maximum complex modulus column sum norm, maximum complex modulus row sum norm, { spectral norm} $\sqrt{\Lambda_{\max}(A^\dag A)}$ and Frobenius norm $\sqrt{\text{tr}(A^\dag A)}$, respectively, where $A^\dag$ is conjugate transpose of $A$. We also let $\lambda_{\text{max}}(A)$ denote the spectral radius of a $n \times n$ matrix $A$, i.e., $\lambda_{\text{max}}(A) = \max(|\lambda_1|, \cdots |\lambda_n|)$, where $\lambda_i$s are the eigenvalues of matrix $A$. If $A$ is symmetric or Hermitian, we denote its maximum and minimum eigenvalues by $\Lambda_{\min}(A)$ and $\Lambda_{\max}(A)$. We use $e_i$ to denote the $i^{th}$ unit vector in $\mathbb{R}^p$, for $i = 1, 2, \ldots, p$. For vectors $v_i \in \mathbb{R}^p, i=1,\ldots, n$, we use $[v_1:\ldots:v_n]$ to denote the $p \times n$ matrix formed  by horizontally stacking these column vectors $v_i$, and  $[v_1^\top;\ldots; v_n^\top]$ to denote the $n\times p$ matrix by vertically stacking row vectors $v_i^\top$. Let $vec(A)$ represent the vector got from vectorization of a matrix $A$ by stacking all its columns. We use $rk(A)$ to denote the rank of a matrix $A$. For a complex vector $v\in \mathbb{C}^p$ and any $q > 0$, we define $\|v\|_q:= (\sum_{i=1}^p |v_i|^q)^{1/q}$. We use $\|v\|_0$ to denote the number of non-zero elements in $v$. Note that when $0\le q<1$, it is not really a norm since triangle inequality does not hold, but we keep the notation of a norm for convenience . Then we define the induced matrix norm, $\|A\|_{\alpha, \beta} = \sup_{x\neq 0}\|Ax\|_\alpha/\|x\|_\beta$, for any  $\alpha>0, \beta>0$. We will also use $\|A\|_\alpha$ to denote the induced norm $\|A\|_{\alpha, \alpha}$ for any $\alpha > 0$ and any complex matrix $A \in \mathbb{C}^{p \times p}$. Also, to be succinct, we use $\|A\|_{\rm{max}} :=\max_{r,s}|A_{rs}|$. 
+Throughout the paper, we write $A \succsim B$ if there exists a  universal constant $c > 0$, not depending on model dimension or any model parameters, such that $A \ge cB$. We use $A \asymp B$ to denote $A \succsim B$ and $B \succsim A$.  We let $e_i$ bet the vector of length $p$, with only ith element to be 1 while others are zero. Also, we let $E_p$ be the set containing $e_1, \cdots, e_p$. 
+
+
+
+
+
+
+
+
+

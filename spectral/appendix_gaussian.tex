@@ -1,0 +1,662 @@
+\section{Appendix: Proofs for Gaussian Time Series}\label{appendix:proof_gaussian}
+\subsection{Proof of Lemma \ref{lemma: hason_bound_time_gauss}}
+\begin{proof}
+We can write $vec(\mathcal{\mathcal{X}}^\top)\stackrel{d}{=}\Sigma^{1/2}Z$, where $\Sigma$ is the covariance matrix of the $np$-dimensional random vector $vec(\mathcal{\mathcal{X}}^\top)$ and $Z\sim N(0,I)$. Then using Hanson-Wright inequality [Theorem 1.1,  \cite{rudelson2013hanson}] and the fact that the subGaussian norm of $Z$ is $1$, we conclude that there exists a universal constant $c>0$ satisfying 
+\begin{equation}
+\label{eq: hanson1}
+\begin{aligned}
+&\mathbb{P}\left(\left|vec(\mathcal{\mathcal{X}}^\top)^\top A ~vec(\mathcal{\mathcal{X}}^\top) - \mathbb{E} \left[vec(\mathcal{\mathcal{X}}^\top)^\top A~ vec(\mathcal{\mathcal{X}}^\top)~\right]\right| >2\pi\eta\vertiii{f}\right) \\
+&= \mathbb{P}\left(\left|Z^\top \Sigma^{1/2}A\Sigma^{1/2}Z - \mathbb{E}\left[ Z^\top \Sigma^{1/2}A\Sigma^{1/2}Z \right]\right|>2\pi \eta\vertiii{f}\right)\\
+&\le 2\exp\left[-c\min\left\{\cfrac{2\pi \eta\vertiii{f}}{\|\Sigma^{1/2}A\Sigma^{1/2}\|},\cfrac{4\pi^2\eta^2\vertiii{f}^2}{\|\Sigma^{1/2}A\Sigma^{1/2}\|_F^2}\right\}\right].
+\end{aligned}
+\end{equation}
+
+
+
+
+Using Lemma \ref{lemma:max-L2-norm}, $\|\Sigma^{1/2}A\Sigma^{1/2}\|\le \|\Sigma\|\|A\|\le 2\pi \vertiii{f} \|A\|$. It follows from \citet{golub2012matrix},
+\begin{equation}
+\begin{aligned}
+&\|\Sigma^{1/2}A\Sigma^{1/2}\|_F \le \sqrt{\rank(\Sigma^{1/2}A\Sigma^{1/2})} \|\Sigma^{1/2}A\Sigma^{1/2}\| \nonumber \\
+&\le \sqrt{\rank(A)} \|\Sigma^{1/2}A\Sigma^{1/2}\| \le 2\pi \sqrt{\rank(A)} \|A\| \vertiii{f}. \nonumber
+\end{aligned}
+\end{equation}
+Then plugging in the bound for $\|\Sigma^{1/2}A\Sigma^{1/2}\|$ and 
+$\|\Sigma^{1/2}A\Sigma^{1/2}\|_F$ into \eqref{eq: hanson1} completes the proof.
+\end{proof}
+
+\subsection{Proof of Proposition \ref{prop:bias_bound}}
+\begin{proof}
+It suffices to show that for any two unit vectors $e_r,e_s$, 
+\begin{equation}
+\begin{aligned}
+\left|e_r^\top \left[\mathbb{E}\hat{f}(\omega_j) - f(\omega_j)\right]e_s\right| \le \frac{m}{n}\Omega_n(f) + \frac{1}{2\pi}\left(\frac{\Omega_n(f)}{n}+L_n(f)\right). \nonumber
+\end{aligned}
+\end{equation}
+Since  
+\begin{equation}
+\hat{f}(\omega_j) = \frac{1}{2\pi(2m+1)} \sum_{\ell =-m}^m I(\omega_{j+\ell}),  \nonumber
+\end{equation}
+we have 
+\begin{equation}
+\label{eq:mul_dev}
+\begin{aligned}
+\left|e_r^\top \left[\mathbb{E}\hat{f}(\omega_j) - f(\omega_j)\right]e_s\right| 
+&\le \frac{1}{2\pi(2m+1)} \sum_{\ell = -m}^m |e_r^\top\left[\mathbb{E}I(\omega_{j+\ell}) - \mathbb{E} I(\omega_{j})\right]e_s|\\
+&+\left|e_r^\top \left[\frac{1}{2\pi}\mathbb{E}I(\omega_j) - f(\omega_j)\right]e_s\right|. 
+\end{aligned}
+\end{equation}
+By definition of $I(\omega_j)$ in \eqref{eq:single_periodogram}, we have $\mathbb{E} I(\omega_j) = \sum_{|k| \le n} \Gamma(k) \frac{(n-|k|)}{n} e^{-ik \omega_j}$.  Therefore, the second term above takes the form 
+\begin{equation}
+\label{eq:mul_dev1}
+\begin{aligned}
+\left|\frac{1}{2\pi} e_r^\top \left[\mathbb{E} I(\omega_j) - 2\pi f(\omega_j)\right]e_s\right| &= \frac{1}{2\pi}\left|\sum_{|k|\le n} \frac{|k|}{n}  \Gamma_{rs}(k) e^{-ik\omega_j}+\sum_{|k|>n} \Gamma_{rs}(k) e^{-ik\omega_j}\right|\\
+&\le \frac{1}{2\pi} \left [\sum_{|k|\le n} \frac{|k|}{n}  |\Gamma_{rs}(k)|+ \sum_{|k|>n} |\Gamma_{rs}(k)|\right]\\
+&= \frac{1}{2\pi}\left(\frac{\Omega_n(f)}{n} + L_n(f)\right). 
+\end{aligned}
+\end{equation}
+For the first term, note that $|e^{ix} - e^{iy}|\le |x-y|$ and $|\omega_j-\omega_{j+\ell}| = 2\pi \frac{|\ell|}{n}$. This implies 
+\begin{equation}
+\label{eq:mul_dev2}
+\begin{aligned}
+\left|\frac{1}{2\pi} e_r^\top \left[\mathbb{E} I(\omega_j) - \mathbb{E} I(\omega_{j+\ell}) \right]e_s\right| &= \frac{1}{2\pi}\left|\sum_{|k|\le n} \left(1-\frac{|k|}{n}\right) |\Gamma_{rs}(k)| (e^{-ik\omega_j} - e^{-i k\omega_{j+\ell}})\right|\\
+&\le \frac{1}{2\pi} \sum_{|k|\le n} |\Gamma_{rs}(k)| |k||\omega_j - \omega_{j+\ell}| =  |\ell| \Omega_n(f)/n. 
+\end{aligned}
+\end{equation}
+Plugging in \eqref{eq:mul_dev1} and \eqref{eq:mul_dev2}  into \eqref{eq:mul_dev},  
+\begin{equation*}
+\begin{aligned}
+\left|e_r^\top \left[\mathbb{E}\hat{f}(\omega_j) - f(\omega_j)\right]e_s\right| &\le \frac{1}{2\pi}\left(\frac{\Omega_n(f)}{n} + L_n(f)\right)+ \left(\frac{\sum_{|\ell|\le m} |\ell|}{2m+1}\right)\frac{\Omega_n(f)}{n}\\
+&\le \frac{m}{n}\Omega_n(f) + \frac{1}{2\pi}\left(\frac{\Omega_n(f)}{n}+L_n(f)\right).\nonumber
+\end{aligned}
+\end{equation*}
+\end{proof}
+
+
+\subsection{Proof for Proposition \ref{prop:order_bias}}
+\begin{proof}
+We will prove the proposition one by one for its three conditions. Proof for all three conditions uses the simple fact that, for $0<x<1$
+\begin{equation}
+\label{eq:sum-help}
+\sum_{\ell=1}^n \ell x^\ell = \frac{x(1+nx^{n+1}-(n+1)x^n)}{(1-x)^2}.
+\end{equation}
+
+\paragraph{Condition 1:} Directly plug the bound on $\|\Gamma(\ell)\|_{\text{max}}$ and with $|\Gamma_{r,s}(\ell)|\le \|\Gamma(\ell)\|_{max}$, we have 
+
+\begin{equation}
+\Omega_n \le 2 \sum_{\ell=1}^n \ell \|\Gamma(\ell)\|_{\text{max}}\le  2 \sigma_X \sum_{\ell=1}^n \ell \rho_X^{\ell} = \frac{2\sigma_X\rho_X (1+n\rho_X^{n+1}-(n+1)\rho_X^n)}{(1-\rho_X)^2}. \nonumber
+\end{equation}
+
+For $L_n$, 
+\begin{equation}
+L_n \le 2\sum_{\ell> n} \|\Gamma_{\ell}\|_{\text{max}} \le 2 \sigma_X \sum_{\ell>n} \rho_X^\ell = \frac{2 \sigma_X \rho_X^{n+1}}{1-\rho_X}. \nonumber
+\end{equation}
+
+\paragraph{Condition 2:} Note that condition of geometrically decaying $\rho$-mixing coefficient leads to condition 1 as 
+\begin{equation}
+\begin{aligned}
+|\Gamma_{rs}(\ell)| &= \left|\frac{\mathbb{E} e_r^\prime X_{\ell}X_{0}^\top e_s}{\sqrt{|\Gamma_{rr}(0)||\Gamma_{ss}(0)|}}\right|\sqrt{|\Gamma_{rr}(0)||\Gamma_{ss}(0)|}\\
+& \le \|\Gamma(0)\|_{\text{max}}\sigma_X \rho_X^{|\ell|} . \nonumber
+\end{aligned}
+\end{equation}
+Then follow the argument for condition 1, we finish the proof. 
+
+
+\paragraph{Condition 3:} 
+Let $\tilde{\Omega}_n$, $\tilde{L}_n$ be the $\Omega_n, L_n$ defzined before for time series $\tilde{X}_t$ and $\tilde{\Gamma}(\ell)$ be the auto-covariance for $\tilde{X}$. We first show that $\tilde{\Omega}_n$, $\tilde{L}_n$
+are upper bounds for $\Omega_n$, $L_n$. Then we present upper bounds for $\tilde{\Omega}_n$ and $\tilde{L}_n$ although it may lose the tightness in controlling of growth rates of these two. To see this, we partition $\tilde{\Gamma}(\ell)$ into blocks as follows.
+\begin{equation}
+\tilde{\Gamma}(\ell) = 
+\begin{bmatrix} 
+\Gamma(\ell) & \Gamma(\ell+1) & \cdots & \Gamma(\ell+d-1)\\ 
+\vdots & \vdots & \ddots & \vdots \\
+\Gamma(\ell-d+1) & \Gamma(\ell-d) & \cdots & \Gamma(\ell)
+\end{bmatrix}.\nonumber
+\end{equation}
+Since $\Gamma(\ell)$ appears as diagonal block of $\tilde{\Gamma}(\ell)$, based on the definition of $\Omega_n$ and $L_n$, we can claim that $\tilde{\Omega}_n$, $\tilde{L}_n$ are upper bounds for $\Omega_n$ and $L_n$ respectively. Next, we focus on gettting upper bound for $\tilde{\Omega}_n$ and $\tilde{L}_n$. 
+Consider the infinite moving average representation of $\tilde{X}_t$ 
+\begin{equation}
+\tilde{X}_t = \sum_{\ell=0}^\infty \tilde{B}_\ell \tilde{\varepsilon}_{t-\ell}, \nonumber
+\end{equation}
+where $\tilde{B}_\ell = (\tilde{A}_1)^\ell$ and autocovariance becomes
+\begin{equation}
+\tilde{\Gamma}(\ell) = \sum_{t=0}^\infty \tilde{B}_{t+\ell} \begin{bmatrix}
+I_{p} & \mathbf{0} &\ldots & \mathbf{0} \\
+\mathbf{0} &  \mathbf{0} & \ldots & \mathbf{0} \\
+\vdots  & \ddots  &  \mathbf{0} & \mathbf{0} \\
+\mathbf{0} &\ldots   &  \mathbf{0} & \mathbf{0}
+\end{bmatrix}
+\tilde{B}_{t}^\top.  \nonumber
+\end{equation}
+
+% Due to stationarity of time series $X_t$, $\tilde{\Gamma}(\ell)$ is 
+
+Since $\|\tilde{A}^\ell\| = \|SD^\ell S^{-1}\| =  \kappa\lambda_{\textup{max}}^\ell(\tilde{A}_1)$,
+
+
+\begin{equation}
+\begin{aligned}
+\|\tilde{\Gamma}(\ell)\| &\le  \sum_{t=0}^\infty  \|\tilde{B}_{t+\ell}\|\|\tilde{B}_{t}\|   \\
+&\le \kappa^2 \lambda^\ell_{\textup{max}}(\tilde{A}_1)\sum_{k=0}^{\infty} \lambda^2_{\textup{max}}(\tilde{A}_1)= \kappa^2 \frac{\lambda_{\textup{max}}^\ell(\tilde{A}_1)}{1-\lambda^2_{\text{max}}(\tilde{A}_1)}.\nonumber
+\end{aligned}
+\end{equation}
+
+
+Then noticing $\|\tilde{\Gamma}(\ell)\|_{\text{max}}\le \|\tilde{\Gamma}(\ell)\|$, using \eqref{eq:sum-help}
+\begin{equation}
+\begin{aligned}
+\tilde{\Omega}_n &\le 2\sum_{\ell=1}^n |\ell|\|\tilde{\Gamma}(\ell)\| \\
+&\le 2\kappa^2 \sum_{\ell=1}^n  \frac{\ell\lambda_{\textup{max}}^\ell(\tilde{A}_1)}{(1-\lambda_{\textup{max}}(\tilde{A}_1))(1-\lambda^2_{\textup{max}}(\tilde{A}_1))} = 2\kappa^2\frac{\lambda_{\textup{max}}(\tilde{A}_1)(1+n\lambda_{\textup{max}}^{n+1}(\tilde{A}_1)-(n+1)\lambda_{\textup{max}}(\tilde{A}_1))}{(1-\lambda_{\textup{max}}(\tilde{A}_1))^2(1-\lambda^2_{\textup{max}}(\tilde{A}_1))}. \nonumber
+\end{aligned}
+\end{equation}
+
+For $\tilde{L}_n$, 
+\begin{equation}
+\tilde{L}_n \le 2\sum_{\ell> n} \|\tilde{\Gamma}(\ell)\| = 2\kappa^2\sum_{\ell > n}\frac{\lambda_{\textup{max}}^\ell(\tilde{A}_1)}{1-\lambda^2_{\textup{max}}(\tilde{A}_1)} = 2\kappa^2\frac{\lambda_{\textup{max}}^{n+1}(\tilde{A})}{(1-\lambda_{\textup{max}}(\tilde{A}_1))(1-\lambda^2_{\textup{max}}(\tilde{A}_1))}.\nonumber
+\end{equation}
+\end{proof}
+
+
+\subsection{Proof of Proposition \ref{prop:variance_bound}}
+\begin{proof}
+We focus on bounding the tail probability of the variance term
+\begin{equation}
+\mathbb{P}\left(\left|\hat{f}_{rs}(\omega_j) - \mathbb{E}\hat{f}_{rs}(\omega_j)\right| \ge \vertiii{f}\eta\right). \nonumber
+\end{equation}
+% With the fact that for any $1\le r,s\le p$,
+First, note that $\mathbb{P}\left(\left|\hat{f}_{rs}(\omega) - \mathbb{E}\hat{f}_{rs}(\omega)\right|\ge  \vertiii{f}\eta \right)$ is at most 
+\begin{equation}
+\label{eq:bound_with_real_img}
+\begin{aligned}
+% &\mathbb{P}\left(\left|\hat{f}_{rs}(\omega) - \mathbb{E}\hat{f}_{rs}(\omega)\right|\ge  \vertiii{f}\eta \right) \\
+% &\le 
+\mathbb{P}\left(\left|\mathbf{Re}\left(\hat{f}_{rs}(\omega) - \mathbb{E}\hat{f}_{rs}(\omega)\right)\right|\ge \frac{\vertiii{f}\eta}{2} \right)  + \mathbb{P}\left(\left|\mathbf{Im}\left(\hat{f}_{rs}(\omega) - \mathbb{E}\hat{f}_{rs}(\omega)\right)\right|\ge \frac{\vertiii{f}\eta}{2} \right),
+\nonumber 
+\end{aligned}
+\end{equation}
+so it is sufficient to derive upper bounds for the real and imaginary parts separately.\par 
+The main idea of our proof is to express the real and imaginary parts of $\hat{f}(\omega_j)$ as quadratic forms in $vec(\mathcal{X}^\top)$, and apply Lemma \ref{lemma: hason_bound_time_gauss} on each part. First, we express the periodogram $I(\omega_j)$ in terms of  trigonometric series. 
+As pointed out before, $I(\omega_j)$ defined in \eqref{eq:single_periodogram} can be written as 
+\begin{equation}
+\label{eq:realImaginaryParts}
+\begin{aligned}
+I(\omega_j) = & \left(\mathcal{X}^\top C_j-  \iu \mathcal{X}^\top S_j\right) \left(\mathcal{X}^\top C_j-\iu \mathcal{X}^\top S_j\right)^\dag \\
+= & \mathcal{X}^\top (C_jC_j^\top + S_jS_j^\top)\mathcal{X} + \iu \mathcal{X}^\top(C_jS_j^\top-S_jC_j^\top)\mathcal{X}. 
+\end{aligned}
+\end{equation}
+% Now, \eqref{eq:realImaginaryParts} indicates 
+Note that in the univariate case ($p=1$) the imaginary part becomes zero and we only need to bound the real part. However, for multivariate case, we need to understand the concentration behaviour of both parts.
+\smallskip
+\par 
+\noindent \textbf{Concentration Inequality for Real Part: } We claim that  there exists a universal constant $c>0$ s.t. for any two unit vectors $u$ and $v$, 
+\begin{equation*}
+\begin{aligned}
+&\mathbb{P}\left(\left|u^T\mathrm{\bf{Re}}\left(\hat{f}(\omega_j) - \mathbb{E}\hat{f}(\omega_j)\right)v\right|\ge \vertiii{f} \eta/2 \right)\\
+\leq & 6\exp \left( - c\min \left\{(2m+1)\eta^2,(2m+1)\eta \right\} \right).
+\end{aligned}
+\end{equation*}
+We notice for any symmetric matrix $A$ and unit vectors $u$ and $v$:
+\begin{equation}
+\label{eq: sym_matrix_ine}
+2|u^\top Av| \le |u^\top Au| + |v^\top Av| + |(u+v)^\top A(u+v)|.
+\end{equation}
+Now, $\mathrm{\bf{Re}}\left(\hat{f}(\omega_j)\right) = \mathcal{X}^\top \sum_{|\ell|\le m}(C_{j+\ell}C_{j+\ell}^\top + S_{j+\ell}S_{j+\ell}^\top)\mathcal{X}$ is a symmetric matrix, and 
+so is $\mathbb{E}\left[ {\bf Re}\left(\hat{f}(\omega_j)\right)\right]$. Thus, $\mathrm{\bf{Re}}\left(\hat{f}(\omega_j) - \mathbb{E}\hat{f}(\omega_j)\right)$ is a symmetric matrix. Then applying \eqref{eq:realImaginaryParts}, we get 
+\begin{equation}
+\label{eq:mul_three_parts}
+\begin{aligned}
+&\mathbb{P}\left(\left|u^\top \mathrm{\bf{Re}}\left(\hat{f}(\omega_j) - \mathbb{E}\hat{f}(\omega_j)\right)v\right|\ge 1/2\vertiii{f} \eta \right) \\
+% &= \mathbb{P}\left(2\left|u^\top \mathrm{\bf{Re}}\left(\hat{f}(\omega_j) - \mathbb{E} \hat{f}(\omega_j)\right)v\right|\ge 4 \vertiii{f} \eta \right) \\
+&\leq  \mathbb{P}\left(\left|u^\top \mathrm{\bf{Re}}\left(\hat{f}(\omega_j) - \mathbb{E}\hat{f}(\omega_j)\right)u\right|\ge 1/4\vertiii{f} \eta \right)\\
+&+\mathbb{P}\left(\left|v^\top \mathrm{\bf{Re}}\left(\hat{f}(\omega_j) - \mathbb{E}\hat{f}(\omega_j)\right)v\right|\ge 1/4\vertiii{f} \eta \right)\\
+&+ \mathbb{P}\left(\left|(u+v)^\top\mathrm{\bf{Re}}\left(\hat{f}(\omega_j) - \mathbb{E}\hat{f}(\omega_j)\right)(u+v)\right|\ge 1/2\vertiii{f} \eta \right).
+\end{aligned}
+\end{equation}
+Next, we note that 
+\begin{equation}
+\label{eq:qudratic representation}
+\mathbf{\bf{Re}}(\hat{f}(\omega_j)) = \frac{1}{2\pi(2m+1)} \|Q_j\mathcal{X}\|^2,\nonumber
+\end{equation}
+where 
+\begin{equation}
+Q_j := \left[ 
+\begin{array}{llll}
+C_{j-m}^\top\\
+S_{j-m}^\top \\
+\vdots\\
+C_j^\top\\
+S_j^\top\\
+\vdots\\
+C_{j+m}^\top\\
+S_{j+m}^\top\\ 
+\end{array}
+\right]_{(4m+2)\times n}.\nonumber
+\end{equation}
+Then for any unit vector $v$, 
+\begin{equation}
+\left|v^\top \mathrm{\bf{Re}}\left(\hat{f}(\omega_j) - \mathbb{E}\hat{f}(\omega_j)\right)v \right| = \frac{1}{2\pi(2m+1)}\left|v^\top \mathcal{X}^\top Q_j^\top Q_j \mathcal{X}v - \mathbb{E} v^\top \mathcal{X}^\top Q_j^\top Q_j \mathcal{X}v\right|.\nonumber
+\end{equation}
+Let $Y_t = v^\top X_t$, and let $\mathcal{Y} = [Y_1: \ldots: Y_n]^\top$ be a data matrix with $n$ consecutive observations.  Using Lemma  \ref{lemma:max-L2-norm-Y}, $\vertiii{f_Y} \le \|v\|^2 \vertiii{f} = \vertiii{f}$. Now note that  $\rank(Q^{\top}_jQ_j) \le 4m+2$, and $\|Q_j\|\le \|Q_{F_n}\|=1$, where $Q_{F_n}$ expands the rows of $Q_j$ to include all the Fourier frequencies (see Lemma \ref{lemma:maximum_L2_Q} for definition). Since all the rows of $Q_j$ are partially selected from those in $Q_{F_n}$ and Lemma \ref{lemma:maximum_L2_Q} states that $\|Q_{F_n}\|=1$, using this bound and applying Lemma \ref{lemma: hason_bound_time_gauss}, we get 
+\begin{equation}
+\label{eq:mul_real_vv}
+\begin{aligned}
+&\mathbb{P}\left(\left|v^\top \mathrm{\bf{Re}}\left(\hat{f}(\omega_j) - \mathbb{E}\hat{f}(\omega_j)\right)v\right| \ge 1/4\vertiii{f}\eta\right) \\
+&\le P\left(\frac{1}{2\pi}\left|\mathcal{Y}^\top Q^{\top}_jQ_j\mathcal{Y} - \mathbb{E}\mathcal{Y}^\top Q^{\top}_jQ_j\mathcal{Y}\right|\ge 1/4  \vertiii{f_Y}(2m+1)\eta\right)\\
+&\le 2\exp\left[-c_1\min\left\{\cfrac{(2m+1)\eta}{\|Q_j\|^2}, \cfrac{(2m+1)^2\eta^2}{\rank(Q_j)\|Q_j\|^4}\right\}\right] \\
+&\le 2\exp\left[-c_1\min\left\{(2m+1)\eta, \cfrac{(2m+1)^2\eta^2}{(4m+2)}\right\}\right] \\
+& \le 2\exp\left[-c\min\left((2m+1)\eta^2, (2m+1)\eta\right)\right],
+\end{aligned}
+\end{equation}
+where $c_1, c$ are universal constants not depending on $n,p$ { or any other model parameters}. 
+We can write 
+\begin{equation}
+\begin{aligned}
+&\mathbb{P}\left(|(u+v)^\top \mathrm{\bf{Re}}\left(\hat{f}(\omega_j) - \mathbb{E}\hat{f}(\omega_j)\right)(u+v)|\ge 1/2 \vertiii{f} \eta \right) \\
+=& \mathbb{P}\left(\left|\frac{(u+v)}{\sqrt{2}}^\top \mathrm{\bf{Re}}\left(\hat{f}(\omega_j) - \mathbb{E} \hat{f}(\omega_j)\right)\frac{(u+v)}{\sqrt{2}}\right|\ge 1/4 \vertiii{f} \eta \right),\nonumber
+\end{aligned}
+\end{equation}
+with $\frac{u+v}{\sqrt{2}}$ as a unit vector. Thus three terms appearing in right hand side of inequality \eqref{eq:mul_three_parts} can all be bounded by \eqref{eq:mul_real_vv}, which completes our proof.  Note that when $u, v$ are canonical vectors $e_r$, $e_s$ respectively, then $(u+v)$ has at most two non-zero entries. Further, since $f$ is non-negative definite, the quantity $\vertiii{f_Y}$ can be upper bounded by a smaller quantity $\max_{1 \le r \le p} \vertiii{f_{r}}$, where $f_r$ denotes the spectral density of the $r^{th}$ component of $X_t$.
+\smallskip
+
+\noindent \textbf{Concentration Inequality for Imaginary Part: } We claim that there exists a universal positive constant $c$ such that for any two  unit vectors $u$ and $v$ and any $\eta > 0$,
+\begin{equation}
+\begin{aligned}
+& \mathbb{P}\left(\left|u^\top \mathrm{\bf{Im}}\left(\hat{f}(\omega_j) - \mathbb{E}\hat{f}(\omega_j)\right)v\right|\ge 1/2\vertiii{f}\eta \right) \\
+& \le 4\exp \left[ - c\min \left\{(2m+1)\eta^2,(2m+1)\eta \right\} \right].\nonumber
+\end{aligned}
+\end{equation}
+%\begin{proof}
+To prove this claim, note that \eqref{eq:realImaginaryParts} implies
+\begin{equation}
+\mathrm{\bf{Im}}\left(\hat{f}(\omega_j)\right) = \mathcal{X}^\top\sum_{|\ell|\le m}(C_{j+\ell}S_{j+\ell}^\top - S_{j+\ell}C_{j+\ell}^\top)\mathcal{X} .\nonumber
+\end{equation}
+Therefore, for any $\eta > 0$, we have 
+\begin{equation}
+\label{eq:mul_im_two}
+\begin{aligned}
+&~ \mathbb{P}\left(\left|u^\top \mathrm{\bf{Im}}\left(\hat{f}(\omega_j) - \mathbb{E}\hat{f}(\omega_j)\right)v\right|\ge 2\vertiii{f} \eta \right)  \\
+& \le \mathbb{P}\left(\frac{1}{2\pi(2m+1)}\left|u^\top \mathcal{X}^\top\sum_{|\ell|\le m}(S_{j+\ell}C_{j+\ell}^\top)\mathcal{X}  v - \mathbb{E}\left[u^\top \mathcal{X}^\top\sum_{|\ell|\le m}(S_{j+\ell}C_{j+\ell}^\top)\mathcal{X}  v\right]\right|\ge \vertiii{f} \eta \right) \\
+&+\mathbb{P}\left(\frac{1}{2\pi(2m+1)}\left|u^\top \mathcal{X}^\top\sum_{|\ell|\le m}(C_{j+\ell}S_{j+\ell}^\top)\mathcal{X}  v - \mathbb{E}\left[ u^\top \mathcal{X}^\top\sum_{|\ell|\le m}(C_{j+\ell}S_{j+\ell}^\top)\mathcal{X}  v\right]\right|\ge \vertiii{f} \eta \right).
+\end{aligned}
+\end{equation}
+It takes the same technique to get upper bound for two parts in the right hand side of inequality  \eqref{eq:mul_im_two}. So we will only show the proof for getting upper bound for the first part. \par 
+Let $Y_t = [v^\top ; u^\top ]X_t$ be a 2-dimensional time series. It follows from Lemma \ref{lemma:max-L2-norm-Y} that $\vertiii{f_Y}\le \|[v^\top; u^\top]\|^2 \vertiii{f} = 2\vertiii{f}$. \par 
+Define
+\begin{equation}
+P_j = \left[ 
+\begin{array}{ll}
+M_j & 0 \\
+0 & N_j 
+\end{array}
+\right]_{(4m+2)\times{2n}}, 
+\end{equation}
+where 
+\begin{align}
+M_j=\begin{bmatrix}
+S_{j-m}^\top\\
+\vdots \\
+S_j^\top\\
+\vdots \\
+S_{j+m}^\top
+\end{bmatrix}_{(2m+1)\times n}  \qquad
+N_j =\begin{bmatrix}
+C_{j-m}^\top\\
+\vdots \\
+C_j^\top\\
+\vdots \\
+C_{j+m}^\top
+\end{bmatrix}_{(2m+1)\times n}. \nonumber 
+\end{align}
+We can express the first part in \eqref{eq:mul_im_two} as 
+
+\begin{equation}
+\label{eq:mul_img_final}
+\begin{aligned}
+&~\mathbb{P}\left(\frac{1}{2\pi(2m+1)}\left|u^\top \mathcal{\mathcal{X}}^\top\sum_{|\ell|\le m}(S_{j+\ell}C_{j+\ell}^\top)\mathcal{\mathcal{X}}  v - \mathbb{E}\left[u^\top \mathcal{X}^\top\sum_{|\ell|\le m}(S_{j+\ell}C_{j+\ell}^\top)\mathcal{X}  v\right]\right|\ge 1/2\vertiii{f} \eta \right)\\
+& = \mathbb{P}\left(\frac{1}{2\pi(2m+1)}\left|vec(\mathcal{Y}^\top)^\top P_j^\top MP_j vec(\mathcal{Y}^\top)\ - \mathbb{E} \left[vec(\mathcal{Y}^\top)^\top P_j^\top MP_j vec(\mathcal{Y}^\top)\right]\right|\ge 1/2\vertiii{f}\eta\right),
+\end{aligned}
+\end{equation}
+where 
+\begin{equation}
+M = \left[
+\begin{array}{ll}
+0_{2m+1,2m+1} & I_{2m+1,2m+1}\\
+0_{2m+1,2m+1} & 0_{2m+1,2m+1}
+\end{array}
+\right]. \nonumber 
+\end{equation}
+Since $M_j$ and $N_j$ are both composed with rows from $Q_{F_n}$, $\|M_j\|\le \|Q_{F_n}\|=1$ and $\|N_j\|\le \|Q_{F_n}\|=1$. Furthermore, as block-wise diagonal matrix, $\|P_j\|=\max\{\|M_j\|, \|N_j\|\}=1$. 
+Now $\|P_j^\top M P_j\|\le \|P_j\|^2\|M\| \le 1$ and $\rank(P_j^\top M P_j) \le \rank(M) = 2m+1$. Since $\vertiii{f_Y}\le 2\vertiii{f}$, we can apply lemma \ref{lemma: hason_bound_time_gauss} to show that the probability in  \eqref{eq:mul_img_final} is at most 
+\begin{equation}
+\begin{aligned}
+&2\exp\left[-c\min\left\{\cfrac{(2m+1)\eta}{\|P_jMP_j^\top\|}, \cfrac{(2m+1)^2\eta^2}{\rank(P_j)\|P_jMP_j^\top\|}\right\}\right] \\
+&\le 2\exp\left[-c\min\left\{(2m+1)\eta, \cfrac{(2m+1)^2\eta^2}{(4m+2)}\right\}\right] \\
+& \le 2\exp\left[-c\min\left\{(2m+1)\eta^2, (2m+1)\eta\right\}\right], \nonumber 
+\end{aligned}
+\end{equation}
+where $c$ is an universal constant. 
+%\end{proof}
+
+
+Combining bounds for real and imaginary parts, and plugging these two bounds in  \eqref{eq:bound_with_real_img}, we can show that there exist universal positive constants $c_1, c_2$ such that for any $\eta > 0$, 
+\begin{equation}
+\mathbb{P}\left(\left|\hat{f}_{rs}(\omega_j) - \mathbb{E}\hat{f}_{rs}(\omega_j)\right| \ge \vertiii{f}\eta\right)\le c_1\exp\left[-c_2(2m+1)\min\{\eta, \eta^2\}\right].
+\end{equation}
+% This concentration inequality proves the single deviation bound used in the proof of Theorem 1 as equation (12) in \citet{bickel2008covariance}. Then follow the technique of the proof in Theorem 1, we could get $L_1$ norm bound for error term in \eqref{eq:L1_error} and complete the proof.
+\end{proof}
+%\end{prop}
+
+
+\subsection{Proof of Proposition \ref{prop: gauss_prop}}
+\begin{proof}
+For any Hermitian matrix $M$ \cite{golub2012matrix}, we have
+\begin{equation}
+\|M\|\le \sqrt{\|M\|_1 \|M\|_\infty} = \|M\|_1.
+\end{equation}
+Since both $f(\omega_j)$ and $\hat{f}_{\lambda}(\omega_j)$ are Hermitian, we can bound { spectral norm} of estimation error matrix with its { maximum absolute column sum norm}, i.e.
+\begin{equation}
+\label{eq:L1_error}
+\|\hat{f}_{\lambda}(\omega_j)-f(\omega_j)\| \le \|\hat{f}_{\lambda}(\omega_j)-f(\omega_j)\|_1.
+\end{equation}
+Following the proof technique of Theorem 1 in \citet{bickel2008covariance}, the first step is to bound probability of event 
+\begin{equation}
+A_0 = \left\{\max_{1\le r,s \le p}|\hat{f}_{rs}(\omega_j) - f_{rs}(\omega_j)| \ge \lambda/2 \right\}. \nonumber
+\end{equation}
+Our goal is to prove that there exist universal constants $c_1, ~ c_2$ such that for any $r,s \in\{1,\cdots, p\}$, 
+\begin{equation}
+\mathbb{P}\left(\left|\hat{f}_{rs}(\omega_j) - f_{rs}(\omega_j)\right|\ge \frac{\lambda}{2} \right) \le c_1 \exp\left[-c_2\min\left\{(2m+1)\eta^2, (2m+1)\eta\right\}\right], \nonumber
+\end{equation}
+where 
+\begin{equation}
+\lambda = 2\left[ R\vertiii{f}\sqrt{\log p/m} + \frac{m+1/2\pi}{n}\Omega_n(f) + \frac{1}{2\pi}L_n(f)\right]. \nonumber
+\end{equation}
+Then, with union bound, we could get probability bound for $\mathcal{A}_0$. 
+
+To accomplish this, we first divide the error into two terms along the line of a bias-variance decomposition.
+\begin{equation}
+\left|\hat{f}_{rs}(\omega_j) - f_{rs}(\omega_j)\right| \le \left|\mathbb{E}\hat{f}_{rs}(\omega_j) - f_{rs}(\omega_j)\right| + \left| \hat{f}_{rs}(\omega_j) - \mathbb{E}\hat{f}_{rs}(\omega_j) \right|. \nonumber
+\end{equation}
+Proposition \ref{prop:bias_bound} provides an upper bound on the bias term % for any $1\le r,s\le p$,
+\begin{equation}
+\left|\mathbb{E}\hat{f}_{rs}(\omega_j) - f_{rs}(\omega)\right| \le \frac{m+1/2\pi}{n}\Omega_n(f) + \frac{1}{2\pi}L_n(f).. \nonumber
+\end{equation}
+This bound in bias shows that 
+\begin{equation}
+\label{eq:change_bound_to_variance}
+    \mathbb{P}\left(\left|\hat{f}_{rs}(\omega_j)-f_{rs}(\omega_j)\right|\ge \lambda/2\right)\le 
+    \mathbb{P}\left(\left|\hat{f}_{rs}(\omega_j)-\mathbb{E}\hat{f}_{rs}(\omega_j)\right|\ge R\vertiii{f}\sqrt{\frac{\log p}{m}}\right).
+\end{equation}
+Next, proposition \ref{prop:variance_bound} shows that there exists general constants $c_1, c_2$ s.t. 
+such that for any $\eta > 0$, 
+\begin{equation}
+\mathbb{P}\left(\left|\hat{f}_{rs}(\omega_j) - \mathbb{E}\hat{f}_{rs}(\omega_j)\right| \ge \vertiii{f}\eta\right)\le c_1\exp\left[-c_2(2m+1)\min\{\eta, \eta^2\}\right]. \nonumber 
+\end{equation}
+We set $\eta = R\sqrt{\frac{\log p}{m}}$. Combined with   \eqref{eq:change_bound_to_variance}, and noting that we are working in the  regime $m\succsim \log p$, we conclude  $\eta^2 = R^2\frac{\log p}{m} \le \eta = R\sqrt{\frac{\log p}{m}}$. This implies 
+\begin{equation}
+\begin{aligned}
+P({A}_0) = \mathbb{P}(\max_{r, s}|\hat{f}_{rs}(\omega_j)-f_{rs}(\omega_j)|\ge \lambda/2) \le c_1 p^2\exp\left[-c_2 (2m+1)R^2\frac{\log p}{m}\right]. \nonumber
+ \end{aligned}
+\end{equation}
+This concentration playes essential role in the proof of Theorem 1 as equation (12) in \citet{bickel2008covariance}. Theorem 1 in \cite{bickel2008covariance} provides the techniques to complete the asymptotic analysis, while here we do some modification to achieve non-asymptotic analysis. \par 
+\smallskip 
+\noindent \textbf{$L_2$ norm bound: } We separate our target into two terms 
+\begin{equation}
+\|T_\lambda(\hat{f}(\omega_j))-f(\omega_j)\| \le \|T_\lambda(f(\omega_j))-f(\omega_j)\|+\|T_\lambda(f(\omega_j))-T_\lambda(\hat{f}(\omega_j))\| \nonumber
+\end{equation}
+The first term can be bounded by its $L_1$ norm 
+\begin{equation}
+\label{eq:two_parts_L2_norm}
+\begin{aligned}
+& \|T_\lambda(f(\omega_j))-f(\omega_j)\|\le \|T_\lambda(f(\omega_j))-f(\omega_j)\|_1\\
+& \le \max_{r=1}^p \sum_{s=1}^p |f_{rs}(\omega_j)|\mathds{1}(|f_{rs}(\omega_j)|<\lambda) \le  \lambda^{1-q}\vertiii{f}_q^q,
+\end{aligned}
+\end{equation}
+for any $0\le q<1$. 
+
+Then we can upper bound the second term in \eqref{eq:two_parts_L2_norm} by three terms as follows:
+\begin{equation*}
+\begin{aligned}
+&\|T_\lambda(f(\omega_j))-T_\lambda(\hat{f}(\omega_j))\| \\
+&\le \max_{r=1}^p \sum_{s=1}^p |\hat{f}_{rs}(\omega_j)|\mathds{1}(|\hat{f}_{rs}(\omega_j)|\ge \lambda, |f_{rs}(\omega_j)|\le \lambda)\\
+&+\max_{r=1}^p \sum_{s=1}^p |f_{rs}(\omega_j)|\mathds{1}(|\hat{f}_{rs}(\omega_j)|\le \lambda, |f_{rs}(\omega_j)|\ge \lambda)\\
+&+\max_{r=1}^p \sum_{s=1}^p |\hat{f}_{rs}(\omega_j)-f_{rs}(\omega_j)|\mathds{1}(|\hat{f}_{rs}(\omega_j)|\ge \lambda, |f_{rs}(\omega_j)|\ge \lambda)\\
+& = \rm{I}+\rm{II}+\rm{III}
+\end{aligned}
+\end{equation*}
+Define three events:
+\begin{equation*}
+\begin{aligned}
+&A_1 = \left\{\rm{I} \ge 3\vertiii{f}_q^q \lambda^{(1-q)}\right\}\\
+&A_2 = \left\{\rm{II}\ge 2\vertiii{f}_q^q \lambda^{(1-q)}\right\}\\
+&A_3 = \left\{\rm{III}\ge \vertiii{f}_q^q \lambda^{(1-q)}\right\}
+\end{aligned}
+\end{equation*}
+We will show that on $A_0^\complement$, none of these three events can happen, i.e., \begin{equation}
+A_1\cup A_2 \cup A_3 \subset A_0. \nonumber
+\end{equation}
+To this end, note that on $A_0^\complement$, 
+\begin{equation}
+\label{eq:bound_III}
+\begin{aligned}
+\rm{III} &\le \max_r \left|\hat{f}_{rs}(\omega_j)-f_{rs}(\omega_j)\right|\sum_{s=1}^p\mathds{1}(|f_{rs}(\omega_j)|\ge \lambda)\\
+& \le \lambda \sum_{s=1}^p \frac{|f_{rs}(\omega_j)|^q}{\lambda^q} \le \vertiii{f}_q^q \lambda^{1-q}. \nonumber 
+\end{aligned}
+\end{equation}
+Here we use the fact that on event $A_0^\complement$, 
+$|\hat{f}_{rs}(\omega_j) - f_{rs}(\omega_j)|\le \frac{\lambda}{2}<\lambda$. Similarly, on $A_0^\complement$,
+\begin{equation*}
+\begin{aligned}
+\rm{II} &\le \max_{r=1}^p |\hat{f}_{rs}(\omega_j)-f_{rs}(\omega_j)|\sum_{s=1}^p\mathds{1}(|f_{rs}(\omega_j)|\ge \lambda)+|\hat{f}_{rs}(\omega_j)|\sum_{s=1}^p \mathds{1}(|\hat{f}_{rs}(\omega_j)|\le \lambda, |f_{rs}(\omega_j)|\ge \lambda)\\
+& \le \max_{r=1}^p \left[\lambda \sum_{s=1}^p\mathds{1}(|f_{rs}(\omega_j)|\ge \lambda)+\lambda  \sum_{s=1}^p \mathds{1}(|f_{rs}(\omega_j)|\ge \lambda)\right]\le 2\vertiii{f}_q^q \lambda^{1-q},
+\end{aligned}
+\end{equation*}
+where the last inequality follows from the same argument as in \eqref{eq:bound_III}. Next, we focus on $A_1$. 
+\begin{equation*}
+\begin{aligned}
+&\rm{I} = \max_{r=1}^p \sum_{s=1}^p |\hat{f}_{rs}(\omega_j)|\mathds{1}(|\hat{f}_{rs}(\omega_j)|\ge \lambda, |f_{rs}(\omega_j)|\le \lambda)\\
+& \le \max_{r=1}^p \sum_{s=1}^p |\hat{f}_{rs}(\omega_j)-f_{rs}(\omega_j)|\mathds{1}(|\hat{f}_{rs}(\omega_j)|\ge \lambda, |f_{rs}(\omega_j)|\le \lambda)\\
+&+\max_{r=1}^p \sum_{s=1}^p |f_{rs}(\omega_j)|\mathds{1}(|\hat{f}_{rs}(\omega_j)|\ge \lambda, |f_{rs}(\omega_j)|\le \lambda)\\
+& = \rm{IV}+\rm{V}.
+\end{aligned}
+\end{equation*}
+A similar argument as above can show that 
+\begin{equation}
+\rm{V}\le \vertiii{f}_q^q \lambda^{1-q}. \nonumber
+\end{equation}
+For $\rm{IV}$, on $A_0^\complement$, 
+\begin{equation*}
+\begin{aligned}
+&\rm{IV} = \max_{r=1}^p \sum_{s=1}^p |\hat{f}_{rs}(\omega_j)-f_{rs}(\omega_j)|\mathds{1}(|\hat{f}_{rs}(\omega_j)|\ge \lambda, |f_{rs}(\omega_j)|\le \lambda)\\
+&= \max_{r=1}^p \sum_{s=1}^p |\hat{f}_{rs}(\omega)-f_{rs}(\omega_j)|
+\mathds{1}(|\hat{f}_{rs}(\omega_j)|\ge \lambda, ~\lambda/2<|f_{rs}(\omega_j)|\le \lambda)\\
+& \le \max_{r=1}^p \sum_{s=1}^p \lambda \mathds{1}(|f_{rs}(\omega_j)|\ge \lambda/2) \le \max_r \sum_{s=1}^p \lambda \sum_{s=1}^p \frac{|f_{rs}(\omega_j)|^q}{(\lambda/2)^q}\\
+&\le 2\lambda^{1-q} \vertiii{f}_q^q. 
+\end{aligned}
+\end{equation*}
+Combining these two parts, we have $\rm{I}\le 3\lambda^{1-q}\vertiii{f}_q^q$. Also, since 
+\begin{equation*}
+\left\{\|T_\lambda(\hat{f}(\omega_j))-f(\omega_j)\|
+\ge 7\lambda^{1-q}\vertiii{f}_q^q\right\} \subset A_1\cup A_2 \cup A_3 \subset A_0,
+\end{equation*}
+we have 
+\begin{equation*}
+\begin{aligned}
+&\mathbb{P}(\|\hat{f}(\omega_j)-f(\omega_j)\| 
+\ge 7\lambda^{1-q}\vertiii{f}_q^q\})
+\le \mathbb{P}(A_0) \le c_1p^2\exp\left[-c_2(2m+1)\min\{\eta, \eta^2\}\right]. \end{aligned}
+\end{equation*}
+\par
+\smallskip
+\noindent\textbf{Proof of upper bound on Frobenius norm: } Like the proof for operator norm, we decompose the error term as 
+\begin{equation}
+\|T_\lambda(\hat{f})(\omega_j)-f(\omega_j)\|_F^2 \le \|T_\lambda(f(\omega_j))-f(\omega_j)\|_F^2+\|T_\lambda(f(\omega_j))-T_\lambda(\hat{f}(\omega_j))\|_F^2. \nonumber
+\end{equation}
+The same argument for opertator norm then ensures that on $A_0^c$
+\begin{equation*}
+\begin{aligned}
+\|T_\lambda(f)-f\|_F^2 &= \sum_{r,s} |f_{rs}(\omega_j)|^2\mathds{1}(|f_{rs}(\omega_j)|\le \lambda)\\
+& \le \sum_{r,s} \lambda^{2-q} |f_{rs}(\omega_j)|^q \le \lambda^{2-q}\vertiii{f}_q^2. 
+\end{aligned}
+\end{equation*}
+As before, we decompose the second term in the next step as follows:
+\begin{equation*}
+\begin{aligned}
+&\|T_\lambda(f(\omega_j))-T_\lambda(\hat{f}(\omega_j))\|_F^2 \\
+&\le \sum_{r,s} |\hat{f}_{rs}(\omega_j)|^2\mathds{1}(|\hat{f}_{rs}(\omega_j)|\ge \lambda, |f_{rs}(\omega_j)|\le \lambda)\\
+&+\sum_{r,s} |f_{rs}(\omega_j)|^2 \mathds{1}(|\hat{f}_{rs}(\omega_j)|\le \lambda, |f_{rs}(\omega_j)|\ge \lambda)\\
+&+ \sum_{r,s} |\hat{f}_{rs}(\omega_j)-f_{rs}(\omega_j)|^2\mathds{1}(|\hat{f}_{rs}(\omega_j)|\ge \lambda, |f_{rs}(\omega_j)|\ge \lambda)\\
+&= \rm{I}+\rm{II}+\rm{III},
+\end{aligned}
+\end{equation*}
+and we define following events:
+\begin{equation*}
+\begin{aligned}
+&A_1 = \left\{\rm{I} \ge 7p\vertiii{f}_q^q \lambda^{2-q}\right\}\\
+&A_2 = \left\{\rm{II}\ge 4p\vertiii{f}_q^q \lambda^{2-q}\right\}\\
+&A_3 = \left\{\rm{III}\ge p\vertiii{f}_q^q \lambda^{2-q}\right\}.
+\end{aligned}
+\end{equation*}
+We will show that $A_1\cup A_2 \cup A_3 \subset A_0$ by showing on $A_0^\complement$, none of these three events can happen.  $\rm{III}\le p\lambda^{2-q}\vertiii{f}_q^q$ is obvious with same techniques before. For $\rm{II}$, on $A_0$, 
+\begin{equation*}
+\begin{aligned}
+\rm{II} &\le \left[|\hat{f}_{rs}(\omega_j)-f_{rs}(\omega_j)|^2 + |\hat{f}_{rs}(\omega_j)|^2 +2 |\hat{f}_{rs}(\omega_j)||\hat{f}_{rs}(\omega_j)-f_{rs}(\omega_j)|\right]\\
+&  \mathds{1}(|\hat{f}_{rs}(\omega_j)|\le \lambda, |f_{rs}(\omega_j)|\ge \lambda)\\
+& \le \sum_{r,s} \lambda^2\mathds{1}(|f_{rs}(\omega_j)|\ge \lambda) + \lambda^2\mathds{1}(|f_{rs}(\omega_j)|\ge \lambda)+2\lambda^2\mathds{1}(|f_{rs}(\omega_j)|\ge \lambda) \\
+& \le 4p\lambda^{2-q}\vertiii{f}_q^q. 
+\end{aligned}
+\end{equation*}
+For $\rm{I}$, on $A_0$, we have
+\begin{equation*}
+\begin{aligned}
+\rm{I}\le& \sum_{r,s}\left[|\hat{f}_{rs}(\omega_j)-f_{rs}(\omega_j)|^2 + |f_{rs}(\omega_j)|^2+ 2|f_{rs}(\omega_j)||\hat{f}_{rs}(\omega_j)-f_{rs}(\omega_j)|\right] \\ 
+& \mathds{1}(|f_{rs}(\omega_j)|\le \lambda, |\hat{f}_{rs}(\omega_j)|\ge \lambda)\\
+& = \rm{V}+\rm{VI}+\rm{VII}. 
+\end{aligned}
+\end{equation*}
+Note that on $A_0^\complement$, $\mathds{1}(|f_{rs}(\omega_j)|\le \lambda, |\hat{f}_{rs}(\omega_j)|\ge \lambda)=\mathds{1}(\lambda/2<|f_{rs}(\omega_j)|\le \lambda, |\hat{f}_{rs}(\omega_j)|\ge \lambda)$. Using this, we can show that 
+\begin{equation*}
+\begin{aligned}
+& \rm{V} = \lambda^2 \sum_{r,s}\mathds{1}(|f_{rs}(\omega_j)|\ge \lambda/2)=\le \lambda^2 \sum_{r,s}\left(\frac{|f_{rs}(\omega_j)|^q}{(\lambda/2)^q}\right) \le 2p\lambda^{2-q}\vertiii{f}_q^q\\
+& \rm{VI}\le  \sum_{r,s}|f_{rs}(\omega_j)|^2 1(|f_{rs}(\omega_j)|\le \lambda)\le \sum_{r,s} \left(\frac{\lambda}{|f_{rs}(\omega_j)|}\right)^{2-q}|f_{rs}(\omega_j)|^2 = p\vertiii{f}_q^q \lambda^{2-q}\\
+& \rm{VII}\le 2\lambda^2 \sum_{r,s}1(|f_{rs}(\omega_j)|\ge \lambda/2)=\le 2\lambda^2 \sum_{r,s}\left(\frac{|f_{rs}(\omega_j)|^q}{(\lambda/2)^q}\right) \le 4p\lambda^{2-q}\vertiii{f}_q^q.
+\end{aligned}
+\end{equation*}
+Thus, we have shown that $\rm{I}\le 7p\lambda^{2-q}\vertiii{f}_q^q$. Putting all these pieces together, we obtain 
+\begin{equation}
+\left\{\|T_\lambda(\hat{f}(\omega_j))-f(\omega_j)\|_F^2\ge 13p\lambda^{2-q}\vertiii{f}_q^q\right\} \subset  A_1\cup A_2 \cup A_3 \subset A_0, \nonumber
+\end{equation}
+which completes the proof. 
+\end{proof}
+
+
+\subsection{Proof of Proposition \ref{prop:consistency}}
+\begin{proof}
+In order to prove the first bound, we note that 
+\begin{equation*}
+\begin{aligned}
+&\mathbb{P}\left(\exists ~r,s : |T_\lambda(\hat{f}_{rs}(\omega_j))|>0, f_{rs}(\omega_j)=0\right)\\
+& \le \mathbb{P}\left(\exists ~r,s : |T_\lambda(\hat{f}_{rs}(\omega_j))-f_{rs}(\omega_j)|>\lambda \right)\\
+&\le p^2 c_1\exp[-c_2R^2 \log p].
+\end{aligned}
+\end{equation*}
+where the last inequality comes from proposition \ref{prop: gauss_prop}. 
+
+Now we turn to the second part. Since $\mathcal{S}(\gamma) = \left\{(r,s):|f_{rs}(\omega_j)|\ge \gamma \lambda \right\}$ with some $\gamma>1$. 
+\begin{equation*}
+\begin{aligned}
+& \mathbb{P}\left(\exists ~(r,s) \in \mathcal{S}(\gamma) : T_\lambda(\hat{f}_{rs}(\omega_j))=0, |f_{rs}(\omega_j)| >0\right)\\
+& \mathbb{P}\left(\exists ~(r,s) \in S(\gamma), |\hat{f}_{rs}(\omega_j)-f_{rs}(\omega_j)| >(\gamma-1)\lambda\right)\\
+&\le p^2 c_1\exp[-c_2 (\gamma-1)^2R^2 \log p].
+\end{aligned}
+\end{equation*}
+The last inequality comes from the following decomposition  
+\begin{equation}
+(\gamma-1)\lambda = 2(\gamma-1)R \vertiii{f}\sqrt{\frac{\log p}{m}} +2(\gamma-1)\left[ \frac{m+1/2\pi}{n}\Omega_n(f)+\frac{1}{2\pi}L_n(f)\right], \nonumber
+\end{equation}
+where the second part serves as an upper bound for bias because $\gamma>1.5$.
+\end{proof}
+
+\subsection{Proof of Proposition \ref{prop:coherance}}
+We first build the concentration bound for error terms under asymptotic  region stated in the proposition \ref{prop:coherance}, i.e.,  there exist universal positive constants $c_1, c_2$ s.t.
+\begin{equation}
+\mathbb{P}\left(\max_{r,s} |\hat{g}_{rs}(\omega_j) - g_{rs}(\omega_j)|\ge \frac{2\lambda}{\tau}\right)\le c_1 p^2 \exp[-c_2 R\log p].
+\end{equation}
+Define the events 
+\begin{equation}
+A_0 = \left\{\max_{r, s}|\hat{f}_{rs}(\omega_j)-f_{rs}(\omega_j)|\ge \lambda \right\} \nonumber
+\end{equation}
+and 
+\begin{equation}
+A_1 = \left\{\max_{r, s}|\hat{g}_{rs}(\omega_j)-g_{rs}(\omega_j)|\ge 2\lambda/\tau \right\}. \nonumber
+\end{equation}
+We will show that 
+$A_1\subset A_0$. Since 
+\begin{equation}
+|\hat{g}_{rs}(\omega_j)-g_{rs}(\omega_j)| \le    |\hat{g}_{rs}(\omega_j)-\tilde{g}_{rs}(\omega_j)|+|\tilde{g}_{rs}(\omega_j)-g_{rs}(\omega_j)| \nonumber
+\end{equation}
+with $\tilde{g}_{rs}(\omega_j) = \frac{\hat{f}_{rs}(\omega_j)}{\sqrt{f_{rr}(\omega_j)f_{ss}(\omega_j)}}$, it suffices to show that for any $r,s$, 
+\begin{equation*}
+\begin{aligned}
+& \left\{|\tilde{g}_{rs}(\omega_j)-g_{rs}(\omega_j)| \ge \lambda/\tau\right\}\subset A_0\\
+&\left\{|\hat{g}_{rs}(\omega_j)-\tilde{g}_{rs}(\omega_j)| \ge \lambda/\tau\right\}\subset A_0 
+\end{aligned}
+\end{equation*}
+For the first inclusion, note that with $|f_{rr}(\omega_j)|\ge \tau$ for $1\le r\le p$, 
+\begin{equation*}
+\begin{aligned}
+&\left\{|g_{rs}(\omega_j)-\tilde{g}_{rs}(\omega_j)| \ge \lambda/\tau \right\}\\
+&= \left\{\left|\frac{\hat{f}_{rs}(\omega_j) - f_{rs}(\omega_j)}{\sqrt{f_{rr}(\omega_j)f_{ss}(\omega_j)}}\right| \ge \lambda/\tau\right\}\\
+&\subset \left\{\left|\frac{\hat{f}_{rs}(\omega_j) - f_{rs}(\omega_j)}{\tau}\right| \ge \lambda/\tau\right\} = A_0.\\
+\end{aligned}
+\end{equation*}
+Similarly, for the second one,  
+\begin{equation*}
+\begin{aligned}
+&\left\{|\hat{g}_{rs}(\omega_j)-\tilde{g}_{rs}(\omega_j)| \ge \lambda/\tau \right\}\\
+&= \left\{\left|\hat{g}_{rs}(\omega_j) \right| \left|\sqrt{\frac{\hat{f}_{rr}(\omega_j)\hat{f}_{ss}(\omega_j)}{f_{rr}(\omega_j)f_{ss}(\omega_j)}}-1\right| \ge \lambda/\tau\right\}.
+\end{aligned}
+\end{equation*}
+Since the averaged periodogram  ($\hat{f}(\omega_j)$) is positive semi-definite with positive diagonal elements(almost surely), we have $|\hat{g}_{rs}(\omega_j)|\le 1$. This implies that the above event is a subset of 
+\begin{equation}
+\left\{\left|\sqrt{\frac{\hat{f}_{rr}(\omega_j)\hat{f}_{ss}(\omega_j)}{f_{rr}(\omega_j)f_{ss}(\omega_j)}}-1\right| \ge \lambda/\tau \right\}. \nonumber
+\end{equation}
+For all $1\le r\le p$, 
+\begin{equation}
+\label{eq:single-ratio-bound}
+\begin{aligned}
+&\left\{\left|\frac{\hat{f}_{rr}(\omega_j)}{f_{rr}(\omega_j)}-1\right|\ge \frac{\lambda}{\tau}\right\}  \\
+& = \left\{\left|\frac{f_{rr}(\omega_j) - f_{rr}(\omega_j)}{f_{rr}(\omega_j)}\right|\ge \frac{\lambda}{\tau}\right\}\\
+& \subset \left\{\left|f_{rr}(\omega_j) - f_{rr}(\omega_j)\right|\ge \lambda\right\} = A_0. \nonumber 
+\end{aligned}
+\end{equation}
+This indicates that 
+\begin{equation}
+\begin{aligned}
+\left\{\max_{r=1}^p\left|\frac{\hat{f}_{rr}(\omega_j)}{f_{rr}(\omega_j)}-1\right|\ge \frac{\lambda}{\tau}\right\} \subset A_0. \nonumber 
+\end{aligned}
+\end{equation}
+
+
+Noticing on the event $A_0^\complement$, for all $1\le r\le p$, 
+\begin{equation}
+\left\{1-\frac{\lambda}{\tau}\le \left|\frac{\hat{f}_{rr}(\omega_j)}{f_{rr}(\omega_j)}\right|\le 1+\frac{\lambda}{\tau}\right\}, \nonumber
+\end{equation}
+with $\lambda/\tau<1$ (since $\lambda = o(1)$), 
+\begin{equation}
+1-\frac{\lambda}{\tau}\le \sqrt{\frac{\hat{f}_{rr}(\omega_j)\hat{f}_{ss}(\omega_j)}{f_{rr}(\omega_j)f_{ss}(\omega_j)}}\le 1+\frac{\lambda}{\tau}, 
+\end{equation}
+indicating
+\begin{equation}
+\left\{\left|\sqrt{\frac{\hat{f}_{rr}(\omega_j)\hat{f}_{ss}(\omega_j)}{f_{rr}(\omega_j)f_{ss}(\omega_j)}}-1\right| \ge \lambda/\tau \right\}\subset A_0. \nonumber
+\end{equation}
+This in turn implies 
+\begin{equation}
+\begin{aligned}
+&\left\{|\hat{g}_{rs}(\omega_j)-\tilde{g}_{rs}(\omega_j)| \ge \lambda/\tau \right\}\subset A_0. \nonumber
+\end{aligned}
+\end{equation}
+Combining two inclusion relations, we can claim that 
+\begin{equation}
+\left\{\left|\hat{g}_{rs}(\omega_j)-g_{rs}(\omega_j)\right|\ge \frac{2\lambda}{\tau}\right\}\subset A_0, \nonumber
+\end{equation}
+which completes building the concentration inequality for event $A_1$ since proposition \ref{prop:consistency} presents the concentration inequality for event $A_0$.  Then following the argument in proof of proposition \ref{prop:consistency}, we could complete the proof. 

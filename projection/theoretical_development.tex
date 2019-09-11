@@ -1,0 +1,54 @@
+\section{Main Theory}
+In this section, we focus on the theoretical development on structured random mapping applied to random projection.  The classic random projection 
+theory asserts that any set of n points in d-dimensional Euclidean space can be
+embedded into k-dimensional Euclidean space where k is
+logarithmic in n and independent of d \textendash so that all pairwise
+distances are maintained within an arbitrarily small factor. The key ingredient for linear projection, is to build concentration inequality, for event  norm square 
+\begin{equation}
+\left\{\left|\|\mathbf{\Omega} \mathbf{x}\|^2 -\|\mathbf{x}\|^2\right|\ge \epsilon \|\mathbf{x}\|^2\right\}
+\end{equation}
+for some random matrix $\mathbf{\Omega}$. And the probabilistic bound for above event is independent of dimension $d$. 
+
+We first build concentration for case where $N=2$ where we could get a relatively neat bound and concise proof.  Before that, let us review one of the many equivalent definitions of sub-Gaussian random variable and sub-exponential random variables. 
+
+\begin{definition}
+\label{def:sub-gaussian}
+A random variable $x$ is called sub-Gaussian if $\mathbb{E} |x|^p = \mathcal{O}(p)^{p/2}$ when $p\rightarrow \infty$. With this, we define sub-Gaussian norm for $x$ (less than infinity) as 
+\begin{equation}
+\|x\|_{\varphi_2} = \sup_{p\ge 1} p^{-1/2} (\mathbb{E} |x|^p)^{1/p}. 
+\end{equation}
+\end{definition}
+
+
+Another important type of random variables appearing in many tail probability literature is sub-exponential variable, which could be intuitively taken as square of sub-Gaussian variable. \cite{buhler2002finding} presents a generalized version of sub-exponential.
+\begin{definition}
+\label{def:sub-exponential}
+A random variable $x$ is called generalized-sub-exponential if 
+\begin{equation}
+\mathbb{P}(|x|\ge \eta^\alpha) \le \beta\exp(-\gamma \eta),  
+\end{equation}	
+for some positive number $\alpha, \eta, \gamma$.  Note that in original paper, they set $\gamma$ to be 1 for conciseness. 
+\end{definition}
+
+
+\begin{prop}
+\label{prop: N-2-bound}
+For a vector $\mathbf{x}$ of size $d_1d_2$, draw $2$ independent matrices $\{\mathbf{A}_1, \mathbf{A}_2\}$, with $\mathbf{A}_i$ has size $d_i\times k, i=1,2$. If each element from these two matrices are drawed from identically independent sub-Gaussian distribution with sub-Guassian norm $\varphi_2$, then there exists general constants $c$ 
+\begin{equation}
+\begin{aligned}
+\label{eq:lemma-invariant-length-statement}
+&\mathbb{P}\left( \left|{ \left\|\frac{1}{\sqrt{k}}(\mathbf{A}_1 \odot \mathbf{A}_2)^\top \mathbf{x}\right\|^2_2} - \|\mathbf{x}\|^2_2 \right| \ge \epsilon \|x\|^2\right)\\
+& \le 2\exp\left[-c \min\left(\frac{\epsilon K}{\varphi_2}, \frac{\epsilon^2 K}{\varphi_2^2}\right)\right].
+\end{aligned}
+\end{equation}
+\end{prop}
+
+\begin{remark}
+We have built a non-asymptotic bound for any value of $\epsilon$. When $\epsilon$ is small such that $\frac{\epsilon^2 K}{\varphi_2^2}<\frac{\epsilon K}{\varphi_2}$ which is the region people are interested, the bound coincides with the classic literature on random projection for Gaussian case which claims that above probability is in order $\mathcal{O}(\exp[-\epsilon^2])$.
+\end{remark}
+\begin{remark}
+This result could also be extended to sub-exponential variables with similar Hanson-Wright type inequality built by \cite{erdHos2012bulk}. But we focus on sub-Gaussian variables since it covers almost all commonly used random mappings. We now list the value of $\varphi_2$ for some random variables commonly used in random mapping. For bernoulli random variable, i.e., half probability to take 1 or -1,  $\varphi_2=1$. More generally for any bound random variables with absolute value less than $M>0$, $\varphi_2\le M$. For standard Gaussian random variable, $\varphi_2=1$. 
+\end{remark}
+
+Now we turn to more general case, unfortunately, we might not be able to get such a clean bound as proposition \ref{prop: N-2-bound}. For example, for Gaussian random variables, the 
+

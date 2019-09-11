@@ -1,0 +1,51 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.5}{Background and Related Work}{}% 2
+\BOOKMARK [2][-]{subsection.6}{Notation}{section.5}% 3
+\BOOKMARK [3][-]{subsubsection.7}{Tail energy}{subsection.6}% 4
+\BOOKMARK [3][-]{subsubsection.9}{Kronecker and Khatri-Rao product}{subsection.6}% 5
+\BOOKMARK [3][-]{subsubsection.11}{Tensor basics}{subsection.6}% 6
+\BOOKMARK [3][-]{subsubsection.12}{Tensor unfoldings}{subsection.6}% 7
+\BOOKMARK [3][-]{subsubsection.14}{Tensor rank}{subsection.6}% 8
+\BOOKMARK [3][-]{subsubsection.15}{Tensor contractions}{subsection.6}% 9
+\BOOKMARK [2][-]{subsection.16}{Tucker Approximation}{section.5}% 10
+\BOOKMARK [3][-]{subsubsection.19}{HOSVD}{subsection.16}% 11
+\BOOKMARK [3][-]{subsubsection.23}{ST-HOSVD}{subsection.16}% 12
+\BOOKMARK [3][-]{subsubsection.24}{HOOI}{subsection.16}% 13
+\BOOKMARK [2][-]{subsection.30}{Previous Work}{section.5}% 14
+\BOOKMARK [1][-]{section.32}{Dimension Reduction Maps}{}% 15
+\BOOKMARK [2][-]{subsection.33}{Dimension Reduction Map}{section.32}% 16
+\BOOKMARK [2][-]{subsection.34}{Tensor Random Projection}{section.32}% 17
+\BOOKMARK [1][-]{section.37}{Algorithms for Tucker approximation}{}% 18
+\BOOKMARK [2][-]{subsection.38}{Tensor compression via sketching}{section.37}% 19
+\BOOKMARK [2][-]{subsection.45}{Low-Rank Approximation}{section.37}% 20
+\BOOKMARK [2][-]{subsection.59}{Fixed-Rank Approximation}{section.37}% 21
+\BOOKMARK [1][-]{section.65}{Guarantees}{}% 22
+\BOOKMARK [2][-]{subsection.66}{Low rank approximation}{section.65}% 23
+\BOOKMARK [2][-]{subsection.71}{Fixed rank approximation}{section.65}% 24
+\BOOKMARK [2][-]{subsection.73}{Proof sketch}{section.65}% 25
+\BOOKMARK [1][-]{figure.76}{Numerical Experiments}{}% 26
+\BOOKMARK [2][-]{subsection.78}{Synthetic experiments}{figure.76}% 27
+\BOOKMARK [3][-]{subsubsection.79}{Different dimension reduction maps perform similarly}{subsection.78}% 28
+\BOOKMARK [3][-]{subsubsection.85}{A second pass reduces error}{subsection.78}% 29
+\BOOKMARK [3][-]{subsubsection.86}{Improvement on state-of-the-art}{subsection.78}% 30
+\BOOKMARK [2][-]{subsection.88}{Applications}{figure.76}% 31
+\BOOKMARK [3][-]{subsubsection.89}{Data compression}{subsection.88}% 32
+\BOOKMARK [3][-]{subsubsection.90}{Video scene classification}{subsection.88}% 33
+\BOOKMARK [1][-]{section*.91}{References}{}% 34
+\BOOKMARK [1][-]{Appendix.92}{Appendix Appendix A. Proof of Main Results}{}% 35
+\BOOKMARK [2][-]{proof.94}{Error bound for the two pass approximation Algorithm 4.2}{Appendix.92}% 36
+\BOOKMARK [2][-]{proof.97}{Error bound for the one pass approximation Algorithm 4.3}{Appendix.92}% 37
+\BOOKMARK [2][-]{proof.105}{Error bound for the fixed rank approximation Algorithm 4.4}{Appendix.92}% 38
+\BOOKMARK [1][-]{Appendix.107}{Appendix Appendix B. Probabilistic Analysis of Core Sketch Error}{}% 39
+\BOOKMARK [2][-]{subsection.109}{Decomposition of Core Approximation Error}{Appendix.107}% 40
+\BOOKMARK [2][-]{subsection.121}{Probabilistic Core Error Bound}{Appendix.107}% 41
+\BOOKMARK [1][-]{Appendix.129}{Appendix Appendix C. Proof of fixed rank approximation lemma}{}% 42
+\BOOKMARK [1][-]{Appendix.133}{Appendix Appendix D. Technical Lemmas}{}% 43
+\BOOKMARK [2][-]{subsection.134}{Random projections of matrices}{Appendix.133}% 44
+\BOOKMARK [1][-]{Appendix.139}{Appendix Appendix E. More Algorithms}{}% 45
+\BOOKMARK [1][-]{Appendix.142}{Appendix Appendix F. Scrambled Subsampled Randomized Fourier Transform}{}% 46
+\BOOKMARK [1][-]{Appendix.145}{Appendix Appendix G. TensorSketch}{}% 47
+\BOOKMARK [1][-]{Appendix.153}{Appendix Appendix H. Time and Storage Complexity}{}% 48
+\BOOKMARK [2][-]{subsection.154}{Comparison Between alg:onepassfixrankappro and T.-TS malik2018low}{Appendix.153}% 49
+\BOOKMARK [2][-]{subsection.155}{Computational Complexity of alg:onepassfixrankappro}{Appendix.153}% 50
+\BOOKMARK [1][-]{Appendix.158}{Appendix Appendix I. More Numerics}{}% 51

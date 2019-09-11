@@ -1,0 +1,56 @@
+\section{Technical Results for Toeplitz Matrixz}
+\begin{lem}
+\label{lemma:sin_cos_seq_sum}
+\begin{equation}
+\begin{aligned}
+&\sum_{k=1}^n \cos(a+kx) = \cfrac{\sin((1/2+n)x+a)-\sin(x/2+a)}{2\sin(x/2)}\\
+&\sum_{k=1}^n \sin(a+kx) = \cfrac{\cos(x/2+a)-\cos((1/2+n)x+a)}{2\sin(x/2)}
+\end{aligned}
+\end{equation}
+\begin{proof}
+Proof is from element math which could be found in lecture notes from Jerry L. Kazdan. 
+\end{proof}
+\end{lem}
+
+
+\begin{lem}
+\label{lemma: bound_toeplitz}
+Let $M$ be a toeplitz matrix, and let $M_{p,q} = g(q-p)$ for some function $g(\cdot)$. Now we claim following results with definition of definition of $\cos, \sin$ sequence in \ref{eq:cos_sin_coef}, for $j\neq k\in F^{rt}_n$
+\begin{equation*}
+\max\{|c_j^\top M c_j - s_j^\top M s_j|, |s_j^\top M c_j + c_j^\top M s_j|\}\le \frac{\Omega(M)}{2\pi n}.
+\end{equation*}
+and 
+\begin{equation*}
+\max\left\{|c_j^\top M s_k|, |c_j^\top M c_k|, |s_j^\top M s_k|, |s_j^\top M c_k|\right\} \le \frac{\Omega(M)}{2\pi n},
+\end{equation*}
+where linear operator $\Omega$ on toeplitz matrix is defined as 
+\begin{equation}
+\Omega(M) = \sum_{\ell = -(n-1)}^{(n-1)} |\ell| |g(\ell)|.   
+\end{equation}
+\begin{remark}
+Lemma \ref{lemma:asy_dis_dft} claims $X^\top c_j$ and $X^\top s_j$ have same limiting marginal distribution, 
+and the first part of this lemma, in fact could be used to quantify this similarity in finite sample through quantification of the difference in two covariance matrix
+which we will show later. The second part could be used to quantify the rate of being asymptotically independence across different frequency claimed by lemma \ref{lemma:asy_dis_dft}. \par 
+There is many literature showing similar results in the second part, but usually it points out vanishing rate for any frequency between $[-\pi, \pi]$ in an asymptotic sense which is different from my theory. None of them provides an explicit finite sampling bound at discrete Fourier frequencies and. 
+\end{remark}
+\begin{proof}
+We shall only prove $|c_j^\top M c_j - s_j^\top M s_j|\le \frac{\Omega(M)}{2\pi n}$, then all the others could be proven with same techniques. %Using formula $\cos(x+y) = \cos x\cos y-\sin x\sin y $%
+\begin{equation}
+\label{eq:similarity_real_im}
+\begin{aligned}
+ &|c_j^\top M c_j - s_j^\top M s_j| \\
+ &=\frac{1}{2\pi n}\left|\sum_{\ell=-(n-1)}^{(n-1)} \sum_{p=0}^{(n-1)-\left|\ell\right|} g(\ell)\left[ \cos(p\omega_j)\cos((p+\ell)\omega_j) - \sin(p\omega_j)\sin((p+\ell)\omega_j)\right]\right|\\
+ &\le \frac{1}{2\pi n} \left|\sum_{\ell 
+ = -(n-1)}^{n-1} \sum_{p=0}^{n-1} g(\ell)\left[ \cos(p\omega_j)\cos((p+\ell)\omega_j) - \sin(p\omega_j)\sin((p+\ell)\omega_j)  \right]\right|\\
+ &+\frac{1}{2\pi n}\left|\sum_{\ell=-(n-1)}^{(n-1)} \sum_{p=(n-1)-\left|\ell\right|}^{n-1} g(\ell)\left[ \cos(p\omega_j)\cos((p+\ell)\omega_j) - \sin(p\omega_j)\sin((p+\ell)\omega_j)\right]\right| \\
+ &\le \frac{1}{2\pi n}\left|\sum_{\ell 
+ = -(n-1)}^{n-1} \sum_{p=0}^{n-1} g(\ell)\cos(2p\omega_j+\ell\omega_j) \right|+ \frac{1}{2\pi n}\sum_{\ell = -(n-1)}^{(n-1)} |\ell| |g(\ell)|.\\
+ \end{aligned}
+\end{equation}
+By setting $a = (\ell-2)\omega_j$, $x = 2\omega_j$ in lemma \ref{lemma:sin_cos_seq_sum} and noticing $2n\omega_j = 4j\pi$, we get $\sum_{p=0}^{n-1} g(\ell)\cos(2p\omega_j+\ell\omega_j) = 0$ for any $\ell$. Therefore, \eqref{eq:similarity_real_im} leads to 
+\begin{equation}
+ |c_j^\top M c_j - s_j^\top M s_j| \le \frac{1}{2\pi n}\sum_{\ell = -(n-1)}^{(n-1)} |\ell| |g(\ell)| = \frac{\Omega(M)}{2\pi n}. 
+\end{equation}
+With similar techniques, we could prove the second part. 
+\end{proof}
+\end{lem}

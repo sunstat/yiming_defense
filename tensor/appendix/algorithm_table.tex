@@ -1,0 +1,35 @@
+\section{More Algorithms}
+This section provides detailed implementations
+for a linear sketch appropriate to a streaming setting (Algorithm \ref{alg:linear_update})
+or a distributed setting (\ref{alg:sketch_distributed}).
+\label{appendix:more_algorithms}
+\begin{algorithm}[th]
+	\caption{Linear Update to Sketches}\label{alg:linear_update}
+	\begin{algorithmic}[1]
+		\Function {SketchLinearUpdate}{$\T{F}, \mathbf{V}_1, \dots, \mathbf{V}_N, \T{H}$; $\theta_1$, $\theta_2$}\\
+		\text{For $n = 1, \dots, N$}
+		\State $\mathbf{V}_n \leftarrow \theta_1 \mathbf{V}_n + \theta_2 \mathbf{F}^{(n)} \mathbf{\Omega}_n$ 
+		\State $\T{H} \leftarrow \theta_1 \T{H} + \theta_2 \T{F} \times_1 \mathbf{\Phi}_1 \times \cdots \times_N \mathbf{\Phi}_N $
+		\State \Return $(\mathbf{V}_1, \dots, \mathbf{V}_N, \T{H})$
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[th]
+\begin{algorithmic}[1]
+\caption{Sketching in Distributed Setting}\label{alg:sketch_distributed}
+\Require{$\T{X}_i$ is the part of the tensor $\T{X}$ at local machine $i$ and $\T{X} = \sum_{i=1}^m\T{X}_i$.
+%Note: the input tensor as a sum of linear updates can apply to most common settings without overlapping data stored.
+}
+\Function{ComputeSketchDistributed}{$\T{X}_1, \ldots, \T{X}_m$}
+\State Send the same random generating environment to every local machine.
+\State Generate the same DRM at each local machine.\\
+\text{For $i = 1\dots m$}
+\State $(\mathbf{V}_1^{(i)}, \cdots,\mathbf{V}_n^{(i)}, \T{H}^{(i)}) \leftarrow$ ComputeSketch($\T{X}_i$)\\
+\text{For $j = 1\dots n$}
+\State $\mathbf{V}_j\leftarrow \sum_{i=1}^m \mathbf{V}_j^{(i)}$
+\State $\T{H} \leftarrow \sum_{i=1}^m \T{H}^{(i)}$
+\State \Return $(\mathbf{V}_1, \dots, \mathbf{V}_n, \T{H})$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}

@@ -1,0 +1,80 @@
+% Sample LaTeX file for creating a paper in the Morgan Kaufmannn two
+% column, 8 1/2 by 11 inch proceedings format.
+
+\documentclass[letterpaper]{article}
+\usepackage{uai2018}
+\usepackage[margin=1in]{geometry}
+
+% Set the typeface to Times Roman
+\usepackage{times}
+
+\title{structure-random-projection}
+
+\author{} % LEAVE BLANK FOR ORIGINAL SUBMISSION.
+          % UAI  reviewing is double-blind.
+
+% The author names and affiliations should appear only in the accepted paper.
+%
+%\author{ {\bf Harry Q.~Bovik\thanks{Footnote for author to give an
+%alternate address.}} \\
+%Computer Science Dept. \\
+%Cranberry University\\
+%Pittsburgh, PA 15213 \\
+%\And
+%{\bf Coauthor}  \\
+%Affiliation          \\
+%Address \\
+%\And
+%{\bf Coauthor}   \\
+%Affiliation \\
+%Address    \\
+%(if needed)\\
+%}
+
+
+%\input{defs.tex}
+
+\begin{document}
+\maketitle
+
+
+
+
+\section{Introduction}
+\subsection{Notation}
+Our paper follows the notation of \cite{kolda2009tensor}. We denote the \textit{scalar}, \textit{vector}, \textit{matrix}, and \textit{tensor}, respectively by lowercase letters, ($x$) boldface lowercase letters ($\mathbf{x}$)  boldface capital letters  ($\mathbf{X}$)  and Euler script letters ($\mathscr{X}$). For matrix $\mathbf{X} \in \mathbb{R}^{m \times n}$, $\mathbf{X}^\dag \in \mathbb{R}^{n \times m}$ denotes its \textit{Moore-Penrose pseudoinverse}. In particular, $\mathbf{X}^\dag = (\mathbf{X}^\top \mathbf{X})^{-1}\mathbf{X}^T$, if $m \geq n$ and $\mathbf{X}$ has full column rank; $\mathbf{X}^\dag = \mathbf{X}^T(\mathbf{XX}^T)^{-1}$, if $m < n$ and $\mathbf{X}$ has full row rank. We let $[N]$ be the set containing $1,\dots, N$.
+
+For a tensor $\mathscr{X} \in \mathbb{R}^{I_1 \times \cdots \times I_N}$, its \textit{mode} or \textit{order} is the number of dimensions $N$. If $I = I_1 = \cdots I_N$, we denote $\mathbb{R}^{I_1 \times \cdots \times I_N}$ as $\mathbb{R}^{I^N}$. The inner product of two tensors $\mathscr{X}, \mathscr{Y}$ is defined as $\langle \mathscr{X}, \mathscr{Y}\rangle = \sum_{i_1=1}^{I_1}\cdots \sum_{i_N=1}^{I_n} \mathscr{X}_{i_1\dots i_N}\mathscr{Y}_{i_1\dots i_N}$. The \textit{Frobenius norm} of $\mathscr{X}$ is denoted by $\|\mathscr{X}\|_F = \sqrt{\langle \mathscr{X}, \mathscr{X}\rangle}$. Let $\bar{I} = \Pi_{j = 1}^N I_j $ and $I_{(-n)} = \Pi_{j \neq n} I_j $. We denote the \textit{mode-n unfolding} of $\mathscr{X}$ as $\mathbf{X}^{(n)} \in \mathbb{R}^{I_n \times I_{(-n)}}$ and the \textit{mode-n rank} as the rank of the mode-n unfolding. We define the \textit{rank} of  $\mathscr{X}$ as $\mathbf{r}(\mathscr{X}) = (r_1,\dots, r_N)$ if its \textit{mode-n rank} is $r_n$ for all $n\in [N]$. The tensor with all entries equal to 0 except for the entries with the same indices is called a \textit{superdiagonal} tensor.\par
+
+ $\mathscr{X} \times_n \mathbf{U}$ denotes the \textit{mode-n (matrix) product} of $\mathscr{X}$ with $\mathbf{U} \in \mathbb{R}^{J \times I_n}$, with size $I_1 \times \cdots \times I_{n-1} \times J \times I_{n+1} \times \cdots \times I_N$, that is:
+\begin{equation}
+\mathscr{G} = \mathscr{X} \times_n \mathbf{U} \; \iff \; \mathbf{G}^{(n)} = \mathbf{U}\mathbf{X}^{(n)}.
+\end{equation}
+
+The \textit{Kronecker product} of two matrices $\mathbf{A}\in R^{m\times n},\mathbf{B} \in R^{p\times q}$ is denoted by $\mathbf{A} \otimes \mathbf{B}$ which is of size $mp\times nq$ defined as 
+\begin{equation}
+\mathbf{A} \otimes \mathbf{B} = \left[
+\begin{array}{ccc}
+  A_{11}B   & \cdots & A_{1n}B \\
+  \vdots & \ddots & \vdots \\
+  A_{m1}B & \cdots &   A_{mn}B
+\end{array}
+\right].
+\end{equation}
+We let $\mathbf{X} \odot \mathbf{Y}$ denotes the \textit{Khatri-Rao product}, $\mathbf{A} \in \mathbb{R}^{I \times K}, \mathbf{B} \in \mathbb{R}^{J \times K}$, i.e. the "matching columnwise" Kronecker product. The resulting matrix of size $(IJ) \times K$ is given by: 
+\begin{equation}\label{khatri-rao}
+\mathbf{A} \odot \mathbf{B} = [\mathbf{a}_1 \otimes \mathbf{b}_1, \dots, \mathbf{a}_K \otimes \mathbf{b}_K]
+\end{equation}
+For convenience, we denote the Khatri-Rao product matching row-wise as $\odot^\top$, that is, $\mathbf{A} \odot^\top \mathbf{B} = (\mathbf{A}^\top \odot \mathbf{B}^\top)^\top $, where $\mathbf{A} \in \mathbb{R}^{K \times I}, \mathbf{B} \in \mathbb{R}^{K \times J}$. We write column of matrix $\mathbf{A} = [a_1\mid \cdots \mid a_k]$
+
+
+
+
+
+
+\section{Structured Random Projection Preserving Column Space}
+
+
+\end{document}
+
+\end{document}

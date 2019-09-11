@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99d (TeX Live 2018)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: main.aux
+The style file: unsrtnat.bst
+Database file #1: biblio.bib
+Warning--I didn't find a database entry for "fischl2000measuring"
+Warning--I didn't find a database entry for "Utevsky14"
+Warning--I didn't find a database entry for "FRANSSON20081178"
+You've used 36 entries,
+            2481 wiz_defined-function locations,
+            809 strings with 11223 characters,
+and the built_in function-call counts, 13624 in all, are:
+= -- 1198
+> -- 614
+< -- 30
++ -- 246
+- -- 174
+* -- 1010
+:= -- 2137
+add.period$ -- 113
+call.type$ -- 36
+change.case$ -- 68
+chr.to.int$ -- 36
+cite$ -- 36
+duplicate$ -- 706
+empty$ -- 1275
+format.name$ -- 242
+if$ -- 2912
+int.to.chr$ -- 1
+int.to.str$ -- 37
+missing$ -- 39
+newline$ -- 193
+num.names$ -- 108
+pop$ -- 288
+preamble$ -- 1
+purify$ -- 36
+quote$ -- 0
+skip$ -- 447
+stack$ -- 0
+substring$ -- 689
+swap$ -- 108
+text.length$ -- 6
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 240
+warning$ -- 0
+while$ -- 121
+width$ -- 0
+write$ -- 477
+(There were 3 warnings)

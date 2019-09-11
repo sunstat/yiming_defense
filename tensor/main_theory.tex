@@ -1,0 +1,150 @@
+\section{Guarantees}
+\label{sec:theory}
+In this section, we present probabilistic guarantees on the preceding algorithms.
+We show that approximation error for the one-pass algorithm is the sum of
+the error from the two-pass algorithm and the error resulting from the core approximation.
+Proofs for the three theorems in this section can be found in
+the corresponding subsections of \ref{appendix:proof-main-result}.
+
+
+
+
+\subsection{Low rank approximation}
+Theorem  \ref{thm:low_rank_err_two_pass} guarantees the performance of the two pass method algorithm \ref{alg:two_pass_low_rank_appro}.
+\begin{thm}
+	\label{thm:low_rank_err_two_pass}
+	Sketch the tensor $\T{X}$ using a Tucker sketch with parameters $\V{k}$
+	using DRMs %$\mathbf{\Omega}_n$, $n \in [N]$,
+	with i.i.d. Gaussian $\mathcal N(0,1)$ entries.
+	Then the approximation $\hat{\T{X}}_2$ computed with the two pass method \ref{alg:two_pass_low_rank_appro}
+	satisfies
+	\begin{equation*}
+	\mathbb{E}\| \T{X} - \hat{\T{X}}_2 \|_F^2  \le  \min_{1\le \rho_n<k_n-1}
+	\sum_{n=1}^N \left(1+\frac{\rho_n}{k_n-\rho_n-1}\right)(\tau^{(n)}_{\rho_n})^2.
+	\end{equation*}
+\end{thm}
+The two pass method does not use the core sketch, so this result does not depend on $\V{s}$.
+%The proof appears in \ref{appendix:proof-main-result}.
+
+Theorem \ref{thm:low_rank_err} guarantees the performance of  one pass method \ref{alg:one_pass_low_rank_appro}.
+\begin{thm}
+\label{thm:low_rank_err}
+Sketch the tensor $\T{X}$ using a Tucker sketch with parameters $\V{k}$ and $\V{s} \succ 2\V{k}$
+using DRMs %$\mathbf{\Omega}_n$, $n \in [N]$,
+with i.i.d. Gaussian $\mathcal N(0,1)$ entries.
+Then the approximation $\hat{\T{X}}_1$ computed with the one pass method \ref{alg:one_pass_low_rank_appro}
+satisfies the bound
+\begin{equation*}
+\mathbb{E}\| \T{X} - \hat{\T{X}}_1 \|_F^2  \le (1+\Delta)  \min_{1\le \rho_n<k_n-1}
+	\sum_{n=1}^N \left(1+\frac{\rho_n}{k_n-\rho_n-1}\right)(\tau^{(n)}_{\rho_n})^2,
+\end{equation*}
+where $\Delta := \max_{n=1}^N k_n / (s_n-k_n-1)$.
+\end{thm}
+
+The theorem shows that the method works best for tensors
+whose unfoldings exhibit spectral decay.
+As a simple consequence of this result, we see that the two pass method
+with $\V{k} > \V{r}+1$
+perfectly recovers a tensor with exact Tucker rank $\V{r}$, since
+in that case $\tau^{(n)}_{r_n} = 0$ for each $n \in [N]$.
+However, this theorem states a stronger bound:
+the method exploits decay in the spectrum,
+wherever (in the first $k_n$ singular values of each mode $n$ unfolding)
+it occurs.
+
+
+We see that the additional error due to sketching the core
+is a multiplicative factor $\Delta$ more than the error due to sketching
+the factor matrices. This factor $\Delta$ decreases as the size of the
+core sketch $\V{s}$ increases.
+
+
+\begin{remark}
+	Both HOSVD, ST-HOSVD achieves so called pseudo optimal with parameter $\sqrt{N}$. For example, for ST-HOSVD, 
+	\begin{equation}
+	\begin{aligned}
+	& \|[\T{X}-\llbracket \T{X} \rrbracket _{\mathbf{ST-k}}\|_F \le \sqrt{N} \|[\T{X}-\llbracket \T{X} \rrbracket _{\mathbf{k}}\|_F \le  \sqrt{\sum_{n=1}^N (\tau^{(n)}_{k_n})^2},
+	\end{aligned}
+	\end{equation}
+	where $\llbracket \T{X} \rrbracket _{\mathbf{k}}$ is the optimal Tucker rank $\mathbf{k}$ approximation. Thus, the low rank approximation for two pass algorithm is pseduo optimal with factor $\sqrt{2N}$ while for one pass algorithm, if we choose $\mathbf{s}\succ 2\mathbf{k}+1$($\Delta\le 2$), it is also pseduo optimal with factor $2\sqrt{N}$. 
+\end{remark}
+
+Theorem ~\ref{thm:low_rank_err} also offers guidance on how to select
+the sketch size parameters $\mathbf{s}$ and $\mathbf{k}$.  In particular,
+suppose that the mode-$n$ unfolding has a good rank $r_n$ approximation
+for each mode $n$.  Then the choices $k_n = 2r_n + 1$ and $s_n = 2k_n + 1$
+ensure that
+\begin{equation*}
+\mathbb{E}\| \T{X} - \hat{\T{X}} \|_F^2
+	\leq 4 \sum_{n=1}^N (\tau_{r_n}^{(n)})^2.
+\end{equation*}
+More generally, as $k_n/r_n$ and $s_n/k_n$ increase,
+the leading constant in the approximation error tends to one.
+
+\subsection{Fixed rank approximation}
+We now present a conditional analysis of the fixed rank approximation method given a low rank approximation.
+Recall that $\llbracket \cdot \rrbracket_{\mathbf{r}}$ returns a best rank-$\mathbf{r}$ Tucker approximation.
+
+\begin{thm}
+\label{thm:fix_rank_err}
+Suppose $\hat{\T{X}} = \llbracket \T{W}; \mathbf{Q}_1,\cdots, \mathbf{Q}_N \rrbracket$
+approximates the target tensor $\T{X}$, % $\mathbf{s}\succ  2\mathbf{k}$ and $\mathbf{k}\succ \mathbf{r}$,
+and let $\T{\hat{X}}_\V{r}$ denote some rank $\mathbf{r}$ approximation to $\hat{\T{X}}$ from some procedure like ST-HOSVD,
+Then for output  any fix rank $\mathbf{r}$
+\begin{equation*} \label{eq-fixed-rank-bound}
+\mathbb{E} \|\T{X} - \hat{\T{X}}_{\V{r}} \|_F \le
+\|\T{X} - \llbracket \T{X}\rrbracket_\mathbf{r}\|_F
++2\sqrt{\mathbb{E}\|\T{X}-\T{\hat{X}}\|_F^2}.
+\end{equation*}
+\end{thm}
+
+%The proof appears in \ref{appendix:proof-main-result}.
+The second term on the right-hand side of \ref{eq-fixed-rank-bound}
+is controlled by \ref{thm:low_rank_err_two_pass} and \ref{thm:low_rank_err}.
+Hence we can combine these results
+to provide guarantees for fixed rank approximation with either the
+two pass or one pass algorithms.
+
+
+The resulting bound shows that the best rank-$\V{r}$
+approximation of the output from the one or two pass algorithms
+is comparable in quality to a true best rank-$\V{r}$ approximation of the input tensor.
+An important insight %from ~\ref{cor:fix_rank_err}
+is that the sketch size parameters $\mathbf{s}$ and $\mathbf{k}$
+that guarantee a good low rank approximation
+also guarantee a good fixed rank approximation:
+the error due to sketching depends only
+on the sketch size parameters $\V{k}$ and $\V{s}$,
+and not on the target rank $\V{r}$.
+
+%The proof of ~\ref{thm:fix_rank_err} appears in the appendix.
+
+In practice, one would truncate the rank of the approximation using
+HOOI (\ref{alg:one_pass_fix_rank_appro}),
+rather than the best rank $\V{r}$ approximation (\ref{alg:ideal_fix_rank_appro}).
+% If HOOI indeed computes the best rank $\V{r}$ approximation for a given core approximation,
+% then our guarantees apply.
+Guarantees for resulting algorithm are beyond the scope of this paper,
+since there are no strong guarantees on the performance of HOOI;
+however, it is widely believed to produce an approximation that is usually
+quite close to the best rank $\V{r}$ approximation.
+
+\subsection{Proof sketch} To bound the approximation error of the algorithms presented in the main body
+of this paper, we first develop several structural results showing
+an additive decomposition of the error.
+First, the total error is the sum of the error due to sketching
+and the error due to fixed rank approximation.
+Second, the sketching error is the sum of the error due to the factor matrix
+approximations and to the core approximation.
+Third, the error due to the factor matrix approximations
+is the sum of the error in each the modes,
+as the errors due to each mode are mutually orthogonal.
+This finishes the approximation error bound for the two pass algorithm, \ref{thm:low_rank_err_two_pass}.
+As for the error due to the core approximation,
+we %give a combinatorial argument to
+rewrite the approximation error in the core tensor
+as a sum over each mode of errors that are mutually orthogonal.
+Indeed, these errors have the same form as the errors due to the factor matrix approximations,
+scaled down by a factor $\Delta(k,s)$ that depends on the sketch sizes $\V{k}$ and $\V{s}$.
+This argument shows the error due to the core approximation
+is at most a factor $\Delta(k,s)$ times the error due to the factor matrix approximation.

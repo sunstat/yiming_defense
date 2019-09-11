@@ -1,0 +1,42 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citeauthoryear{Arriaga \& Vempala}{Arriaga \&
+  Vempala}{2006}]{arriaga2006algorithmic}
+Arriaga, R.~I. \& Vempala, S. (2006).
+\newblock An algorithmic theory of learning: Robust concepts and random
+  projection.
+\newblock {\em Machine Learning}, {\em 63\/}(2), 161--182.
+
+\bibitem[\protect\citeauthoryear{Bickel \& Levina}{Bickel \&
+  Levina}{2008}]{bickel2008covariance}
+Bickel, P.~J. \& Levina, E. (2008).
+\newblock Covariance regularization by thresholding.
+\newblock {\em The Annals of Statistics}, 2577--2604.
+
+\bibitem[\protect\citeauthoryear{Cai \& Liu}{Cai \&
+  Liu}{2011}]{cai2011adaptive}
+Cai, T. \& Liu, W. (2011).
+\newblock Adaptive thresholding for sparse covariance matrix estimation.
+\newblock {\em Journal of the American Statistical Association}, {\em
+  106\/}(494), 672--684.
+
+\bibitem[\protect\citeauthoryear{Halko, Martinsson \& Tropp}{Halko
+  et~al.}{2011}]{halko2011finding}
+Halko, N., Martinsson, P.-G., \& Tropp, J.~A. (2011).
+\newblock Finding structure with randomness: Probabilistic algorithms for
+  constructing approximate matrix decompositions.
+\newblock {\em SIAM review}, {\em 53\/}(2), 217--288.
+
+\bibitem[\protect\citeauthoryear{Sun, Guo, Luo, Tropp \& Udell}{Sun
+  et~al.}{2019}]{sun2019low}
+Sun, Y., Guo, Y., Luo, C., Tropp, J.~A., \& Udell, M. (2019).
+\newblock Low rank tucker approximation of a tensor from streaming data.
+\newblock {\em In preparation}.
+
+\bibitem[\protect\citeauthoryear{Sun, Guo, Tropp \& Udell}{Sun
+  et~al.}{2018}]{sun2018tensor}
+Sun, Y., Guo, Y., Tropp, J.~A., \& Udell, M. (2018).
+\newblock Tensor random projection for low memory dimension reduction.
+\newblock In {\em NeurIPS Workshop on Relational Representation Learning}.
+
+\end{thebibliography}

@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d (TeX Live 2018)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: main.aux
+The style file: siamplain.bst
+Database file #1: bibtex.bib
+Repeated entry---line 927 of file bibtex.bib
+ : @article{vannieuwenhoven2012new
+ :                                ,
+I'm skipping whatever remains of this entry
+Warning--empty journal in battaglino2019faster
+You've used 42 entries,
+            2244 wiz_defined-function locations,
+            789 strings with 11606 characters,
+and the built_in function-call counts, 18028 in all, are:
+= -- 1670
+> -- 760
+< -- 1
++ -- 306
+- -- 256
+* -- 1313
+:= -- 2512
+add.period$ -- 42
+call.type$ -- 42
+change.case$ -- 249
+chr.to.int$ -- 0
+cite$ -- 43
+duplicate$ -- 957
+empty$ -- 1553
+format.name$ -- 256
+if$ -- 4019
+int.to.chr$ -- 0
+int.to.str$ -- 42
+missing$ -- 42
+newline$ -- 129
+num.names$ -- 84
+pop$ -- 388
+preamble$ -- 1
+purify$ -- 208
+quote$ -- 0
+skip$ -- 720
+stack$ -- 0
+substring$ -- 1283
+swap$ -- 379
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 166
+warning$ -- 1
+while$ -- 177
+width$ -- 44
+write$ -- 384
+(There was 1 error message)

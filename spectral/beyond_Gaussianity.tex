@@ -1,0 +1,133 @@
+\section{Spectral Density Estimation of Linear Processes}\label{sec:heavy-tail} % Beyond Gaussianity:
+
+In this section, we extend the estimation consistency results of our thresholding based spectral density estimators beyond Gaussian time series. The proof of the Hanson-Wright type inequality for temporally dependent data in Lemma \ref{lemma: hason_bound_time_gauss} crucially relies on the fact that uncorrelated Gaussian random  variables are also independent with each other. This does not apply for non-Gaussian time series in general. However, we show in this section that for some linear processes with error tail heavier than Gaussian distribution, it is possible to derive similar concentration inequalities. Using these concentration inequalities, we then extend the theoretical results of previous section to a larger class of non-Gaussian linear time series.
+
+We focus on linear processes with absolutely summable MA($\infty$) coefficients:
+\begin{equation}
+\label{eq:infinite_ma}
+    X_t = \sum_{\ell = 0}^\infty B_\ell \varepsilon_{t-\ell},
+\end{equation}
+where $B_\ell\in \mathbb{R}^{p\times p}$ and $\varepsilon_t\in \mathbb{R}^p$ have i.i.d. centered distribution with possibly heavier tails than Gaussian. \citet{rosenblatt1985stationary} shows that stationarity of $X_t$ is ensured under element-wise absolute summability of MA coefficients
+\begin{equation}
+\label{eq:infinity_moving_average}
+    \sum_{\ell=0}^\infty |B_{\ell, (r,s)}| < \infty 
+\end{equation}
+for any $r,s$, $1\le r, s\le p$. Under this condition, the autocovariance $\Gamma(\ell) = \sum_{t=0}^\infty B_{t}B_{t+\ell}^\top$ is well-defined for every $\ell \in \mathbb{Z}$, and Assumption \ref{assumption:finite_auto} holds. A proof is given in Lemma \ref{lemma:linear_assumption} for completeness.\par 
+We assume that each component $\varepsilon_{tr}, \, 1 \le r \le p$, of the random vector $\varepsilon_t$ is from one of the following three types of distributions. 
+\begin{enumerate}[(C1)]
+    \item sub-Gaussian: there exists some $\sigma>0$ such that for all $\eta > 0$,   $\mathbb{P}[|\varepsilon_{tr}|>\eta]\le 2\exp\left(-\frac{\eta^2}{2\sigma^2}\right)$; %\citep{rigollet201518}
+    \label{C1} 
+    \item generalized sub-exponential with parameter $\alpha>0$: there exist positive constants $a, b$ such that for all $\eta > 0$,  
+    $\mathbb{P}[|\varepsilon_{tr}|\ge \eta^\alpha]\le a\exp(-b\eta)$ \citep{erdHos2012bulk};
+    \label{C2}
+    \item $\varepsilon_{tr}$ has finite $4^{th}$ moment: $\mathbb{E} \varepsilon_{tr}^4 \le K <\infty$.  \label{C3}
+\end{enumerate}
+\begin{remark}
+$\varepsilon_{tr}$ has generalized sub-exponential distribution defined in \citet{erdHos2012bulk}, which is more general than the usual definition of sub-exponential used in the literature with $\alpha = 1$. In some recent works  \citep{FiniteTimeIdentification2017, wong2017lasso}, such distributions were also referred to as sub-Weibull distributions.
+\end{remark}
+Next we establish concentration inequalities similar to Lemma \ref{lemma: hason_bound_time_gauss} for linear processes where the distribution of each coordinate of  noise terms comes from one of the  families C\ref{C1}, C\ref{C2} and C\ref{C3}. 
+
+For i.i.d. data, existing works have generalized Hanson-Wright type inequality  for distributions in C\ref{C1} and  C\ref{C2} \citep{rudelson2013hanson, erdHos2012bulk}. We can use Markov inequality to get an upper bound for C\ref{C3} as well. We summarize these results in the following lemma. Its proof is defered to Appendix \ref{Appendix:proof_heavytail}.
+
+\begin{lem}
+\label{lemma:heavy_tail_hanson}
+Consider a random vector $\varepsilon \in \mathbb{R}^p$ with i.i.d. coordinates following one of the three distributions C\ref{C1} - C\ref{C3}, and a deterministic $p \times p$ matrix $A$. For simplicity, let us assume $A$ is a real matrix, and  $\mathbb{E} \varepsilon_r = 0$ and $\mathbb{E} \varepsilon^2_r = 1$ for every $r, \, 1 \le r \le p$. Then 
+\begin{equation}
+\mathbb{P}\left(|\varepsilon^\top A\varepsilon - \mathbb{E} \varepsilon^\top A\varepsilon|\ge \eta\right) \le \mathcal{T}_j(\eta, A), \nonumber
+\end{equation}
+where $\mathcal{T}_j(\eta, A), j=1,2,3$, are tail decay functions for the three families, given by 
+%\ref{C1}, \ref{C2} and \ref{C3} respectively. In particular, 
+\begin{equation}
+\begin{aligned}
+&\mathcal{T}_1(\eta, A) =  2\exp\left[-c\min\left\{\cfrac{\eta}{\|A\|}, \cfrac{\eta^2}{\rank(A)\|A\|^2}\right\}\right], \nonumber \\
+&\mathcal{T}_2(\eta, A) = c_1\exp\left[-c_2\left(\frac{\eta}{\sqrt{\rank(A)}\|A\|}\right)^{\frac{1}{2+2\alpha}}\right], \nonumber \\
+& \mathcal{T}_3(\eta, A) =  \frac{c_3\rank(A)\|A\|^2}{\eta^2}. \nonumber
+\end{aligned}
+\end{equation}
+Here $c$ only depends on $\sigma$ in C\ref{C1}, $c_1, c_2$ only depend on $a, b$ in C\ref{C2} and $c_3$ only depends on K in C\ref{C3}, and none of them depends on the MA coefficients $B_\ell$, $\ell \ge 0$.
+\end{lem}
+
+
+\noindent Now we extend these three inequalities by replacing $\varepsilon$ with $n$ random variables of the form $X_t = \sum_{\ell \ge 0} B_\ell \varepsilon_{t-\ell}$. The main technical difficulty stems from handling the sum of infinitely many terms $\varepsilon_t$. We apply a truncation argument to overcome this. 
+
+
+\begin{prop}
+\label{lemma:heavy_tail_time_hanson} 
+Suppose $\mathcal{X} = [X_1:X_2:\ldots:X_n]^\top$ is a data matrix with $n$ consecutive observations from  a stationary linear process  $\{X_t\}$ in  \eqref{eq:infinity_moving_average}  with each coordinate of $\varepsilon_t$ is i.i.d. from one of the families C\ref{C1}, C\ref{C2} or  C\ref{C3}, and consider a deterministic $np \times np$ matrix $A$. Then 
+\begin{equation}
+\begin{aligned}
+\mathbb{P}\left(\left|vec(\mathcal{X}^\top)^\top A ~vec(\mathcal{X}^\top) - \mathbb{E} \left[~vec(\mathcal{X}^\top)^\top A ~vec(\mathcal{X}^\top)\right]\right| >2\pi
+\eta \vertiii{f} \right) \le \mathcal{T}_j(\eta, A), \nonumber
+\end{aligned}
+\end{equation}
+where $\mathcal{T}_j(\eta, A), j=1,2,3$, are tail decay functions for the three families, as defined in Lemma \ref{lemma:heavy_tail_hanson}.
+\end{prop}
+\begin{remark}
+The main difference between the  concentration inequalities in Lemma \ref{lemma:heavy_tail_hanson} and Proposition  \ref{lemma:heavy_tail_time_hanson} is that $\vertiii{f}$ appears in the right side of the inequality. As pointed by \cite{Basu2015}, $\vertiii{f}$ can be viewed as a ``price of dependence'' present in time series data. For instance, if $B_\ell = 0$ for all $\ell > 0$, $B_0 = I$, and $\var(\varepsilon_{tr}) = 1$ for all $r, t$, we have  $\vertiii{f} = \frac{1}{2\pi}$ which coincides with the result in Lemma \ref{lemma:heavy_tail_hanson} applied to a $np$-dimensional random vector. 
+\end{remark}
+
+This result generalizes the Hanson-Wright type concentration inequality in Lemma \ref{lemma: hason_bound_time_gauss} to the case of three non-Gaussian families with potentially heavier tails.
+After building concentration inequalities for these three cases, we could bound the variance term as Proposition \ref{prop:variance_bound} which we listed as following Proposition. 
+The proof follows the same line as the proof of Proposition \ref{prop:variance_bound}, by replacing Gaussian Hanson-Wright type inequality with those in Proposition \ref{lemma:heavy_tail_time_hanson}. We omit this for sake of brevity.
+
+
+\begin{prop}
+\label{prop:heavy_tail_bound_variance}
+Suppose $\mathcal{X} = [X_1:X_2:\ldots:X_n]^\top$ is a data matrix with $n$ consecutive observations from  a stationary linear process  $\{X_t\}$ in  \eqref{eq:infinity_moving_average} , each coordinate of $\varepsilon_t$ is i.i.d. from one of the families C\ref{C1}, C\ref{C2} or  C\ref{C3}. Then there exist  general constants $c_i > 0$ (depending only on the error distribution but not on the coefficients $B_\ell$ of the linear process) 
+% {\color{red} which lays inside $\mathcal{B}_j$ below,} 
+such that  for any $r, s$, $1 \le r, s \le p$, and any Fourier frequency $\omega_j \in F_n$, we have 
+% {\color{red} [SB: both freq and distribution family indexed by j]}
+\begin{equation}\label{eqn:heavy-tail-conc-entrywise}
+\mathbb{P}\left(\left|\hat{f}_{rs}(\omega_j) - \mathbb{E}\hat{f}_{rs}(\omega_j)\right| \ge \vertiii{f}\eta\right)\le \mathcal{B}_k(\eta, m),
+\end{equation} 
+where $\mathcal{B}_k$, $k=1, 2, 3$, are defined as 
+\begin{equation}
+\begin{aligned}
+& \mathcal{B}_1(\eta, m) = c_1\exp\left[-c_2\min\{\eta, \eta^2\}\right],\\
+& \mathcal{B}_2(\eta, m) = c_3\exp(\left[-c_4\left(\sqrt{m}\eta\right)^{\frac{1}{2+2\alpha}}\right]),\\
+& \mathcal{B}_3(\eta, m) = \frac{c_5}{m\eta^2}.\nonumber
+\end{aligned}
+\end{equation}
+\end{prop}
+After showing the bound for variance term for linear process, we can derive estimation consistency of hard-thresholding estimators similar to Proposition \ref{prop: gauss_prop} for linear processes with any of the three different types of noise distributions. 
+
+\begin{prop}
+\label{prop: linear_prop}
+Suppose $\{X_t\}$ is a linear process defined in \eqref{eq:infinite_ma}, with $\varepsilon_t$ from one of the three distributions C\ref{C1}, C\ref{C2} and C\ref{C3}, and consider a Fourier frequency $\omega_j \in F_n$.
+Assume $n \succsim \Omega_n(f) \mathcal{N}_k$, where $\mathcal{N}_1 = \vertiii{f}^2 \log p$, $\mathcal{N}_2 = \vertiii{f}^2 (\log p)^{4+4\alpha}$, and $\mathcal{N}_3 = p^{2}$ for the three families C\ref{C1}, C\ref{C2} and C\ref{C3}. Then for any $m $ satisfying $m \precsim n/ \Omega_n(f)$ and $m \succsim \vertiii{f}^2 \mathcal{N}_k$, and any $R > 0$, 
+if we choose threshold for the three different distributions as 
+\begin{enumerate}[(C1)]
+    \item $\lambda = 2R\vertiii{f}\sqrt{\frac{\log p}{m}} + 2\left[\frac{m+1/2\pi}{n}\Omega_n(f)+\frac{1}{2\pi}L_n(f)\right]$,
+    \item $\lambda = 2\vertiii{f}\frac{(R\log p)^{2+2\alpha}}{\sqrt{m}} + 2\left[\frac{m+1/2\pi}{n}\Omega_n(f)+\frac{1}{2\pi}L_n(f)\right]$,
+    \item $\lambda = 2\vertiii{f}\frac{p^{1+R}}{\sqrt{m}} + 2\left[\frac{m+1/2\pi}{n}\Omega_n(f)+\frac{1}{2\pi}L_n(f)\right]$,
+\end{enumerate}
+then 
+\begin{equation}
+\mathbb{P} \left( \|T_{\lambda}(\hat{f}(\omega_j))-f(\omega_j)\| >  7\vertiii{f}_q^q \lambda^{(1-q)}\right) \le \mathcal{B}_k, \nonumber
+\end{equation}
+where the tail probability $\mathcal{B}_k$ are given as 
+\begin{equation}
+\begin{aligned}
+& \mathcal{B}_1 =  c_1 \exp\left[-(c_2 R^2-2)\log p\right], \\
+& \mathcal{B}_2 =  c_3 \exp\left[-(c_4 R-2)\log p\right], \\
+& \mathcal{B}_3 = c_5 \exp \left[ - 2R \log p \right],
+\end{aligned}
+\end{equation}
+where $c_i > 0$ are some general constants depending only on the error distribution but not on the coefficients $B_\ell$ of the linear process. 
+\end{prop}
+
+
+
+
+
+
+The proof follows the same line as the proof of Proposition \ref{prop: gauss_prop}, by replacing Gaussian variance bound in Proposition \ref{prop:variance_bound} with Proposition \ref{prop:heavy_tail_bound_variance}. We omit this for sake of brevity.
+\begin{remark}
+The heavier is the tail of the noise distribution, the wider bandwidth of periodogram averaging ($2m+1$ in our notation) is required for consistent estimation. For generalized sub-exponential, we can ensure consistency in high-dimensional regime  $p=O(n^\alpha), \alpha>1$, while if we only assume existence of fourth moment, we will require $p=o(\sqrt{n})$ for consistency. 
+\end{remark}
+
+
+
+
+% {\color{red} [Sumanta: Overall, the current flow is good. General comments to keep in mind for my next pass through method/theory - (i) assumptions are scattered throughout the sections, need to be consolidated; (ii) not enough discussion on the consequence of smoothing span selection, need to point to earlier literature and say why this is not particularly big concern for us; (iii) some part of the discussion for order of threshold goes to appendix, only the main upshots stays in main body; (iv)  shorten discussion of shrinkage. (v) More discussion on bias term, references to earlier works in low-dimension. (vi) Some discussion on varying thresholds across frequencies, connection to degree of smoothness of $f(\omega)$ and reference to earlier literature.] }
+

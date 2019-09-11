@@ -1,0 +1,662 @@
+\begin{thebibliography}{101}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Achlioptas(2003)]{achlioptas2003database}
+Dimitris Achlioptas.
+\newblock Database-friendly random projections: {Johnson-Lindenstrauss} with
+  binary coins.
+\newblock \emph{Journal of computer and System Sciences}, 66\penalty0
+  (4):\penalty0 671--687, 2003.
+
+\bibitem[Ailon and Chazelle(2006)]{ailon2006approximate}
+Nir Ailon and Bernard Chazelle.
+\newblock Approximate nearest neighbors and the fast {Johnson-Lindenstrauss}
+  transform.
+\newblock In \emph{Proceedings of the thirty-eighth annual ACM symposium on
+  Theory of Computing}, pages 557--563. ACM, 2006.
+
+\bibitem[Ailon and Chazelle(2009)]{ailon2009fast}
+Nir Ailon and Bernard Chazelle.
+\newblock The fast {Johnson--Lindenstrauss} transform and approximate nearest
+  neighbors.
+\newblock \emph{SIAM Journal on computing}, 39\penalty0 (1):\penalty0 302--322,
+  2009.
+
+\bibitem[Allen-Zhu et~al.(2014)Allen-Zhu, Gelashvili, Micali, and
+  Shavit]{allen2014sparse}
+Zeyuan Allen-Zhu, Rati Gelashvili, Silvio Micali, and Nir Shavit.
+\newblock Sparse sign-consistent johnson--lindenstrauss matrices: Compression
+  with neuroscience-based constraints.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 111\penalty0
+  (47):\penalty0 16872--16876, 2014.
+
+\bibitem[Arora and Barak(2009)]{arora2009computational}
+Sanjeev Arora and Boaz Barak.
+\newblock \emph{Computational complexity: a modern approach}.
+\newblock Cambridge University Press, 2009.
+
+\bibitem[Arriaga and Vempala(2006)]{arriaga2006algorithmic}
+Rosa~I Arriaga and Santosh Vempala.
+\newblock An algorithmic theory of learning: Robust concepts and random
+  projection.
+\newblock \emph{Machine Learning}, 63\penalty0 (2):\penalty0 161--182, 2006.
+
+\bibitem[Austin et~al.(2016)Austin, Ballard, and Kolda]{austin2016parallel}
+Woody Austin, Grey Ballard, and Tamara~G Kolda.
+\newblock Parallel tensor compression for large-scale scientific data.
+\newblock In \emph{Parallel and Distributed Processing Symposium, 2016 IEEE
+  International}, pages 912--922. IEEE, 2016.
+
+\bibitem[Ballester-Ripoll et~al.(2019)Ballester-Ripoll, Lindstrom, and
+  Pajarola]{ballester2019tthresh}
+Rafael Ballester-Ripoll, Peter Lindstrom, and Renato Pajarola.
+\newblock Tthresh: Tensor compression for multidimensional visual data.
+\newblock \emph{IEEE transactions on visualization and computer graphics},
+  2019.
+
+\bibitem[Baskaran et~al.(2012)Baskaran, Meister, Vasilache, and
+  Lethin]{baskaran2012efficient}
+Muthu Baskaran, Beno{\^\i}t Meister, Nicolas Vasilache, and Richard Lethin.
+\newblock Efficient and scalable computations with sparse tensors.
+\newblock In \emph{High Performance Extreme Computing (HPEC), 2012 IEEE
+  Conference on}, pages 1--6. IEEE, 2012.
+
+\bibitem[Basu and Michailidis(2015)]{Basu2015}
+Sumanta Basu and George Michailidis.
+\newblock Regularized estimation in sparse high-dimensional time series models.
+\newblock \emph{Annals of Statistics}, 43\penalty0 (4), 2015.
+
+\bibitem[Battaglino et~al.(2018)Battaglino, Ballard, and
+  Kolda]{battaglino2018practical}
+Casey Battaglino, Grey Ballard, and Tamara~G Kolda.
+\newblock A practical randomized cp tensor decomposition.
+\newblock \emph{SIAM Journal on Matrix Analysis and Applications}, 39\penalty0
+  (2):\penalty0 876--901, 2018.
+
+\bibitem[Battaglino et~al.(2019)Battaglino, Ballard, and
+  Kolda]{battaglino2019faster}
+Casey Battaglino, Grey Ballard, and Tamara~G Kolda.
+\newblock Faster parallel tucker tensor decomposition using randomization.
+\newblock 2019.
+
+\bibitem[Bhatia et~al.(1990)Bhatia, Elsner, and Krause]{bhatia1990bounds}
+Rajendra Bhatia, Ludwig Elsner, and Gerd Krause.
+\newblock Bounds for the variation of the roots of a polynomial and the
+  eigenvalues of a matrix.
+\newblock \emph{Linear algebra and its applications}, 142:\penalty0 195--209,
+  1990.
+
+\bibitem[Bickel and Levina(2008)]{bickel2008covariance}
+Peter~J Bickel and Elizaveta Levina.
+\newblock Covariance regularization by thresholding.
+\newblock \emph{The Annals of Statistics}, pages 2577--2604, 2008.
+
+\bibitem[Bingham and Mannila(2001)]{bingham2001random}
+Ella Bingham and Heikki Mannila.
+\newblock Random projection in dimensionality reduction: applications to image
+  and text data.
+\newblock In \emph{Proceedings of the seventh ACM SIGKDD international
+  conference on Knowledge discovery and data mining}, pages 245--250. ACM,
+  2001.
+
+\bibitem[B{\"o}hm and Von~Sachs(2008)]{bohm2008structural}
+Hilmar B{\"o}hm and Rainer Von~Sachs.
+\newblock Structural shrinkage of nonparametric spectral estimators for
+  multivariate time series.
+\newblock \emph{Electronic Journal of Statistics}, 2:\penalty0 696--721, 2008.
+
+\bibitem[B{\"o}hm and von Sachs(2009)]{bohm2009shrinkage}
+Hilmar B{\"o}hm and Rainer von Sachs.
+\newblock Shrinkage estimation in the frequency domain of multivariate time
+  series.
+\newblock \emph{Journal of Multivariate Analysis}, 100\penalty0 (5):\penalty0
+  913--935, 2009.
+
+\bibitem[Bordier et~al.(2017)Bordier, Nicolini, and Bifone]{bordier2017graph}
+C{\'e}cile Bordier, Carlo Nicolini, and Angelo Bifone.
+\newblock Graph analysis and modularity of brain functional connectivity
+  networks: searching for the optimal threshold.
+\newblock \emph{Frontiers in neuroscience}, 11:\penalty0 441, 2017.
+
+\bibitem[Bourgain et~al.(2015)Bourgain, Dirksen, and
+  Nelson]{bourgain2015toward}
+Jean Bourgain, Sjoerd Dirksen, and Jelani Nelson.
+\newblock Toward a unified theory of sparse dimensionality reduction in
+  euclidean space.
+\newblock \emph{Geometric and Functional Analysis}, 25\penalty0 (4):\penalty0
+  1009--1088, 2015.
+
+\bibitem[Boutsidis and Gittens(2013)]{boutsidis2013improved}
+Christos Boutsidis and Alex Gittens.
+\newblock Improved matrix algorithms via the subsampled randomized hadamard
+  transform.
+\newblock \emph{SIAM Journal on Matrix Analysis and Applications}, 34\penalty0
+  (3):\penalty0 1301--1340, 2013.
+
+\bibitem[Bowyer(2016)]{bowyer2016coherence}
+Susan~M Bowyer.
+\newblock Coherence a measure of the brain networks: past and present.
+\newblock \emph{Neuropsychiatric Electrophysiology}, 2\penalty0 (1):\penalty0
+  1, 2016.
+
+\bibitem[Bradley(2005)]{bradley2005basic}
+Richard~C. Bradley.
+\newblock Basic properties of strong mixing conditions. a survey and some open
+  questions.
+\newblock \emph{Probability surveys}, 2:\penalty0 107--144, 2005.
+
+\bibitem[Brillinger(1981)]{brillinger1981time}
+David~R Brillinger.
+\newblock \emph{Time series: data analysis and theory}, volume~36.
+\newblock Siam, 1981.
+
+\bibitem[Brillinger(2001)]{brillinger2001time}
+David~R Brillinger.
+\newblock Time series: data analysis and theory, vol. 36.
+\newblock \emph{New York, NY: Society for Industrial Mathematics. doi},
+  10\penalty0 (1.9780898719246), 2001.
+
+\bibitem[Brockwell and Davis(2013)]{brockwell2013time}
+Peter~J Brockwell and Richard~A Davis.
+\newblock \emph{Time series: theory and methods}.
+\newblock Springer Science \& Business Media, 2013.
+
+\bibitem[Buhler and Tompa(2002)]{buhler2002finding}
+Jeremy Buhler and Martin Tompa.
+\newblock Finding motifs using random projections.
+\newblock \emph{Journal of computational biology}, 9\penalty0 (2):\penalty0
+  225--242, 2002.
+
+\bibitem[Cai and Zhou(2012)]{cai2012minimax}
+T.~Tony Cai and Harrison~H. Zhou.
+\newblock Minimax estimation of large covariance matrices under $\ell_1$-norm.
+\newblock \emph{Statistica Sinica}, 22\penalty0 (4):\penalty0 1319--1349, 2012.
+
+\bibitem[Cai et~al.(2016)Cai, Ren, and Zhou]{cai2016rates}
+T.~Tony Cai, Zhao Ren, and Harrison~H. Zhou.
+\newblock Estimating structured high-dimensional covariance and precision
+  matrices: Optimal rates and adaptive estimation.
+\newblock \emph{Electron. J. Statist.}, 10\penalty0 (1):\penalty0 1--59, 2016.
+\newblock \doi{10.1214/15-EJS1081}.
+
+\bibitem[Cai and Liu(2011)]{cai2011adaptive}
+Tony Cai and Weidong Liu.
+\newblock Adaptive thresholding for sparse covariance matrix estimation.
+\newblock \emph{Journal of the American Statistical Association}, 106\penalty0
+  (494):\penalty0 672--684, 2011.
+
+\bibitem[Cichocki(2013)]{cichocki2013tensor}
+Andrzej Cichocki.
+\newblock Tensor decompositions: a new concept in brain data analysis?
+\newblock \emph{arXiv preprint arXiv:1305.0395}, 2013.
+
+\bibitem[Clarkson and Woodruff(2017)]{clarkson2017low}
+Kenneth~L Clarkson and David~P Woodruff.
+\newblock Low-rank approximation and regression in input sparsity time.
+\newblock \emph{Journal of the ACM (JACM)}, 63\penalty0 (6):\penalty0 54, 2017.
+
+\bibitem[Cormode and Hadjieleftheriou(2008)]{cormode2008finding}
+Graham Cormode and Marios Hadjieleftheriou.
+\newblock Finding frequent items in data streams.
+\newblock \emph{Proceedings of the VLDB Endowment}, 1\penalty0 (2):\penalty0
+  1530--1541, 2008.
+
+\bibitem[Dahlhaus and Eichler(2003)]{dahlhaus2003causality}
+Rainer Dahlhaus and Michael Eichler.
+\newblock Causality and graphical models in time series analysis.
+\newblock \emph{Oxford Statistical Science Series}, pages 115--137, 2003.
+
+\bibitem[Dahlhaus et~al.(1997)Dahlhaus, Eichler, and
+  Sandk{\"u}hler]{dahlhaus1997identification}
+Rainer Dahlhaus, Michael Eichler, and J{\"u}rgen Sandk{\"u}hler.
+\newblock Identification of synaptic connections in neural ensembles by
+  graphical models.
+\newblock \emph{Journal of neuroscience methods}, 77\penalty0 (1):\penalty0
+  93--107, 1997.
+
+\bibitem[De~Lathauwer et~al.(2000)De~Lathauwer, De~Moor, and
+  Vandewalle]{de2000multilinear}
+Lieven De~Lathauwer, Bart De~Moor, and Joos Vandewalle.
+\newblock A multilinear singular value decomposition.
+\newblock \emph{SIAM journal on Matrix Analysis and Applications}, 21\penalty0
+  (4):\penalty0 1253--1278, 2000.
+
+\bibitem[{Diao} et~al.(2017){Diao}, {Song}, {Sun}, and
+  {Woodruff}]{2017arXiv171209473D}
+Huaian {Diao}, Zhao {Song}, Wen {Sun}, and David~P. {Woodruff}.
+\newblock {Sketching for Kronecker Product Regression and P-splines}.
+\newblock \emph{arXiv e-prints}, art. arXiv:1712.09473, Dec 2017.
+
+\bibitem[Donoho and Johnstone(1994)]{donoho1994ideal}
+David~L Donoho and Jain~M Johnstone.
+\newblock Ideal spatial adaptation by wavelet shrinkage.
+\newblock \emph{biometrika}, 81\penalty0 (3):\penalty0 425--455, 1994.
+
+\bibitem[Eichler(2007)]{eichler2007frequency}
+Michael Eichler.
+\newblock A frequency-domain based test for non-correlation between stationary
+  time series.
+\newblock \emph{Metrika}, 65\penalty0 (2):\penalty0 133--157, 2007.
+
+\bibitem[Erd{\H{o}}s et~al.(2012)Erd{\H{o}}s, Yau, and Yin]{erdHos2012bulk}
+L{\'a}szl{\'o} Erd{\H{o}}s, Horng-Tzer Yau, and Jun Yin.
+\newblock Bulk universality for generalized wigner matrices.
+\newblock \emph{Probability Theory and Related Fields}, pages 1--67, 2012.
+
+\bibitem[Euan et~al.(2016)Euan, Ombao, and Ortega]{euan2016hierarchical}
+Carolina Euan, Hernando Ombao, and Joaquin Ortega.
+\newblock The hierarchical spectral merger algorithm: a new time series
+  clustering procedure.
+\newblock \emph{arXiv preprint arXiv:1609.08569}, 2016.
+
+\bibitem[Faradonbeh et~al.(2018)Faradonbeh, Tewari, and
+  Michailidis]{FiniteTimeIdentification2017}
+Mohamad Kazem~Shirani Faradonbeh, Ambuj Tewari, and George Michailidis.
+\newblock Finite time identification in unstable linear systems.
+\newblock \emph{Automatica}, 96:\penalty0 342--353, 2018.
+
+\bibitem[Fiecas and Ombao(2016)]{fiecas2016dynamic}
+Mark Fiecas and Hernando Ombao.
+\newblock Modeling the evolution of dynamic brain processes during an
+  associative learning experiment.
+\newblock \emph{Journal of the American Statistical Association}, 111\penalty0
+  (516):\penalty0 1440--1453, 2016.
+
+\bibitem[Fiecas and von Sachs(2014)]{fiecas2014datadriven}
+Mark Fiecas and Rainer von Sachs.
+\newblock Data-driven shrinkage of the spectral density matrix of a
+  high-dimensional time series.
+\newblock \emph{Electron. J. Statist.}, 8\penalty0 (2):\penalty0 2975--3003,
+  2014.
+\newblock \doi{10.1214/14-EJS977}.
+\newblock URL \url{https://doi.org/10.1214/14-EJS977}.
+
+\bibitem[Fiecas et~al.(2018)Fiecas, Leng, Liu, and Yu]{fiecas2018spectral}
+Mark Fiecas, Chenlei Leng, Weidong Liu, and Yi~Yu.
+\newblock Spectral analysis of high-dimensional time series.
+\newblock \emph{arXiv preprint arXiv:1810.11223}, 2018.
+
+\bibitem[Fradkin and Madigan(2003)]{fradkin2003experiments}
+Dmitriy Fradkin and David Madigan.
+\newblock Experiments with random projections for machine learning.
+\newblock In \emph{Proceedings of the ninth ACM SIGKDD international conference
+  on Knowledge discovery and data mining}, pages 517--522. ACM, 2003.
+
+\bibitem[Golub and Van~Loan(2012)]{golub2012matrix}
+Gene~H Golub and Charles~F Van~Loan.
+\newblock \emph{Matrix computations}, volume~3.
+\newblock JHU Press, 2012.
+
+\bibitem[Granger(1969)]{granger1969investigating}
+Clive~WJ Granger.
+\newblock Investigating causal relations by econometric models and
+  cross-spectral methods.
+\newblock \emph{Econometrica: Journal of the Econometric Society}, pages
+  424--438, 1969.
+
+\bibitem[Halko et~al.(2011)Halko, Martinsson, and Tropp]{halko2011finding}
+Nathan Halko, Per-Gunnar Martinsson, and Joel~A Tropp.
+\newblock Finding structure with randomness: Probabilistic algorithms for
+  constructing approximate matrix decompositions.
+\newblock \emph{SIAM review}, 53\penalty0 (2):\penalty0 217--288, 2011.
+
+\bibitem[Hurrell et~al.(2013)Hurrell, Holland, Gent, Ghan, Kay, Kushner,
+  Lamarque, Large, Lawrence, Lindsay, et~al.]{hurrell2013community}
+James~W Hurrell, Marika~M Holland, Peter~R Gent, Steven Ghan, Jennifer~E Kay,
+  Paul~J Kushner, J-F Lamarque, William~G Large, D~Lawrence, Keith Lindsay,
+  et~al.
+\newblock The community earth system model: a framework for collaborative
+  research.
+\newblock \emph{Bulletin of the American Meteorological Society}, 94\penalty0
+  (9):\penalty0 1339--1360, 2013.
+
+\bibitem[Jegou et~al.(2008)Jegou, Douze, and Schmid]{jegou2008hamming}
+Herve Jegou, Matthijs Douze, and Cordelia Schmid.
+\newblock Hamming embedding and weak geometric consistency for large scale
+  image search.
+\newblock In \emph{European conference on computer vision}, pages 304--317.
+  Springer, 2008.
+
+\bibitem[Jung(2015)]{jung2015learning}
+Alexander Jung.
+\newblock Learning the conditional independence structure of stationary time
+  series: A multitask learning approach.
+\newblock \emph{IEEE Transactions on Signal Processing}, 63\penalty0
+  (21):\penalty0 5677--5690, 2015.
+
+\bibitem[Jung et~al.(2015)Jung, Hannak, and Goertz]{jung2015graphical}
+Alexander Jung, Gabor Hannak, and Norbert Goertz.
+\newblock Graphical lasso based model selection for time series.
+\newblock \emph{IEEE Signal Processing Letters}, 22\penalty0 (10):\penalty0
+  1781--1785, 2015.
+
+\bibitem[Kaski(1998)]{kaski1998dimensionality}
+Samuel Kaski.
+\newblock Dimensionality reduction by random mapping: Fast similarity
+  computation for clustering.
+\newblock In \emph{Neural networks proceedings, 1998. ieee world congress on
+  computational intelligence. the 1998 ieee international joint conference on},
+  volume~1, pages 413--418. IEEE, 1998.
+
+\bibitem[Kay et~al.(2015)Kay, Deser, Phillips, Mai, Hannay, Strand, Arblaster,
+  Bates, Danabasoglu, Edwards, et~al.]{kay2015community}
+JE~Kay, C~Deser, A~Phillips, A~Mai, C~Hannay, G~Strand, JM~Arblaster, SC~Bates,
+  G~Danabasoglu, J~Edwards, et~al.
+\newblock The community earth system model (cesm) large ensemble project: A
+  community resource for studying climate change in the presence of internal
+  climate variability.
+\newblock \emph{Bulletin of the American Meteorological Society}, 96\penalty0
+  (8):\penalty0 1333--1349, 2015.
+
+\bibitem[Kaya and U{\c{c}}ar(2016)]{kaya2016high}
+Oguz Kaya and Bora U{\c{c}}ar.
+\newblock High performance parallel algorithms for the tucker decomposition of
+  sparse tensors.
+\newblock In \emph{Parallel Processing (ICPP), 2016 45th International
+  Conference on}, pages 103--112. IEEE, 2016.
+
+\bibitem[Kolda and Bader(2009)]{kolda2009tensor}
+Tamara~G Kolda and Brett~W Bader.
+\newblock Tensor decompositions and applications.
+\newblock \emph{SIAM review}, 51\penalty0 (3):\penalty0 455--500, 2009.
+
+\bibitem[Kolda and Sun(2008)]{kolda2008scalable}
+Tamara~G Kolda and Jimeng Sun.
+\newblock Scalable tensor decompositions for multi-aspect data mining.
+\newblock In \emph{2008 Eighth IEEE International Conference on Data Mining},
+  pages 363--372. IEEE, 2008.
+
+\bibitem[Kuceyeski et~al.(2018)Kuceyeski, Jamison, Owen, Raj, and
+  Mukherjee]{Kuceyeski2018functional}
+Amy Kuceyeski, Keith~W Jamison, Julia Owen, Ashish Raj, and Pratik Mukherjee.
+\newblock Functional rerouting via the structural connectome is associated with
+  better recovery after mild tbi.
+\newblock \emph{bioRxiv}, 2018.
+\newblock \doi{10.1101/320515}.
+\newblock URL \url{https://www.biorxiv.org/content/early/2018/05/18/320515}.
+
+\bibitem[Lapointe et~al.(2015)Lapointe, Savard, and
+  Blanquart]{lapointe2015differential}
+Simon Lapointe, Bruno Savard, and Guillaume Blanquart.
+\newblock Differential diffusion effects, distributed burning, and local
+  extinctions in high karlovitz premixed flames.
+\newblock \emph{Combustion and flame}, 162\penalty0 (9):\penalty0 3341--3355,
+  2015.
+
+\bibitem[Ledoit and Wolf(2004)]{ledoit2004well}
+Olivier Ledoit and Michael Wolf.
+\newblock A well-conditioned estimator for large-dimensional covariance
+  matrices.
+\newblock \emph{Journal of multivariate analysis}, 88\penalty0 (2):\penalty0
+  365--411, 2004.
+
+\bibitem[Li et~al.(2015)Li, Battaglino, Perros, Sun, and Vuduc]{li2015input}
+Jiajia Li, Casey Battaglino, Ioakeim Perros, Jimeng Sun, and Richard Vuduc.
+\newblock An input-adaptive and in-place approach to dense tensor-times-matrix
+  multiply.
+\newblock In \emph{High Performance Computing, Networking, Storage and
+  Analysis, 2015 SC-International Conference for}, pages 1--12. IEEE, 2015.
+
+\bibitem[Li et~al.(2006)Li, Hastie, and Church]{li2006very}
+Ping Li, Trevor~J Hastie, and Kenneth~W Church.
+\newblock Very sparse random projections.
+\newblock In \emph{Proceedings of the 12th ACM SIGKDD international conference
+  on Knowledge discovery and data mining}, pages 287--296. ACM, 2006.
+
+\bibitem[Liu et~al.(2006)Liu, Kargupta, and Ryan]{liu2006random}
+Kun Liu, Hillol Kargupta, and Jessica Ryan.
+\newblock Random projection-based multiplicative data perturbation for privacy
+  preserving distributed data mining.
+\newblock \emph{IEEE Transactions on knowledge and Data Engineering},
+  18\penalty0 (1):\penalty0 92--106, 2006.
+
+\bibitem[Malik and Becker(2018)]{malik2018low}
+Osman~Asif Malik and Stephen Becker.
+\newblock Low-rank tucker decomposition of large tensors using tensorsketch.
+\newblock In \emph{Advances in Neural Information Processing Systems}, pages
+  10116--10126, 2018.
+
+\bibitem[Matsumoto and Nishimura(1998)]{matsumoto1998mersenne}
+Makoto Matsumoto and Takuji Nishimura.
+\newblock Mersenne twister: a 623-dimensionally equidistributed uniform
+  pseudo-random number generator.
+\newblock \emph{ACM Transactions on Modeling and Computer Simulation (TOMACS)},
+  8\penalty0 (1):\penalty0 3--30, 1998.
+
+\bibitem[Muthukrishnan et~al.(2005)]{muthukrishnan2005data}
+Shanmugavelayutham Muthukrishnan et~al.
+\newblock Data streams: Algorithms and applications.
+\newblock \emph{Foundations and Trends{\textregistered} in Theoretical Computer
+  Science}, 1\penalty0 (2):\penalty0 117--236, 2005.
+
+\bibitem[Ombao et~al.(2001)Ombao, Raz, Strawderman, and von
+  Sachs]{ombao2001smoothing}
+Hernando~C. Ombao, Jonathan~A. Raz, Robert~L. Strawderman, and Rainer von
+  Sachs.
+\newblock A simple generalised crossvalidation method of span selection for
+  periodogram smoothing.
+\newblock \emph{Biometrika}, 88\penalty0 (4):\penalty0 1186--1192, 2001.
+
+\bibitem[Oymak and Tropp(2015)]{oymak2015universality}
+Samet Oymak and Joel~A Tropp.
+\newblock Universality laws for randomized dimension reduction, with
+  applications.
+\newblock \emph{Information and Inference: A Journal of the IMA}, 2015.
+
+\bibitem[Papadimitriou et~al.(2000)Papadimitriou, Raghavan, Tamaki, and
+  Vempala]{papadimitriou2000latent}
+Christos~H Papadimitriou, Prabhakar Raghavan, Hisao Tamaki, and Santosh
+  Vempala.
+\newblock Latent semantic indexing: A probabilistic analysis.
+\newblock \emph{Journal of Computer and System Sciences}, 61\penalty0
+  (2):\penalty0 217--235, 2000.
+
+\bibitem[Rencher and Schaalje(2008)]{rencher2008linear}
+Alvin~C Rencher and G~Bruce Schaalje.
+\newblock \emph{Linear models in statistics}.
+\newblock John Wiley \& Sons, 2008.
+
+\bibitem[Rosenblatt(1985)]{rosenblatt1985stationary}
+Murray Rosenblatt.
+\newblock \emph{Stationary sequences and random fields}.
+\newblock Springer, 1985.
+
+\bibitem[Rothman et~al.(2009)Rothman, Levina, and Zhu]{rothman2009generalized}
+Adam~J Rothman, Elizaveta Levina, and Ji~Zhu.
+\newblock Generalized thresholding of large covariance matrices.
+\newblock \emph{Journal of the American Statistical Association}, 104\penalty0
+  (485):\penalty0 177--186, 2009.
+
+\bibitem[Rudelson(2012)]{rudelson2012row}
+Mark Rudelson.
+\newblock Row products of random matrices.
+\newblock \emph{Advances in Mathematics}, 231\penalty0 (6):\penalty0
+  3199--3231, 2012.
+
+\bibitem[Rudelson and Vershynin(2013)]{rudelson2013hanson}
+Mark Rudelson and Roman Vershynin.
+\newblock Hanson-wright inequality and sub-gaussian concentration.
+\newblock \emph{Electronic Communications in Probability}, 18, 2013.
+
+\bibitem[Sahin et~al.(2005)Sahin, Gulbeden, Emek{\c{c}}i, Agrawal, and
+  El~Abbadi]{sahin2005prism}
+Ozgur~D Sahin, Aziz Gulbeden, Fatih Emek{\c{c}}i, Divyakant Agrawal, and Amr
+  El~Abbadi.
+\newblock Prism: indexing multi-dimensional data in p2p networks using
+  reference vectors.
+\newblock In \emph{Proceedings of the 13th annual ACM international conference
+  on Multimedia}, pages 946--955. ACM, 2005.
+
+\bibitem[Sch{\"a}cke(2013)]{schacke2013kronecker}
+Kathrin Sch{\"a}cke.
+\newblock On the kronecker product.
+\newblock 2013.
+
+\bibitem[Shu and Nan(2014)]{shu2014estimation}
+Hai Shu and Bin Nan.
+\newblock Estimation of large covariance and precision matrices from temporally
+  dependent observations.
+\newblock \emph{arXiv preprint arXiv:1412.5059}, 2014.
+
+\bibitem[Sun et~al.(2008)Sun, Tao, Papadimitriou, Yu, and
+  Faloutsos]{sun2008incremental}
+Jimeng Sun, Dacheng Tao, Spiros Papadimitriou, Philip~S Yu, and Christos
+  Faloutsos.
+\newblock Incremental tensor analysis: Theory and applications.
+\newblock \emph{ACM Transactions on Knowledge Discovery from Data (TKDD)},
+  2\penalty0 (3):\penalty0 11, 2008.
+
+\bibitem[Sun et~al.(2018{\natexlab{a}})Sun, Guo, Tropp, and
+  Udell]{sun2018tensor}
+Yiming Sun, Yang Guo, Joel~A Tropp, and Madeleine Udell.
+\newblock Tensor random projection for low memory dimension reduction.
+\newblock In \emph{NeurIPS Workshop on Relational Representation Learning},
+  2018{\natexlab{a}}.
+\newblock URL
+  \url{https://r2learning.github.io/assets/papers/CameraReadySubmission%2041.pdf}.
+
+\bibitem[Sun et~al.(2018{\natexlab{b}})Sun, Li, Kuceyeski, and
+  Basu]{sun2018large}
+Yiming Sun, Yige Li, Amy Kuceyeski, and Sumanta Basu.
+\newblock Large spectral density matrix estimation by thresholding.
+\newblock \emph{arXiv preprint arXiv:1812.00532}, 2018{\natexlab{b}}.
+
+\bibitem[Sun et~al.(2019)Sun, Guo, Luo, Tropp, and Udell]{sun2019low}
+Yiming Sun, Yang Guo, Charlene Luo, Joel~A Tropp, and Madeleine Udell.
+\newblock Low rank tucker approximation of a tensor from streaming data.
+\newblock \emph{In preparation}, 2019.
+
+\bibitem[Tropp et~al.(2019{\natexlab{a}})Tropp, Yurtsever, Udell, and
+  Cevher]{Tropp2019-SketchingScientificSimulation}
+J.A. Tropp, A.~Yurtsever, M.~Udell, and V.~Cevher.
+\newblock Streaming low-rank matrix approximation with an application to
+  scientific simulation.
+\newblock Technical report, 2019{\natexlab{a}}.
+\newblock URL \url{https://arxiv.org/pdf/1902.08651.pdf}.
+
+\bibitem[Tropp(2011)]{tropp2011improved}
+Joel~A Tropp.
+\newblock Improved analysis of the subsampled randomized hadamard transform.
+\newblock \emph{Advances in Adaptive Data Analysis}, 3\penalty0
+  (01n02):\penalty0 115--126, 2011.
+
+\bibitem[Tropp et~al.(2017)Tropp, Yurtsever, Udell, and
+  Cevher]{tropp2017practical}
+Joel~A Tropp, Alp Yurtsever, Madeleine Udell, and Volkan Cevher.
+\newblock Practical sketching algorithms for low-rank matrix approximation.
+\newblock \emph{SIAM Journal on Matrix Analysis and Applications}, 38\penalty0
+  (4):\penalty0 1454--1485, 2017.
+
+\bibitem[Tropp et~al.(2018)Tropp, Yurtsever, Udell, and Cevher]{tropp2018more}
+Joel~A Tropp, Alp Yurtsever, Madeleine Udell, and Volkan Cevher.
+\newblock More practical sketching algorithms for low-rank matrix
+  approximation.
+\newblock Technical Report 2018-01, California Institute of Technology,
+  Pasadena, California, 2018.
+
+\bibitem[Tropp et~al.(2019{\natexlab{b}})Tropp, Yurtsever, Udell, and
+  Cevher]{tropp2019streaming}
+Joel~A Tropp, Alp Yurtsever, Madeleine Udell, and Volkan Cevher.
+\newblock Streaming low-rank matrix approximation with an application to
+  scientific simulation.
+\newblock \emph{Submitted to SISC}, 2019{\natexlab{b}}.
+
+\bibitem[Tsourakakis(2010)]{tsourakakis2010mach}
+Charalampos~E Tsourakakis.
+\newblock Mach: Fast randomized tensor decompositions.
+\newblock In \emph{Proceedings of the 2010 SIAM International Conference on
+  Data Mining}, pages 689--700. SIAM, 2010.
+
+\bibitem[Tucker(1966)]{tucker1966some}
+Ledyard~R Tucker.
+\newblock Some mathematical notes on three-mode factor analysis.
+\newblock \emph{Psychometrika}, 31\penalty0 (3):\penalty0 279--311, 1966.
+
+\bibitem[van~de Geer(2016)]{van2016lecture}
+Sara van~de Geer.
+\newblock “lecture notes on sparsity, 2016.
+
+\bibitem[Vannieuwenhoven et~al.(2012)Vannieuwenhoven, Vandebril, and
+  Meerbergen]{vannieuwenhoven2012new}
+Nick Vannieuwenhoven, Raf Vandebril, and Karl Meerbergen.
+\newblock A new truncation strategy for the higher-order singular value
+  decomposition.
+\newblock \emph{SIAM Journal on Scientific Computing}, 34\penalty0
+  (2):\penalty0 A1027--A1052, 2012.
+
+\bibitem[Vasilescu and Terzopoulos(2002)]{vasilescu2002multilinear}
+M~Alex~O Vasilescu and Demetri Terzopoulos.
+\newblock Multilinear analysis of image ensembles: Tensorfaces.
+\newblock In \emph{European Conference on Computer Vision}, pages 447--460.
+  Springer, 2002.
+
+\bibitem[Wang et~al.(2012)Wang, Kumar, and Chang]{wang2012semi}
+Jun Wang, Sanjiv Kumar, and Shih-Fu Chang.
+\newblock Semi-supervised hashing for large-scale search.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, 34\penalty0 (12):\penalty0 2393--2406, 2012.
+
+\bibitem[Wang et~al.(2015)Wang, Tung, Smola, and Anandkumar]{wang2015fast}
+Yining Wang, Hsiao-Yu Tung, Alexander~J Smola, and Anima Anandkumar.
+\newblock Fast and guaranteed tensor decomposition via sketching.
+\newblock In \emph{Advances in Neural Information Processing Systems}, pages
+  991--999, 2015.
+
+\bibitem[Wong and Tewari(2017)]{wong2017lasso}
+Kam~Chung Wong and Ambuj Tewari.
+\newblock Lasso guarantees for beta -mixing heavy tailed time series.
+\newblock \emph{arXiv preprint arXiv:1708.01505}, 2017.
+
+\bibitem[Woodruff et~al.(2014)]{woodruff2014sketching}
+David~P Woodruff et~al.
+\newblock Sketching as a tool for numerical linear algebra.
+\newblock \emph{Foundations and Trends{\textregistered} in Theoretical Computer
+  Science}, 10\penalty0 (1--2):\penalty0 1--157, 2014.
+
+\bibitem[Woolfe et~al.(2008)Woolfe, Liberty, Rokhlin, and
+  Tygert]{woolfe2008fast}
+Franco Woolfe, Edo Liberty, Vladimir Rokhlin, and Mark Tygert.
+\newblock A fast randomized algorithm for the approximation of matrices.
+\newblock \emph{Applied and Computational Harmonic Analysis}, 25\penalty0
+  (3):\penalty0 335--366, 2008.
+
+\bibitem[Wright et~al.(2009)Wright, Yang, Ganesh, Sastry, and
+  Ma]{wright2009robust}
+John Wright, Allen~Y Yang, Arvind Ganesh, S~Shankar Sastry, and Yi~Ma.
+\newblock Robust face recognition via sparse representation.
+\newblock \emph{IEEE transactions on pattern analysis and machine
+  intelligence}, 31\penalty0 (2):\penalty0 210--227, 2009.
+
+\bibitem[Wu and Zaffaroni(2015)]{wu2015uniform}
+Wei~Biao Wu and Paolo Zaffaroni.
+\newblock Uniform convergence of multivariate spectral density estimates.
+\newblock \emph{arXiv preprint arXiv:1505.03659}, 2015.
+
+\bibitem[Yurtsever et~al.(2017)Yurtsever, Udell, Tropp, and
+  Cevher]{yurtsever2017sketchy}
+Alp Yurtsever, Madeleine Udell, Joel~A Tropp, and Volkan Cevher.
+\newblock Sketchy decisions: Convex low-rank matrix optimization with optimal
+  storage.
+\newblock \emph{arXiv preprint arXiv:1702.06838}, 2017.
+
+\bibitem[Zhou et~al.(2014)Zhou, Cichocki, and Xie]{zhou2014decomposition}
+Guoxu Zhou, Andrzej Cichocki, and Shengli Xie.
+\newblock Decomposition of big tensors with low multilinear rank.
+\newblock \emph{arXiv preprint arXiv:1412.1885}, 2014.
+
+\bibitem[Zuo et~al.(2010)Zuo, Kelly, Di~Martino, Mennes, Margulies, Bangaru,
+  Grzadzinski, Evans, Zang, Castellanos, and Milham]{zuo2010growing}
+Xi-Nian Zuo, Clare Kelly, Adriana Di~Martino, Maarten Mennes, Daniel~S.
+  Margulies, Saroja Bangaru, Rebecca Grzadzinski, Alan~C. Evans, Yu-Feng Zang,
+  F.~Xavier Castellanos, and Michael~P. Milham.
+\newblock Growing together and growing apart: Regional and sex differences in
+  the lifespan developmental trajectories of functional homotopy.
+\newblock \emph{Journal of Neuroscience}, 30\penalty0 (45):\penalty0
+  15034--15043, 2010.
+\newblock \doi{10.1523/JNEUROSCI.2612-10.2010}.
+
+\end{thebibliography}

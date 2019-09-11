@@ -1,0 +1,57 @@
+% SIAM Article Template
+\documentclass[review,onefignum,onetabnum]{siamart171218}
+
+
+
+\input{ex_shared}
+
+
+\begin{document}
+
+\maketitle
+% REQUIRED
+\begin{abstract}
+This paper describes a new algorithm for computing a low-Tucker-rank approximation of a tensor.
+The method applies a randomized linear map to the tensor to obtain a \emph{sketch}
+that captures the important directions within each mode, as well as the interactions among the modes.
+The sketch can be extracted from streaming or distributed data or with a single pass over the tensor,
+and it uses storage proportional to the degrees of freedom in the output Tucker approximation.
+The algorithm does not require a second pass over the tensor, although it can exploit another view
+to compute a superior approximation. The paper provides a rigorous theoretical guarantee
+on the approximation error. Extensive numerical experiments show that that the algorithm
+produces useful results that improve on the state of the art for streaming Tucker decomposition.
+\end{abstract}
+
+%\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+%\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+% REQUIRED
+\begin{keywords}
+Tucker decomposition, tensor compression, dimension reduction, sketching method, randomized algorithm, streaming algorithm
+\end{keywords}
+
+% REQUIRED
+\begin{AMS}
+  68Q25, 68R10, 68U05
+\end{AMS}
+
+\input{introduction.tex}
+\input{methodology.tex}
+\input{main_theory.tex}
+\input{numerical_experiments.tex}
+% \input{conclusion.tex}
+\section*{Acknowledgments}
+MU, YS, and YG were supported in part by DARPA Award FA8750-17-2-0101.
+JAT gratefully acknowledges support from ONR Awards N00014-11-10025, N00014-17-12146, and N00014-18-12363.
+The authors wish to thank Osman Asif Malik and Stephen Becker for their help
+in understanding and implementing Tucker TensorSketch,
+and Tamara Kolda for insightful comments on an early draft.
+
+% bibliography
+\clearpage
+\bibliographystyle{siamplain}
+\bibliography{bibtex}
+
+\appendix
+\input{Appendix.tex}
+\end{document}

@@ -1,0 +1,153 @@
+\section{Proof for Bias Bounding}
+\subsection{Proof for Lemma \ref{lemma:bound_deviation}}
+\begin{proof}
+We will show proof for real part only and with same argument, we could get that of imaginary part. By triangular inequality, 
+\begin{equation}
+\label{eq:expectation_bias_decomposition}
+\begin{aligned}
+&\left|\mathbb{E}[{\bf Re}(g_{rs}(\omega_j))] - {\bf Re}(f_{rs}(\omega_j))\right| \\
+&\le \left|\mathbb{E}[{\bf Re}(g_{rs}(\omega_j))] - \mathbb{E}[{\bf Re}(\hat{f}_{rs}(\omega_j))] \right| + \left|\mathbb{E}[{\bf Re}(\hat{f}_{rs}(\omega_j))] - {\bf Re}(f_{rs}(\omega_j))\right|,
+\end{aligned}
+\end{equation}
+where $\hat{f}(\omega_j)$ is the usual smoothed estimator. \par 
+It is not hard to see that 
+\begin{equation}
+\left|\mathbb{E}[{\bf Re}(g_{rs}(\omega_j))] - \mathbb{E}[{\bf Re}(\hat{f}_{rs}(\omega_j))] \right| \le \max_{k\in \mathcal{B}_j} \left| e_r^\top   (H(\omega_k) - I(\omega_k)) e_s\right|. 
+\end{equation}
+Now for any unit vector $u,v$, 
+\begin{equation}
+\begin{aligned}
+\label{eq:ada_periodogram_real_part_dif}
+&\mathbb{E} \left [u^\top  {\bf Re}(H(\omega_j))v - u^\top  {\bf Re}(I(\omega_j))v\right] = \frac{1}{2\pi} \mathbb{E}\left[u^\top  (\mathcal{X}^\top  c_jc_j^\top   \mathcal{X} -  \mathcal{X}^\top  s_js_j^\top   \mathcal{X})v\right]\\
+&=\frac{1}{2\pi} \mathbb{E}\left[c_j^\top   \mathcal{X}vu^\top  \mathcal{X}^\top   c_j - s_j^\top   \mathcal{X}vu^\top   \mathcal{X}^\top  s_j\right].
+\end{aligned}
+\end{equation}
+Let $\Sigma^{v,u} = \cov(\mathcal{X}v, \mathcal{X}u)$, then $\Sigma^{v,u}$ is a toeplitz matrix with element as 
+\begin{equation}
+\Sigma^{v,u}_{k,q} = u^\top  \Gamma(q-k)v.
+\end{equation}
+Then by first part of lemma \ref{lemma: bound_toeplitz}, we know $\left|c_j^\top  \Sigma^{v,u}c_j-s_j^\top  \Sigma^{v,u}s_j\right|\le \frac{\Omega(\Sigma^{v,u})}{2\pi n}$. Besides, $\Omega(\Sigma^{v,u}) \le \Omega_n(f_\mathcal{X})$ since  $\left|u^\top  \Gamma(q-k)v\right| \le \|\Gamma(q-k) \| $. Hence,we could bound \eqref{eq:ada_periodogram_real_part_dif} with $\frac{1}{2\pi} \Omega_n(f_\mathcal{X})$. \par 
+Besides, Lemma A.4 in \cite{sun2018large} shows that the second term in \eqref{eq:expectation_bias_decomposition} is bounded by $\frac{m}{n}\Omega_n(f_\mathcal{X}) + \frac{1}{2\pi}\left(\frac{\Omega_n(f_\mathcal{X})}{n}+L_n(f_\mathcal{X})\right)$. Combining these two bounds, we complete the proof. 
+ \end{proof}
+ 
+\subsection{Proof for Lemma \ref{lemma:theta_bias}} 
+\begin{proof}
+We will only show that the proof for the $\hat{\theta}^{(r)}_{j,rs}$ and the same goes to
+$\hat{\theta}^{i}_{j,rs}$.
+For $j\in F_n^{t}$, let $y_j$(we omit $r,s$ from notation for simplicity) be the vector of length $m$, composed by  ${\bf Re}(H(\omega_k)_{rs}), k\in \mathcal{B}_j$. Then 
+\begin{equation}
+\begin{aligned}
+&\mathbb{E} \hat{\theta}^{(r)}_{j,rs} = \frac{1}{m-1}\mathbb{E}\left\{y_j^\top   \left[I-\frac{1}{m}11^\top   \right]y_j\right\} = \frac{1}{m-1}\rm{Tr}\left(\left[I-\frac{1}{m}11^\top   \right] D\right) \\
+&= \frac{1}{m-1}\left\{\sum_{q\in B^j_m} \left(1-\frac{1}{m}\right)D(q,q) + \frac{1}{m} \sum_{q_1\neq q_2, \in B^j_m}D(q_1,q_2)\right\}, 
+\end{aligned}
+\end{equation}
+where 
+\begin{equation}
+D(q_1,q_2) = \cov({\bf Re}(H_{rs}(\omega_{q_1})), {\bf Re}(H_{rs}(\omega_{q_2}))), q_1,q_2 \in \mathcal{B}_j.
+\end{equation}
+If $D(q,q)$ share the same value as $\theta^r_{rs}$ and $D(q_1,q_2)=0$ then $\hat{\theta}^{(r)}_{j,rs}$ is an unbiased estimator. So in this proof we bound  
+$|D(q,q) - \theta^r_{rs}|$ and $|D(q_1,q_2)|$.\\[0.2cm]
+{\bf Bound $|D(q,q) - \theta^{(r)}_{j, rs}|$:}\\
+We first bound  $|D(q,q)-\theta^{(r)}_{j, rs}|, q\in \mathcal{B}_j$. 
+For $e_r, e_s$, applying results of Gaussian fourth moments in section \ref{sec:technical_lemmas}, 
+\begin{equation}
+\label{eq: dif_liminting_var}
+\begin{aligned}
+&|D(q,q)-\theta^{(r)}_{j, rs}| \\
+&=  \left|4\var(\langle \mathcal{X}^\top   c_q,e_r\rangle \langle \mathcal{\mathcal{X}}^\top   c_q,e_s\rangle) - \var(e_r^\top  {\bf Re}(H_{\infty}(\omega_j))e_s)\right| \\
+&\le 4|\var(\langle \mathcal{\mathcal{X}}^\top   c_q,e_r\rangle)\var{\langle \mathcal{\mathcal{X}}^\top   c_q,e_s\rangle)} - \var(\langle {\bf Re}(d_{\infty, j}),e_r\rangle)\var{\langle {\bf Re}(d_{\infty, j}),e_s\rangle)}| \\
+&+ 4|\mathbb{E}^2(\langle \mathcal{\mathcal{X}}^\top   c_q,e_r\rangle \langle \mathcal{\mathcal{X}}^\top  c_q,e_s\rangle) )-\mathbb{E}^2(\langle {\bf Re}(d_{\infty, j}),e_r\rangle \langle {\bf Re}(d_{\infty, j}),e_s\rangle) )|
+\end{aligned}
+\end{equation}
+As shown before, $2\var(\langle {\bf Re}(d_{\infty, j}), e_r\rangle) = f_{rr}(\omega_j)$,  then 
+\begin{equation}
+\label{eq:help_bound1}
+\begin{aligned}
+&|\var(\langle \mathcal{X}^\top c_q,e_r\rangle) -  \var(\langle {\bf Re}(d_{\infty, j}),e_r\rangle)| =\frac{1}{2} \left|e_r^\top \mathbb{E}[{\bf Re}(H(\omega_q))]e_r - e_r^\top {\bf Re}(f(\omega_j))e_r\right|\\
+& \le \frac{1}{2}|u^\top \mathbb{E}[{\bf Re}(H(\omega_q))]e_r - e_r^\top  \mathbb{E}[{\bf Re}(I_n(\omega_q))]e_r|+\frac{1}{2}|e_r^\top\mathbb{E}[{\bf Re}(I_n(\omega_q))]e_r-e_r^\top  {\bf Re}\mathbb{E}[(I_n(\omega_j))]e_r|\\
+&+ \frac{1}{2}|e_r^\top\mathbb{E}[I_n(\omega_j)]e_r - e_r^\top  f(\omega_j)e_r|\\
+&\le  \frac{\Omega_n(f_\mathcal{X})}{4n\pi}+\frac{\sqrt{2}}{4\pi}\frac{|j-k|\Omega_n(f_\mathcal{X})}{n}+ \frac{1}{4\pi}\left(\frac{\Omega_n(f_\mathcal{X})}{n} + L_n(f_\mathcal{X})\right)\\
+\end{aligned}
+\end{equation}
+where the first part of last line is from same technique used in lemma \ref{lemma:bound_deviation} and the second and third parts are from \cite{sun2018large}. 
+Therefore, 
+\begin{equation}
+\begin{aligned}
+&4|\var(\langle \mathcal{X}^\top  c_q,e_r\rangle)\var({\langle \mathcal{X}^\top   c_q,e_s\rangle)} - \var(\langle {\bf Re}(d_{\infty, j}) ,e_r\rangle)\var(\langle {\bf Re}(d_{\infty, j}), e_s\rangle)| \\
+& \le |4\var(\langle \mathcal{X}^\top c_q,e_r\rangle)\var(\langle \mathcal{X}^\top  c_q,e_s\rangle)- 2\var(\langle \mathcal{X}^\top  c_q,e_r\rangle)2\var(\langle d^{r}_{\infty, j},e_s\rangle)| \\
+&+|2\var(\langle \mathcal{X}^\top  c_q,e_r\rangle)2\var(\langle d^{r}_{\infty, j},e_s\rangle)- 2\var(\langle d^{r}_{\infty, j},e_r\rangle)2\var(\langle d^{r}_{\infty, j},e_s\rangle)|\\
+&\le 2f_{rr}(\omega_j) \delta_1+\delta_1^2
+\end{aligned}
+\end{equation}
+where $\delta_1 =  \frac{\Omega_n(f_\mathcal{X})}{2n\pi}+\frac{\sqrt{2}}{2\pi}\frac{m\Omega_n(f_\mathcal{X})}{n}+ \frac{1}{2\pi}\left(\frac{\Omega_n(f_\mathcal{X})}{n} + L_n(f_\mathcal{X})\right)$. Here we assume $f_{rr}(\omega_j)\geq f_{ss}(\omega_j)$ without loss of generality. 
+Now we bound last line in \eqref{eq: dif_liminting_var}, noticing $2\mathbb{E}[\langle \mathcal{X}^\top  c_{q}, e_r\rangle\langle \mathcal{X}^\top  c_{q}, e_s\rangle] = e_r^\top  f(\omega_q)e_s$, 
+\begin{equation}
+\begin{aligned}
+&4|\mathbb{E}^2(\langle \mathcal{X}^\top  c_q,e_r\rangle \langle \mathcal{X}^\top  c_q,e_s\rangle) )-\mathbb{E}^2(\langle d^{r}_{\infty, j},e_r\rangle \langle d^{r}_{\infty, j},e_s\rangle) )|\\
+&\le | e_r^\top  \mathbb{E}[{\bf Re}(H(\omega_q)]e_s+e_r^\top  {\bf Re}(f(\omega_j))e_s||\mathbb{E} (e_r^\top  {\bf Re}(H(\omega_q))e_s-e_r^\top  {\bf Re}(f(\omega_j))e_s|\\
+&\le 2f_{rr}(\omega_j)\delta_2+\delta_2^2,
+\end{aligned}
+\end{equation}
+where $\delta_2= \frac{\Omega_n}{2n\pi}+ \frac{1}{2\pi}\left(\frac{\Omega_n}{n} + L_n(f_X)\right)$. Here we use the fact that for $u, v\in E_p$, 
+\begin{equation}
+\begin{aligned}
+&|\mathbb{E} [2(\langle d^{r}_{\infty, j},e_r\rangle \langle d^{r}_{\infty, j},v\rangle)]|  = |e_r^\top  f(\omega_j)e_s|\\
+&\le \sqrt{(e_r^\top  f(\omega_j)e_r)(e_s^\top  f(\omega_j)e_s)}\le f_{rr}(\omega_j), 
+\end{aligned}
+\end{equation}
+and same techniques to get bound as \eqref{eq:help_bound1}. \\[0.2cm]
+{\bf Bound $|D(q_1,q_2)|$:}\\
+For any unit vector $u,v$, applying summary of Gaussian fourth moments \ref{subsec: gaussian_fourth_moments}, 
+\begin{equation}
+\begin{aligned}
+&4|\cov\left(\langle \mathcal{X}^\top  c_{q_1}, u \rangle  \langle \mathcal{X}^\top  c_{q_1}, v \rangle ,  \langle \mathcal{X}^\top  c_{q_2}, u \rangle  \langle \mathcal{X}^\top  c_{q_2}, v \rangle\right)| \\
+&= 4\mathbb{E} \left[ \langle \mathcal{X}^\top  c_{q_1}, u \rangle  \langle \mathcal{X}^\top  c_{q_2}, u \rangle \right] \mathbb{E} \left[ \langle \mathcal{X}^\top  c_{q_1}, v \rangle  \langle \mathcal{X}^\top  c_{q_2}, v \rangle \right]\\
+&+4\mathbb{E} \left[ \langle \mathcal{X}^\top  c_{q_1}, u \rangle  \langle \mathcal{X}^\top  c_{q_2}, v \rangle \right]\mathbb{E} \left[ \langle \mathcal{X}^\top  c_{q_1}, v \rangle  \langle \mathcal{X}^\top  c_{q_2}, u \rangle \right]
+\end{aligned}
+\end{equation}
+We will show each of these four terms well bounded. For $\mathbb{E} \left[ \langle \mathcal{X}^\top  c_{q_1}, u \rangle  \langle \mathcal{X}^\top  c_{q_2}, u \rangle \right]$, 
+\begin{equation}
+\begin{aligned}
+&|\mathbb{E} \left[ \langle \mathcal{X}^\top  c_{q_1}, u \rangle  \langle \mathcal{X}^\top  c_{q_2}, u \rangle\right]| = |\mathbb{E} c_{q_1}^\top   \Sigma^{u, u} c_{q_1}| \\
+& \le \frac{\Omega(\Sigma^{u, u})}{2n\pi} \le \frac{\Omega_n}{2n\pi},
+\end{aligned}
+\end{equation}
+where $\Sigma^{u, u}_{rs} = u^\top   \Gamma(s-r)u$ and the last inequality comes from the same argument we used in lemma \ref{lemma:bound_deviation}.
+With almost same argument, we could show 
+\begin{equation}
+\begin{aligned}
+&\max\left(\left|\mathbb{E} \left[ \langle \mathcal{X}^\top  c_{q_1}, u \rangle  \langle \mathcal{X}^\top  c_{q_2}, u \rangle \right]\right|,  \left|\mathbb{E} \left[ \langle \mathcal{X}^\top  c_{q_1}, v \rangle  \langle \mathcal{X}^\top  c_{q_2}, v \rangle \right]\right|\right.\\
+&\left. \left|\mathbb{E} \left[ \langle \mathcal{X}^\top  c_{q_1}, u \rangle  \langle \mathcal{X}^\top  c_{q_2}, v \rangle \right]\right|, \left|\mathbb{E} \left[ \langle \mathcal{X}^\top  c_{q_1}, v \rangle  \langle \mathcal{X}^\top  c_{q_2}, u \rangle \right]\right|\right) \le \frac{\Omega_n}{2\pi n}
+\end{aligned}
+\end{equation}
+Taking $u= e_{q_1}, v= e_{q_2}$, we show that 
+\begin{equation}
+D(q_1,q_2) \le \frac{\Omega_n^2}{\pi^2n^2}. 
+\end{equation}
+
+Above all, $\left |\mathbb{E} \hat{\theta}^{(r)}_{j,(r,s)}-\var({\bf Re}(H_{r,s}(\omega_j)))\right| \le 2\max(f_{rr}(\omega_j),f_{ss}(\omega_j))(\delta_1+\delta_2)+\delta_1^2+\delta_2^2+\frac{\Omega_n^2}{\pi^2n^2}$. Then by same argument, we could get the proof for imaginary part. 
+\end{proof}
+
+\subsection{Proof for Lemma \ref{lemma: variance_ratio_error}}
+\begin{proof}
+We will only provide the proof for real part. 
+\begin{equation}
+\begin{aligned}
+& \Var(g_{rs}(\omega_j)) = \Var\left(\frac{1}{m}\sum_{q\in \mathcal{B}_j} H_{rs}(\omega_q)\right) \\
+& = \sum_{q\in \mathcal{B}_j} \frac{1}{m^2} (\Var(H_{rs}(\omega_q))) \\
+& + \frac{1}{m^2} \sum_{q_1\neq q_2 \in \mathcal{B}_j} \cov[H_{rs}(\omega_{q_1}), H_{rs}(\omega_{q_2})].  
+\end{aligned}
+\end{equation}
+From proof in lemma \ref{lemma:theta_bias}, noticing $\delta_1\ge \delta_2$, 
+\[
+\left|\Var(H_{rs}(\omega_q)) - \theta^{(r)}_{j, rs} \right| \le 4 \max\{f_{rr}(\omega_j), f_{ss}(\omega_j)\} \delta_1 + 2\delta_1^2, 
+\]
+and 
+\[
+\cov (H_{rs}(\omega_{q_1}), H_{rs}(\omega_{q_2})) \le \frac{\Omega_n^2}{\pi^2n^2}. 
+\]
+Combining these two and the fact that $\theta_{j, rs}^r\ge f_{rr}(\omega_j)f_{ss}(\omega_j)$ and assumption $\min_{r=1}^p f_{rr}(\omega_j)\ge \phi_0$ we can get the result. 
+\end{proof}
+
+
+

@@ -1,0 +1,216 @@
+\begin{thebibliography}{31}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Achlioptas(2003)]{achlioptas2003database}
+Dimitris Achlioptas.
+\newblock Database-friendly random projections: Johnson-lindenstrauss with
+  binary coins.
+\newblock \emph{Journal of computer and System Sciences}, 66\penalty0
+  (4):\penalty0 671--687, 2003.
+
+\bibitem[Ailon and Chazelle(2006)]{ailon2006approximate}
+Nir Ailon and Bernard Chazelle.
+\newblock Approximate nearest neighbors and the fast johnson-lindenstrauss
+  transform.
+\newblock In \emph{Proceedings of the thirty-eighth annual ACM symposium on
+  Theory of computing}, pages 557--563. ACM, 2006.
+
+\bibitem[Allen-Zhu et~al.(2014)Allen-Zhu, Gelashvili, Micali, and
+  Shavit]{allen2014sparse}
+Zeyuan Allen-Zhu, Rati Gelashvili, Silvio Micali, and Nir Shavit.
+\newblock Sparse sign-consistent johnson--lindenstrauss matrices: Compression
+  with neuroscience-based constraints.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 111\penalty0
+  (47):\penalty0 16872--16876, 2014.
+
+\bibitem[Arriaga and Vempala(2006)]{arriaga2006algorithmic}
+Rosa~I Arriaga and Santosh Vempala.
+\newblock An algorithmic theory of learning: Robust concepts and random
+  projection.
+\newblock \emph{Machine Learning}, 63\penalty0 (2):\penalty0 161--182, 2006.
+
+\bibitem[Battaglino et~al.(2018)Battaglino, Ballard, and
+  Kolda]{battaglino2018practical}
+Casey Battaglino, Grey Ballard, and Tamara~G Kolda.
+\newblock A practical randomized cp tensor decomposition.
+\newblock \emph{SIAM Journal on Matrix Analysis and Applications}, 39\penalty0
+  (2):\penalty0 876--901, 2018.
+
+\bibitem[Bingham and Mannila(2001)]{bingham2001random}
+Ella Bingham and Heikki Mannila.
+\newblock Random projection in dimensionality reduction: applications to image
+  and text data.
+\newblock In \emph{Proceedings of the seventh ACM SIGKDD international
+  conference on Knowledge discovery and data mining}, pages 245--250. ACM,
+  2001.
+
+\bibitem[Bourgain et~al.(2015)Bourgain, Dirksen, and
+  Nelson]{bourgain2015toward}
+Jean Bourgain, Sjoerd Dirksen, and Jelani Nelson.
+\newblock Toward a unified theory of sparse dimensionality reduction in
+  euclidean space.
+\newblock \emph{Geometric and Functional Analysis}, 25\penalty0 (4):\penalty0
+  1009--1088, 2015.
+
+\bibitem[Buhler and Tompa(2002)]{buhler2002finding}
+Jeremy Buhler and Martin Tompa.
+\newblock Finding motifs using random projections.
+\newblock \emph{Journal of computational biology}, 9\penalty0 (2):\penalty0
+  225--242, 2002.
+
+\bibitem[De~Lathauwer et~al.(2000)De~Lathauwer, De~Moor, and
+  Vandewalle]{de2000multilinear}
+Lieven De~Lathauwer, Bart De~Moor, and Joos Vandewalle.
+\newblock A multilinear singular value decomposition.
+\newblock \emph{SIAM journal on Matrix Analysis and Applications}, 21\penalty0
+  (4):\penalty0 1253--1278, 2000.
+
+\bibitem[Fradkin and Madigan(2003)]{fradkin2003experiments}
+Dmitriy Fradkin and David Madigan.
+\newblock Experiments with random projections for machine learning.
+\newblock In \emph{Proceedings of the ninth ACM SIGKDD international conference
+  on Knowledge discovery and data mining}, pages 517--522. ACM, 2003.
+
+\bibitem[Halko et~al.(2011)Halko, Martinsson, and Tropp]{halko2011finding}
+Nathan Halko, Per-Gunnar Martinsson, and Joel~A Tropp.
+\newblock Finding structure with randomness: Probabilistic algorithms for
+  constructing approximate matrix decompositions.
+\newblock \emph{SIAM review}, 53\penalty0 (2):\penalty0 217--288, 2011.
+
+\bibitem[Jegou et~al.(2008)Jegou, Douze, and Schmid]{jegou2008hamming}
+Herve Jegou, Matthijs Douze, and Cordelia Schmid.
+\newblock Hamming embedding and weak geometric consistency for large scale
+  image search.
+\newblock In \emph{European conference on computer vision}, pages 304--317.
+  Springer, 2008.
+
+\bibitem[Kaski(1998)]{kaski1998dimensionality}
+Samuel Kaski.
+\newblock Dimensionality reduction by random mapping: Fast similarity
+  computation for clustering.
+\newblock In \emph{Neural networks proceedings, 1998. ieee world congress on
+  computational intelligence. the 1998 ieee international joint conference on},
+  volume~1, pages 413--418. IEEE, 1998.
+
+\bibitem[Kolda and Bader(2009)]{kolda2009tensor}
+Tamara~G Kolda and Brett~W Bader.
+\newblock Tensor decompositions and applications.
+\newblock \emph{SIAM review}, 51\penalty0 (3):\penalty0 455--500, 2009.
+
+\bibitem[Li et~al.(2006)Li, Hastie, and Church]{li2006very}
+Ping Li, Trevor~J Hastie, and Kenneth~W Church.
+\newblock Very sparse random projections.
+\newblock In \emph{Proceedings of the 12th ACM SIGKDD international conference
+  on Knowledge discovery and data mining}, pages 287--296. ACM, 2006.
+
+\bibitem[Liu et~al.(2006)Liu, Kargupta, and Ryan]{liu2006random}
+Kun Liu, Hillol Kargupta, and Jessica Ryan.
+\newblock Random projection-based multiplicative data perturbation for privacy
+  preserving distributed data mining.
+\newblock \emph{IEEE Transactions on knowledge and Data Engineering},
+  18\penalty0 (1):\penalty0 92--106, 2006.
+
+\bibitem[Matsumoto and Nishimura(1998)]{matsumoto1998mersenne}
+Makoto Matsumoto and Takuji Nishimura.
+\newblock Mersenne twister: a 623-dimensionally equidistributed uniform
+  pseudo-random number generator.
+\newblock \emph{ACM Transactions on Modeling and Computer Simulation (TOMACS)},
+  8\penalty0 (1):\penalty0 3--30, 1998.
+
+\bibitem[Papadimitriou et~al.(2000)Papadimitriou, Raghavan, Tamaki, and
+  Vempala]{papadimitriou2000latent}
+Christos~H Papadimitriou, Prabhakar Raghavan, Hisao Tamaki, and Santosh
+  Vempala.
+\newblock Latent semantic indexing: A probabilistic analysis.
+\newblock \emph{Journal of Computer and System Sciences}, 61\penalty0
+  (2):\penalty0 217--235, 2000.
+
+\bibitem[Rudelson(2012)]{rudelson2012row}
+Mark Rudelson.
+\newblock Row products of random matrices.
+\newblock \emph{Advances in Mathematics}, 231\penalty0 (6):\penalty0
+  3199--3231, 2012.
+
+\bibitem[Rudelson et~al.(2013)Rudelson, Vershynin, et~al.]{rudelson2013hanson}
+Mark Rudelson, Roman Vershynin, et~al.
+\newblock Hanson-wright inequality and sub-gaussian concentration.
+\newblock \emph{Electronic Communications in Probability}, 18, 2013.
+
+\bibitem[Sahin et~al.(2005)Sahin, Gulbeden, Emek{\c{c}}i, Agrawal, and
+  El~Abbadi]{sahin2005prism}
+Ozgur~D Sahin, Aziz Gulbeden, Fatih Emek{\c{c}}i, Divyakant Agrawal, and Amr
+  El~Abbadi.
+\newblock Prism: indexing multi-dimensional data in p2p networks using
+  reference vectors.
+\newblock In \emph{Proceedings of the 13th annual ACM international conference
+  on Multimedia}, pages 946--955. ACM, 2005.
+
+\bibitem[Sch{\"a}cke(2013)]{schacke2013kronecker}
+Kathrin Sch{\"a}cke.
+\newblock On the kronecker product.
+\newblock 2013.
+
+\bibitem[Sun et~al.(2019)Sun, Guo, Luo, Tropp, and Udell]{sun2019low}
+Yiming Sun, Yang Guo, Charlene Luo, Joel Tropp, and Madeleine Udell.
+\newblock Low-rank tucker approximation of a tensor from streaming data.
+\newblock \emph{arXiv preprint arXiv:1904.10951}, 2019.
+
+\bibitem[Tropp et~al.(2019)Tropp, Yurtsever, Udell, and
+  Cevher]{Tropp2019-SketchingScientificSimulation}
+J.A. Tropp, A.~Yurtsever, M.~Udell, and V.~Cevher.
+\newblock Streaming low-rank matrix approximation with an application to
+  scientific simulation.
+\newblock Technical report, 2019.
+\newblock URL \url{https://arxiv.org/pdf/1902.08651.pdf}.
+
+\bibitem[Tropp et~al.(2017)Tropp, Yurtsever, Udell, and
+  Cevher]{tropp2017practical}
+Joel~A Tropp, Alp Yurtsever, Madeleine Udell, and Volkan Cevher.
+\newblock Practical sketching algorithms for low-rank matrix approximation.
+\newblock \emph{SIAM Journal on Matrix Analysis and Applications}, 38\penalty0
+  (4):\penalty0 1454--1485, 2017.
+
+\bibitem[Wang et~al.(2012)Wang, Kumar, and Chang]{wang2012semi}
+Jun Wang, Sanjiv Kumar, and Shih-Fu Chang.
+\newblock Semi-supervised hashing for large-scale search.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, 34\penalty0 (12):\penalty0 2393--2406, 2012.
+
+\bibitem[Wang et~al.(2015)Wang, Tung, Smola, and Anandkumar]{wang2015fast}
+Yining Wang, Hsiao-Yu Tung, Alexander~J Smola, and Anima Anandkumar.
+\newblock Fast and guaranteed tensor decomposition via sketching.
+\newblock In \emph{Advances in Neural Information Processing Systems}, pages
+  991--999, 2015.
+
+\bibitem[Woodruff et~al.(2014)]{woodruff2014sketching}
+David~P Woodruff et~al.
+\newblock Sketching as a tool for numerical linear algebra.
+\newblock \emph{Foundations and Trends{\textregistered} in Theoretical Computer
+  Science}, 10\penalty0 (1--2):\penalty0 1--157, 2014.
+
+\bibitem[Woolfe et~al.(2008)Woolfe, Liberty, Rokhlin, and
+  Tygert]{woolfe2008fast}
+Franco Woolfe, Edo Liberty, Vladimir Rokhlin, and Mark Tygert.
+\newblock A fast randomized algorithm for the approximation of matrices.
+\newblock \emph{Applied and Computational Harmonic Analysis}, 25\penalty0
+  (3):\penalty0 335--366, 2008.
+
+\bibitem[Wright et~al.(2009)Wright, Yang, Ganesh, Sastry, and
+  Ma]{wright2009robust}
+John Wright, Allen~Y Yang, Arvind Ganesh, S~Shankar Sastry, and Yi~Ma.
+\newblock Robust face recognition via sparse representation.
+\newblock \emph{IEEE transactions on pattern analysis and machine
+  intelligence}, 31\penalty0 (2):\penalty0 210--227, 2009.
+
+\bibitem[Yurtsever et~al.(2017)Yurtsever, Udell, Tropp, and
+  Cevher]{yurtsever2017sketchy}
+Alp Yurtsever, Madeleine Udell, Joel~A Tropp, and Volkan Cevher.
+\newblock Sketchy decisions: Convex low-rank matrix optimization with optimal
+  storage.
+\newblock \emph{arXiv preprint arXiv:1702.06838}, 2017.
+
+\end{thebibliography}

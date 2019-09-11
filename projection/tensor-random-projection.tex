@@ -1,0 +1,53 @@
+\section{Tensor Random Projection}
+We seek a random projection map to embed a collection of vectors
+$\mathcal X \subseteq \mathbb{R}^{d}$
+into $\mathbb{R}^k$ with $k \ll d$.
+Let us take $d = \prod_{n=1}^N d_n$, motivated by the problem of compressing
+(the vectorization of) an order $N$ tensor with dimensions $d_1,\ldots,d_N$. Conventional random projections use $O(kd)$ random variables.
+Generating so many random numbers is costly; and storing them can be costly when $d$ is large.
+Is so much randomness truly necessary for a random projection map?
+
+% Indeed, we show it is not.
+To reduce randomness and storage requirements, we propose
+the \emph{tensor random projection} (TRP):
+\begin{equation}
+\label{eq:TRP}
+f_{\text{TRP}}(\mathbf{x}):= (\mathbf{A}_1 \odot \cdots \odot \mathbf{A}_N)^\top
+\mathbf{x},
+\end{equation}
+where each $\mathbf{A}_i \in \mathbb{R}^{d_i \times k}$, for $i \in [N]$,
+can be an arbitrary RP map and
+$\mathbf{A} := (\mathbf{A}_1 \odot \cdots \odot \mathbf{A}_N)^\top$.
+We call $N$ the \emph{order} of the TRP.
+% This construction is inspired by the CANDECOMP/PARAFAC (CP) decomposition in
+% low-rank tensor approximation \cite{kolda2009tensor}.
+We show in this paper that the TRP is an expected isometry,
+has vanishing variance,
+and supports database-friendly operations.
+%For more background knowledge about tensor decomposition, please refer to \cite{kolda2009tensor}.
+
+The TRP requires only $k\sum_{i = 1}^N d_i$ random variables
+(or $k\sqrt[N]{d}$ by choosing each $d_i$ to be equal),
+rather than the $kd$ random variables needed by conventional methods.
+Hence the TRP is database friendly:
+it significantly reduces storage costs and randomness requirements compared to its
+constituent DRMs.
+
+In large scale database settings,
+where computational efficiency is critical and queries of vector elements are costly,
+practitioners often use sparse RPs.
+Let $\delta$ be the proportion of non-zero elements in the RP map.
+To achieve a $\delta$-sparse RP, a common construction is the scaled sign random map:
+each element is distributed as $(-1/\sqrt{\delta}, 0, 1/\sqrt{\delta})$ with probability
+$(\delta/2, 1-\delta, \delta/2)$.
+\cite{achlioptas2003database} proposed $\delta=1/3$,
+while \cite{li2006very} further suggests a sparser scheme with
+$\delta=1/\sqrt{d}$ that he calls the \textit{Very Sparse} RP.
+
+To further reduce memory requirements of random projection,
+we can form a TRP whose constituent submatrices
+are generated each with sparsity factor $\delta$,
+which leads to a $\delta^N$-sparse TRP. Under sparse setting, it is a $(1/3)^N$ sparse TRP while under very sparse setting, it is a $1/\sqrt{d}$ sparse TRP. 
+Both TRPs can be applied to a vector using very few queries to vector elements
+and no multiplications.
+Below, we show both sparse and very sparse TRP are low-variance approximate isometry empirically. 

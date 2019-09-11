@@ -1,0 +1,10 @@
+\beamer@slide {eq:low_dim_mapping}{23}
+\beamer@slide {lem:gauss-rp-vector}{24}
+\beamer@slide {eq:gauss_random_projection}{24}
+\beamer@slide {lemma:gauss-rp-matrix}{24}
+\beamer@slide {eq:gauss_col_preservation}{24}
+\beamer@slide {eq:TRP}{27}
+\beamer@slide {khatri-rao}{27}
+\beamer@slide {alg:two_pass_low_rank_appro}{28}
+\beamer@slide {lemma: equivalance_one_pass}{31}
+\beamer@slide {thm:low_rank_err_two_pass}{33}

@@ -1,0 +1,82 @@
+\section{Appendix: Proofs for Linear Processes}\label{Appendix:proof_heavytail}
+\subsection{Proof for Lemma \ref{lemma:heavy_tail_hanson}}
+\begin{proof}
+Proof for sub-Gaussian case is given by \cite{rudelson2013hanson} and proof for the  sub-exponential case is given by Lemma 8.3 in \cite{erdHos2012bulk}. We will show the proof for case \eqref{C3} based on Markov inequality. We will show tail bound for both  diagonal part and non-diagonal part for any $\eta > 0$ 
+one by one. For diagonal part,  let $y_i = \varepsilon^2_{ii}-1$. Then 
+$\mathbb{E}y_i = 0$ and $\mathbb{E}y^2_i = \mathbb{E}\varepsilon^4_{ii} - 2\mathbb{E}\varepsilon^2_{ii}+1 \le   K-1< K$. 
+Therefore, noticing  $\mathbb{E}\varepsilon^\top A\varepsilon = \text{tr}(A)$ under this setting,
+\begin{equation*}
+\begin{aligned}
+\mathbb{P}\left[\left|\sum_{i=1}^n \varepsilon^2_{ii} A_{ii} - \text{tr}(A)\right|\ge \eta\right] &= \mathbb{P}\left[\left|\sum_{i=1}^n y_iA_{ii}\right|\ge \eta\right]\\
+&\le \frac{\mathbb{E}(\sum_{i=1}^n y_iA_{ii})^2}{\eta^2} \le \frac{K\sum_{i=1}^n A^2_{ii}}{\eta^2}, 
+\end{aligned}
+\end{equation*}
+where the second last inequality follows from  $\mathbb{E} y_iy_j = 0$. 
+For the non-diagonal part, note that 
+
+\begin{equation*}
+\begin{aligned}
+\mathbb{P}\left[\left|\sum_{1 \le  i\neq j \le n} A_{ij}\varepsilon_i\varepsilon_j \right|\ge \eta\right] &\le \frac{\mathbb{E}\left|\sum_{1 \le  i\neq j \le n} A_{ij}\varepsilon_i\varepsilon_j \right|^2}{\eta^2} \\
+& = \frac{\sum_{1\le i \neq j\le n} A^2_{ij}(\mathbb{E}\varepsilon^2_1)^2}{\eta^2} +\frac{\sum_{1\le i\neq j\le n}A_{ij}A_{ji}(\mathbb{E}\varepsilon^2_1)^2}{\eta^2}\\
+&\le  \frac{2\sum_{1\le i\neq j\le n} A^2_{ij}}{\eta^2}.
+\end{aligned}
+\end{equation*}
+Here the second line holds since  $\mathbb{E}\varepsilon_i\varepsilon_j\varepsilon_p\varepsilon_q\neq 0$ iff $i=p,j=q$ or $i=q, j=p$ and the third line comes from the simple fact that 
+$A_{ij}A_{ji}\le \frac{1}{2}(A^2_{ij}+A^2_{ji})$. \par 
+Then plugging $\frac{\eta}{2}$ into above two parts, we get \begin{equation*}
+\begin{aligned}
+    &\mathbb{P}\left[|\varepsilon^\top A\varepsilon - \mathbb{E} \varepsilon^\top A\varepsilon|\ge \eta\right] \\
+    \leq& \mathbb{P}\left[\left|\sum_{i=1}^n \varepsilon ^2_{ii} A_{ii} - \text{tr}(A)\right|\ge \eta/2\right]+\mathbb{P}\left[\left|\sum_{1\le i \neq j\le n} A_{ij}\varepsilon_i\varepsilon_j \right|\ge \eta/2\right]\\
+    \leq& \max\{4K,8\} \frac{\|A\|_F^2}{\eta^2},
+\end{aligned}
+\end{equation*}
+where we can set $c_3=\max\{4K,8\}$ and use the fact $\|A\|^2_F\le \rank(A)\|A\|^2$ to complete our proof. 
+\end{proof}
+\subsection{Proof of Proposition \ref{lemma:heavy_tail_time_hanson}} %{prop: linear_prop}
+
+\begin{proof}
+The proofs of the above inequalities for these three cases follow a common structure. We work with fixed values of $n$ and $p$, and construct a limiting argument as $L \rightarrow \infty$.  In the first step, we apply inequality in Lemma  \ref{lemma:heavy_tail_hanson} to the truncated process $X_{(L),t} = \sum_{\ell=0}^L B_\ell \varepsilon_{t-\ell}$, for some $L>0$. Then we show that this inequality holds in the limit  $L\rightarrow \infty$. For the sake of brevity, we only present the proof for sub-Gaussian case here. 
+
+Let $\mathcal{X}_{(L)}$ be a $n \times p$ data matrix with $n$ consecutive observations from process $\{X_{(L), t}\}_{t \in \mathbb{Z}}$.  We can write 
+$vec(\mathcal{X}_{(L)}^\top) = \Pi_L E_n$ where 
+\begin{equation*}
+    \Pi_L = \begin{bmatrix}
+    0 & 0 & \dots & 0 & B_0 & B_1 & \dots & B_{L-1} & B_L \\
+    0 & 0 & \dots & B_0 & B_1 & B_2 & \dots & B_L & 0 \\
+    \vdots & \vdots & \ddots & \vdots & \vdots & \vdots &\ddots & \vdots & \vdots \\
+    B_0 & B_1 & \dots & \dots &  \dots & \dots & B_L & 0  & 0
+    \end{bmatrix}
+\end{equation*}
+and $E_n = (\varepsilon_n^\top, \dots, \varepsilon^\top_{1-L})^\top$. Without loss of generality, we assume $L>n$ in our representation of $\Pi_L$ and $E_n$. It follows from Lemma  \ref{lemma:max-L2-norm} that 
+$\|\cov(vec(\mathcal{X}_{(L)}^\top), vec(\mathcal{X}_{(L)}^\top))\| = \|\Pi_L\Pi_L^\top\| \le \vertiii{f_{(L)}}$, where  $f_{(L)}(\omega)$ is the spectral density of $X_{(L), t}$. Then using the same technique as in the proof of Lemma \ref{lemma: hason_bound_time_gauss} and inequality for sub-Gaussian i.i.d. case introduced in Lemma \ref{lemma:heavy_tail_hanson}, we get 
+\begin{equation}
+\label{eq:sub_gauss_time_hanson_wright_truncated}
+\begin{aligned}
+&\mathbb{P}\left(\left|vec(\mathcal{X}_{(L)}^\top)^\top A ~vec(\mathcal{X}_{(L)}^\top) - \mathbb{E} \left[~vec(\mathcal{X}_{(L)}^\top )^\top A ~vec(\mathcal{X}_{(L)}^\top)\right]\right| >2\pi \eta \vertiii{f_{(L)}} \right)\\
+&\le 2\exp\left[-c\min\left\{\cfrac{\eta}{\|A\|}, \cfrac{\eta^2}{\rank(A)\|A\|^2}\right\}\right].
+\end{aligned}
+\end{equation} 
+Next we note that by Lemma \ref{lemma:L2_convergence_truncate}, for any fixed $n, p$,  $vec(\mathcal{X}_{(L)}^\top)\overset{L_2}{\rightarrow}vec(\mathcal{X^\top})$ as $L \rightarrow \infty$. Since $L_2$ convergenece implies convergence in probability, by  continuous mapping theorem, we have   
+\begin{equation}
+vec(\mathcal{X}_{(L)}^\top)^\top A ~vec(\mathcal{X}_{(L)}^\top)\overset{\mathbb{P}}{\rightarrow}vec(\mathcal{X}^\top)^\top A ~vec(\mathcal{X}^\top)
+\end{equation}
+as $L \rightarrow \infty$. The $L_2$-norm  convergence also ensures $L_1$-norm convergence,  which implies   
+\begin{equation}
+     \mathbb{E} \left[~vec(\mathcal{X}_{(L)}^\top)^\top A ~vec(\mathcal{X}_{(L)}^\top)\right] \rightarrow  \mathbb{E} \left[~vec(\mathcal{X}^\top )^\top A ~vec(\mathcal{X}^\top)\right].
+\end{equation}
+A detailed derivation is outlined in the remarks after Lemma \ref{lemma:L2_convergence_truncate}. Together with Lemma \ref{lemma:spectral_convergence}, we obtain  $2\pi \eta\vertiii{f_{(L)}}  \rightarrow 2\pi \eta\vertiii{f}$. Putting pieces together, we have
+\begin{equation*}
+\begin{aligned}
+&vec(\mathcal{X}_{(L)}^\top)^\top A ~vec(\mathcal{X}_{(L)}^\top )-\mathbb{E} \left[~vec(\mathcal{X}_{(L)}^\top)^\top A ~vec(\mathcal{X}_{(L)}^\top)\right]-2\pi \eta\vertiii{f_{(L)}} \\
+\end{aligned}
+\end{equation*}
+converges in probability, and hence in distribution, to 
+\begin{equation*}
+\begin{aligned}
+&
+%\overset{\mathbb{P}}{\rightarrow}
+vec(\mathcal{X}^\top )^\top A ~vec(\mathcal{X}^\top)-\mathbb{E} \left[~vec(\mathcal{X}^\top)^\top A ~vec(\mathcal{X}^\top)\right]-2\pi \eta\vertiii{f}. 
+\end{aligned}
+\end{equation*}
+Thus, if we take $L\rightarrow \infty$ from both sides in \eqref{eq:sub_gauss_time_hanson_wright_truncated}, we obtain the final bound. 
+\end{proof}

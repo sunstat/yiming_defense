@@ -1,0 +1,72 @@
+\section{Technical Lemmas}
+In this section, we list some technical lemmas we use in this paper. All of them are about tail probability of sub-Gaussian or generalized sub-exponential variables. 
+
+\begin{definition}
+	\label{def:sub-gaussian}
+	A random variable $x$ is called sub-Gaussian if $\mathbb{E} |x|^p = \mathcal{O}(p^{p/2})$ when $p\rightarrow \infty$. With this, we define sub-Gaussian norm for $x$ (less than infinity) as 
+	\begin{equation}
+	\|x\|_{\varphi_2} = \sup_{p\ge 1} p^{-1/2} (\mathbb{E} |x|^p)^{1/p}. 
+	\end{equation}
+\end{definition}
+
+Note that for Bernoulli random variable, i.e., $\{-1,1\}$ with prob. $\{\frac{1}{2},\frac{1}{2} \}$,  $\varphi_2=1$; any bounded random variable with absolute value less than $M>0$ has $\varphi_2\le M$.  For standard Gaussian random variable, $\varphi_2=1$. 
+
+
+
+\begin{lem}
+\label{lemma:hanson_wright}
+(Hanson-Wright Inequality) Let $\mathbf{x} = (x_1,\cdots , x_n)\in \mathbb{R}^n$ be a random
+vector with independent components $X_i$ which satisfies $\mathbb{E} \mathbf{x}_i = 0$ and $\varphi_2(x_1)\le K$. Let $A$
+be an $n\times n$ matrix. Then, for every $\eta \ge 0$, there exists a general constant $c$ s.t.
+\begin{equation}
+\mathbb{P}\left(|\mathbf{x^\top A x} - \mathbb{E}\mathbf{x^\top A x}|\ge \eta\right)\le 2\exp\left[-c\min\left\{\frac{\eta}{K^2\|A\|}, \frac{\eta^2}{\|A\|_F^2 K^4}\right\}\right]. \nonumber
+\end{equation}
+\end{lem}
+
+\begin{proof}
+	Please refer to \cite{rudelson2013hanson}
+\end{proof}
+
+
+
+\begin{lem}
+\label{lemma:hanson-wright-sub-exponential}
+Let $\mathbf{x}$ be a random
+variable whose tail probability satisfies for every $\eta \ge 0$, there exists a constant $c_1$ s.t. 
+\begin{equation}
+\mathbb{P}\left(|x|\ge \eta\right)\le 2\exp\left[-c_1\min\left(\eta,  \eta^2\right)\right]. \nonumber
+\end{equation}
+Then for any $k\ge 1$, $x$ satisfies generalized sub-exponential moment condition \ref{def:generalized-sub-exponential-mc} with $\alpha = 1$, i.e., 
+\begin{equation}
+\mathbb{E} |x|^k \le (Ck)^k, \nonumber
+\end{equation}\label{eq:sub-exponential-moment-condition}
+where $C= 1+\frac{1}{c_1}$.
+\end{lem}
+\begin{proof} 
+\begin{equation}
+\begin{aligned}
+&\mathbb{E} |x|^k =  \int_{0}^1 kx^{k-1} 2\exp[-c_1x^2]dx + \int_{1}^\infty kx^{k-1} 2\exp[-c_1x]dx \\ 
+&\le 1+ + \frac{1}{c_1^k}\int_{0}^\infty ky^{k-1} 2\exp[-y]dy\\
+&= 1+ \frac{1}{c_1^k} k\Gamma(k-1)\le \left[1+\frac{1}{c_1^k}\right] k^k.
+\end{aligned}
+\end{equation}
+Noticing $\left[1+\frac{1}{c_1^k}\right]^{1/k} \le 1+\frac{1}{c_1}$, we finish the proof. 
+\end{proof}
+
+
+\begin{lem}\label{lemma:hanson-wright-sub-exponential-moment}
+	For a random vector $\mathbf{x}$ with each element independent and identically distributed with mean zero and variance 1, suppose each element of $\mathbf{x}$
+	satisfies generalized sub-exponential moment condition as in \eqref{eq:sub-exponential-moment-condition}, that there exists a general constant $C$ s.t.  $\mathbb{E} |x_1|^k \le (Ck)^{\alpha k}$. Then for any matrix $\mathbf{A} \in \mathbb{R}^{n \times n}$, there exists a general constant $c_1$
+	\begin{equation}
+		\mathbb{P}\left(\left|\mathbf{x}^\top \mathbf{A} \mathbf{x} - \mathbb{E} \mathbf{x}^\top \mathbf{A} \mathbf{x} \right| \ge \eta \right)\le  C \exp\left(-c_1\left[\frac{\eta}{\|A\|_F}\right]^{1/(2(1+\alpha))}\right) . \nonumber
+	\end{equation}
+\end{lem}
+\begin{proof}
+	The proof is directly from Lemma 8.3 in \cite{buhler2002finding} and we change the statement on generalized sub-exponential R.V. directly to the statement on the moment condition. 
+\end{proof}
+
+
+
+
+
+%\clearpage

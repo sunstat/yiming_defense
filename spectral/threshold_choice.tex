@@ -1,0 +1,26 @@
+ 
+\subsection{Choice of Tuning Parameters}\label{sec:tuning-parameter}
+At any Fourier frequency $\omega_j$, we need to choose two tuning parameters for our method - (i) the smoothing span $2m+1$, and (ii) the threshold level $\lambda$. In this work, we select a single smoothing span for all the frequencies, but choose the threshold level separately for each frequency.
+
+% The first one is the smoothing bandwidth $2m + 1$. 
+%The smoothing method is running average. {\color{red} Provide formula, or refer to equation number in introduction section.}
+The smoothing span plays the role of ``effective sample size'' in estimating $f(\omega_j)$. Recall that 
+\begin{equation}
+    \hat{f}(\omega_j; m) = \frac{1}{2\pi (2m+1)} \sum_{|k|\le m} I(\omega_{j+k}). \nonumber
+\end{equation}
+In classical asymptotics ($p$ fixed, $n \rightarrow \infty$) and the Kolmogorov asymptotics ($p \rightarrow \infty, n \rightarrow \infty, p^2/n \rightarrow 0$) \citep{brockwell2013time, bohm2009shrinkage}, it is shown that for $\hat{f}(\omega_j; m)$ to be consistent, $m$  (depending on $n$) must go to infinity and $m/n \rightarrow 0$ as $n\rightarrow \infty$. Our non-asymptotic analysis in Section \ref{sec:theory} suggests that $m/[n\Omega_n(f)]  \rightarrow 0$, where $\Omega_n(f)$, defined as $\max_{r,s} \sum_{\ell=-n}^n |\ell| |\Gamma_{rs}(\ell)|$ is a measure of temporal dependence in the time series. For our numerical and real data applications, we choose $m$ in the order of  $\sqrt{n}$, with smaller values of $m$ for processes with stronger temporal dependence and larger $\Omega_n(f)$. A more data-driven approach along the line of \cite{ombao2001smoothing} and \citet{fiecas2014datadriven} can be designed with suitable modification to account for high-dimensionality, although we do not pursue this direction in this work.
+
+
+
+
+The second tuning parameter is the threshold value. Unlike the shrinkage estimators of spectral density matrices, finding  asymptotically optimal plug-in estimators for threshold level is challenging due to the non-smooth nature of thresholding operators. For covariance estimation from  i.i.d. data using thresholding, a sample-splitting method proposed in \citet{bickel2008covariance} or its variants are normally employed. In this method, the entire sample is split into two sub-samples, and the Frobenius norm difference between thresholded estimation in one sub-sample and regular sample covariance in the other sub-sample is compared for different levels of threshold. The entire exercise is repeated $N$ times and the level of threshold minimizing the average Frobenius norm difference is selected as the threshold.
+
+This approach is not directly amenable to spectral density estimation since for any two given sub-sample sizes, only $N=1$ split is possible maintaining the temporal ordering. However, the periodograms at different positive Fourier frequencies $\omega_j \in F_n, \omega_j \ge 0$, are asymptotically independent. This suggests an analogous sample-splitting algorithm can be designed in the frequency domain. With this heuristic, we propose the following algorithm.
+
+For each frequency $j$ $\in \{1, \cdots, [n/2]\}$, we randomly split the periodograms in $\{j-m ,\cdots,j+m\}$ into two sub-samples $J_1, J_2$ of size $m_1$ and $m_2$, where $|m_1 - m_2 | \le 1$. Since $I(\omega_{-k}) = I(\omega_{k})$, we keep $I(\omega_k)$ and $I(-\omega_k)$ in the same sub-sample. Then, for every $\lambda$ on a finite grid of possible threshold choices $\mathcal{L}$, we calculate the squared Frobenius norm of the difference between thresholded averaged periodogram on $J_1$, viz.,  $\hat{f}_{1}(\omega_j)$,  and averaged periodogram $\hat{f}_{2}(\omega_j)$ on $J_2$. This exercise is repeated $N$ times and the threshold $\lambda \in \mathcal{L}$ minimizing squared Frobenius norm is selected as $\hat{\lambda}_j$ for frequency $\omega_j$. A complete description is provided in Algorithm \ref{al1}.
+
+
+
+
+
+

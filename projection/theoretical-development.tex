@@ -1,0 +1,141 @@
+\section{Main Theory}
+In this section, we discuss the properties of tensor random projection with application to length preservation and column space preservation.  
+
+
+\subsection{Bias and Variance}
+In this section, we will show the TRP and $\textup{TRP}_T$ are expected isometries with vanishing variance.
+We provide a rate for the decrease in variance with $k$.
+We also prove a non-asymptotic concentration bound on the quality of the isometry when $N=2$.
+%but leave the task of building concentration bound for $N\ge 3$ case for the future exploration.
+We begin by showing the TRP is an approximate isometry.
+\begin{thm}
+\label{thm: norm-preserve}
+Fix $\mathbf{x} \in \mathbb{R}^{\prod_{n=1}^N d_n}$.
+Form a TRP and $\textup{TRP}_T$ of order $N$ with range $k$
+composed of independent matrices with independent columns
+whose entries are mean zero, variance one, and within each column every pair of elements has covariance zero.
+Then
+\begin{equation}
+\label{eq:lemma-invariant-length-statement}
+\E \|\textup{TRP}(\mathbf{x})\|^2 = \|\mathbf{x}\|^2 \qquad \text{and} \qquad  \mathbb{E} \|
+\textup{TRP}_T(\mathbf{x})\|^2 = \|\mathbf{x}\|^2. \nonumber
+\end{equation}
+\end{thm}
+Interestingly, Theorem \ref{thm: norm-preserve} does not require elements of $\mathbf{A}_n$ to be iid.
+Now we present an explicit form for the variance of the isometry.
+\begin{thm}
+\label{thm:variance}
+Fix $\mathbf{x} \in \mathbb{R}^{\prod_{n=1}^N d_n}$.
+Form a \textup{TRP} and $\textup{TRP}_T$ of order $N$ with range $k$
+independent matrices whose entries are i.i.d. with
+mean zero, variance one, and fourth moment $\Delta$.
+Then
+\begin{equation*}
+\begin{aligned}
+% &\textrm{Var}(\|\textup{TRP}(\mathbf{x})\|^2) = \frac{1}{k}\left[ (\Delta^N-3)\|\mathbf{x}\|_4^4 +2\|\mathbf{x}\|_2^4\right] ,\\
+% &\textrm{Var}(\|\textup{$\textup{TRP}_T$}(\mathbf{x})\|^2) = \frac{1}{Tk}(\Delta^N-3)\|\mathbf{x}\|_4^4 + \frac{2}{k}\|\mathbf{x}\|_2^4.
+% \end{aligned}
+& \var(\|\textup{TRP}(\mathbf{x})\|^2) = \frac{1}{k}(\Delta^N-3)\|\mathbf{x}\|_4^4 + \frac{2}{k}\|\mathbf{x}\|_2^4 \\
+& \var(\|\textup{TRP}_T(\mathbf{x})\|^2) = \frac{1}{Tk}(\Delta^N-3)\|\mathbf{x}\|_4^4 + \frac{2}{k}\|\mathbf{x}\|_2^4.
+\end{aligned}
+\end{equation*}
+\end{thm}
+We can see the variance increases with $N$.
+In the $N=1$ Gaussian case, this formula shows a variance of $2/k \|\mathbf{x}\|_2^4$,
+which agrees with the classic result.
+Notice the $\textup{TRP}_T$ only reduces the first term in the variance bound:
+as $T\rightarrow \infty$, the variance converges to that of a Gaussian random map.\par 
+
+Next, since $\textup{TRP}_T$ is a linear operator, treat $\mathbf{x}-\mathbf{y}$ as a vector, with above argument,  we have the following lemma for pair-wise distance.  Proof is omitted for the sake of brevity. 
+
+\begin{cor}\label{cor:pairwise-distance-unbias-variance} 
+	Fix $\mathbf{x}, \mathbf{y} \in \mathbb{R}^{\prod_{n=1}^N d_n}$. Form a $\textup{TRP}_T$ of order $N$ with range $k$ independent matrices whose entries are i.i.d with mean zero, variance one, and fourth moment $\Delta$. We have
+	\begin{equation}
+	\begin{aligned}
+	&\mathbb{E} (\|\textup{TRP}_T(\mathbf{x}) - \textup{TRP}_T(\mathbf{y})\|^2) = \|\mathbf{x}-\mathbf{y}\|^2,  \\ 
+	&\var(\|\textup{TRP}_T(\mathbf{x}) - \textup{TRP}_T(\mathbf{y})\|^2) = \frac{1}{Tk}(\Delta^N-3)\|\mathbf{x} - \mathbf{y} \|_4^4 + \frac{2}{k}\|\mathbf{x}-\mathbf{y}\|_2^4. 
+	\end{aligned}
+	\end{equation}
+\end{cor}
+
+
+For completeness,  we also present the analysis for bias and variance for inner product. 
+
+\begin{lem} \label{lem:inner_product_TRP}
+	Fix $\mathbf{x}, \mathbf{y} \in \mathbb{R}^{\prod_{n=1}^N d_n}$. For $\textup{TRP}$ and $\textup{TRP}_T$ of order $N$ with range $k$ independent matrices whose entries are i.i.d with mean zero, variance one, and fourth moment $\Delta$, we have 
+	\begin{equation}
+	\begin{aligned}
+	 \mathbb{E} (\langle \textup{TRP}(\mathbf{x}), \textup{TRP}(\mathbf{y}) \rangle) &= \mathbb{E} (\langle \textup{TRP}_T(\mathbf{x}), \textup{TRP}_T(\mathbf{y}) \rangle) = \langle \mathbf{x}, \mathbf{y}\rangle  \\ 
+	 \var(\langle \textup{TRP}(\mathbf{x}), \textup{TRP}(\mathbf{y}) \rangle) &=\frac{1}{k} [ (\Delta^N - 3) \sum_{\mathbf{r}}x_{\mathbf{r}}^2y_{\mathbf{r}}^2  + \|\mathbf{x}\|_2^2\|\mathbf{y}\|^2_2 + \langle \mathbf{x}, \mathbf{y} \rangle^2].\\ 
+	\var(\langle \textup{TRP}_T(\mathbf{x}), \textup{TRP}_T(\mathbf{y}) \rangle) &= \frac{1}{kT}(\Delta^N -3) \sum_{\mathbf{r}}x_{\mathbf{r}}^2y_{\mathbf{r}}^2 +  (\frac{2}{k} - \frac{1}{kT})\|\mathbf{x}\|_2^2\|\mathbf{y}\|_2^2 + \frac{1}{kT}\langle \mathbf{x}, \mathbf{y} \rangle^2. 
+	\end{aligned}
+	\end{equation}
+\end{lem}
+
+We can see as $T \rightarrow \infty$, $	\var(\langle \textup{TRP}_T(\mathbf{x}), \textup{TRP}_T(\mathbf{y}) \rangle) \rightarrow \frac{2}{k}\|\mathbf{x}\|_2^2\|\mathbf{y}\|_2^2$, same as the variance in the Gaussian Random map case. 
+
+\begin{remark}
+If we further assume each entry of $\mathbf{x}, 
+\mathbf{y}$ to be a random variable with their second and fourth moment bounded by constants. We can see as $d \rightarrow \infty$,  $\|\mathbf{x}\|_2^4$,  $\|\mathbf{x}\|_2^2\|\mathbf{y}\|_2^2$, $\langle \mathbf{x},\mathbf{y} \rangle^2$ are $\mathcal{O}(d^2)$, and $\|\mathbf{x}\|_4^4$, $\sum_{\mathbf{r}}x^2_{\mathbf{r}}y^2_{\mathbf{r}}$ are $\mathcal{O}(d)$ respectively. Thus, $\frac{2}{k}\|\mathbf{x}\|_2^4$, i.e. the term same as in the Gaussian RP, dominates $\var(\|\textup{TRP}(\mathbf{x})\|^2)$, and $\frac{1}{k}(\|\mathbf{x}\|_2^2\|\mathbf{y}\|_2^2 + \langle \mathbf{x}, \mathbf{y} \rangle^2)$ dominates $\var(\langle \textup{TRP}(\mathbf{x}), \textup{TRP}(\mathbf{y}) \rangle )$. 
+\end{remark}
+
+\subsection{Asymptotic Behavior}
+
+
+\subsection{Finite Sample Bound?}
+Finally we show a non-asymptotic concentration bound for $N=2$.
+We leave the parallel result for $N\ge 3$ open for future exploration.
+
+
+\begin{prop}
+	\label{prop: N-2-bound}
+	Fix $\mathbf{x} \in \mathbb{R}^{d_1 d_2}$ with sub-Gaussian norm $\varphi_2$.
+	Form a \textup{TRP}(T) of order 2 with range $k$
+	composed of two independent matrices whose entries are drawn i.i.d.
+	from a sub-Gaussian distribution with mean zero and variance one.
+	Then there exists a constant $C$ depending on $\varphi_2$
+	and a universal constant $c_1$ % XXX universal? or what?
+	so that
+	\begin{equation}
+	\mathbb{P}\left(\left| \|f_{\textup{TRP}}(\mathbf{x})\|^2 - \|\mathbf{x}\|^2_2 \right| \ge \epsilon \|x\|^2\right)\le C\exp\left[ - c_1 \left(\sqrt{k}\epsilon\right)^{1/4} \right],\nonumber
+	\end{equation}
+	
+\end{prop}
+Here $\varphi_2$ is the sub-Gaussian norm defined in \ref{def:sub-gaussian} in Appendix \ref{sec:appendix_proof}.
+\ref{prop: N-2-bound} shows that for a TRP to form an $\epsilon$-JL DRM
+with substantial probability on a dataset with $n$ points,
+our method requires $k=\mathcal{O}(\epsilon^{-2}\log^8 n)$ while
+conventional random projections require $k=\mathcal{O}(\epsilon^{-2}\log n)$.
+Numerical experiments suggest this bound is pessimistic.
+\subsection{Column Space Preservation}
+\eqref{eq:gauss_col_preservation} in Lemma \ref{lemma:gauss-rp-matrix} shows that the random projection preserve the information in column space of a matrix well and provide the error bound compared with the tail energy. It is hard to derive similar result for general matrix with tensor random projection. But if the matrix is in form of kroneck product, we can get a similar result based as following proposition:
+\begin{prop}
+Let $\M{X}_n\in \mathbb{R}^{m_i\times d_n}$ be a series of matrix and $\M{\Omega}_n\in \mathbb{R}^{d_n\times (k+p_n)}$ with eact element sampled from standard Gaussian distribution, let  $\tau_n(k) = \sum_{j>k} \sigma^2_j(\M(x))$ be the tail energy for $\M{X}_i$. Let $\M{Q}\in \mathbb{R}^{d\times k}$ be the orthonormal matrix from QR factorization: 
+\[
+\M{Q}, - = \rm{QR} [(\M{X}_1\otimes \cdots \otimes \M{X}_N)(\M{\Omega}_1\odot \cdots \odot\M{\Omega}_N)]
+\]
+we have
+\begin{equation}
+\begin{aligned}
+&\| (\M{X}_1\otimes \cdots \otimes \M{X}_N) - \M{QQ}^\top(\M{X}_1\otimes \cdots \otimes \M{X}_N)\|_F \\
+& \le \prod_{i=1}^N  \sqrt{\left(1+\frac{k}{p_n-1}\right)\tau^2_n(k)}. 
+\end{aligned}
+\end{equation}
+\end{prop}
+\begin{proof}
+\cite{schacke2013kronecker} has a detailed description on property for kroneck product. Following those properties, we have 
+\begin{equation}
+\begin{aligned}
+& (\M{X}_1\otimes \cdots \otimes \M{X}_N)(\M{\Omega_1} \odot \cdots \odot \M{\Omega_N})  \\
+& = ( \M{X}_1\M{\Omega_1}\odot \cdots \odot  \M{X}_N\M{\Omega_N})
+\end{aligned}
+\end{equation}
+ Let $\M{Q}_n\in \mathbb{R}^{d_n\times k}$ be the orthonormal matrix from QR factorization: $\mathbf{Q}_i, \rm{QR}(\M{X_i\Omega_i})$. The key observation is that 
+ $\M{Q} = \M{Q}_1\otimes \cdots \otimes \M{Q}_N$ then we finish the proof with some association rule for kroneck product in \cite{schacke2013kronecker} and result in Lemma \ref{lemma:gauss-rp-matrix}.  Also this proposition, indicate in practice, we should sketch each small matrix $\M{X}_n$ then combine them together which is equivalent to do sketch the whole matrix after kroneck product. 
+ 
+\end{proof}
+
+
+
+
+

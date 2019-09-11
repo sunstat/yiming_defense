@@ -1,0 +1,110 @@
+\section{Appendix: Finite Sample Bound}
+\begin{definition}
+	\label{def:generalized-sub-exponential-mc}
+	A random variable $x$ is said to satisfy the generalized-sub-exponential moment condition with constant $\alpha$, if for general positive integer $k$, there exists a general constant $C$(not depending on k), s.t. 
+	\begin{equation}
+	\mathbb{E} |x|^k \le (Ck)^{k \alpha}
+	\end{equation}
+\end{definition}
+
+
+
+\subsection*{Proof for Proposition \ref{prop: N-2-bound}}
+\begin{proof}
+	From now on, with losing generality, we will assume $\|x\|=1$.  Let 
+	\begin{equation}
+	\mathbf{y}= \frac{1}{\sqrt{k}}(\mathbf{A}_1 \odot \mathbf{A}_2)^\top \mathbf{x}, \nonumber
+	\end{equation}
+	Lemma \ref{lemma: norm-preserve} asserts that $\mathbb{E}\|\mathbf{y}\|^2_2= \|\mathbf{x}\|^2_2$ (conditions in lemma \ref{lemma: norm-preserve} naturally hold for iid random variables in our setting). The key observation is that $y_i, i\in [k]$ is quadratic form of elements of $\mathbf{A}_i, i=1,2$. Then as quadratic form of sub-Gaussian variables, $y_i$ are identically independently distributed generalized sub-exponential random variable. Then we could use Hanson-Wright inequality to determine the constants in moments condition \ref{def:generalized-sub-exponential-mc} which shall present tighter bound compared to directly citing results of linear combination of sub-exponential random variable defined in \eqref{def:generalized-sub-exponential-mc}
+	
+	
+	We aim to write $y_i$ as a quadratic form of $\mathbf{z}_i:=[\mathop{\mathbf{vec}}(\mathbf{A}_{1}(\cdot,i)); \mathop{\mathbf{vec}}(\mathbf{A}_{2}(\cdot,i))]$. Also, for convenience, we partition $\mathbf{x}$ into $d_1$ sub-vectors with equal length $d_2$ i.e., $\mathbf{x} = [\mathbf{x}_1; \cdots; \mathbf{x}_{d_1}]$. To make it clear, we consider writing $y_1$ as quadratic form of $\mathbf{z}_1$ first.  
+	\begin{equation}
+	y_1 = \langle [\mathbf{A}_{1}(1,1) \mathbf{A}_{2}(\cdot,1); \cdots; \mathbf{A}_{1}(d_1,1) \mathbf{A}_{2}(\cdot,1)], [\mathbf{x}_1;\cdots; \mathbf{x}_{d_1}]\rangle
+	\nonumber 
+	\end{equation}
+	which indicates that we could write
+	\begin{equation}
+	y_1 = \mathbf{z}^\top_1
+	\mathbf{M}\mathbf{z}_1, \nonumber
+	\end{equation}
+	where 
+	\begin{equation}
+	\mathbf{M} = \begin{bmatrix}
+	\mathbf{0} & \mathbf{D}\\
+	\mathbf{0} & \mathbf{0}
+	\end{bmatrix}  ~~
+	\mathbf{D} = \begin{bmatrix}
+	\mathbf{x}_1^\top \\
+	\vdots \\
+	\mathbf{x}_{d_1}^\top.  \nonumber
+	\end{bmatrix}
+	\end{equation}
+	It is easy to see that $\|\mathbf{M}\| \le \|\mathbf{D}\| \le \|\mathbf{D}\|_F = \|\mathbf{M}\|_F = 1$ by assuming $\|\mathbf{x}\| = 1$. Then applying the Hanson Wright inequality in Lemma \ref{lemma:hanson_wright}, we could have for any positive number $\eta$, there exists a general constant $c_1$ s.t. 
+	\begin{equation}
+	\begin{aligned}
+	\mathbb{P}(|y_i|\ge \eta) & \le 2\exp\left[-c_1\min\left\{ -\frac{\eta}{\varphi_2^2 \|M\|} ,  \frac{\eta^2}{\varphi_2^4 \|M\|^2_F} \right\} \right] \\
+	& \le  2\exp\left[-c_1\min\left\{ -\frac{\eta}{\varphi_2^2} ,  \frac{\eta^2}{\varphi_2^4 } \right\} \right].  \nonumber
+	\end{aligned}
+	\end{equation}
+	Then by Lemma \ref{lemma:hanson-wright-sub-exponential}, we could find a constant $C$ depending on sub-Gaussian norm and general constant $c_1$ s.t.
+	\begin{equation}
+	\mathbb{E} |y_i|^k \le (Ck)^k, \nonumber 
+	\end{equation}
+	where in fact we could give the explicit form of $C$ as 
+	\begin{equation}\label{eq:constant_in-sub-exponential}
+	C = 1+ \frac{c_1}{\min\left\{\varphi_2^2, \varphi_2^4\right\}}. 
+	\end{equation}
+	Notice $y_i$ has mean zero and variance 1 (assuming $\|x\|=1$),  then apply Lemma \ref{lemma:hanson-wright-sub-exponential-moment}, we could assert that there exists a general constant $c_2$
+	\begin{equation}
+	\begin{aligned}
+	& \mathbb{P}\left(\left|\frac{1}{k} \mathbf{y}^\top \mathbf{I}_{k,k} \mathbf{y}-1 \right|\ge \epsilon\right )  \le C\exp\left( - c_2 \left[\sqrt{k}\epsilon\right]^{1/4} \right),
+	\nonumber 
+	\end{aligned}
+	\end{equation}
+	where $C$ is defined in \eqref{eq:constant_in-sub-exponential} and we use the fact $\alpha=1$ in our case which is defined in moments condition. 
+	
+	
+	
+	
+\end{proof}
+
+
+\begin{lem}
+\label{lemma:inner-product}
+For a linear mapping from $\mathbb{R}^d\rightarrow \mathbb{R}^k$: $f(\mathbf{x}) = \frac{1}{\sqrt{k}}\mathbf{\Omega x}$, 
+\begin{equation}
+\label{eq:inner-bound}
+\mathbb{P}(|\langle f(\mathbf{x}), f(\mathbf{y})\rangle - \langle \mathbf{x}, \mathbf{y}\rangle|\ge \epsilon |\langle \mathbf{x}, \mathbf{y}\rangle|) \le 2\sup_{\mathbf{x}\in \mathbb{R}^{d}}\mathbb{P}(| \|f(\mathbf{x})\|^2-\|\mathbf{x}\|^2|\ge \epsilon \|\mathbf{x}\|_2^2).\nonumber
+\end{equation}
+\end{lem}
+
+\begin{proof}
+Since $f$ is a linear mapping, we have
+\[
+4f(\mathbf{x})f(\mathbf{y}) = \|f(\mathbf{x}+\mathbf{y})\|^2_2-  \|f(\mathbf{x}-\mathbf{y})\|^2_2.
+\]
+Consider the event
+
+\begin{equation}
+\begin{aligned}
+ &\mathcal{A} _1=  \left\{ |\|f(\mathbf{x}+\mathbf{y})\|^2_2-\|\mathbf{x}+\mathbf{y}\|^2_2|\ge \epsilon \|\mathbf{x}+\mathbf{y}\|_2^2 \right\}\\
+ &\mathcal{A} _2=  \left\{ | \|f(\mathbf{x}-\mathbf{y})\|^2_2-\|\mathbf{x}-\mathbf{y}\|^2_2|\ge \epsilon \|\mathbf{x}-\mathbf{y}\|_2^2 \right\} \nonumber
+ \end{aligned}
+ \end{equation}
+ 
+ On the event $\mathcal{A}_1^\complement \cap\mathcal{A}_2^\complement$, 
+ \[
+ 4f(\mathbf{x})f(\mathbf{y})  \ge (1-\epsilon) (\mathbf{x}+\mathbf{y})^2 - (1+\epsilon) (\mathbf{x}-\mathbf{y})^2 = 4 \langle \mathbf{x}, \mathbf{y}\rangle -2\epsilon (\|\mathbf{x}\|^2+\|\mathbf{y}\|^2),
+ \]
+ noticing $\|\mathbf{x}\|^2+\|\mathbf{y}\|^2\ge 2\langle \mathbf{x},  \mathbf{y}\rangle$, and by similar argument on the other side of the inequality, we could claim that 
+\[
+\left\{|\langle f(\mathbf{x}), f(\mathbf{y})\rangle - \langle \mathbf{x}, \mathbf{y}\rangle|\ge \epsilon |\langle \mathbf{x}, \mathbf{y}\rangle|\right\} \subseteq  \mathcal{A}_1 \cup \mathcal{A}_2. 
+\]
+Then we finish the proof by simply applying an union bound of two events. 
+\end{proof}
+\begin{remark}
+The key element of classic random projections is the dimension-free bound. Similarly, according to Prop. \ref{prop: N-2-bound}, our TRP has a norm preservation bound independent of the particular vector  $\mathbf{x}$ and dimension $d$ and thus a dimension-free inner product preservation bound according to Lemma \ref{eq:inner-bound}. 
+\end{remark}
+
+

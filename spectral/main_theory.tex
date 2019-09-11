@@ -1,0 +1,300 @@
+\section{Theoretical Properties}\label{sec:theory}
+In this section, we analyze asymptotic properties of thresholded averaged periodograms under high-dimensional regime. In particular, we derive non-asymptotic upper bound on the estimation error under operator and Frobenius norms and relate them to a notion of weak sparsity of the spectral density matrices. A key technical ingredient of our analysis is a concentration inequality of complex quadratic forms of temporally dependent Gaussian random vectors. In section \ref{sec:heavy-tail} we extend these results to linear processes with more general noise distributions, including subGaussian and   subexponential families.
+
+In contrast with classical asymptotic framework where $p$ is fixed and $n \rightarrow \infty$, a non-asymptotic analysis for high-dimensional time series requires careful quantification of the convergence rates, in particular how they are affected by cross-sectional and temporal dependence inherent in the time series. Therefore, before proceeding with the main theoretical results, we describe parameters of the multivariate time series $X_t$ that appears in our estimation error bounds.
+
+\smallskip
+\noindent \textbf{Weak Sparsity of Spectral Density: } 
+In order to make meaningful estimation in a high-dimensional regime, we focus on a class of spectral density matrices with suitable low-dimensional structure of \textit{weak sparsity} measured by $\vertiii{f}_q$ for some $0 \le q < 1$. Matrices with small $\vertiii{f}_0$  are \textit{exactly sparse}, while small  $\vertiii{f}_q$ correspond to matrices within a small $\ell_q$ ball in $\mathbb{C}^{p\times p}$. Weak sparsity of regression coefficients and covariance matrices have been proposed earlier in \cite{van2016lecture} and \citet{bickel2008covariance} respectively. 
+%low \cite{van2016lecture} discuss the weak sparsity measure in vector case thoroughly by defining $\rho^q = \sum_{i=1}^p |v_i|^q$ with $0\le q<1$ for vector $v\in \mathbb{C}^p$ and connecting it to lasso theory. For matrix case, \citet{bickel2008covariance} use $\max_{r=1}^p \sum_{s=1}^p |f_{rs}(\omega)|^q$ to measure weak sparsity.
+% This generalizes the notion of \textit{exact} sparsity, allowing for many small non-zero coefficients in the matrix.
+Weakly sparse covariance matrices have been applied to climate studies according to \cite{cai2016rates} and gene expression array analysis, as mentioned in \cite{cai2012minimax}. \par 
+
+Although the induced norm defined in notation section does not satisfy triangle inequality for $0\le q<1$, $\|A\|_q^q$ satisfies the triangle inequality leading to 
+\vspace{-0.1in}
+\begin{equation}
+\max_{s=1}^p \sum_{s=1}^p |f_{rs}(\omega)|^q = \|f(\omega)\|_q^q  \le \vertiii{f}_q^q, \nonumber
+\end{equation}
+where $\vertiii{f}_q = \esssup_{\omega\in [-\pi, \pi]} \|f(\omega)\|_q$ as defined before. 
+We provide a proof of this statement in lemma   \ref{lemma:q_norm_eq}. 
+Since spectral density $f(\omega)$ is a Hermitian matrix, $\vertiii{f}_q^q$ also measures the row weak sparsity. This weakly sparse class covers a  variety of sparse patterns as shown in \citet{bickel2008covariance}. 
+%However, \citet{bickel2008covariance} requires diagonal entries of the covariance matrix  to be uniformly bounded above, i.e., $\Sigma_{rr}\le M$, $r = 1,\cdots p$.
+%, where $\Sigma$ is the covariance matrix and $M$ is some general constant which is necessary for building concentration inequality for deviation from sample covariance matrix to population covariance matrix. 
+%In our case, $\vertiii{f}$ already controls magnitude of diagonal elements since for any $f_{rr}(\omega), \omega \in [-\pi,\pi], 1\le r\le p$, 
+%\begin{equation}
+%\vertiii{f}\ge \|f(\omega)\|\ge |f_{rr}(\omega)|. \nonumber
+%\end{equation} We will only consider stable time series assuming finite $\vertiii{f}$, or  slow growth rate of $\vertiii{f}$. It may be possible to relax this assumption by resorting to adaptive thresholding proposed by \cite{cai2011adaptive}, although we do not explore this direction in this work.
+
+\smallskip
+\noindent \textbf{Strength of Temporal and Cross-sectional Dependence: } %We consider a data matrix $\mathcal{\mathcal{X}} = [{X}_1:\ldots:{X}_n]^\top$ from a $p$-dimensional weakly stationary, zero-mean  time series. Consider $\hat{f}(\omega_j)$, the averaged periodogram defined in \eqref{eq:smoothing estimator}. To guarantee $\hat{f}(\omega_j)$ is a consistent estimator, 
+The decay rates of the strengths of cross- and autocorrelation between components of $X_t$ capture the strength of temporal and cross-sectional dependence in data, which in turn relates to the effective sample size and appear in our error bounds. For meaningful estimation, we restrict ourselves to the class of short-range dependent time series $X_t$ with  the following summability assumption on its underlying autocovariance function $\Gamma(\ell)$:
+\begin{assumption}\label{assumption:finite_auto}
+$\sum_{\ell=-\infty}^\infty \|\Gamma(\ell)\|_{\text{max}}<\infty$. 
+\end{assumption}
+
+\noindent Under this assumption, we will present our bounds in terms of three quantities. The first one is $\vertiii{f}$ defined before, and will be used to assess the \textit{concentration of averaged periodogram around its expectation}. Note that $\vertiii{f}$ is finite since  
+\begin{equation}
+\|f(\omega)\| = \left\|\sum_{\ell = -\infty}^\infty \Gamma(\ell) e^{-\iu \omega \ell }\right\| \le \sum_{\ell = -\infty}^\infty \|\Gamma(\ell)\| \le \sum_{\ell=-\infty}^\infty p\|\Gamma(\ell)\|_{\rm{max}}.
+\end{equation}
+% which ensures that the spectral density is well defined. 
+%Then
+%\begin{equation*}
+%\vertiii{f} = \esssup_{\omega \in [-\pi, \pi ]}\|f(\omega)\| <\infty. % = \sup_{\omega \in [-\pi, \pi ]}\|f(\omega)\|
+%\end{equation*}
+The other two quantities that capture the strength of temporal and contemporaneous dependence in the multivariate time series $\{X_t\}_{t \in \mathbb{Z}}$ are 
+\begin{eqnarray}
+\Omega_{n}(f) = \max_{1 \le r,s \le p} \sum_{\ell=-n}^n |\ell| |\Gamma_{rs}(\ell)|, ~~~~ L_n(f) = \max_{1 \le r,s \le p}\sum_{|\ell|>n} |\Gamma_{rs}(\ell)|.
+\end{eqnarray}
+Together, these two quantities help assess  how the \textit{bias of averaged periodogram} depends on the the degree of decay of the autocovariance function with increasing lag order $\ell$. Under Assumption \ref{assumption:finite_auto}, both of these quantities are finite. In Proposition \ref{prop:order_bias}, we show how these quantities grow for some common classes of multivariate time series.
+
+\subsection{Estimation Consistency: Stable Gaussian Time Series} 
+
+We start with a key technical ingredient of our analysis, a  Hanson-Wright type inequality \citep{rudelson2013hanson} for quadratic forms of random vectors generated by a multivariate Gaussian time series. This result generalizes Proposition 2.4 in \cite{Basu2015} by allowing an arbitrary matrix $A$ in the quadratic form. In Section \ref{sec:heavy-tail}, we extend this inequality to accommodate more general non-Gaussian time series.
+
+Our modified Hanson-Wright inequality is crucial for understanding the concentration behaviour of averaged periodograms around the true spectral density $\left| \hat{f}_{rs}(\omega_j) - f_{rs}(\omega_j) \right|$, for a fixed coordinate $(r,s)$ of the $p\times p$ spectral density matrix. This deviation is required for selecting threshold $\lambda$ that ensures consistency in high-dimension. Unlike high-dimensional covariance estimation problem where sample covariance is an unbiased estimator of population covariance, the averaged periodogram at frequency $\omega_j$ is a biased estimator of $f(\omega_j)$. This requires developing upper bounds on both the ``bias'' and ``variance'' terms in the deviation of $\hat{f}_{rs}$ around $f_{rs}$: 
+\begin{equation}
+\left|\hat{f}_{rs}(\omega_j) - f_{rs}(\omega_j)\right| \le \left|\mathbb{E}\hat{f}_{rs}(\omega_j) - f_{rs}(\omega_j)\right| + \left| \hat{f}_{rs}(\omega_j) - \mathbb{E}\hat{f}_{rs}(\omega_j) \right|. \nonumber
+\end{equation}
+Note that while the first term above is indeed capturing bias of $\hat{f}_{rs}(\omega_j)$, the second term is not technically ``variance'' since this is the centered version of $\hat{f}_{rs}(\omega_j)$ and not its $L_2$ norm. Nevertheless, we continue to use the term 'variance' in this context since it captures the fluctuation of $\hat{f}_{rs}(\omega_j)$ around its expectation. The upper bounds on bias and variance terms are obtained in Propositions \ref{prop:bias_bound} and \ref{prop:variance_bound}, respectively. Finally, in Proposition \ref{prop: gauss_prop} we extend the deviation bound on a single $(r,s)$ to all $p^2$ elements of $f(\omega_j)$ and provide a non-asymptotic upper bound on the estimation error of the hard-thresholded averaged periodogram.
+
+
+\begin{lem}
+\label{lemma: hason_bound_time_gauss}
+Suppose $\mathcal{\mathcal{X}}_{n\times p} = [X_1:\ldots:X_n]^\top$ is a data matrix from a stable  Gaussian time series $X_t$ satisfying Assumption \ref{assumption:finite_auto}. Then there exists a universal constant $c>0$ such that for any $\eta > 0$ and any $p \times p$ real matrix $A$, 
+\begin{equation}
+\begin{aligned}
+&\mathbb{P}\left(\left|vec(\mathcal{\mathcal{X}}^\top)^\top A ~vec(\mathcal{\mathcal{X}}^\top) - \mathbb{E} \left[vec(\mathcal{\mathcal{X}}^\top)^\top A ~vec(\mathcal{\mathcal{X}}^\top)\right]\right| >2\pi \eta\vertiii{f} \right) \nonumber \\
+&\le 2\exp\left[-c\min\left\{\cfrac{\eta}{\|A\|}, \cfrac{\eta^2}{\rank(A)\|A\|^2}\right\}\right]. \nonumber
+\end{aligned}
+\end{equation}
+\end{lem}
+
+\iffalse
+\begin{remark}
+In the above result, $rk(A)$ can be replaced by a smaller quantity $\|A\|_F/ \|A\|$ to make the bounds tighter. However, we use this form to  %Here we replace the $\|A\|_F$ with its upper bound $\sqrt{\rank(A)}$ to 
+unify with the results for i.i.d. case (Lemma \ref{lemma:heavy_tail_hanson}) and dependent case (Proposition  \ref{lemma:heavy_tail_time_hanson}). 
+\end{remark}
+\fi
+
+For Gaussian $\mathcal{X}$, the above lemma generalizes Hanson-Wright inequality by allowing dependence among the entries of $\mathcal{X}$, and controlling the effect of dependence in the tail bound using $\vertiii{f}$, $\|A\|$ and $\rank(A)$. As will be evident from our analysis, this simple generalization will be immensely useful for studying concentration behaviour of averaged periodogram around the true spectral density in appropriate norms. Note that we replace  $\|A\|_F^2$ in standard Hanson-Wright inequality by a larger quantity $rk(A) \|A\|^2$, which makes the presentation easier in the asymptotic regime of our interest. In a lower dimensional regime, it is possible to get sharper rate using $\|A\|_F^2$ and $\int_{[-\pi,\pi]} \|f(\omega)\|^2 d\omega$ instead of $\vertiii{f}$, as discussed in \citet{Basu2015}. 
+\smallskip
+\par
+\noindent \textbf{Bound on Bias Term: } In low-dimensional asymptotic regime ($p$ fixed, $n \rightarrow \infty$) the bias term is asymptotically negligible. In the double-asymptotic analysis of \citep{bohm2009shrinkage} as well, the  authors claim the bias of the estimator i.e., $|\mathbb{E}\hat{f}(\omega_j)-f(\omega)| = o(\frac{m}{n})$ which is negligible. In our non-asymptotic analysis, we need to derive an upper bound for this bias term in terms of $\{ \Gamma(\ell)\}_{\ell \in \mathbb{Z}}$, since the choice of threshold $\lambda$ depends crucially on this. The following proposition establishes such an  upper bound in terms of the temporal dependence present in the multivariate time series $X_t$. 
+
+\begin{prop}
+\label{prop:bias_bound}
+For any coordinate $(r,s)$ with $1\le r,s\le p$ and any Fourier frequency $\omega_j$, $j\in F_n$, the estimation bias of averaged periodogram with a smoothing span $2m + 1$ satisfies
+\begin{equation}
+\begin{aligned}
+\left|\mathbb{E}\hat{f}_{rs}(\omega_j) - f_{rs}(\omega_j)\right| \le \frac{m+1/2\pi}{n}\Omega_n(f) + \frac{1}{2\pi}L_n(f). \nonumber
+\end{aligned}
+\end{equation}
+\end{prop}
+
+A consequence of this proposition is that it shows $m/[n /(\Omega_n(f)] \rightarrow 0$ is sufficient to ensure bias vanishes asymptotically. In particular, for two $p$-dimensional time series and same sample size $n$, it suggests choosing a smaller $m$ for the series with stronger temporal dependence (larger $\Omega_n(f)$) since the effective sample size after accounting for dependence ($n/\Omega_n(f)$) is smaller.
+
+We defer its proof to Appendix A. The upper bound on the bias depends on two terms: $\Omega_n(f)$ and $L_n(f)$. In previous works \cite{bohm2009shrinkage, bohm2008structural}, authors  argue that this upper bound on bias is of the order $\mathcal{O}(m/n)$. But since we focus on non-asymptotic analysis, these two terms $\Omega_n(f)$ and $L_n(f)$ appear in the choices of our two tuning parameters: threshold $\lambda$ and the smoothing span $2m+1$. To ensure we choose these parameters appropriately so that the bias vanishes asymptotically under a high-dimensional regime, it is important to understand how the above quantities grow with sample size $n$. Our next proposition provides some upper bounds on these quantities under  three different conditions. The first one is assuming a geometric decay rate on $\|\Gamma(\ell)\|_{\max}$, second one is 
+about $\rho$-mixing condition (equivalent to strongly mixing for stationary Gaussian processes  \citep{bradley2005basic}) and VAR processes. Before that, we briefly review definition of $\rho$ mixing for condition 2 in Proposition \ref{prop:order_bias} and VAR process for condition 3 in Proposition \ref{prop:order_bias}. 
+
+\cite{bradley2005basic} provides a good summary of various mixing conditions. Here we introduce the definition for $\rho$ mixing: for two $\sigma$-algebras $\mathcal{A}$ and $\mathcal{B}$,  we define 
+\begin{equation}
+\rho(\mathcal{A}, \mathcal{B}) = \sup  |\text{Corr}(f,g)|,~~ f\in L^2(\mathcal{A}), g\in L^2(\mathcal{B}), \nonumber
+\end{equation}
+where $f,g$ are two measurable functions with respect to $\sigma$-algebras $\mathcal{A}$ and $\mathcal{B}$ respectively. For stationary multivariate time series $X_t$, we define the $\rho$-mixing coefficient for gap $\ell$ as 
+\begin{equation}
+\label{eq:ts_rho_mixing}
+\rho(\ell) = \rho(\sigma(X_t, t\le 0), \sigma(X_t, t\ge \ell)).
+\end{equation}
+The two characteristics $\|\Gamma(\ell)\|_{\max}$ and $\rho(\ell)$ are usually easy to describe for finite order VMA and  $\rm{VAR}(1)$ model. For $\rm{VAR}(d)$ with $d > 1$, however, it is more complicated. It is well known that we can rewrite a VAR(d)  model  
+\begin{equation}
+X_t = \sum_{\ell=1}^d A_{\ell} X_{t-\ell}+\varepsilon_t, \nonumber
+\end{equation}
+as a VAR(1) model $\tilde{X}_t = \tilde{A}_1 \, \tilde{X}_{t-1} + \tilde{\varepsilon}_t$, where 
+\begin{equation}\label{eqn:var_dto1}
+\tilde{X}_t = \left[ \begin{array}{c} X_t \\ X_{t-1} \\ \vdots \\ X_{t-d+1} \end{array} \right]_{dp \times 1}
+\tilde{A}_1 = \left[ \begin{array}{ccccc} A_1 & A_2 & \cdots & A_{d-1} & A_d \\ 
+										I_p & \mathbf{0} & \cdots & \mathbf{0} & \mathbf{0} \\
+										\mathbf{0} & I_p & \cdots & \mathbf{0} & \mathbf{0} \\
+										\vdots & \vdots & \ddots & \vdots & \vdots \\
+										\mathbf{0} & \mathbf{0} & \cdots & I_p & \mathbf{0} \end{array}\right]_{dp \times dp}
+\tilde{\varepsilon}_t = \left[ \begin{array}{c} \varepsilon_t \\ \mathbf{0} \\ \vdots \\ \mathbf{0} \end{array} \right]_{dp \times 1}. \nonumber
+\end{equation} 
+The sufficient and necessary condition for $X_t$ being stationary is that $\lambda_{\text{max}}( \tilde{A}_1)<1$. As we will discuss later that first two conditions in Proposition \ref{prop:order_bias} could be achieved by assuming coefficients has operator norm less than 1 for VAR(1) model.  But for VAR(d) with $d > 1$, it is known that $\|\tilde{A}_1\| \ge 1$ \citep{Basu2015}. So we cannot directly verify the geometric decay conditions \ref{geo_decay} and \ref{rho-mixing} in Proposition \ref{prop:order_bias}. But we can still get some compact bound by assuming $\tilde{A}_1$ is diagonalizable. Note that the assumption of diagonalizability is not stringent since  we can add a sufficiently small perturbation to the entries of $\tilde{A}_1$  so that its eigenvalues are distinct and we still have  $\lambda_{\text{max}}( \tilde{A}_1)<1$. We make this statement precise in Lemma \ref{lemma:spectral_simple} in the Appendix. 
+
+\begin{prop}
+\label{prop:order_bias}
+Consider a weakly stationary,  centered time series $X_t$.  % assuming $E X_t = 0$, 
+\begin{enumerate}
+    \item \label{geo_decay} Suppose $X_t$ satisfies $\|\Gamma(\ell) \|_{\textup{max}} \le \sigma_X \rho_X^{|\ell|}$ for all $\ell \in \mathbb{Z}$ for some $\sigma_X > 0$ and  $\rho_X \in (0, 1)$. Then 
+    \begin{equation}
+    \begin{aligned}
+     \Omega_n \le 2\sigma_X\rho_X\left[\frac{1-(n+1)\rho_X^n +n\rho_X^{n+1}}{(1-\rho_X)^2}\right],  ~~~ L_n\le \frac{2\sigma_X\rho_X^{n+1}}{1-\rho_X}. \nonumber
+    \end{aligned}
+    \end{equation}
+    \item \label{rho-mixing} Suppose $X_t$ satisfies $\rho(\ell) \le \sigma_X \rho_X^{|\ell|}$ where $\rho({\ell})$ is the $\rho$-mixing coefficient defined in \eqref{eq:ts_rho_mixing}. Then 
+     \begin{equation}
+    \begin{aligned}
+     \Omega_n \le 2\|\Gamma(0)\|_{\textup{max}}\sigma_X\rho_X\left[\frac{1-(n+1)\rho_X^n +n\rho_X^{n+1}}{(1-\rho_X)^2}\right],  ~~~ L_n\le \frac{2\sigma_X\|\Gamma(0)\|_{\textup{max}}\rho_X^{n+1}}{1-\rho_X}. \nonumber
+    \end{aligned}
+    \end{equation}
+    \item \label{var-condition} Suppose $X_t$ is a stable VAR(d) process $X_t = \sum_{\ell=1}^d A_d  X_{t-d} + \varepsilon_t$, where $\varepsilon_t \stackrel{i.i.d.}{\sim} N(0, \sigma^2 I)$. Set $\tilde{A}_1$ as in \eqref{eqn:var_dto1}, and assume $\tilde{A}_1$ is diagonalizable with an eigendecomposition $\tilde{A}_1 = SDS^{-1}$. Then 
+    %for process $\tilde{X}_t = \tilde{A}_1 \tilde{X}_{t-1}+\tilde{\varepsilon}_t$  
+    \begin{equation}
+    \begin{aligned}
+    &\Omega_n \le 2\kappa^2\frac{\lambda_{\textup{max}}(\tilde{A}_1)(1+n\lambda_{\textup{max}}^{n+1}(\tilde{A}_1)-(n+1)\lambda_{\textup{max}}(\tilde{A}_1))}{(1-\lambda_{\textup{max}}(\tilde{A}_1))^2(1-\lambda^2_{\textup{max}}(\tilde{A}_1))}, \nonumber \\
+    &L_n \le 2\kappa^2\frac{\lambda_{\textup{max}}^{n+1}(\tilde{A}_1)}{(1-\lambda_{\textup{max}}(\tilde{A}_1))(1-\lambda^2_{\textup{max}}(\tilde{A}_1))}, \nonumber
+    \end{aligned}
+    \end{equation}   
+ where $\kappa = \|S\|\|S^{-1}\|$. 
+\end{enumerate}
+\end{prop}
+
+\begin{remark}
+These bounds show that for a large class of stationary processes $X_t$, $\Omega_n(f)/n \rightarrow 0$ and $L_n(f) \rightarrow 0$ as $n \rightarrow \infty$. This implies it is possible to choose a large smoothing span $m \rightarrow \infty$ (required for asymptotically vanishing variance) that also ensures bias vanishing at a rate $O(m \Omega_n(f)/n)$. \end{remark}
+
+\noindent \textbf{Bound on Variance term:} Unlike the bias term, the variance term $|\hat{f}_{rs}(\omega_j) - \mathbb{E} \hat{f}_{rs} (\omega_j)|$ is non-deterministic, so we need to establish high probability upper bound on this quantity. Compared to analogous bounds derived in covariance estimation for i.i.d. \citep{bickel2008covariance} or time series \citep{shu2014estimation} data, concentration of sample average of periodograms over nearby frequencies requires additional care since the summands are neither independent nor identically distributed to each other. However, the following proposition shows that the deviation bounds are the same order as i.i.d. data modulo a \textit{price of dependence} captured by $\vertiii{f}$. From a purely technical perspective, this Proposition forms the core of all our subsequent theoretical developments, and we believe this deviation bound will potentially be useful in other problems involving high-dimensional spectral density, e.g., estimation of partial coherence using graphical lasso type algorithms  \citep{jung2015graphical}. 
+\begin{prop}
+\label{prop:variance_bound}
+There exist universal positive constants $c_1, c_2$ such that for any $\eta > 0$, 
+\begin{equation}\label{eqn:conc-entrywise}
+\mathbb{P}\left(\left|\hat{f}_{rs}(\omega_j) - \mathbb{E}\hat{f}_{rs}(\omega_j)\right| \ge \vertiii{f}\eta\right)\le c_1\exp\left[-c_2(2m+1)\min\{\eta, \eta^2\}\right].
+\end{equation} 
+\end{prop}
+
+
+A complete proof is provided in Appendix \ref{appendix:proof_gaussian}. It is worth noting that the effective sample size in this bound is $(2m+1)$, a function of the smoothing span. The proof proceeds by separating the real and imaginary parts of $\hat{f}_{rs}(\omega_j) - \mathbb{E}\hat{f}_{rs}(\omega_j)$ into two quadratic forms involving random vectors $\{X_t\}_{t=1}^n$, subsequently applying Lemma \ref{lemma: hason_bound_time_gauss} to each part and deriving upper bounds on the spectral norm and ranks of the resulting $A$ matrices. 
+
+
+\iffalse
+$\xi_j = (1/\sqrt{n})(1, e^{i\omega_j}, e^{2i\omega_j}, \ldots, e^{i(n-1)\omega_j})^\top$, $j \in F_n$, is an orthogonal basis of $\mathbb{C}^n$ [verify indices]. $(r,s)^{th}$ entry of averaged periodogram takes the form (modulo division by $2\pi (2m+1)$)
+\begin{equation*}
+    e_r^\top \mathcal{X}^\top \left(\sum_{|\ell| \le m} \xi_j \xi_j^\top \right) \mathcal{X} e_s.
+\end{equation*}
+In order to use modified Hanson-Wright, we need to understand rank and spectral norm of the matrix $\sum_{|\ell| \le m} \xi_\ell \xi_\ell^\top$. This is a projection matrix (a vector space over field $\mathbb{C}$ with rank $2m+1$, so its spectral norm is bounded above by $1$.
+\fi
+
+
+
+
+
+With the aforementioned bounds on bias and variance parts, we are now ready to present our main result that provides non-asymptotic upper bounds on the estimation error of the high-dimensional thresholded averaged periodogram in operator norm and Frobenius norm for Gaussian time series. The proof adapts techniques of \citet{bickel2008covariance} and \citet{rothman2009generalized} to combine the individual, entry-wise bounds on bias and variance terms across all the entries of the high-dimensional matrix.
+
+\begin{prop}
+\label{prop: gauss_prop}
+Assume ${X}_t, t=1,\ldots,n$, are $n$ consecutive observations from a stable Gaussian time series satisfying Assumption \ref{assumption:finite_auto}, and consider a single Fourier frequency $\omega_j \in [-\pi, \pi]$. Assume $n \succsim \Omega_n(f) \vertiii{f}^2 \log p$. Then for any $m $ satisfying $m \precsim n/ \Omega_n(f)$ and $m \succsim \vertiii{f}^2 \log p$, and any $R > 0$,  
+there exist universal constants $c_1, c_2 > 0$ such that choosing a threshold 
+\begin{equation}
+\label{eq:threshold_value}
+\lambda = 2R \vertiii{f}\sqrt{\frac{\log p}{m}} +2\left[ \frac{m+1/2\pi}{n}\Omega_n(f)+\frac{1}{2\pi}L_n(f)\right], 
+\end{equation}
+the estimation error of thresholded averaged periodogram satisfies 
+\begin{equation}
+\begin{aligned}
+\mathbb{P}\left(\left\|T_{\lambda}(\hat{f}(\omega_j)) - f(\omega_j)\right\|\ge 7\vertiii{f}_q^q \lambda^{(1-q)} \right)
+\le c_1 \exp\left[-(c_2 R^2-2)\log p\right]. \nonumber
+\end{aligned}
+\end{equation}
+Similarly, there exist universal positive constants $c_1, c_2$ such that for any $R>0$, with the same choice of threshold in \eqref{eq:threshold_value}, we have 
+\begin{equation}
+\mathbb{P}\left(\frac{1}{p}\left\|T_{\lambda}(\hat{f}(\omega_j)) - f(\omega_j)\right\|_F^2 \ge 13\vertiii{f}_q^q\lambda^{2-q} \right)\le c_1 \exp\left[-(c_2 R^2-2)\log p\right]. \nonumber
+\end{equation}
+%where $\lambda_{n,p}$ may be a function of $n$, $p$ and other model parameters but for simplcity, we will write $\lambda$ for $\lambda_{n,p}$ afterwards. 
+\end{prop}
+
+\begin{remark}
+The estimation errors of our thresholded averaged periodogram in both operator norm and Frobenius norm depend on three factors: (i) the weak sparsity level of the true spectral density matrix $\vertiii{f}_q$; (ii) measure of stability of the process $\vertiii{f}$ to control variance of our estimate; (iii) rate of decay of autocovariances $\Omega_n$ and $L_n$ to control bias of our estimates. For any process satisfying $\Omega_n/n \rightarrow 0$ faster than $1/\vertiii{f}^2 \log p$, it is possible to find a sequence of smoothing span $m$ such that $\lambda \rightarrow 0$ as $n\rightarrow \infty$. The two appears in the threshold is only for an easy writing for technical proof. 
+\end{remark}
+
+The above result is non-asymptotic in nature, and our choice of threshold includes an upper bound on the bias. This is in contrast with existing works in the regime $p^2/n \rightarrow 0$, where this bias term is asymptotically negligible. 
+\iffalse
+In the double-asymptotic analysis of \citep{bohm2009shrinkage} as well, the  authors claim the bias of the estimator i.e., $|\mathbb{E}\hat{f}(\omega_j)-f(\omega)| = o(\frac{m}{n})$ which is negligible. In our work, we explicitly derive an upper bound for this bias term as
+\begin{equation}
+\left|\mathbb{E}\hat{f}_{rs}(\omega_j)-f_{rs}(\omega)\right| \le \frac{m+1/2\pi}{n}\Omega_n(f)+\frac{1}{2\pi}L_n(f)   \nonumber
+\end{equation}
+for any $1\le r,s\le p$. 
+\fi
+Our choices of tuning parameters $m$ and $\lambda$ then ensure that both bias and variance decrease as $n,p$ grow, which is necessary for meaningful estimation, i.e.,   
+\begin{equation}
+\label{eq:var_bias_zero}
+\max\left\{R\vertiii{f}\sqrt{\frac{\log p}{m}}, \frac{m}{n}\Omega_n(f)\right\} = o(1).
+\end{equation}
+
+
+\noindent \textbf{Generalized Thresholding of Averaged Periodogram:} Building up on the bounds on bias and variance terms of the individual entries of averaged periodogram, we are now ready to present our results for the generalized thresholding operator $S_\lambda(.)$. Suppose we have a generalized thresholding operator $S_\lambda(.)$ satisfying conditions (1)-(3) in Section \ref{sec:model-methods}.
+\iffalse
+for spectral density initially proposed by \citet{rothman2009generalized} for covariance matrix estimation which satisfies following three conditions, for each $1\le r,s\le p$, 
+\begin{enumerate}[label=(\roman*)]
+\item $|S_{\lambda}(\hat{f}_{rs}(\omega_j))|\le |\hat{f}_{rs}(\omega_j)| $;
+\item $S_{\lambda}(\hat{f}_{rs}(\omega_j)) = 0$ if $|\hat{f}_{rs}(\omega_j)|\le \lambda$;
+\item $|S_{\lambda}(\hat{f}_{rs}(\omega_j)) - \hat{f}_{rs}(\omega_j)|\le |\hat{f}_{rs}(\omega_j)|$.
+\end{enumerate}
+This family of generalized operator includes hard thresholding as well as {\color{red} [Yige: we called it 'soft threshold' earlier. I like Lasso better. Let's change all occurrences of 'soft threshold' to 'Lasso'.]} Lasso and adaptive Lasso based shrinkage operators.
+\fi
+The following proposition generalizes our previous estimation guarantees of hard thresholding to this more generalized family of estimates that includes lasso and adaptive lasso thresholds.
+\begin{prop}
+Suppose $S_{\lambda}(.)$ satisfies conditions (1) - (3) above. Then, for any Fourier frequency $\omega_j, j\in F_n$, and the same choices of tuning parameters $m$ and $\lambda$ as in Proposition \ref{prop: gauss_prop}, there exist universal constants $c_i > 0$ such that 
+
+% uniformly on $\mathcal{U}(q, \vertiii{f}_q^q, \omega_j)$, for sufficiently large $R$, under assumption \ref{assumption:finite_auto} if we set
+% \begin{equation}
+% \lambda = R\vertiii{f}\sqrt{\frac{\log p}{m}} + \frac{m}{n}\Omega_n(f)+\frac{1}{2\pi}\left(\frac{\Omega_n(f)}{n}+L_n(f)\right) 
+%\end{equation}
+%and 
+%\begin{equation}
+%\max\left\{\vertiii{f}\sqrt{\frac{\log p}{m}}, ~ \frac{m}{n}\Omega_n(f)\right\} = o(1), 
+%\end{equation}
+
+\begin{equation}
+\mathbb{P} \left( \|S_{\lambda}(\hat{f}(\omega_j))-f(\omega_j)\| >  7\vertiii{f}_q^q \lambda^{(1-q)}\right) \le c_1 \exp \left[ -(c_2R^2-2)\log p \right]. \nonumber
+\end{equation}
+\end{prop}
+
+
+As pointed out in \citet{rothman2009generalized}, the key is to build concentration inequality for each element of  $\hat{f}(\omega_j)-f(\omega_j)$ which is provided by proof in  Proposition \ref{prop:bias_bound} and \ref{prop:variance_bound}. After building the concentration inequality, all the proof left is exactly same as in Proposition \ref{prop: gauss_prop} and \citet{rothman2009generalized}. We omit this proof for sake of brevity.
+
+\smallskip
+
+%\paragraph
+\noindent \textbf{Sparsistency of Thresholded Averaged Periodograms}: A key motivation for using thresholded averaged periodogram for estimating high-dimensional spectral density matrix is the automatic selection of marginal independence graph among the $p$ times series. Our next result provides a support recovery guarantee at each frequency, justifying usage of these estimates to build weighted networks for downstream functional connectivity analysis in neuroscience problems (see Section \ref{sec:realdata}). In particular, the results show that with an appropriate choice of threshold, the support of estimated spectral density matrix is contained in the true support of $f(\omega)$ with high probability. In addition, if the spectral density is exactly sparse and minimum strength of cross-spectral density is sufficiently large, the entire support is recovered with high probability. For general weakly sparse spectral densities, our proposed thresholding procedures can still recover the strong connections with high probability.
+
+% like \cite{cai2011adaptive} and \cite{rothman2009generalized} did for covariance matrix. Since the generalized thresholding covers the hard threshold case, The proof is similar to that for theorem 2 in \cite{cai2011adaptive} and \cite{rothman2009generalized}.
+
+\begin{prop}
+\label{prop:consistency}
+Assume ${X}_t, t=1,\ldots,n$, are $n$ consecutive observations from a stable Gaussian time series satisfying Assumption \ref{assumption:finite_auto}, and consider a single Fourier frequency $\omega_j, j\in F_n$. Assume $n \succsim  \Omega_n(f) \vertiii{f}^2 \log p.$ Then for any $m $ satisfying $m \precsim n/ \Omega_n(f)$ and $m \succsim \vertiii{f}^2\log p$, and any $R > 0$,
+if we set threshold value $\lambda$ as \eqref{eq:threshold_value} , then there exists universal constant $c_1, c_2$  s.t.
+\begin{equation}
+\mathbb{P}\left(\exists ~r,s : T_\lambda(\hat{f}_{rs}(\omega_j)) \neq 0, f_{rs}(\omega_j)=0\right)\le  c_1\exp[-(c_2R^2-2) \log p]. \nonumber
+\end{equation}
+
+Define $\mathcal{S}(\gamma) = \left\{(r,s):|f_{rs}(\omega_j)|\ge \gamma \lambda \right\}$ with some $\gamma>3/2$, then
+\begin{equation}
+\mathbb{P}\left(\exists ~(r,s) \in \mathcal{S}(\gamma) : T_\lambda(\hat{f}_{rs}(\omega_j))=0, f_{rs}(\omega_j) \neq 0\right)\le  c_1\exp[-(c_2 (\gamma-1)^2R^2-2) \log p]. \nonumber
+\end{equation}
+\end{prop}
+
+
+
+\begin{remark}
+The first probabilistic bound claims that probability of false positive selection goes to zero if $\lambda = o(1)$ with R large enough and the second probabilistic bound claims that we could recover the signal with strength larger than the threshold we choose ($\gamma>3/2$). 
+\end{remark}
+
+
+\noindent \textbf{Coherence Matrix Estimation}:
+Our next proposition provides an error bound for each element of this plug-in estimator of coherence matrix defined in \eqref{def:coherance}, 
+\begin{equation}
+\hat{g}_{rs}(\omega_j) = \frac{\hat{f}_{rs}(\omega_j)}{\sqrt{\hat{f}_{rr}(\omega_j)\hat{f}_{ss}(\omega_j)}}. \nonumber
+\end{equation}
+Note that $\hat{f}_{rr} \neq 0$ ($\hat{f}_{rr}$ is a real number) almost surely for Gaussian time series $X_t$. The sparsistency results can be generalized along the line of Proposition \ref{prop:consistency} to ensure coherence graph selection consistency.
+\begin{prop}
+\label{prop:coherance}
+Assume ${X}_t, t=1,\ldots,n$, are $n$ consecutive observations from a stable Gaussian time series $X_t$ satisfying Assumption \ref{assumption:finite_auto}, and $\tau := \min_{r=1}^p f_{rr}(\omega_j)>0$. Consider a single Fourier frequency $\omega_j, j\in F_n$. Assume $n \succsim \Omega_n(f) \vertiii{f}^2 \log p$. Then for any $m $ satisfying $m \precsim n/ \Omega_n(f)$ and $m \succsim \vertiii{f}^2\log p$ and $\lambda$ as in  \eqref{eq:threshold_value}, there exist universal positive constants $c_1, c_2$ such that for any $R>0$, \begin{equation}
+\mathbb{P}\left(\exists ~r,s : |T_{2\lambda/\tau}(\hat{g}_{rs}(\omega_j))|>0, g_{rs}(\omega_j)=0\right)\le  c_1\exp[-(c_2R^2-2) \log p]. \nonumber
+\end{equation}
+Define $\mathcal{S}(\gamma) := \left\{(r,s):|g_{rs}(\omega_j)|\ge \gamma\lambda /\tau \right\}$ with some $\gamma>3/2$. Then we have 
+\begin{equation}
+\mathbb{P}\left(\exists ~(r,s) \in \mathcal{S}(\gamma) : T_{2\lambda/\tau}(\hat{g}_{rs}(\omega_j))=0, |g_{rs}(\omega_j)| >0\right)\le  c_1\exp[-(c_2 (\gamma-1)^2R^2-2) \log p]. \nonumber
+\end{equation}
+
+\end{prop}
+
+

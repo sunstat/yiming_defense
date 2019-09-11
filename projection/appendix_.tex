@@ -1,0 +1,36 @@
+\begin{lem}
+\label{lemma:inner-product}
+For a linear mapping from $\mathbb{R}^d\rightarrow \mathbb{R}^k$: $f(\mathbf{x}) = \frac{1}{\sqrt{k}}\mathbf{\Omega x}$, 
+\begin{equation}
+\label{eq:inner-bound}
+\mathbb{P}(|\langle f(\mathbf{x}), f(\mathbf{y})\rangle - \langle \mathbf{x}, \mathbf{y}\rangle|\ge \epsilon |\langle \mathbf{x}, \mathbf{y}\rangle|) \le 2\sup_{\mathbf{x}\in \mathbb{R}^{d}}\mathbb{P}(| \|f(\mathbf{x})\|^2-\|\mathbf{x}\|^2|\ge \epsilon \|\mathbf{x}\|_2^2).\nonumber
+\end{equation}
+\end{lem}
+
+\begin{proof}
+Since $f$ is a linear mapping, we have
+\[
+4f(\mathbf{x})f(\mathbf{y}) = \|f(\mathbf{x}+\mathbf{y})\|^2_2-  \|f(\mathbf{x}-\mathbf{y})\|^2_2.
+\]
+Consider the event
+
+\begin{equation}
+\begin{aligned}
+ &\mathcal{A} _1=  \left\{ |\|f(\mathbf{x}+\mathbf{y})\|^2_2-\|\mathbf{x}+\mathbf{y}\|^2_2|\ge \epsilon \|\mathbf{x}+\mathbf{y}\|_2^2 \right\}\\
+ &\mathcal{A} _2=  \left\{ | \|f(\mathbf{x}-\mathbf{y})\|^2_2-\|\mathbf{x}-\mathbf{y}\|^2_2|\ge \epsilon \|\mathbf{x}-\mathbf{y}\|_2^2 \right\} \nonumber
+ \end{aligned}
+ \end{equation}
+ 
+ On the event $\mathcal{A}_1^\complement \cap\mathcal{A}_2^\complement$, 
+ \[
+ 4f(\mathbf{x})f(\mathbf{y})  \ge (1-\epsilon) (\mathbf{x}+\mathbf{y})^2 - (1+\epsilon) (\mathbf{x}-\mathbf{y})^2 = 4 \langle \mathbf{x}, \mathbf{y}\rangle -2\epsilon (\|\mathbf{x}\|^2+\|\mathbf{y}\|^2),
+ \]
+ noticing $\|\mathbf{x}\|^2+\|\mathbf{y}\|^2\ge 2\langle \mathbf{x},  \mathbf{y}\rangle$, and by similar argument on the other side of the inequality, we could claim that 
+\[
+\left\{|\langle f(\mathbf{x}), f(\mathbf{y})\rangle - \langle \mathbf{x}, \mathbf{y}\rangle|\ge \epsilon |\langle \mathbf{x}, \mathbf{y}\rangle|\right\} \subseteq  \mathcal{A}_1 \cup \mathcal{A}_2. 
+\]
+Then we finish the proof by simply applying an union bound of two events. 
+\end{proof}
+\begin{remark}
+The key element of classic random projections is the dimension-free bound. Similarly, according to Prop. \ref{prop: N-2-bound}, our TRP has a norm preservation bound independent of the particular vector  $\mathbf{x}$ and dimension $d$ and thus a dimension-free inner product preservation bound according to Lemma \ref{eq:inner-bound}. 
+\end{remark}

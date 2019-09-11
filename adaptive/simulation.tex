@@ -1,0 +1,96 @@
+\section{Simulation Studies}\label{sec:simulation}
+We assess the finite sample properties of our proposed spectral density estimators through numerical experiments on simulated data sets. To this end, we compare the performance of smoothed periodogram, shrinkage estimator from \cite{bohm2009shrinkage},  hard thresholding, soft thresholding (lasso) and adaptive lasso thresholding. In particular, we simulate data from vector moving average (VMA) and autoregressive (VAR) processes with block-diagonal transition matrices and evaluate estimation and model selection performance of these methods for different values of $n$ and $p$. Overall, the results demonstrate that thresholding methods provide substantial improvements in estimation accuracy over smoothed periodograms and shrinkage methods when $p$ is large and the true spectral density is approximately sparse. In addition, thresholding methods accurately recovers the edges in coherence networks, as measured by their precision, recall and area under receiver operating characteristic (ROC)  curves. 
+
+\textit{Generative models: } { We consider VAR(1) models $X_t = A X_{t-1} + \varepsilon_t$  of three different dimensions: $p =12, 48, 96$. Each element in $\varepsilon_t$ is independent and identically distributed as $\mathcal{N}(0,1)$, and the transition matrix $A$ is composed of $3 \times 3$ block matrices on the diagonal. Each block matrix $A^0$ has $0.5$ on the diagonal and $0.9$ on the first upper off-diagonal. We also consider VMA(1) models $X_t = B \varepsilon_{t-1}+\varepsilon_t$ of the same dimensions as the VAR models. These transition matrix structures are adopted from \citet{fiecas2014datadriven}, where a data-driven shrinkage method was shown to improve upon smoothed periodograms in high-dimensional settings. For each model, we generate $n =100, 200, 400, 600$ consecutive observations from the multivariate time series.}
+
+%We evaluate the performance for different methods for both VAR and VMA models. We focus on transition matrices in both model as the block diagonal matrices. We test two settings: one is with homogeneous blocks and the other have heterogeneous blocks. In this setting, each transition/weight matrix shares the same block size and value. 
+
+The transition matrix $A$ of VAR is a block diagonal composed of identical blocks consisting of a $3 \times 3$ upper triangular matrix $A^0$. 
+Similarly, the VMA transition matrix $B$ is a block diagonal matrix composed of identical $3 \times 3$ upper triangular matrix $B^0$.
+
+\begin{equation}
+A^0 = B^0 = \left[ \begin{array}{ccc} 
+0.5 & 0.9 & 0  \\ 
+0 & 0.5 & 0.9  \\
+0 & 0 & 0.5  \\
+\end{array}\right].
+\end{equation} 
+
+
+%\paragraph In the {\textit{heterogeneous setting}, }
+%$A_1$ is initialed the same as the one in homogeneous setting. To add heterogeneity to it, the first block is replaced by a independent structure with 0.1 on the diagonal. 
+%the VAR transition matrix $A$ is also block diagonal, but consists of two blocks with unequal sizes $2p/3$ and $p/3$. The larger block is upper triangular with each entry  equal to $0.1$, and the smaller block is symmetric with 0.1 on the diagonal and -0.3 elsewhere. The VMA transition matrix $B$ is a block diagonal matrix composed of two block matrices with size $2p/3$ and $p/3$, where $B_1^1$ has an independent structure with 0.4 on the diagonal, $B_1^2$ an exchangeable structure with 0.4 on the diagonal and -0.5 off the diagonal. More details about the transition matrices can be found in Appendix  \ref{sec:simulation_setting}. {\color{red} [Yiming: why did VAR and VMA network topologies differ in heterogeneous setting?] } 
+
+
+% \subsection{Evaluation}
+
+%\subsubsection{Ground truth}
+The estimated spectral density matrices are compared to the true spectral densities. For stable, invertible VARMA(1,1) processes $X_t = AX_{t-1} + 
+  %A_2X_{t-2} + \cdots + A_d X_{t-d} +
+  \varepsilon_t 
+  + B\varepsilon_{t-1}
+  %- B_2\varepsilon_{t-2} - \cdots - B_{\ell}\varepsilon_{t-\ell}.
+$, true spectral densities take the form 
+\begin{equation*}
+f(\omega) = \frac{1}{2\pi} (\mathcal{A}^{-1}(e^{-i\omega}))\mathcal{B}(e^{-i\omega})\Sigma_{\varepsilon}\mathcal{B}^{\dag}(e^{-i\omega})(\mathcal{A}^{-1}(e^{-i\omega}))^{\dag},
+\end{equation*}
+
+where $\mathcal{A}(z) = I_p - A z$ and $\mathcal{B}(z) = I_p +  B z$.
+
+\smallskip
+\textit{Performance Metrics: } We compare the estimation performances of different estimators of  $f(\omega_j)$ using Relative Mean Integrated Squared Error (RMISE) in Frobenius norm, defined as
+ \begin{equation*}
+{RMISE}(\hat{f}) := \frac{\sum_{j\in F_n} \|\hat{f}(\omega_j) - f(\omega_j)\|_F^2}{\sum_{j\in F_n} \|f(\omega_j)\|_F^2}. 
+\end{equation*}
+% We choose the relative error instead of MISE to better compare the accuracy of the estimates relative to a null model across different values of $p$. 
+
+In order to capture how well the three thresholding methods recover the non-zero coordinates in a spectral density matrix under exactly sparse generative VMA and VAR models, we also record their precision, recall and F1 measures over all Fourier frequencies %In particular, we used 
+\begin{eqnarray}
+    && \text{precision}(\omega_j) = % n^{-1}\sum_{j  \in F_n} 
+    \frac{\# \{(r,s): ~ |\hat{f}_{rs}(\omega_j)|\neq 0, ~ |f_{rs}(\omega_j)|\neq 0 \}}{\# \{(r,s): ~ |\hat{f}_{rs}(\omega_j)|\neq 0\}} \nonumber \\
+    && \text{recall}(\omega_j) = \frac{\# \{(r,s): ~ |\hat{f}_{rs}(\omega_j)|\neq 0, ~ |f_{rs}(\omega_j)|\neq 0 \}}{\# \{(r,s): ~ |f_{rs}(\omega_j)|\neq 0\}} \nonumber \\
+    && \text{F1}(\omega_j) =  2\times (\text{precision}(\omega_j) \cdot \text{recall}(\omega_j))/(\text{precision}(\omega_j) + \text{recall}(\omega_j)). \nonumber 
+\end{eqnarray}
+We calculate each of the three criteria averaged across all Fourier frequencies $j\in F_n$.  All the experiments are replicated  $50$ times, and mean and standard deviation of the performance metrics are reported. 
+
+
+We also evaluate the accuracy of thresholding methods in selecting the graph $G = \{ (r,s) \in V \times V: \hat{f}_{rs}(\omega_j) \neq 0 \mbox{ for some } \omega_j \in F_n \}$. For this purpose, we use averaged absolute coherence (across all Fourier frequencies) to construct a single $p \times p$ weighted adjacency matrix $\hat{G}$, and then measure its accuracy in selecting edges of the true graph $G$. \par 
+
+\textit{Tuning parameter selection: } For each of the three thresholding methods, we use the sample-splitting algorithm \ref{alg:sample-split} with $N = 1$ to determine the value of threshold for individual frequencies. We choose a  grid $\mathcal{L}$ of equispaced values between the minimum and maximum moduli of off-diagonal entries in smoothed periodogram.  Based on the theoretical considerations in Section \ref{sec:theory}, the smoothing spans for VMA models are chosen by setting $m = \sqrt{n}$. Since $\Omega_n(f)$ is  larger for VAR than VMA models considered here, a smaller  smoothing span is chosen by setting $m = 2/3\sqrt{n}$. The results are qualitatively similar in our sensitivity analysis with different values of $m$ of this order. 
+
+\textit{Results: } The RMISE of smoothed (averaged) periodograms, shrinkage and thrsholding methods are reported in Table \ref{table:rmise-homogeneous-final}. The results show that both shrinkage and thresholding outperform smoothed periodogram, and the improvement is more prominent for larger $p$. Further, thresholding procedures show some improvement over shrinkage methods in these approximately sparse data generative models. Amongst the three thresholding methods,  lasso and adaptive lasso tend to have lower error than hard thresholding in most settings. 
+
+Precision, recall and F1 scores of the three thresholding methods are reported 
+%in Table \ref{table:precision-homogeneous-final} 
+in Appendix \ref{appendix:more_tables}. In most of the simulation settings, the methods have high precision but low recall, indicating higher true negative in general. This matches with our theoretical predictions for weakly sparse spectral densities in Proposition \ref{prop:consistency}. The F1 scores are in the range of $50-60\%$ in most simulation settings. As in the RMISE results, lasso and adaptive lasso thresholds perform significantly better than hard thresholding in most simulation settings.
+
+
+
+The ROC curves for the three thresholding methods in selecting coherence graph of a VAR(1) model with $p=48$ and $n \in \{100, 200, 400, 600\}$ are provided in Figure \ref{fig:roc}. Consistent with the frequency-specific precision and recall results, lasso and adaptive lasso thresholding methods perform better than hard thresholding. 
+
+Overall, our numerical experiments confirm that thresholding procedures can be successfully used to estimate large spectral density matrices with same order of accuracy as shrinkage methods, and with an additional advantage of performing automatic edge selection in coherence networks.  
+
+
+\input{table/rmise_ho_table.tex}
+
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=0.48\textwidth]{img/ROC_100_96.pdf}
+    \includegraphics[width=0.48\textwidth]{img/ROC_200_96.pdf}
+    \includegraphics[width=0.48\textwidth]{img/ROC_400_96.pdf} 
+    \includegraphics[width=0.48\textwidth]{img/ROC_600_96.pdf}    
+    \caption{Receiver Operating Characeristic (ROC) curves of hard thresholding, lasso and adaptive lasso for recovering coherence network of a $p = 96$ dimensional VAR(1) model using $n = 100$ (top left), $n = 200$ (top right), $n = 400$ (bottom left) and $n = 600$ (bottom right) time series observations.}
+    \label{fig:roc}
+\end{figure}
+
+
+% The results for heterogeneous settings are reported in Tables \ref{table:rmise-heterogeneous} and \ref{table:precision-heterogeneous}. Compared to homogeneous setting, RMISE of the three thresholding based methods outperform shrinkage estimators by a larger margin. {\color{red} [Sumanta: add description of precision/recall, and Figure \ref{fig::hetero}]. }
+
+
+
+
+%\subsection{Tables and Graphs}
+
+
+

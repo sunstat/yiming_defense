@@ -1,0 +1,32 @@
+% SIAM Supplemental File Template
+\documentclass[final,supplement,onefignum,onetabnum]{siamart171218}
+
+\input{ex_shared}
+
+\externaldocument{simods-submission}
+
+% Optional PDF information
+\ifpdf
+\hypersetup{
+  pdftitle={Supplementary Materials for Low-Rank Tucker Approximation of a Tensor from Streaming Data},
+  pdfauthor={Y. Sun, Y. Guo, C. Luo, J. Tropp, M. Udell}
+}
+\fi
+
+\begin{document}
+
+\maketitle
+
+% more info on our method and how well it works
+\input{appendix/time-storage-complexity.tex}
+\input{appendix/appendix_more_simulation_results.tex}
+\input{appendix/appendix_more_real_data_examples.tex}
+
+\input{appendix/algorithm_table.tex}
+\input{appendix/random_map.tex}
+\input{appendix/appendix_tensorsketch.tex}
+
+\bibliographystyle{siamplain}
+\bibliography{bibtex}
+
+\end{document}

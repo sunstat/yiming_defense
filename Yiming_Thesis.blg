@@ -1,0 +1,289 @@
+This is BibTeX, Version 0.99d (TeX Live 2018)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: Yiming_Thesis.aux
+The style file: plainnat.bst
+Database file #1: biblio1.bib
+Database file #2: biblio2.bib
+Repeated entry---line 17 of file biblio2.bib
+ : @article{wong2017lasso
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 25 of file biblio2.bib
+ : @article{Basu2015
+ :                  ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 35 of file biblio2.bib
+ : @article{euan2016hierarchical
+ :                              ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 45 of file biblio2.bib
+ : @book{brockwell2013time
+ :                        ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 52 of file biblio2.bib
+ : @article{bickel2008covariance
+ :                              ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 63 of file biblio2.bib
+ : @article{ombao2001smoothing
+ :                            ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 73 of file biblio2.bib
+ : @article{shu2014estimation
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 81 of file biblio2.bib
+ : @article{rothman2009generalized
+ :                                ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 92 of file biblio2.bib
+ : @book{rosenblatt1985stationary
+ :                               ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 105 of file biblio2.bib
+ : @article{erdHos2012bulk
+ :                        ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 127 of file biblio2.bib
+ : @article{rudelson2013hanson
+ :                            ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 136 of file biblio2.bib
+ : @article{bowyer2016coherence
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 147 of file biblio2.bib
+ : @book{brillinger1981time
+ :                         ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 155 of file biblio2.bib
+ : @article{dahlhaus1997identification
+ :                                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 166 of file biblio2.bib
+ : @article{dahlhaus2003causality
+ :                               ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 177 of file biblio2.bib
+ : @article{eichler2007frequency
+ :                              ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 189 of file biblio2.bib
+ : @article{wu2015uniform
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 196 of file biblio2.bib
+ : @article {zuo2010growing
+ :                         ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 207 of file biblio2.bib
+ : @article{granger1969investigating
+ :                                  ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 217 of file biblio2.bib
+ : @article {Kuceyeski2018functional
+ :                                  ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 227 of file biblio2.bib
+ : @article{bohm2009shrinkage
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 238 of file biblio2.bib
+ : @article{ledoit2004well
+ :                        ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 251 of file biblio2.bib
+ : @article{bohm2008structural
+ :                            ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 270 of file biblio2.bib
+ : @book{golub2012matrix
+ :                      ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 287 of file biblio2.bib
+ : @article{FiniteTimeIdentification2017
+ :                                      ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 320 of file biblio2.bib
+ : @article{bhatia1990bounds
+ :                          ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 330 of file biblio2.bib
+ : @article{bordier2017graph
+ :                          ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 351 of file biblio2.bib
+ : @article{cai2011adaptive
+ :                         ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 362 of file biblio2.bib
+ : @article{cai2016rates
+ :                      ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 375 of file biblio2.bib
+ : @article{cai2012minimax
+ :                        ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 408 of file biblio2.bib
+ : @misc{van2016lecture
+ :                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 415 of file biblio2.bib
+ : @article{fiecas2016dynamic
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 428 of file biblio2.bib
+ : @article{bradley2005basic
+ :                          ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 438 of file biblio2.bib
+ : @article{fiecas2014datadriven
+ :                              ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 461 of file biblio2.bib
+ : @article{jung2015learning
+ :                          ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 472 of file biblio2.bib
+ : @article{jung2015graphical
+ :                           ,
+I'm skipping whatever remains of this entry
+Database file #3: biblio3.bib
+Database file #4: biblio4.bib
+Repeated entry---line 2 of file biblio4.bib
+ : @article{battaglino2018practical
+ :                                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 46 of file biblio4.bib
+ : @article{papadimitriou2000latent
+ :                                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 87 of file biblio4.bib
+ : @article{achlioptas2003database
+ :                                ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 98 of file biblio4.bib
+ : @inproceedings{li2006very
+ :                          ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 107 of file biblio4.bib
+ : @inproceedings{ailon2006approximate
+ :                                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 116 of file biblio4.bib
+ : @article{tropp2011improved
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 136 of file biblio4.bib
+ : @article{halko2011finding
+ :                          ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 232 of file biblio4.bib
+ : @article{woodruff2014sketching
+ :                               ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 253 of file biblio4.bib
+ : @article{rudelson2013hanson
+ :                            ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 262 of file biblio4.bib
+ : @article{erdHos2012bulk
+ :                        ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 273 of file biblio4.bib
+ : @article{de2000multilinear
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 284 of file biblio4.bib
+ : @inproceedings{wang2015fast
+ :                            ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 292 of file biblio4.bib
+ : @inproceedings{bingham2001random
+ :                                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 337 of file biblio4.bib
+ : @article{matsumoto1998mersenne
+ :                               ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 349 of file biblio4.bib
+ : @article{battaglino2018practical
+ :                                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 361 of file biblio4.bib
+ : @article{rudelson2012row
+ :                         ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 392 of file biblio4.bib
+ : @article{kolda2009tensor
+ :                         ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 436 of file biblio4.bib
+ : @article{woolfe2008fast
+ :                        ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 456 of file biblio4.bib
+ : @article{tropp2017practical
+ :                            ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 477 of file biblio4.bib
+ : @article{sun2019low
+ :                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 485 of file biblio4.bib
+ : @article{arriaga2006algorithmic
+ :                                ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 496 of file biblio4.bib
+ : @inproceedings{ailon2006approximate
+ :                                    ,
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "fischl2000measuring"
+Warning--I didn't find a database entry for "Utevsky14"
+Warning--I didn't find a database entry for "FRANSSON20081178"
+Warning--I didn't find a database entry for "de2008tensor"
+Warning--empty journal in battaglino2019faster
+Warning--empty journal in schacke2013kronecker
+Warning--empty institution in Tropp2019-SketchingScientificSimulation
+You've used 101 entries,
+            2773 wiz_defined-function locations,
+            1189 strings with 23468 characters,
+and the built_in function-call counts, 49546 in all, are:
+= -- 4521
+> -- 2812
+< -- 79
++ -- 952
+- -- 849
+* -- 4005
+:= -- 7489
+add.period$ -- 324
+call.type$ -- 101
+change.case$ -- 577
+chr.to.int$ -- 99
+cite$ -- 205
+duplicate$ -- 2260
+empty$ -- 4032
+format.name$ -- 1022
+if$ -- 10480
+int.to.chr$ -- 3
+int.to.str$ -- 1
+missing$ -- 104
+newline$ -- 520
+num.names$ -- 404
+pop$ -- 1136
+preamble$ -- 1
+purify$ -- 481
+quote$ -- 0
+skip$ -- 1776
+stack$ -- 0
+substring$ -- 2121
+swap$ -- 298
+text.length$ -- 25
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 1081
+warning$ -- 3
+while$ -- 460
+width$ -- 0
+write$ -- 1325
+(There were 58 error messages)

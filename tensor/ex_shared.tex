@@ -1,0 +1,137 @@
+% SIAM Shared Information Template
+% This is information that is shared between the main document and any
+% supplement. If no supplement is required, then this information can
+% be included directly in the main document.
+
+
+% Packages and macros go here
+
+\usepackage{bm}
+\usepackage{stmaryrd}
+
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+
+% Used for creating new theorem and remark environments
+\newsiamremark{remark}{Remark}
+\newsiamremark{hypothesis}{Hypothesis}
+\crefname{hypothesis}{Hypothesis}{Hypotheses}
+\newsiamthm{claim}{Claim}
+\usepackage{dblfloatfix}
+\usepackage[T1]{fontenc}   
+\usepackage{hyperref}     
+\usepackage{url}            
+\usepackage{booktabs}      
+\usepackage{amsfonts}      
+\usepackage{nicefrac}      
+\usepackage{microtype}     
+\usepackage[mathscr]{euscript}
+\let\algorithmic\relax
+\let\theoremstyle\relax
+\RequirePackage{amsmath}
+\usepackage{algorithm,algpseudocode}
+\usepackage{color}
+\usepackage{stmaryrd}
+\usepackage{multirow}
+\usepackage[titletoc,title]{appendix}
+\usepackage{graphicx}
+
+\usepackage{enumitem}
+\usepackage{subcaption}
+\usepackage{mathabx}
+\usepackage{bbm}
+\usepackage{float}
+%\pdfsuppresswarningpagegroup=1
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+
+% \newcommand{\mnote}[1]{\textbf{[MU: #1]}}
+% \newcommand{\jatnote}[1]{\textbf{[JAT: #1]}}
+\newcommand{\mnote}[1]{}
+\newcommand{\jatnote}[1]{}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+
+
+\newcommand{\vc}{\mathop{\mathbf{vec}}}
+\newcommand{\cov}{\mbox{Cov}}
+\capstartfalse
+
+\ifpdf
+  \DeclareGraphicsExtensions{.eps,.pdf,.png,.jpg}
+\else
+  \DeclareGraphicsExtensions{.eps}
+\fi
+
+% Add a serial/Oxford comma by default.
+\newcommand{\creflastconjunction}{, and~}
+
+\numberwithin{equation}{section}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}{Corollary}[section]
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{assumption}{Assumption}
+\newtheorem{prop}{Proposition}
+
+%%% Madeleine's favorite shortcuts
+% tensors
+\newcommand{\T}[2][]{\boldsymbol{#1\mathscr{\MakeUppercase{#2}}}}
+% matrices
+\newcommand{\M}[1]{\mathbf{#1}}
+% vectors
+\newcommand{\V}[1]{\mathbf{#1}}
+
+\newcommand{\cf}{cf.}
+\newcommand{\eg}{e.g.}
+\newcommand{\ie}{i.e.}
+\newcommand{\etc}{etc.}
+
+\newcommand{\beas}{\begin{eqnarray*}}
+\newcommand{\eeas}{\end{eqnarray*}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+
+
+% Sets running headers as well as PDF title and authors
+\headers{Low-Rank Tucker Approximation of a Tensor from Streaming Data}{Y. Sun, Y. Guo, C. Luo, J. Tropp, M. Udell}
+
+% Title. If the supplement option is on, then "Supplementary Material"
+% is automatically inserted before the title.
+\title{Low-Rank Tucker Approximation of a Tensor from Streaming Data
+\thanks{Submitted to the editors DATE.
+%\funding{This work was funded by xxxx}
+}}
+
+% Authors: full names plus addresses.
+\author{Yiming Sun\thanks{Cornell University, Ithaca
+		(\email{ys784@cornell.edu}, \email{udell@cornell.edu}).}
+	\and Yang Guo\thanks{University of Wisconsin-Madison, Madison, WI
+		(\email{yguo@cs.wisc.edu}).}
+	\and Charlene Luo\thanks{Columbia University, New York, NY (\email{cl3788@columbia.edu}).}
+	\and
+	Joel Tropp\thanks{California Institute of Technology, Pasadena, CA (\email{jtropp@cms.caltech.edu})}
+	\and \mbox{Madeleine Udell}\footnotemark[2]
+}
+
+
+
+\usepackage{amsopn}
+\DeclareMathOperator{\diag}{diag}
+
+\newcommand{\reals}{\mathbb{R}}
+
+
+
+%%% Local Variables:
+%%% mode:latex
+%%% TeX-master: "ex_article"
+%%% End:

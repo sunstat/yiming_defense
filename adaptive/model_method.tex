@@ -1,0 +1,126 @@
+\section{Background and Methods}
+\label{sec:model-methods}
+\subsection{Modified Periodogram and Its Smoothing Estimator}
+In this section, we show that with only a small but effective modification in periodogram, we can still preserve asymptotic unbiasedness while letting the order of variance for each entry $(r,s)$ is at still at  $f_{rr}(\omega_j)f_{ss}(\omega_j)$. \par  
+\begin{equation}
+\begin{aligned}
+f(\omega_j) & = \E [d_\infty (\omega_j) d^\top_\infty (\omega_j)]  \\
+&  = \E [ {\bf Re}(d_\infty (\omega_j)){\bf Re}(d^\top_\infty (\omega_j)) + 
+{\bf Im}(d_\infty (\omega_j)){\bf Im}(d^\top_\infty (\omega_j)) ] \\
+& + i\E [ {\bf Im}(d_\infty (\omega_j)){\bf Re}(d^\top_\infty (\omega_j)) -
+{\bf Re}(d_\infty (\omega_j)){\bf Im}(d^\top_\infty (\omega_j)) ]
+\end{aligned}
+\end{equation}
+Lemma \ref{lemma:asy_dis_dft} claims that 
+${\bf Re}(d_\infty (\omega_j))$ and ${\bf Im}(d_\infty (\omega_j))$ share the same marginal distribution,  and  
+$\E [ {\bf Im}(d_\infty (\omega_j)){\bf Re}(d^\top_\infty (\omega_j)) = -\E 
+{\bf Re}(d_\infty (\omega_j)){\bf Im}(d^\top_\infty (\omega_j)) $.  Then we have for real and imaginary parts of spectral density, 
+\begin{equation}
+\begin{array}{cc}
+& \mathbf{Re}(f(\omega_j)) = 2 \E \mathbf{Re}(d_{\infty}(\omega_j))  \mathbf{Re}(d_{\infty}(\omega_j))^\top  \\
+& \mathbf{Im}(f(\omega_j)) = 2\E \mathbf{Im}(d_{\infty}(\omega_j))  \mathbf{Re}(d_{\infty}(\omega_j))^\top 
+\end{array}
+\end{equation}
+where $d_{\infty}(\omega_j)$'s distribution is the same as limiting distribution of $d(\omega_j)$. Therefore, we could use
+\begin{equation}
+H(\omega_j) = 2\mathbf{Re}(d(\omega_j))  \mathbf{Re}(d(\omega_j))^\top+2\mathbf{Im}(d(\omega_j))  \mathbf{Re}(d(\omega_j))^\top i
+\end{equation}
+be our modified periodogram, its limiting version should be 
+\begin{equation}
+H_\infty(\omega_j) = 2\mathbf{Re}(d_{\infty}(\omega_j))  \mathbf{Re}(d_{\infty}(\omega_j))^\top+2\mathbf{Im}(d_{\infty}(\omega_j))  \mathbf{Re}(d_{\infty}(\omega_j))^\top i
+\end{equation}
+whose expectation is exactly $f(\omega_j)$. Then the variance for 
+real and imaginary parts of $H_{\infty, rs}(\omega_j)$ can be calculated with fourth moments of Gaussian distribution: 
+\begin{equation}
+\begin{array}{cc}
+\Var(\mathbf{Re}(H_{\infty, rs}(\omega_j))) = \left[f_{rr}(\omega_j)f_{ss}(\omega_j)+\mathbf{Re}(f_{rs}(\omega_j))^2\right]
+\end{array}
+\end{equation}
+and 
+\begin{equation}
+\begin{array}{cc}
+\Var(\mathbf{Im}(H_{\infty, rs}(\omega_j))) = \left[f_{rr}(\omega_j)f_{ss}(\omega_j)+\mathbf{Im}(f_{rs}(\omega_j))^2\right].
+\end{array}
+\end{equation}
+Both of them are at the same order of $f_{rr}(\omega_j)f_{ss}(\omega_j)$. More specifically,
+\begin{equation}
+\begin{aligned}
+& f_{rr}(\omega_j)f_{ss}(\omega_j)\le \Var({\bf Re}(H_{\infty, rs}))\le 2f_{rr}(\omega_j)f_{ss}(\omega_j) \\
+& f_{rr}(\omega_j)f_{ss}(\omega_j)\le \Var({\bf Im}(H_{\infty, rs}))\le 2f_{rr}(\omega_j)f_{ss}(\omega_j)
+\end{aligned}
+\end{equation}
+In the following, we will show that how to use the modified periodogram to perform adaptive thresholding. Then the modified smoothing periodogram can be written as 
+\begin{equation}
+g(\omega_j) = \frac{1}{m}\sum_{k\in \mathcal{B}_j} H(\omega_k). 
+\end{equation}
+
+
+
+\subsection{Method: Adaptive Thresholding}
+Firstly we present a faimily of thresholding scheme proposed by \cite{rothman2009generalized}: consider a thresholding operator $S_\lambda(\cdot)$ that integrate the benefits of shrinkage and thresholding: 
+\begin{enumerate}[(1)]
+\item $|S_\lambda(z)|\le |z|$,
+\item $S_\lambda(z) = 0$ if $|z|\le \lambda$,
+\item $|S_\lambda(z)-z|\le \lambda $.
+\end{enumerate}
+\cite{rothman2009generalized} shows that this estimator can recover the covariance matrix assuming weak sparsity. \cite{cai2011adaptive} further lets the thresholding value be proportional to the estimator of standard deviation. 
+
+
+\paragraph{Estimation of Variance:}
+As pointed out above, all $H(\omega_k), k\in \mathcal{B}_j$ behave like i.i.d. variables, thus we propose to use sample variance to estimate variance at position $(r, s)$ of ${\bf Re}(H(\omega_j))$ and 
+${\bf Im}(H(\omega_j))$. We let $\theta^{(r)}_{j, rs}$ represent  $\Var({\bf Re}(H_{\infty, rs}(\omega_j)))$ and $\theta^{(i)}_{j, rs}$ represent $\Var({\bf Im}(H_{\infty, rs}(\omega_j)))$ respectively.  Then we can write the estimator $\hat{\theta}^{(r)}_{j,rs}$,  $\hat{\theta}^{(i)}_{j,rs} $ as 
+\begin{equation}
+\label{eq:variance_estimator}
+\begin{aligned}
+& \hat{\theta}^{(r)}_{j,rs} = \frac{1}{m-1}\sum_{q\in \mathcal{B}_j} \left[{\bf Re}(H_{rs}(\omega_q)) - \frac{1}{m}\sum_{k\in \mathcal{B}_j} {\bf Re}(H_{rs}(\omega_k))\right]^2 \\
+&\hat{\theta}^{(i)}_{j,rs} = \frac{1}{m-1}\sum_{q\in \mathcal{B}_j} \left[{\bf Im}(H_{rs}(\omega_q)) - \frac{1}{m}\sum_{k\in \mathcal{B}_j} {\bf Im}(H_{rs}(\omega_k))\right]^2. 
+\end{aligned}
+\end{equation}
+
+\paragraph{Adaptive Estimator}
+With the variance estimator,  the adaptive thresholding value for real part and imaginary at frequency $\omega_j$ at position $(r, s)$ which we call $\lambda^{(r)}_{rs}$ and $\lambda^{(i)}_{rs}$ respectively, will look like that 
+\begin{equation}
+\begin{aligned}
+& \lambda^{(r)}_{rs} = \sqrt{\hat{\theta}^{(r)}_{j, rs}} \lambda^{(r)} \\
+& \lambda^{(i)}_{rs}= \sqrt{\hat{\theta}^{(i)}_{j, rs}} \lambda^{(i)}.
+\end{aligned}
+\end{equation}
+Here $\lambda^{(r)}$ are shared with all positions at position $r,s$ at frequency $\omega_j$ for real part. We delete $j$ from notation for brevity. The same goes to $\lambda^{(i)}$. 
+
+
+Let $\hat{\theta}_j^{(r)}$ be the matrix of size $p\times p$, each element equals  $\hat{\theta}^{(r)}_{j, rs}$ and we define $\hat{\theta}_j^{(i)}$ in a similar way.  For real part, we can define following adaptive thresholding operator:
+\begin{equation}
+T_{\hat{\theta}_j^{(r)}\lambda} (M) = \tilde{M} 
+\end{equation}
+where 
+\begin{equation}
+\tilde{M} (r, s) = \begin{cases}
+M(r, s) & ~\text{if}~ |M(r, s)| \le \sqrt{\hat{\theta}^{(r)}_{j, rs}}\lambda  \\
+0 & \text{else}
+\\
+\end{cases}
+\end{equation}
+We present the way to choose $\lambda^r_j$ for real part in Algorithm \ref{alg:sample-split-real}, and it is exactly same to choose the threshold value for the imaginary part. 
+
+
+
+\begin{algorithm2e}[t]\small
+	\DontPrintSemicolon 
+	\KwIn{$j, m, N$, modified periodograms at Fourier frequency $H(\omega_j)$,  an estimator of variance 
+		of real part $\hat{\theta}^{(r)}_j$, finite grid of thresholds $\mathcal{L}$}
+	\For{$\lambda \in \mathcal{L}$}{
+		\For{$\nu \gets 1$ \textbf{to} $N$}{
+			Randomly divide $\mathcal{B}_j$ into two subsets $J_1$ and $J_2$ such that $\left||J_1| - |J_2| \right| \le 1$ \;
+			$g_{1, \nu} (\omega_j) \gets \frac{1}{|J_1|}\sum_{k \in J_1} {\bf Re}(H(\omega_k))$, ~~ $g_{2, \nu} (\omega_j) \gets \sum_{k \in J_2} H(\omega_k)$\;
+			$\hat{R}_{\nu}(\omega_j, \lambda) \gets \frac{1}{|J_2|}\left\| T_{\hat{\theta}^{(r)}_j\lambda} (g_{1,\nu} (\omega_j)) - g_{2,\nu}(\omega_j)\right\|^2_F$\;
+		}
+		$\hat{R}(\omega_j, \lambda) \gets \sum_{\nu=1}^N \hat{R}_{\nu}(\omega_j, \lambda) / N$
+		
+	}
+	\KwOut{$\hat{\lambda}_j := \hat{\lambda}(\omega_j) = \argmin_{\lambda \in \mathcal{L}} \hat{R}(\omega_j, \lambda)$}
+	\caption{Threshold Selection by Frequency Domain Sample-splitting for Real Part}
+	\label{alg:sample-split-real}
+	\label{al1}
+\end{algorithm2e}
+
+

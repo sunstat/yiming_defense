@@ -1,0 +1,27 @@
+\section{Proof of fixed rank approximation lemma}
+\label{appendix: proof-fix-rank-lemma}
+\begin{proof}[Proof of \ref{lemma: equivalance_one_pass}]
+The target tensor to be approximated is $\T{W}\times_1 \mathbf{Q}_1 \cdots \times_N \mathbf{Q}_N$ is apparently in the space $\{ \T{X} : \T{X}^{(n)} 
+\in \mathbf{col}(\mathbf{Q}_n) \}$ . For any approximation $\hat{\T{X}}$, we can project it into this space as
+\[
+\hat{\T{X}} \times_1 \mathbf{Q}_1\mathbf{Q}_1^\top \times_2 \cdots \times_N \mathbf{Q}_N\mathbf{Q}_N^\top
+\]
+and by Pythagorean theory,  
+\begin{equation}
+\begin{aligned}
+& \|\hat{\T{X}} - \T{W}\times_1 \mathbf{Q}_1 \cdots \times_N \mathbf{Q}_N \|_F    \le  \|\hat{\T{X}} - \hat{\T{X}}\times_1 \mathbf{Q}_1\mathbf{Q}_1^\top  \cdots \times_N \mathbf{Q}_N\mathbf{Q}_N^\top \|_F^2 \\
+&+ \|\hat{\T{X}}\times_1 \mathbf{Q}_1\mathbf{Q}_1^\top  \cdots \times_N \mathbf{Q}_N\mathbf{Q}_N^\top - \T{W}\times_1 \mathbf{Q}_1 \cdots \times_N \mathbf{Q}_N \|_F^2, 
+\end{aligned}
+\end{equation}
+which indicates that the optimal Tucker decomposition resides in the space $\{ \T{X} : \T{X}^{(n)} 
+\in \mathbf{col}(\mathbf{Q}_n) \}$.  Suppose $\llbracket \T{W}; \mathbf{V}_1, \cdots, \mathbf{V}_N  \rrbracket$
+is the optimal solution to the problem, since its unfolding is in the space spanned by $\mathbf{Q}_n$, each $\mathbf{V}_n$ can be written as $\mathbf{Q}_n \mathbf{U}_n$ for some orthogonal matrix $\mathbf{U}_n\in \reals^{k_n\times r_n}$. Then, noticing orthogonal transformation does  not change  Frobenius norm, 
+\begin{equation}
+\begin{aligned}
+&\| \T{W} \times_1 \mathbf{Q}_1 \times \cdots \times_N \mathbf{Q}_N - \T{G} \times_1  \mathbf{Q}_1\mathbf{U}_1 \times \cdots \times_N   \mathbf{Q}_N\mathbf{U}_N\|_F  \\
+ & = \|\T{W}-\T{G} \times_1 \mathbf{U}_1\times \cdots \times_N \mathbf{U}_N\|_F \ge  \|\T{W} -\llbracket \T{W} \rrbracket_\mathbf{r}\|_F\\
+ & =  \|\T{W}\times_1\mathbf{Q}_1\times \cdots \times_N \mathbf{Q}_N -\llbracket \T{W} \rrbracket_\mathbf{r} \times_1 \mathbf{Q}_1 \times \cdots \times_N\mathbf{Q}_N\|_F. 
+\end{aligned}
+\end{equation}
+This finishes the proof. 
+\end{proof}

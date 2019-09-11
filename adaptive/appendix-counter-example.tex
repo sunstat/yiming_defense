@@ -1,0 +1,18 @@
+\section{An Example Explaining Why We Modify the Periodogram}
+\label{sec:counter_example}
+In this session, we present a stationary time series which makes variance shown in \eqref{eq:variance_of_periodogram} could be small as possible, which damages the argument in \cite{cai2011adaptive}. In our counter example, we first present the the spectral which makes order of its variance as small as possible. 
+
+
+Consider a Vector autoregression   model with length 2 whose spectral density has the form
+$f(\omega)=\begin{bmatrix}1&i\gamma(\omega)\\ -i\gamma(\omega)&1 \end{bmatrix}$, where $\gamma(\omega)=\gamma_1(\omega)*\delta_1(\omega)$, $*$ denote the convolution, $\delta_1\in C^3$ is an approximate function of $\delta$-function and  $$\gamma_1(\omega)= \begin{cases}
+1 & \mbox{ if } \omega >\frac{\pi}{2}\\
+\frac{2}{\pi}\omega & \mbox{ if } |\omega| \leq \frac{\pi}{2} \\
+-1& \mbox{ if } \omega <-\frac{\pi}{2}
+\end{cases}
+$$ 
+We know that $\gamma(\omega)=\gamma_1(w)*\delta_1(\omega)$ and for any $\epsilon$, there exists $\delta_1$ such that $|\gamma(\omega)-\gamma_1(\omega)|\leq \epsilon$.
+Also, $\gamma (\omega)\in C^3$ is an odd function.  
+
+We say $f(\omega)$ can be a spectral density matrix since it satisfies 
+that  $\sum_{\ell=-\infty}^\infty \|\Gamma(\ell)\|<\infty$. In fact for the diagonal entries, $\Gamma(\ell)_{ii}=0,\ell \neq 0$ and  $\Gamma(0)_{ii}=1$. For the off diagonal entries, firstly they are all real numbers less than 1 and $\sum_{\ell=-\infty}^\infty |\Gamma_{12}(\ell)|\leq \sum_{\ell=1}^\infty \frac{M}{\ell^3}<\infty$ due to the property of inverse fourier transform of $C^3$.\par
+Therefore, given this $f(\omega)$, as $\gamma(\omega)$ can be close to 1 in any order, we find the variance of the original estimator is not the same order as $f_{11}(\omega_j)f_{22}(\omega_j)$.

@@ -1,0 +1,232 @@
+\begin{thebibliography}{36}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Granger(1969)]{granger1969investigating}
+Clive~WJ Granger.
+\newblock Investigating causal relations by econometric models and
+  cross-spectral methods.
+\newblock \emph{Econometrica: Journal of the Econometric Society}, pages
+  424--438, 1969.
+
+\bibitem[Bowyer(2016)]{bowyer2016coherence}
+Susan~M Bowyer.
+\newblock Coherence a measure of the brain networks: past and present.
+\newblock \emph{Neuropsychiatric Electrophysiology}, 2\penalty0 (1):\penalty0
+  1, 2016.
+
+\bibitem[Euan et~al.(2016)Euan, Ombao, and Ortega]{euan2016hierarchical}
+Carolina Euan, Hernando Ombao, and Joaquin Ortega.
+\newblock The hierarchical spectral merger algorithm: a new time series
+  clustering procedure.
+\newblock \emph{arXiv preprint arXiv:1609.08569}, 2016.
+
+\bibitem[Brillinger(1981)]{brillinger1981time}
+David~R Brillinger.
+\newblock \emph{Time series: data analysis and theory}, volume~36.
+\newblock Siam, 1981.
+
+\bibitem[Brockwell and Davis(2013)]{brockwell2013time}
+Peter~J Brockwell and Richard~A Davis.
+\newblock \emph{Time series: theory and methods}.
+\newblock Springer Science \& Business Media, 2013.
+
+\bibitem[Dahlhaus et~al.(1997)Dahlhaus, Eichler, and
+  Sandk{\"u}hler]{dahlhaus1997identification}
+Rainer Dahlhaus, Michael Eichler, and J{\"u}rgen Sandk{\"u}hler.
+\newblock Identification of synaptic connections in neural ensembles by
+  graphical models.
+\newblock \emph{Journal of neuroscience methods}, 77\penalty0 (1):\penalty0
+  93--107, 1997.
+
+\bibitem[Dahlhaus and Eichler(2003)]{dahlhaus2003causality}
+Rainer Dahlhaus and Michael Eichler.
+\newblock Causality and graphical models in time series analysis.
+\newblock \emph{Oxford Statistical Science Series}, pages 115--137, 2003.
+
+\bibitem[Eichler(2007)]{eichler2007frequency}
+Michael Eichler.
+\newblock A frequency-domain based test for non-correlation between stationary
+  time series.
+\newblock \emph{Metrika}, 65\penalty0 (2):\penalty0 133--157, 2007.
+
+\bibitem[Wu and Zaffaroni(2015)]{wu2015uniform}
+Wei~Biao Wu and Paolo Zaffaroni.
+\newblock Uniform convergence of multivariate spectral density estimates.
+\newblock \emph{arXiv preprint arXiv:1505.03659}, 2015.
+
+\bibitem[B{\"o}hm and von Sachs(2009)]{bohm2009shrinkage}
+Hilmar B{\"o}hm and Rainer von Sachs.
+\newblock Shrinkage estimation in the frequency domain of multivariate time
+  series.
+\newblock \emph{Journal of Multivariate Analysis}, 100\penalty0 (5):\penalty0
+  913--935, 2009.
+
+\bibitem[B{\"o}hm and Von~Sachs(2008)]{bohm2008structural}
+Hilmar B{\"o}hm and Rainer Von~Sachs.
+\newblock Structural shrinkage of nonparametric spectral estimators for
+  multivariate time series.
+\newblock \emph{Electronic Journal of Statistics}, 2:\penalty0 696--721, 2008.
+
+\bibitem[Fiecas and Ombao(2016)]{fiecas2016dynamic}
+Mark Fiecas and Hernando Ombao.
+\newblock Modeling the evolution of dynamic brain processes during an
+  associative learning experiment.
+\newblock \emph{Journal of the American Statistical Association}, 111\penalty0
+  (516):\penalty0 1440--1453, 2016.
+
+\bibitem[Fiecas and von Sachs(2014)]{fiecas2014datadriven}
+Mark Fiecas and Rainer von Sachs.
+\newblock Data-driven shrinkage of the spectral density matrix of a
+  high-dimensional time series.
+\newblock \emph{Electron. J. Statist.}, 8\penalty0 (2):\penalty0 2975--3003,
+  2014.
+\newblock \doi{10.1214/14-EJS977}.
+\newblock URL \url{https://doi.org/10.1214/14-EJS977}.
+
+\bibitem[Bickel and Levina(2008)]{bickel2008covariance}
+Peter~J Bickel and Elizaveta Levina.
+\newblock Covariance regularization by thresholding.
+\newblock \emph{The Annals of Statistics}, pages 2577--2604, 2008.
+
+\bibitem[Rothman et~al.(2009)Rothman, Levina, and Zhu]{rothman2009generalized}
+Adam~J Rothman, Elizaveta Levina, and Ji~Zhu.
+\newblock Generalized thresholding of large covariance matrices.
+\newblock \emph{Journal of the American Statistical Association}, 104\penalty0
+  (485):\penalty0 177--186, 2009.
+
+\bibitem[Cai and Liu(2011)]{cai2011adaptive}
+Tony Cai and Weidong Liu.
+\newblock Adaptive thresholding for sparse covariance matrix estimation.
+\newblock \emph{Journal of the American Statistical Association}, 106\penalty0
+  (494):\penalty0 672--684, 2011.
+
+\bibitem[Cai et~al.(2016)Cai, Ren, and Zhou]{cai2016rates}
+T.~Tony Cai, Zhao Ren, and Harrison~H. Zhou.
+\newblock Estimating structured high-dimensional covariance and precision
+  matrices: Optimal rates and adaptive estimation.
+\newblock \emph{Electron. J. Statist.}, 10\penalty0 (1):\penalty0 1--59, 2016.
+\newblock \doi{10.1214/15-EJS1081}.
+
+\bibitem[Ledoit and Wolf(2004)]{ledoit2004well}
+Olivier Ledoit and Michael Wolf.
+\newblock A well-conditioned estimator for large-dimensional covariance
+  matrices.
+\newblock \emph{Journal of multivariate analysis}, 88\penalty0 (2):\penalty0
+  365--411, 2004.
+
+\bibitem[Basu and Michailidis(2015)]{Basu2015}
+Sumanta Basu and George Michailidis.
+\newblock Regularized estimation in sparse high-dimensional time series models.
+\newblock \emph{Annals of Statistics}, 43\penalty0 (4), 2015.
+
+\bibitem[Rosenblatt(1985)]{rosenblatt1985stationary}
+Murray Rosenblatt.
+\newblock \emph{Stationary sequences and random fields}.
+\newblock Springer, 1985.
+
+\bibitem[Jung(2015)]{jung2015learning}
+Alexander Jung.
+\newblock Learning the conditional independence structure of stationary time
+  series: A multitask learning approach.
+\newblock \emph{IEEE Transactions on Signal Processing}, 63\penalty0
+  (21):\penalty0 5677--5690, 2015.
+
+\bibitem[Jung et~al.(2015)Jung, Hannak, and Goertz]{jung2015graphical}
+Alexander Jung, Gabor Hannak, and Norbert Goertz.
+\newblock Graphical lasso based model selection for time series.
+\newblock \emph{IEEE Signal Processing Letters}, 22\penalty0 (10):\penalty0
+  1781--1785, 2015.
+
+\bibitem[Ombao et~al.(2001)Ombao, Raz, Strawderman, and von
+  Sachs]{ombao2001smoothing}
+Hernando~C. Ombao, Jonathan~A. Raz, Robert~L. Strawderman, and Rainer von
+  Sachs.
+\newblock A simple generalised crossvalidation method of span selection for
+  periodogram smoothing.
+\newblock \emph{Biometrika}, 88\penalty0 (4):\penalty0 1186--1192, 2001.
+
+\bibitem[van~de Geer(2016)]{van2016lecture}
+Sara van~de Geer.
+\newblock “lecture notes on sparsity, 2016.
+
+\bibitem[Cai and Zhou(2012)]{cai2012minimax}
+T.~Tony Cai and Harrison~H. Zhou.
+\newblock Minimax estimation of large covariance matrices under $\ell_1$-norm.
+\newblock \emph{Statistica Sinica}, 22\penalty0 (4):\penalty0 1319--1349, 2012.
+
+\bibitem[Rudelson and Vershynin(2013)]{rudelson2013hanson}
+Mark Rudelson and Roman Vershynin.
+\newblock Hanson-wright inequality and sub-gaussian concentration.
+\newblock \emph{Electronic Communications in Probability}, 18, 2013.
+
+\bibitem[Bradley(2005)]{bradley2005basic}
+Richard~C. Bradley.
+\newblock Basic properties of strong mixing conditions. a survey and some open
+  questions.
+\newblock \emph{Probability surveys}, 2:\penalty0 107--144, 2005.
+
+\bibitem[Shu and Nan(2014)]{shu2014estimation}
+Hai Shu and Bin Nan.
+\newblock Estimation of large covariance and precision matrices from temporally
+  dependent observations.
+\newblock \emph{arXiv preprint arXiv:1412.5059}, 2014.
+
+\bibitem[Erd{\H{o}}s et~al.(2012)Erd{\H{o}}s, Yau, and Yin]{erdHos2012bulk}
+L{\'a}szl{\'o} Erd{\H{o}}s, Horng-Tzer Yau, and Jun Yin.
+\newblock Bulk universality for generalized wigner matrices.
+\newblock \emph{Probability Theory and Related Fields}, pages 1--67, 2012.
+
+\bibitem[Faradonbeh et~al.(2018)Faradonbeh, Tewari, and
+  Michailidis]{FiniteTimeIdentification2017}
+Mohamad Kazem~Shirani Faradonbeh, Ambuj Tewari, and George Michailidis.
+\newblock Finite time identification in unstable linear systems.
+\newblock \emph{Automatica}, 96:\penalty0 342--353, 2018.
+
+\bibitem[Wong and Tewari(2017)]{wong2017lasso}
+Kam~Chung Wong and Ambuj Tewari.
+\newblock Lasso guarantees for beta -mixing heavy tailed time series.
+\newblock \emph{arXiv preprint arXiv:1708.01505}, 2017.
+
+\bibitem[Kuceyeski et~al.(2018)Kuceyeski, Jamison, Owen, Raj, and
+  Mukherjee]{Kuceyeski2018functional}
+Amy Kuceyeski, Keith~W Jamison, Julia Owen, Ashish Raj, and Pratik Mukherjee.
+\newblock Functional rerouting via the structural connectome is associated with
+  better recovery after mild tbi.
+\newblock \emph{bioRxiv}, 2018.
+\newblock \doi{10.1101/320515}.
+\newblock URL \url{https://www.biorxiv.org/content/early/2018/05/18/320515}.
+
+\bibitem[Zuo et~al.(2010)Zuo, Kelly, Di~Martino, Mennes, Margulies, Bangaru,
+  Grzadzinski, Evans, Zang, Castellanos, and Milham]{zuo2010growing}
+Xi-Nian Zuo, Clare Kelly, Adriana Di~Martino, Maarten Mennes, Daniel~S.
+  Margulies, Saroja Bangaru, Rebecca Grzadzinski, Alan~C. Evans, Yu-Feng Zang,
+  F.~Xavier Castellanos, and Michael~P. Milham.
+\newblock Growing together and growing apart: Regional and sex differences in
+  the lifespan developmental trajectories of functional homotopy.
+\newblock \emph{Journal of Neuroscience}, 30\penalty0 (45):\penalty0
+  15034--15043, 2010.
+\newblock \doi{10.1523/JNEUROSCI.2612-10.2010}.
+
+\bibitem[Bordier et~al.(2017)Bordier, Nicolini, and Bifone]{bordier2017graph}
+C{\'e}cile Bordier, Carlo Nicolini, and Angelo Bifone.
+\newblock Graph analysis and modularity of brain functional connectivity
+  networks: searching for the optimal threshold.
+\newblock \emph{Frontiers in neuroscience}, 11:\penalty0 441, 2017.
+
+\bibitem[Golub and Van~Loan(2012)]{golub2012matrix}
+Gene~H Golub and Charles~F Van~Loan.
+\newblock \emph{Matrix computations}, volume~3.
+\newblock JHU Press, 2012.
+
+\bibitem[Bhatia et~al.(1990)Bhatia, Elsner, and Krause]{bhatia1990bounds}
+Rajendra Bhatia, Ludwig Elsner, and Gerd Krause.
+\newblock Bounds for the variation of the roots of a polynomial and the
+  eigenvalues of a matrix.
+\newblock \emph{Linear algebra and its applications}, 142:\penalty0 195--209,
+  1990.
+
+\end{thebibliography}

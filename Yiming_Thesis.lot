@@ -1,0 +1,10 @@
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {1.1}{\ignorespaces Relative Mean Integrated Squared Error (RMISE, in \%) of smoothed periodogram, shrinkage towards a diagonal target and three different thresholding methods - hard thresholding, lasso and adaptive lasso. Results are averaged over $20$ replicates. Standard deviations (also in \%) are reported in parentheses.\relax }}{37}
+\contentsline {table}{\numberline {1.2}{\ignorespaces Precision, Recall, F1 Score ( in $\%$) of three different thresholding methods: hard threshold, lasso and adaptive lasso. \relax }}{73}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Performance of Different Dimension Reduction Maps: We compare the storage cost and the computational cost of applying a DRM mapping $\mathbb {R}^{I^N}$ to $\mathbb {R}^k$ to a dense tensor in $\mathbb {R}^{I^N}$. Here $\mu $ is the sparse factor for sparse random projection. The TRP considered here is composed of Gaussian DRMs. \relax }}{118}
+\contentsline {table}{\numberline {3.2}{\ignorespaces Computational Complexity of 5\hbox {} on tensor $\T {X} \in \mathbb {R}^{I \times \dots \times I}$ with parameters $(k,s)$, using a TRP composed of Gaussian DRMs inside the Tucker sketch. By far the majority of the time is spent sketching the tensor $\T {X}$. \relax }}{123}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces RMSE for the estimate of the pairwise inner product of the MNIST data, where standard error is in the parentheses.\relax }}{165}
+\contentsline {table}{\numberline {4.2}{\ignorespaces RMSE for the estimate of the pairwise inner product of the simulation data ($d = 10000, k = 50, n = 100 $), where standard error is in the parentheses. \relax }}{179}

@@ -1,0 +1,42 @@
+
+\section{TensorSketch} \label{appendix: TensorSketch}
+%As discussed in \ref{sec: previous_work},
+Many authors have developed methods to perform dimension reduction efficiently. In particular 
+\cite{2017arXiv171209473D} proposed a method called tensor sketching aiming to solve least square problem with design matrix has kroneck product structure.  \cite{malik2018low} applied this technique to their one pass Tucker decomposition. 
+Here we review the definition of tensor sketch and how it be applied in \cite{malik2018low}. 
+
+
+\paragraph{CountSketch} \cite{cormode2008finding} proposed the \textsf{CountSketch} method.
+A comprehensive theoretical analysis in the context of low-rank approximation problems appears in \cite{clarkson2017low}.
+To compute the sketch $\mathbf{X}\mathbf{\Omega} \in \mathbb{R}^{d \times k}$ for $\mathbf{X} \in \mathbb{R}^{m \times d}$,
+\textsf{CountSketch} defines $\mathbf{\Omega} = \mathbf{D}\mathbf{\Phi}$, where
+\begin{enumerate}
+	\item $\mathbf{D} \in \mathbb{R}^{d \times d}$ is a diagonal matrix with each diagonal entry equal to $(-1,1)$ with probability $(1/2,1/2)$.
+	\item $\mathbf{\Phi} \in \mathbb{R}^{d \times k}$ is the matrix form of a Hashing function.
+\end{enumerate}
+
+In total, these two matrices have $2d$ non-zero entries in total, thus requiring much less storage than the standard $kd$ entries. Furthermore, these two matrices can act as an operator on each column of $\mathbf{X}$ and require only $\mathcal{O}(kd)$ operations.
+
+\paragraph{TensorSketch}
+\cite{malik2018low} proposes to use the countsketch inside the HOOI method for Tucker decomposition.
+They apply sketching method solve least square problem appearing in \eqref{eq:factor-update}  and  \eqref{eq:core_update} in \ref{alg:hooi}. They use $J_1, J_2$ to denote the reduced dimension. Using a standard random map, it will need  $J_1$-by-$I_{(-n)}$ random matrix 
+for \ref{eq:factor-update}  
+and a $J_2$-by-$\prod_{n = 1}^N I_n$ random matrix to compute \ref{eq:core_update}. \par 
+But as shown in \cite{malik2018low}, these two stages can be expressed as  
+\begin{equation}\label{eq: tucker-stage-1}
+\text{For } n = 1, \dots, N, \text{update } \mathbf{U}^{(n)}=\underset{\mathbf{U} \in \mathbb{R}^{I_{n} \times R_{n}}}{\arg \min }\left\|\left(\bigotimes_{i=N \atop i \neq n}^{1} \mathbf{U}^{(i)}\right) \mathbf{G}_{(n)}^{\top} \mathbf{U}^{\top}-\mathbf{Y}_{(n)}^{\top}\right\|_{F}^{2}.
+\end{equation}
+
+\begin{equation}\label{eq: tucker-stage-2}
+\text{Update } \mathcal{G}=\underset{\T{Z} \in \mathbb{R}^{R_{1} \times \cdots \times R_{N}}}{\arg \min } \left\|\left(\bigotimes_{i=N}^{1} \mathbf{U}^{(i)}\right) \vc{\T{Z}}-\vc{\T{Y}}   \right\|_{2}^{2},
+\end{equation}
+where $\T{Y}$ is the original data. $\forall i \in [n], \mathbf{U}_i$ is the factor matrix, and $\T{G}$ is the core tensor. $R_1, \dots, R_N$ denote the rank of the data. 
+
+As what shown in \cite{cormode2008finding}, 
+\cite{malik2018low} proposes to apply tensorSketch  to the Kronecker product structure of the input matrix in the sketch construction, i.e. $\otimes_{\substack{i = 1\\ i \neq n}}^N \mathbf{U}_i$ in \ref{eq: tucker-stage-1} and $\otimes_{i =1}^N \mathbf{U}_i$ in \ref{eq: tucker-stage-2}. TensorSketch method combines the CountSketch of each factor matrix via the Khatri-Rao product and Fast Fourier Transform.
+Consider sketching $\otimes_{i =1}^N \mathbf{U}_i$ in \ref{eq: tucker-stage-2}. TensorSketch is defined as
+\begin{equation}\label{eq:tensorsketch}
+\mathbf{\Omega}\mathbf{X}= \text{FFT}^{-1 }\bigg(\odot_{n =1}^N \Big(\text{FFT}\big(\text{CountSketch}^{(n)}(\mathbf{U}^{(n)}) \big)^\top \Big)^\top \bigg)
+\end{equation}
+By only storing $\text{CountSketch}^{(1)}, \dots, \text{CountSketch}^{(N)}$,
+TensorSketch only requires $2\sum_{i=1}^N I_n$ storage. Therefore, the storage cost of the sketch is dominated by the sketch size, $NR^{n-1}J_1 + J_2R^n \approx NKR^{2n-2}+KR^{2n}$, when $J_1 = KR^{n-1}, J_2 = KR^n$.

@@ -1,0 +1,485 @@
+\section{Dimension Reduction Maps}
+In this section, we first introduce some commonly used
+randomized dimension reduction maps together with some mathematical background,
+and explain how to calculate and update sketches.
+
+\subsection{Dimension Reduction Map} Dimension reduction maps (DRMs)
+take a collection of high dimensional objects to a lower dimensional space
+while preserving certain geometric properties \cite{oymak2015universality}.
+For example, we may wish to preserve the pairwise distances between vectors,
+or to preserve the column space of matrices.
+We call the output of a DRM on an object $x$ a \emph{sketch} of $x$.
+
+Some common DRMs include matrices with i.i.d. Gaussian entries
+or i.i.d. $\pm 1$ entries.
+The Scrambled Subsampled Randomized Fourier Transform (SSRFT) \cite{woolfe2008fast}
+and sparse random projections \cite{achlioptas2003database, li2006very}
+can achieve similar performance with fewer computational and storage requirements;
+\ifdefined \issupplement
+see supplement for details.
+\else
+see \ref{appendix: ssrft} for details.
+\fi
+
+Our theoretical bounds rely on properties of the Gaussian DRM.
+However, our numerical experiments indicate that many other DRMs
+yield qualitatively similar results;
+\ifdefined \issupplement
+see supplement for details.
+\else
+see, \eg, Figure \ref{fig:vary-k-600}, Figure \ref{fig:vary-k-200-app}
+and Figure \ref{fig:vary-k-400-app})
+in Figure \ref{appendix:more_result}.
+\fi
+
+\subsection{Tensor Random Projection}\label{s-trp}
+Here we present a strategy for reducing the storage of the random map
+that makes use of the tensor random projection (TRP),
+and extremely low storage structured dimension reduction map
+proposed in \cite{sun2018tensor}.
+The \emph{tensor random projection (TRP)}
+$\mathbf{\Omega}: \prod_{n=1}^N I_n \to \mathbb{R}^k$ is defined as
+the iterated Khatri-Rao product of DRMS
+$\mathbf{A}_n \in \mathbb{R}^{I_n \times k}$, $n \in [N]$:
+\begin{equation}
+\label{eq:TRP}
+\mathbf{\Omega} = \mathbf{A}_1 \odot \cdots \odot \mathbf{A}_N.
+\end{equation}
+Each $\mathbf{A}_n \in \mathbb{R}^{I_n \times k}$
+can be a Gaussian map, sign random projection, SSRFT, etc.
+The number of constituent maps $N$ and their dimensions $I_n$ for $n \in [N]$
+are parameters of the TRP,
+and control the quality of the map; see \cite{sun2018tensor} for details.
+% The storage required for the TRP decreases with $M$.
+% The TRP is a natural choice for our problem:
+% the matricizations of the original tensor have a product structure,
+% with dimensions $I_{(-n)} = \prod_{j\neq n} I_j$
+% that match the output dimension of the Khatri-Rao product.
+% However, it is possible to use a TRP with a number of matrices that differs from the number of modes in the tensor.
+The TRP map is a row-product random matrix,
+which behaves like a Gaussian map in many respects \cite{rudelson2012row}.
+Our experimental results confirm this behavior.
+
+Supposing each $I_n$ is the same for $n \in [N]$,
+the TRP can be formed (and stored) using only $kNI$ random variables,
+while standard dimension reduction maps use randomness (and storage)
+that grows as $I^N$ when applied to a generic (dense) tensor.
+\ref{tbl: random_map} compares the computational and storage costs
+for different DRMs.
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{c|c|c}
+		& Storage Cost & Computation Cost \\ \hline
+		Gaussian                                                            & $kI^N$       & $kI^N$           \\ \hline
+		Sparse                                                              & $\mu kI^N$    & $\mu kI^N$        \\ \hline
+		SSRFT                                                               & $I^N$        & $I^N\log(k)$     \\ \hline
+		TRP & $kNI$        & $kI^N$
+	\end{tabular}
+	\caption{Performance of Different Dimension Reduction Maps:
+  %For a dimension reduction map from $\mathbb{R}^{I^N}$ to $\mathbb{R}^k$,
+  We compare the storage cost and the computational cost of applying a DRM
+	mapping $\mathbb{R}^{I^N}$ to $\mathbb{R}^k$
+  to a dense tensor in $\mathbb{R}^{I^N}$. Here $\mu$ is the sparse factor for sparse random projection. 
+	The TRP considered here is composed of Gaussian DRMs.
+	}\label{tbl: random_map}
+\end{table}
+
+We do not need to explicitly form or store the TRP map $\mathbf{\Omega}$.
+Instead,
+% applying the TRP to the computation of the factor sketches in  \ref{alg:tensor_sketch} we can further reduce the storage by only saving
+we can store its constituent DRMs $\mathbf{A}_1, \dots, \mathbf{A}_N$
+and compute the action of the map on the matricized tensor
+using the definition of the TRP.
+%$\mathbf{\Omega}_n = \mathbf{A}_1 \odot \cdots \mathbf{A}_{n-1} \cdots \odot \mathbf{A}_{n+1} \odot \cdots \mathbf{A}_N$.
+The additional computation required is minimal and empirically incurs almost no performance loss.
+
+\section{Algorithms for Tucker approximation}
+In this section, we present our proposed tensor sketch and
+algorithms for one- and two-pass Tucker approximation,
+and discuss the computational complexity and storage cost of these methods
+for both sparse and dense input tensors.
+We present guarantees for these methods in \ref{sec:theory}.
+
+\subsection{Tensor compression via sketching}\label{sec:sketch}
+
+\paragraph{The Tucker sketch}
+Our Tucker sketch generalizes the matrix sketch of \cite{tropp2018more} to higher order tensors.
+To compute a Tucker sketch for tensor $\T{X} \in \reals^{I_1 \times \cdots \times I_N}$
+with sketch size parameters $\V{k}$ and $\V{s}$,
+draw independent, random DRMs
+\begin{equation}\label{sketches}
+\mathbf{\Omega}_1, \mathbf{\Omega}_2, \dots, \mathbf{\Omega}_N \quad \text{and} \quad \mathbf{\Phi}_1, \mathbf{\Phi}_2, \dots, \mathbf{\Phi}_N,
+\end{equation}
+with $\mathbf{\Omega}_n \in \mathbb{R}^{I_{(-n)} \times k_n}$ and
+$\mathbf{\Phi}_n \in \mathbb{R}^{I_n \times s_n}$ for $n \in [N]$.
+Use these DRMs to compute% sketches of the input tensor $\T{X}$:
+\begin{align*}
+\label{eq:sketchy_matrix}
+%\textbf{factor sketches:}~
+\M{V}_n  &= \M{X}^{(n)}\M{\Omega}_n &\in &\reals^{I_n \times k_n}, \quad n \in [N], \\
+%\textbf{core sketch:}~
+\T{H}    &= \T{X} \times_1 \M{\Phi}_1^\top \cdots \times_N \M{\Phi}_N^\top &\in &\reals^{s_1 \times \cdots \times s_N}.
+\end{align*}
+The \emph{factor sketch} $\mathbf{V}_n$
+captures the span of the mode-$n$ fibers of $\T{X}$ for each $n \in [N]$,
+while the \emph{core sketch} $\T{H}$ contains information about
+the interaction between different modes.
+See \ref{alg:tensor_sketch} for pseudocode.
+
+To produce a rank $\V{r} = \{r_1, \ldots, r_N\}$ Tucker approximation of $\T{X}$,
+choose sketch size parameters $\V{k} = (k_1, \dots, k_N) \succeq \V{r}$
+and $\V{s} = (s_1, \dots, s_N) \preceq	 \V{k}$.
+(Vector inequalities hold elementwise.)
+Our approximation guarantees depend closely on the parameters $\V{k}$ and $\V{s}$.
+As a rule of thumb, we suggest selecting $\mathbf{s} = 2 \mathbf{k}+1$,
+as the theory requires $\mathbf{s} \succ 2\mathbf{k}$,
+and choosing $\mathbf{k}$ as large as possible given storage limitations.
+
+The sketches $\mathbf{V}_n$ and $\T{H}$ are linear functions of the original tensor,
+so we can compute the sketches in a single pass over the tensor $\T{X}$.
+Linearity enables easy computation of the sketch even
+\ifdefined \issupplement
+in the streaming model or distributed model (see supplement for details).
+\else
+in the streaming model (\ref{alg:linear_update}) or distributed model (\ref{alg:sketch_distributed}).
+\fi
+Storing the sketches %, $\T{H}$ and $\mathbf{V}_n$, for each $n \in [N]$
+requires memory $\sum_{n=1}^N I_n\cdot k_n + \Pi_{i = 1}^N s_n $:
+much less than the full tensor.
+
+% \mnote{Look up derandomization. Apparently for sufficiently fancy pseudorandom number generators it is cryptographically hard to infer the parameters of the generator with a subexponential number of samples.}
+
+\begin{algorithm}[htb]
+\caption{Tucker Sketch}\label{alg:tensor_sketch}
+\textbf{Given:} RDRM (a function that generates a random DRM)
+  \begin{algorithmic}[1]
+  \Function{TuckerSketch}{$\T{X}; \V{k}, \V{s}$}
+  \State Form DRMs $\M{\Omega}_n = \text{RDRM}(I_{(-n)}, k_n)$
+  and $\M{\Phi}_n = \text{RDRM}(I_n, s_n)$, $n \in [N]$
+  \State Compute factor sketches $\M{V}_n\leftarrow \M{X}^{(n)}\M{\Omega}_n $, $n \in [N]$
+  \State Compute core sketch $\T{H} \leftarrow\T{X}\times_1 \mathbf{\Phi}_1^\top \times \dots \times_N  \mathbf{\Phi}_N^\top $
+  \State \Return $(\T{H}, \mathbf{V}_1,\dots,\mathbf{V}_N, \{\M{\Phi}_n, \M{\Omega}_n\}_{n \in [N]})$
+  \EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\begin{remark}
+The DRMs $\mathbf{\Omega}_n \in \mathbb{R}^{I_{(-n)} \times k_n}$
+%and $\mathbf{\Phi}_n \in \mathbb{R}^{s_n \times I_n}$
+are large---much larger than the size of the Tucker factorization we seek!
+Even using a low memory mapping such as the SSRFT and sparse random map,
+the storage cost required grows as $\mathcal{O}(I_{(-n)})$.
+However, we do not need to store these matrices.
+Instead, we can generate (and regenerate) them as needed using a (stored) random seed.\footnote{
+Our theory assumes the DRMs are random, whereas our experiments use
+pseudorandom numbers. In fact, for many pseudorandom number generators
+it is NP hard to determine whether the output is
+random or pseudorandom \cite{arora2009computational}.
+In particular, we expect both to perform similarly for tensor approximation.
+}
+% regenerating them as needed to accomodate
+% the order in which we see the elements of the tensor $\mathscr{X}$.
+% We assume that all methods in this paper have access to these DRMs,
+% although we do not include them explicitly as arguments.
+% Thus we will not pass them as arguments in our algorithm throughout this paper
+% except during the initial sketch construction (Algorithm \ref{alg:tensor_sketch}).
+\end{remark}
+
+\begin{remark}
+Alternatively, the TRP (\ref{s-trp}) can be used to limit the storage of $\mathbf{\Omega_n}$ required.
+The Khatri-Rao structure in the sketch need not match the structure in the matricized tensor.
+% Matching yields a computational advantage in computing the map
+% when sketching a tensor whose Tucker factorization is known.
+However, we can take advantage of the structure of our problem to reduce storage even further.
+% considering the size of $\mathbf{\Omega}_n$ is $I_{-n}\times k_n$
+% where $I_{-n} = I_1\times \cdots I_{n-1} \times I_{n+1}\cdots I_N$,
+We generate DRMs $\mathbf{A}_n \in \reals^{I_n \times k}$ for $n \in [N]$
+and define
+$\M{\Omega}_n = \M{A}_1 \odot \cdots \M{A}_{n-1} \odot \M{A}_{n+1} \odot \cdots \odot \M{A}_N$ for each $n \in [N]$.
+Hence we need not store the maps $\M{\Omega}_n$, but only the
+small matrices $\mathbf{A}_n$.
+The storage required is thereby reduced from $\mathcal{O}(N(\prod_{n=1}^N I_n) k)$
+to $\mathcal{O}((\sum_{n=1}^N I_n) k)$,
+while the approximation error is essentially unchanged.
+We use this method in our experiments.
+%\mnote{Is this what we do?} Yes
+\end{remark}
+
+\subsection{Low-Rank Approximation}
+Now we explain how to construct a Tucker decomposition of $\T{X}$
+with target Tucker rank $\mathbf{k}$
+from the factor and core sketches.
+
+We first present a simple two-pass algorithm, \ref{alg:two_pass_low_rank_appro},
+that uses only the factor sketches
+%we can get a two-pass low rank approximation
+by projecting the unfolded matrix of original tensor $\T{X}$ to the column space of each factor sketch.
+To project to the column space of each factor matrix, we calculate the QR decomposition of each factor sketch:
+\begin{equation} \label{eqn:qr}
+\mathbf{V}_n = \mathbf{Q}_n\mathbf{R}_n \quad\text{for $n \in [N]$},
+\end{equation}
+where $\mathbf{Q}_n \in \mathbb{R}^{I_n \times k_n}$ has orthonormal columns
+and $\mathbf{R}_n \in \mathbb{R}^{k_n\times k_n}$ is upper triangular.
+%is the QR decomposition of $\mathbf{V}_n$
+%for each $n\in [N]$.
+Consider the tensor approximation
+\begin{equation} \label{eq:x_tilde}
+\begin{aligned}
+\T{\tilde{X}} &=\T{X}\times_1 \mathbf{Q}_1\mathbf{Q}_1^\top \times_2 \cdots \times_N \mathbf{Q}_N\mathbf{Q}_N^\top.
+\end{aligned}
+\end{equation}
+This approximation admits the guarantees stated in \ref{thm:low_rank_err_two_pass}.
+Using the commutativity of the mode product between different modes,
+we can rewrite $\tilde{\T{X}}$ as
+\begin{equation}
+\label{eq: two-pass}
+\tilde{\T{X}}= \underbrace{\left[\T{X}\times \mathbf{Q}_1^\top \times_2 \cdots \times_N \mathbf{Q}_N^\top\right]}_{\T{W}_2} \times_1 \mathbf{Q}_1 \times_2 \cdots \times_N \mathbf{Q}_N
+= \llbracket \T{W}_2; \mathbf{Q}_1,\ldots,\mathbf{Q}_N \rrbracket,
+\end{equation}
+which gives an explicit Tucker approximation $\tilde{\T{X}}$ of our original tensor.
+The core approximation $\T{W}_2 \in \mathbb{R}^{k_1 \times \dots \times k_N}$
+is much smaller than the original tensor $\T{X}$.
+To compute this approximation, we need access to $\T{X}$ twice:
+once to compute $\mathbf{Q}_1,\ldots,\mathbf{Q}_N$,
+and again to apply them to $\T{X}$ in order to form $\T{W}_2$.
+
+\begin{algorithm}[H]
+  \caption{Two Pass Sketch and Low Rank Recovery \label{alg:two_pass_low_rank_appro}}
+  \textbf{Given:} tensor $\T{X}$, sketch parameters
+  % DRMs $\{\M{\Phi}_n, \M{\Omega}_n\}_{n \in [N]}$
+  $\V{k}$ and $\V{s} \geq \V{k}$
+  \ben
+  \item \emph{Sketch.}
+  $\left(\T{H}, \mathbf{V}_1, \ldots, \mathbf{V}_N, \{\M{\Phi}_n, \M{\Omega}_n\}_{n \in [N]}\right) =
+  \textproc{TuckerSketch}\left(\T{X}; \V{k}, \V{s}\right)$
+  \item \emph{Recover factor matrices.} For $n \in [N]$,
+  $
+  (\mathbf{Q}_n, \sim) \leftarrow \rm{QR}(\mathbf{V}_n)
+  $
+  \item \emph{Recover core.}
+  $
+  \T{W}_2 \leftarrow \T{X} \times_1 \M{Q}_1 \cdots \times_N \M{Q}_N
+  $
+  \een
+  \textbf{Return:} Tucker approximation
+  $\hat{\T{X}}_2 = \llbracket\T{W}_2; \M{Q}_1, \ldots, \M{Q}_N \rrbracket$
+  with rank $\preceq \V{k}$
+\end{algorithm}
+
+% \begin{algorithm}[ht]
+% 	\caption{Two-Pass Sketch and Low-Rank Recovery }\label{alg:two_pass_low_rank_appro}
+% 	\begin{algorithmic}[1]
+% 		 \Ensure Returns factor matrices $\mathbf{Q}_1,\cdots, \mathbf{Q}_N$  with orthogonal columns
+% 		of size $\mathbf{Q}_n \in \mathbb{R}^{I_n\times k_n}$
+% 	     and the core tensor $\T{W}\in \mathbb{R}^{k_1\times \cdots \times k_N}$ that form a Tucker rank $\mathbf{k}$
+% 		 approximation $\T{\hat{X}} =\llbracket \T{W}; \mathbf{Q}_1, \cdots, \mathbf{Q}_N\rrbracket$
+% 		\Function{TwoPassSketchAndLowRankRecovery}{$\T{X}$}
+% 		\State $\mathbf{V}_1, \cdots \mathbf{V}_N, \_ \leftarrow \textproc{ComputeSketch}(\T{X})$ \Comment{access $\T{X}$}
+% 		\For{$n = 1 \dots N$}
+% 		\State $(\mathbf{Q}_n, \sim) \leftarrow \rm{QR}(\mathbf{V}_n)$
+% 		\EndFor
+% 		\State ${\T{W_0}} \leftarrow\T{X} \times_1 \mathbf{Q}_1^\top \dots \times_N \mathbf{Q}_N^\top$  \Comment{access $\T{X}$}
+% 		\mnote{Transpose is wrong, I think}
+% 		\State \Return $\T{W_0}, \mathbf{Q}_1, \cdots, \mathbf{Q}_N$
+% 		\mnote{cdots vs ldots is wrong throughout}
+% 		\EndFunction
+% 	\end{algorithmic}
+% \end{algorithm}
+
+\paragraph{One-Pass Approximation}
+To develop a one-pass method, we must use the core sketch $\T{H}$
+--- the compression of $\T{X}$ using the random projections $\M{\Phi}_n$ --
+to approximate $\T{W}_2$
+--- the compression of $\T{X}$ using random projections $\M{Q}_n$.
+%
+% \bit
+% \item we want to know $\T{W}_0$: \\
+% compression of $\T{X}$ using factor range approximations $\M{Q}_n$
+% \item we observe $\T{H}$: \\
+% compression of $\T{X}$ using random projections $\M{\Phi}_n$
+% \eit
+To develop intuition, consider the following calculation:
+if the factor matrix approximations $\M{Q}_n$ capture the range of $\T{X}$ well, then projection onto their ranges in each mode approximately preserves the action of $\T{X}$:
+\[
+\T{X} \approx \T{X} \times_1 \M{Q}_1 \M{Q}_1^\top \times \cdots \times_N \M{Q}_N \M{Q}_N^\top
+\]
+Recall that for tensor $\T{A}$, and matrix $\mathbf{B}$ and $\mathbf{C}$ with compatible sizes,
+$\T{A} \times_n (\mathbf{B} \mathbf{C}) = (\T{A} \times_n \mathbf{C}) \times_n \mathbf{B}$.
+Use this rule to collect terms to recognize the two pass core approximation $\T{W}_2$:
+\[
+\T{X}
+      \approx \left( \T{X} \times_1 \M{Q}_1^\top \times \cdots \times_N \M{Q}_N^\top \right) \times_1 \M{Q}_1 \dots \times_N \M{Q}_N
+      = \T{W}_2 \times_1 \M{Q}_1 \dots \times_N \M{Q}_N
+\]
+Now contract both sides of this approximate equality with the DRMs $\M{\Phi}_n$
+and recognize the core sketch $\T{H}$:
+\[
+\T{H} := \T{X} \times_1 \M{\Phi}_1^\top \dots \times_N \M{\Phi}_N^\top
+\approx \T{W}_2 \times_1 \M{\Phi}_1^\top \M{Q}_1 \times \cdots \times_N \M{\Phi}_N^\top \M{Q}_N.
+\]
+%For the last line, we contract both sides with the DRMs $\M{\Omega}$.
+We have chosen $\V{s} > \V{k}$ so each $\M{\Phi}_n^\top \M{Q}_n$ has a left inverse
+with high probability. Hence we can solve the approximate equality for $\T{W}_2$: % when $s_n \geq k_n$
+\[
+\T{W}_2 \approx \T{H} \times_1 (\M{\Phi}_1^\top \M{Q}_1)^\dagger \times \cdots \times_N (\M{\Phi}_N^\top \M{Q}_N)^\dagger =: \T{W}_1.
+\]
+The right hand side of the approximation defines the one pass core approximation $\T{W}_1$. \ref{lemma:err_core_sketch} controls the error in this approximation.
+
+% Our one-pass method uses the core sketch $\T{H}$ to approximate $\T{W}_0$.
+% Notice
+% \begin{equation*}
+% \begin{aligned} \label{eq:Z_approx}
+% \T{H} &=\T{X}\times_1 \mathbf{\Phi}_1 \times \cdots \times_N \mathbf{\Phi}_N  \\
+% & \approx \T{\hat{X}}\times_1 \mathbf{\Phi}_1 \times \cdots \times_N \mathbf{\Phi}_N. \\
+% %&= \left[\T{X}\times_1 \mathbf{Q}_1\mathbf{Q}_1^\top \times_2 \cdots \times_N
+% %\mathbf{Q}_N\mathbf{Q}_N^\top \right] \\
+% %& \qquad \times_1 \mathbf{\Phi}_1  \cdots \times_N \mathbf{\Phi}_N \\
+% &= \left[\T{X}\times_1 \mathbf{Q}_1^\top \times_2 \cdots \times_N
+% \mathbf{Q}_N^\top \right] \\
+% & \qquad\qquad \times_1 \mathbf{\Phi}_1 \mathbf{Q}_1 \times_2 \cdots \times_N \mathbf{\Phi}_N \mathbf{Q}_N \\
+% &= \T{W_0} \times_1 \mathbf{\Phi}_1 \mathbf{Q}_1 \times_2 \cdots \times_N \mathbf{\Phi}_N \mathbf{Q}_N
+% \end{aligned}
+% \end{equation*}
+% %\begin{equation}
+% %\begin{aligned} \label{eq:Z_approx}
+% %\T{H} &=\T{X}\times_1 \mathbf{\Phi}_1 \times \cdots \times_N \mathbf{\Phi}_N  \\
+% %& \approx \mathscr{\hat{X}}\times_1 \mathbf{\Phi}_1 \times \cdots \times_N \mathbf{\Phi}_N \\
+% %&= \left[\T{X}\times_1 \mathbf{Q}_1\mathbf{\Phi}_1 \times_2 \cdots \times_N
+% %\mathbf{Q}_N\mathbf{\Phi}_N\right] \\
+% %& \quad \times_1 \mathbf{Q}_1^\top  \cdots \times_N \mathbf{Q}_N^\top. \nonumber
+% %\end{aligned}
+% %\end{equation}
+% We can solve for $\T{W}_0$ to define our new core approximation $\T{W}$:
+% \begin{equation} \label{eq:core_approx}
+% \begin{aligned}
+% 	\T{W}_0
+%   = \left[\T{X} \times_1 \mathbf{Q}_1^\top \times_2 \dots \times_N \mathbf{Q}_N^\top \right]
+%   \approx \T{H} \times_1 (\mathbf{\Phi}_1 \mathbf{Q}_1)^\dag \times_2 \dots \times_N (\mathbf{\Phi}_1 \mathbf{Q}_1)^\dag
+%   =: \T{W}
+% \end{aligned}
+% \end{equation}
+% The one-pass core approximation $\T{W} \in \mathbb{R}^{k_1 \times \dots \times k_N}$
+% is much smaller than the original tensor $\T{X}$.
+%$\T{W} \approx \T{W}_0$.
+
+% Finally, we construct the rank-$\mathbf{k}$ tensor approximation
+% $$
+% \hat{\T{X}} := = \llbracket \T{W}; \mathbf{Q}_1,\ldots,\mathbf{Q}_N \rrbracket
+% % \T{W} \times_1 \mathbf{Q}_1 \times_2 \dots \times_N \mathbf{Q}_N
+% % 	\in \mathbb{R}^{I_1 \times \dots \times I_n},
+% $$
+% where $\T{W}$ is defined in~\eqref{eq:core_approx}
+% and the $\mathbf{Q}_n$ satisfy~\eqref{eqn:qr}.
+\ref{alg:one_pass_low_rank_appro} summarizes
+the resulting one-pass algorithm.
+One (streaming) pass over the tensor can be used to sketch the tensor;
+to recover the tensor, we only access the sketches.
+\ref{thm:low_rank_err} (below) bounds
+the overall quality of the approximation.
+
+\begin{algorithm}[H]
+  \caption{One Pass Sketch and Low Rank Recovery \label{alg:one_pass_low_rank_appro}}
+  \textbf{Given:} tensor $\T{X}$, sketch parameters
+  % DRMs $\{\M{\Phi}_n, \M{\Omega}_n\}_{n \in [N]}$
+  $\V{k}$ and $\V{s} \geq \V{k}$
+  \ben
+  \item \emph{Sketch.}
+  $\left(\T{H}, \mathbf{V}_1, \ldots, \mathbf{V}_N, \{\M{\Phi}_n, \M{\Omega}_n\}_{n \in [N]}\right) =
+  \textproc{TuckerSketch}\left(\T{X}; \V{k}, \V{s}\right)$
+  \item \emph{Recover factor matrices.} For $n \in [N]$,
+  $
+  (\mathbf{Q}_n, \sim) \leftarrow \rm{QR}(\mathbf{V}_n)
+  $
+  \item \emph{Recover core.}
+  $
+  \T{W}_1 \leftarrow \T{H} \times_1 (\M{\Phi}_1^\top \M{Q}_1)^\dagger \times \cdots \times_N (\M{\Phi}_N^\top \M{Q}_N)^\dagger
+  $
+  \een
+  \textbf{Return:} Tucker approximation
+  $\hat{\T{X}}_1 = \llbracket\T{W}_1; \M{Q}_1, \ldots, \M{Q}_N \rrbracket$
+  with rank $\leq \V{k}$
+\end{algorithm}
+% Done: {Change notation throughout: use $\T{W}_1$ and $\T{W}_2$ in place of $\T{W}$ and $\T{W}_0$.}
+
+The time and storage cost of Algorithm \ref{alg:one_pass_low_rank_appro} is given by Table \ref{tbl: time-complexity}.
+The time and storage complexity of these methods compare favorably to the
+only previous method for streaming Tucker approximation \cite{malik2018low},
+
+\begin{table*}[h!]
+	\centering
+	\begin{tabular}{c|c|c|c}
+		& Stage     & Time Cost                                                              & Storage Cost \\ \hline
+		& Sketching & $\mathcal{O}(((1-(s/I)^N)/(1-(s/I))+Nk)I^N)$          &              \\
+		\begin{tabular}[c]{@{}c@{}}\ref{alg:one_pass_low_rank_appro}\\ (One Pass)\end{tabular} & Recovery  & $\mathcal{O}((k^2s^N(1-(k/s)^N))/(1-k/s) + k^2NI)$ & $kNI + s^N$  \\
+		& Total     & $\mathcal{O}(((s(1-(s/I)^N))/(1-s/I)+Nk)I^N)$          &              \\ \hline
+	\end{tabular}
+	\caption{\label{tbl: time-complexity}
+	Computational Complexity of \ref{alg:one_pass_low_rank_appro}
+	on tensor $\T{X} \in \mathbb{R}^{I \times \dots \times I}$ with parameters $(k,s)$,
+	using a TRP composed of Gaussian DRMs inside the Tucker sketch.
+	By far the majority of the time is spent sketching the tensor $\T{X}$.
+	}
+\end{table*}
+
+
+
+
+\subsection{Fixed-Rank Approximation}\label{sec:fixed_rank}
+Algorithm \ref{alg:two_pass_low_rank_appro}  and algorithm \ref{alg:one_pass_low_rank_appro}
+produce a two-pass and one-pass rank-$\mathbf{k}$ tensor approximation respectively.
+It is often valuable to truncate this approximation to a
+user-specified target rank $\mathbf{r} \leq \mathbf{k}$
+\cite[Figure 4]{tropp2019streaming}.
+
+
+Our fixed rank approximation method is motivated by the following lemma: %Lemma \ref{lemma: equivalance_one_pass}:
+\begin{lem}
+\label{lemma: equivalance_one_pass}
+Let $\T{W}\in \mathbb{R}^{k_1 \times \cdots \times k_N}$ be a tensor,
+and let $\mathbf{Q}_n \in \mathbb{R}^{I_n\times k_n}$ be orthogonal matrices with $k_n\ge r_n$ 
+for $n \in [N]$.  Then
+\begin{equation}
+\llbracket \T{W}\times_1 \mathbf{Q}_1 \cdots \times_N \mathbf{Q}_N \rrbracket_\mathbf{r} =
+\llbracket \T{W} \rrbracket_\mathbf{r} \times_1 \mathbf{Q}_1 \cdots \times_N \mathbf{Q}_N. \nonumber
+	\end{equation}
+\end{lem}
+(This lemma does not necessarily hold if the best rank-r Tucker approximation
+$\llbracket \cdot \rrbracket$ is replaced by the output of any concrete algorithm
+such as HOSVD or HOOI.) The proof of \ref{lemma: equivalance_one_pass} appears in \ref{appendix: proof-fix-rank-lemma}.
+
+
+Motivated by this lemma, to produce a fixed rank $\V{r}$ approximation of $\T{X}$,
+we compress the core tensor approximation from
+\ref{alg:two_pass_low_rank_appro} or \ref{alg:one_pass_low_rank_appro}
+to rank $\mathbf{r}$.
+This compression is cheap because the core approximation
+$\T{W} \in \mathbb{R}^{k_1 \times \dots \times k_N}$
+is small.
+We present this method (using HOOI as the the compression algorithm)
+as \ref{alg:one_pass_fix_rank_appro}.
+Other compression algorithms can be used
+to trade off the quality of approximation with the difficulty of running the algorithm.
+Reasonable choices include the sequentially-truncated HOSVD (ST-HOSVD) \cite{vannieuwenhoven2012new}
+or TTHRESH \cite{ballester2019tthresh}. Both HOSVD and ST-HOSVD are psedual 
+% Notice \ref{alg:one_pass_fix_rank_appro} does not access the tensor $\T{X}$ directly,
+% but rather relies exclusively on the low rank Tucker approximation.
+
+
+
+\begin{algorithm}[H]
+  \caption{Fixed rank approximation \label{alg:one_pass_fix_rank_appro}}
+  \textbf{Given:} Tucker approximation
+  $\llbracket\T{W}; \mathbf{Q}_1, \cdots, \mathbf{Q}_N\rrbracket$ of tensor $\T{X}$,
+  rank target $\V{r}$
+  \ben
+  \item \emph{Approximate core with fixed rank.}
+  $\T{G}, \mathbf{U}_1, \cdots, \mathbf{U}_N \leftarrow
+  \text{HOOI}( \T{W},\mathbf{r})$ \label{line:core-decom}
+  \item \emph{Compute factor matrices.} For $n \in [N]$,
+  $\mathbf{P}_n \leftarrow \mathbf{Q}_n \mathbf{U}_n$
+  \een
+  \textbf{Return:} Tucker approximation
+  $\hat{\T{X}}_\V{r} = \llbracket\T{G}; \M{P}_1, \ldots, \M{P}_N \rrbracket$
+  with rank $\leq \V{r}$
+\end{algorithm}
+

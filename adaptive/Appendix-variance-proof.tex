@@ -1,0 +1,19 @@
+\section{Proof for Deviation Bound}
+
+\subsection{Proof for Lemma \ref{lemma: deviation_variance}}
+From lemma \ref{lemma:theta_bias}, we have
+\begin{equation}
+\label{eq:theta_concentration1}
+\begin{aligned}
+&\mathbb{P}\left(|\hat{\theta}^{(r)}_{j,rs} - \theta^{(r)}_{j,rs}|\ge \eta +B_\theta \right)\\
+&\le \mathbb{P}\left(|\hat{\theta}^{(r)}_{j,rs} - \mathbb{E}[\hat{\theta}^{(r)}_{j,rs}]|\ge \eta \right)
+\end{aligned}
+\end{equation}
+we could write 
+$\hat{\theta}^{(r)}_{j,rs} = y_j^\prime Dy_j$ where $y_j$ is vector of length $m$ composed of $\rm{Re}(H_{rs}(\omega_q))), q\in \mathcal{B}_j$ and $D = \frac{1}{m-1} (I-\frac{1}{m}11^\top)$. $I-\frac{1}{m}11^\top$ is a symmetric projection matrix and we know for any symmetric projection matrix $P$, $\|P\|=1$ and $\|P\|_F^2 =\rank(P)$. Thus, $\|D\| = 1/(m-1)$ and $\|D\|_F = \sqrt{1/(m-1)}$. Then we could apply Hanson-Wright inequality \citep{rudelson2013hanson} to \eqref{eq:theta_concentration1}, there exists  universal constants $c_1, c_2$, 
+\begin{equation}
+\begin{aligned}
+&\mathbb{P}\left(|\hat{\theta}^{(r)}_{j,rs} - \mathbb{E}[\hat{\theta}^{(r)}_{j,rs}]|\ge \eta \right) \le \exp\left(-c\min \left(\frac{\eta}{\|D\|}, \frac{\eta^2}{\|D\|_F^2}\right)\right)\\
+& = c_1\exp(-c_2m\min\left(\eta, \eta^2\right)).
+\end{aligned}
+\end{equation}

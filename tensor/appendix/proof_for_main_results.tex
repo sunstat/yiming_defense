@@ -1,0 +1,124 @@
+\section{Proof of Main Results}
+\label{appendix:proof-main-result}
+% To bound the approximation error of the algorithms presented in the main body
+% of this paper, we first develop several structural results showing
+% an additive decomposition of the error.
+% First, the total error is the sum of the error due to sketching
+% and the error due to fixed rank approximation.
+% Second, the sketching error is the sum of the error due to the factor matrix
+% approximations and to the core approximation.
+% Third, the error due to the factor matrix approximations
+% is the sum of the error in each the modes,
+% as the errors due to each mode are mutually orthogonal.
+% This finishes the approximation error bound for the two pass algorithm, \ref{thm:low_rank_err_two_pass}.
+% As for the error due to the core approximation,
+% we give a combinatorial argument to rewrite the approximation error in the core tensor
+% as a sum over each mode of errors that are mutually orthogonal.
+% Indeed, these errors have the same form as the errors due to the factor matrix approximations,
+% scaled down by a factor $\Delta(k,s)$ that depends on the sketch sizes $\V{k}$ and $\V{s}$.
+% This argument shows the error due to the core approximation
+% is at most a factor $\Delta(k,s)$ times the error due to the factor matrix approximation.
+
+% Yiming wrote:
+% For low rank approximation, since there is no any optimization procedure involved, all the errors come from sketching stage. For fixed rank approximation, we also need to take the recovery error (from Tucker decomposition)  into consideration. But for tensor decomposition, the approximation error is impossible to be described as clear as that in matrix case(singular value decomposition). we include the best approximation error in our result. Essentially for both case, our theory focuses in building statistical  error bound introduced by the sketching and leave the recovery error in terms of the best approximation error: $\|\T{X} - \llbracket \T{X} \rrbracket_\mathbf{r}\|_F$.
+%
+% For sketching stage, we consider errors introduced by arm sketch and core sketch
+% respectively. Arm sketch essentially is a series of projection of original tensor to column space the sketch corresponding along each mode. We demonstrate that we can decompose the error as sum of errors along each mode by showing they are orthogonal to each other. For the error from core sketch, by some combinatoric argument, we essentially treat the approximation error for core tensor as $\sum_n \rm{Approx}(\T{Z}_n)$ where $\sum_n \T{Z}_n = \T{X} - \T{\hat{X}}$, $\langle \T{Z}_m, \T{Z}_n \rangle = 0$ and $\rm{Approx}(\T{Z}_n)$ is some approximation of $\T{Z}_n$ satisfying $\|\rm{Approx}(\T{Z}_n) -\T{Z}_n\|_F \le \Delta(k,s) \|\T{Z}_n\|_F$ where $\Delta(k,s)$ is a constant depending in sketch size $k,s$. This essentially claims that the error from core sketch is at most $\Delta(k,s)$ of error from arm sketch.
+
+\subsection{Error bound for the two pass approximation Algorithm \ref{alg:two_pass_low_rank_appro}}
+\begin{proof}[Proof of Theorem \ref{thm:low_rank_err_two_pass}]
+Suppose $\T{\hat{X}}_2$ is the low-rank approximation from \ref{alg:two_pass_low_rank_appro}.
+Use the definition of the mode-$n$ product to see
+\begin{equation*}
+\begin{aligned}
+\T{\hat{X}}_2 &=  \left[\T{X}\times_1 \mathbf{Q}_1^\top \times_2 \cdots \times_N \mathbf{Q}_N^\top\right] \times_1 \mathbf{Q}_1\times_1 \cdots\times_N \mathbf{Q}_N\\
+&= \T{X}\times_1 \mathbf{Q}_1\mathbf{Q}_1^\top \times_2 \cdots \times_N \mathbf{Q}_N\mathbf{Q}_N^\top.
+\end{aligned}
+\end{equation*}
+Although it seems that we sequentially project tensor $\T{X}$ to column space spanned with $\mathbf{Q}_n$, but since mode product is exchangeable, in fact $\hat{\T{X}}_2$ is the projection to space $\{ \T{X} : \T{X}^{(n)} 
+\in \mathbf{col}(\mathbf{Q}_n) \}$.  This is a generalization of projection matrix where \cite{de2008tensor} has a very detailed  explanation and it is referred as multi-linear orthogonal projection.  Following exact techniques in Theorem 5.1 in \cite{vannieuwenhoven2012new} by sequentially applying Pythagorean theory sequentially we can show that 
+\begin{equation}
+\|\hat{\T{X}}_2 - \T{X}\|_F^2 \le \sum_{n=1}^N  \left \| (\mathbf{I} - \mathbf{Q}_n\mathbf{Q}_n^\top) \mathbf{X}^{(n)} \right\|_F^2 .
+\end{equation}
+Then taking expectation on $\mathbf{Q}_n$, and applying Lemma \ref{lemma:sketchy_column_space_err} we complete the proof. 
+
+
+
+
+\end{proof}
+
+\subsection{Error bound for the one pass approximation Algorithm \ref{alg:one_pass_low_rank_appro}}
+\begin{proof}[Proof of Theorem \ref{thm:low_rank_err}]
+We show the approximation error can be decomposed as
+the error due to the factor matrix approximations
+and the error due to the core approximation.
+Let $\T{\hat{X}}_1$ be the one pass approximation from \ref{alg:one_pass_low_rank_appro}, and let
+\begin{equation}
+\T{\hat{X}}_2 = \T{X}\times_1 \mathbf{Q}_1\mathbf{Q}_1^\top \times_2 \cdots \times_N \mathbf{Q}_N\mathbf{Q}_N^\top,
+\end{equation}
+be the two pass approximation from \ref{alg:two_pass_low_rank_appro}.
+The difference in one-pass and two-pass approximation is in the 
+core: 
+\begin{equation}
+\begin{aligned}
+\T{\hat{X}}_1-\hat{\T{X}}_2= (\T{W}-\T{X}\times_1 \mathbf{Q}_1^\top \times_2 \cdots \times_N \mathbf{Q}_n^\top)  \times_1 \mathbf{Q}_1 \dots \times_N \mathbf{Q}_N. \nonumber
+\end{aligned}
+\end{equation}
+Thus $\T{\hat{X}}_1-\hat{\T{X}}_2$ is in the space defined above:  $\{ \T{X} : \T{X}^{(n)} 
+\in \mathbf{col}(\mathbf{Q}_n) \}$ while as pointed before $\hat{\T{X}}_2 - \T{X}$ is perpendicular  to that space.  Therefore, 
+
+\begin{equation}
+\label{eq:inner_zero}
+\langle \hat{\T{X}}_1 - \hat{\T{X}}_2, \hat{\T{X}}_2 - \T{X} \rangle = 0.
+\end{equation}
+
+
+Now we use the (expectation of) the Pythagorean theorem 
+to bound the expected error of the one pass approximation:
+\begin{equation}
+\label{eq:error_decom}
+ \mathbb{E}\| \hat{\T{X}}_1- \T{X} \|_F^2 = \mathbb{E}\| \hat{\T{X}}_1 - \hat{\T{X}}_2\|_F^2 + \mathbb{E} \|\hat{\T{X}}_2 - \T{X} \|_F^2.
+\end{equation}
+
+
+
+Consider the first term which is due to core approximation. Based in the definition of $\hat{\T{X}}_1$ and $\tilde{\T{X}}_2$ we can see that 
+\begin{align*}
+\|\hat{\T{X}}_1 - \hat{\T{X}}_2\|^2_F &=
+\|(\T{W}_1 - \T{X}\times_1 \mathbf{Q}_1^\top \cdots \times_N \mathbf{Q}^\top_N)\times_1 \mathbf{Q}_1\cdots \times_N \mathbf{Q}_N \|^2_F\\
+& = \|(\T{W}_1- \T{X}\times_1 \mathbf{Q}_1^\top \cdots \times_N \mathbf{Q}^\top_N)\|_F^2,
+\end{align*}
+where we use the invariance of the Frobenius norm under orthonormal transformations to get the second line.
+Now using \ref{lemma:err_core_sketch} to bound for the error due to the core approximation as
+%(the first term in \eqref{eq:error_decom}) as
+\begin{equation}
+\mathbb{E} \|\hat{\T{X}}_1- \hat{\T{X}}_2\|^2_F \le \Delta \left[ \sum_{n=1}^N \left(1+\frac{\rho_n}{k_n-\rho_n-1}\right)(\tau^{(n)}_{\rho_n})^2\right].\nonumber
+\end{equation}
+
+Finally, as shown in proof for  \ref{thm:low_rank_err_two_pass} to
+bound the error due to the factor matrix approximations
+(the second term in \eqref{eq:error_decom}) as
+\begin{equation}
+\mathbb{E}\|\hat{\T{X}}_2 - \T{X} \|_F^2 \le \left[ \sum_{n=1}^N \left(1+\frac{\rho_n}{k_n-\rho_n-1}\right)(\tau^{(n)}_{\rho_n})^2\right].\nonumber
+\end{equation}
+Summing these two bounds finishes the proof.
+\end{proof}
+
+\subsection{Error bound for the fixed rank approximation Algorithm  \ref{alg:one_pass_fix_rank_appro}}
+
+\begin{proof}[Proof of Theorem \ref{thm:fix_rank_err}]
+Our argument follows the proof of \cite[Proposition 6.1]{tropp2017practical}:
+\begin{equation}
+\begin{aligned}
+&\|\T{X} - \llbracket \hat{\T{X}} \rrbracket_\mathbf{r}\|_F \le \|\T{X} -  \hat{\T{X}}\|_F+\|\hat{\T{X}} -  \llbracket\hat{\T{X}}\rrbracket_\mathbf{r}\|_F\\
+&\le \|\T{X} -  \hat{\T{X}}\|_F+\|\hat{\T{X}} -  \llbracket \T{X}\rrbracket_\mathbf{r}\|_F \\
+& \le \|\T{X} -  \hat{\T{X}}\|_F+\|\hat{\T{X}} - \T{X}  + \T{X} - \llbracket \T{X}\rrbracket_\mathbf{r}\|_F \\
+&\le 2\|\T{X} - \hat{\T{X}} \|_F + \|\T{X} -  \llbracket \T{X} \rrbracket_\mathbf{r}\|_F.\nonumber
+\end{aligned}
+\end{equation}
+The first and the third line are the triangle inequality,
+and the second line follows from the definition of the best rank-$r$ approximation.
+Take the expectation of $\|\T{X} - \hat{\T{X}} \|_F$ and
+use Jensen's inequality $\mathbb{E}\|\T{X} - \hat{\T{X}} \|_F \le \sqrt{\mathbb{E} \|\T{X} - \hat{\T{X}} \|_F^2}$
+to finish the proof.
+\end{proof}

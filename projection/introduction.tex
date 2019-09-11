@@ -1,0 +1,110 @@
+
+\section{Introduction}
+Linear random projection is  operating a random matrix onto the data which could be either high dimension vector or matrix to reduce the dimension while preserving the useful information residing in the data. Then a linear random projection can be represented as a random matrix $\mathbf{\Omega}\in \real^{d\times k}$, operating on a vector $\mathbf{x}\in \real^{d}$ or a matrix $\mathbf{X} \in \real^{m\times d}$ to reduce the dimension:
+\begin{equation}
+\label{eq:low_dim_mapping}
+\begin{aligned}
+&\mathbf{x} \in \real^{n} \rightarrow  \mathbf{\Omega}^\top \mathbf{x} \in \real^{k} \\
+& \mathbf{X} \in \real^{m\times d} \rightarrow   \mathbf{X}\mathbf{\Omega} \in \real^{m\times k}. 
+\end{aligned}
+\end{equation}
+
+Random projection application to vector has a very long history which enables a broad range of modern applications from bio-informatics, informational retrieval to computer vision like \cite{wright2009robust,buhler2002finding,allen2014sparse,bingham2001random,fradkin2003experiments, halko2011finding, wang2012semi, jegou2008hamming}. In the context of large-scale relational databases, these maps enable
+applications like information retrieval \cite{papadimitriou2000latent},
+similarity search \cite{sahin2005prism,kaski1998dimensionality},
+and privacy preserving distributed data mining \cite{liu2006random}. 
+Later, along with the fast development in randomized algorithm, linear random projections are widely employed in constructing fast randomized algorithms in fields like matrix and tensor decomposition \cite{woolfe2008fast, tropp2017practical}, optimization \cite{yurtsever2017sketchy}, streaming data compression \cite{Tropp2019-SketchingScientificSimulation, sun2019low}. The much smaller matrix after random projection in the second line in \eqref{eq:low_dim_mapping} is named \emph{sketch}.  
+The term 'sketch' describes the fact that the matrix after random projection captures most of the action of the original matrix.  \par 
+The effectiveness of random projection is measured by whether the information inside data is well preserved in the low dimensional embedding after random projection. For the case where we operates random matrix $\mathbf{\Omega}$ onto vector $\mathbf{x}$, we require 
+\begin{equation}
+\|\mathbf{\Omega}^\top\mathbf{x}_1 - \mathbf{\Omega}^\top\mathbf{x}_2\| \approx 
+\|\mathbf{x}_1 -\mathbf{x}_2\|.
+\end{equation}
+For the case, where we operating $\mathbf{\Omega}$ onto matrix $\mathbf{X}$, it requires that
+\begin{equation}
+\|\mathbf{QQ}^\top \mathbf{X} - \mathbf{X}\| ~ \text{is small}, 
+\end{equation}
+where $\mathbf{Q}$ is the ortho-normal matrix got from QR factorization from $\mathbf{X\Omega}$.
+For the case where $\mathbf{\Omega}$ has i.i.d. elements, there are many literature in how these two properties are preserved. We list two well known results in literature for those two cases separately.  
+\begin{lem}[\citet{arriaga2006algorithmic}]
+	\label{lem:gauss-rp-vector}
+	Let $\mathbf{x} \in \real^d$, assume that the entries in $\mathbf{\Omega}\in \real^{d\times k}$ are sampled independently from $\mathcal{N}(0, 1)$. Then
+	\begin{equation}
+	\label{eq:gauss_random_projection}
+	\Prob\left((1-\epsilon)\|\mathbf{x}\|^2 \le \left\|\frac{1}{\sqrt{k}} \mathbf{\Omega}^\top \mathbf{x}\right\|\le (1+\epsilon)\|\mathbf{x}\|^2\right)\le 1 - 2e^{-(\epsilon^2-\epsilon^3)k/4}.
+	\end{equation}
+\end{lem}
+
+\begin{lem}[\citet{halko2011finding}]
+	\label{lemma:gauss-rp-matrix}
+	Let $\mathbf{X} \in \real^{m\times d}$, assume that the entries in $\mathbf{\Omega}\in \real^{d\times (k+p)}$ are sampled independently from $\mathcal{N}(0, 1)$. Then let  $\mathbf{Q}$  
+	be the orthonormal matrix  from QR factorization $\mathbf{X\Omega} = \mathbf{QR}$, then 
+	\begin{equation}
+	\label{eq:gauss_col_preservation}
+	 \|\mathbf{X} - \mathbf{QQ}^\top \mathbf{X}\|_F \le \left(1+\frac{k}{p-1}\right)^{1/2}\left(\sum_{j>k} \sigma_j^2\right)^{1/2}.
+	\end{equation}
+\end{lem}
+
+
+\paragraph{Memory Efficient Random Projection}
+Sparse random maps for low memory dimension reduction
+were first proposed by \cite{achlioptas2003database}, 
+and further work has improved the memory requirements and guarantees of these methods
+\cite{li2006very, ailon2006approximate, bourgain2015toward}.  Usually they propose the random projection to be sparse.  But under modern 'big data' setting, their cost in storage/memory cost is still to big to be practical. Consider
+
+
+
+
+
+Most closely related to our work is Rudelson's foundational study \cite{rudelson2012row},
+which considers how the spectral and geometric properties of
+the random maps we use in this paper resemble a random map with iid entries,
+and shows that their largest and smallest singular values are of the same order.
+These results have been widely used to obtain guarantees for algorithmic privacy,
+but not for random projection.
+Battaglino et al. \cite{battaglino2018practical} use random projections
+of Khatri-Rao products to develop a randomized least squares algorithm
+for tensor factorization;
+in contrast, our method uses the (full) Khatri-Rao product to enable random projection.
+Sparse random projections to solve least squares problems were
+also explored in \cite{wang2015fast} and \cite{woodruff2014sketching}.
+To our knowledge, this paper is the first to consider using the Khatri-Rao product
+for low memory random projection.
+However, if the dimension of vectors before reduction
+(here, the size of the lexicon) is too big,
+the storage cost of the random map is not negligible.
+Furthermore, even generating the pseudo-random numbers used to produce the random projection
+is expensive \cite{matsumoto1998mersenne}.
+
+To reduce the storage burden, we propose a novel use of the row-product random matrices in random projection, and call it the \textit{Tensor Random Projection} (TRP),
+formed as the Khatri-Rao product of a list of smaller dimension reduction maps.
+We show this map is an approximate isometry, with tunable accuracy,
+and hence can serve as a useful dimension reduction primitive.
+Furthermore, the storage required to compress $d$ dimension vectors scales as $\sqrt[N]d$
+where $N$ is the number of smaller maps used to form the TRP.
+We also develop a reduced variance version of the TRP that allows separate control
+of the dimension of the range and the quality of the isometry.
+
+
+
+
+
+\subsection{Notation}
+We denote \textit{scalar}, \textit{vector}, and \textit{matrix} variables, respectively,
+by lowercase letters ($x$), boldface lowercase letters ($\mathbf{x}$),
+and boldface capital letters  ($\mathbf{X}$).
+Let $[N] = \{1, \dots, N\}$.
+For matrix $\mathbf{X}$, we denote its $i^{th}$ row, $j^{th}$ column, and the $(i,j)^{th}$ element as $\mathbf{X}_{(i,.)}, \mathbf{X}_{(.,j)}, \mathbf{X}_{(i,j)}$. The \textit{Kronecker product} of two matrices $\mathbf{A}\in \mathbb{R}^{m\times n},\mathbf{B} \in \mathbb{R}^{p\times q}$, denoted as $\mathbf{A} \otimes \mathbf{B} \in \mathbb{R}^{mp\times nq}$, is defined as 
+\[
+\mathbf{A} \otimes \mathbf{B} = \left[
+\begin{array}{ccc}
+A_{11}\mathbf{B}   & \cdots & A_{1n}\mathbf{B} \\
+\vdots & \ddots & \vdots \\
+A_{m1}\mathbf{B} & \cdots &   A_{mn}\mathbf{B}
+\end{array}
+\right].
+\]
+We let $\mathbf{X} \odot \mathbf{Y}$ denotes the \textit{Khatri-Rao product}, $\mathbf{A} \in \mathbb{R}^{I \times K}, \mathbf{B} \in \mathbb{R}^{J \times K}$, i.e. the "matching column-wise" Kronecker product. The resulting matrix of size $(IJ) \times K$ is given by: 
+\begin{equation}\label{khatri-rao}
+\mathbf{A} \odot \mathbf{B} = [\mathbf{A}_{(1,.)} \otimes \mathbf{B}_{(1,.)}, \dots, \mathbf{A}_{(K, .)} \otimes \mathbf{B}_{(K,.)}].
+\end{equation}

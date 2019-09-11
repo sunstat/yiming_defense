@@ -1,0 +1,167 @@
+\section{Probabilistic Analysis of Core Sketch Error}
+This section contains the most technical part of our proof.
+We provide a probabilistic error bound for the difference between the
+two pass core approximation $\T{W}_2$
+from Algorithm \ref{alg:two_pass_low_rank_appro}
+and the one pass core approximation $\T{W}_1$
+from Algorithm \ref{alg:one_pass_low_rank_appro}.
+% We first prove that this error
+% will show how to decompose this error first, and
+% then take the expectation to obtain the probabilistic error bound.
+
+Introduce for each $n\in[N]$ the orthonormal matrix $\M{Q}_n^\bot$ that forms
+a basis for the subspace orthogonal to $\M{Q}_n$, so that
+$\M{Q}_n^\bot (\M{Q}_n^\bot)^\top = \M{I} - \M{Q}_n\M{Q}_n^\top$.
+Next, define
+\begin{equation}
+\label{eq: def-proj-Q}
+\begin{aligned}
+\M{\Phi}_n^Q = \M{\Phi}^\top_n \M{Q}_n  ,~~~~\M{\Phi}_n^{Q^\bot} = \M{\Phi}^\top_n \M{Q}_n^\bot.
+\end{aligned}
+\end{equation}
+Recall that the DRMs $\M{\Phi}_n$ are i.i.d. Gaussian. Hence conditional on $\M{Q}_n$,
+$\M{\Phi}_n^Q$ and $\M{\Phi}_n^{Q^\bot}$ are independent.
+
+\subsection{Decomposition of Core Approximation Error}
+In this section, we characterize the
+difference between the one and two pass core approximations
+$\T{W}_1-\T{W}_2 = \T{W}_1 - \T{X}\times_1 \M{Q}_1^\top \dots \times_N \M{Q}_N^\top$.
+\begin{lem}
+\label{lemma:core_error_decomposition}
+Suppose that $\M{\Phi}_n$ has full column rank for each $n \in [N]$.
+Then
+\begin{equation}
+\T{W}_1-\T{W}_2 = \T{W}_1 - \T{X}\times_1 \M{Q}_1^\top \dots \times_N \M{Q}_N^\top =
+\sum_{(i_1,\dots, i_N) \in \{0,1\}^N, \sum_{j=1}^N i_j \geq 1} \T{Y}_{i_1\dots i_N}, \nonumber
+\end{equation}
+where
+\begin{equation}
+\label{eq:def_each_part}
+\begin{aligned}
+\T{Y}_{i_1\dots i_N} &= \T{X}\times_1 \left(\mathbf{1}_{i_1=0}\M{Q}_1^\top + \mathbf{1}_{i_1=1}(\M{\Phi}_1^{Q_1})^\dag  \M{\Phi}_1^{Q_1^\bot}(\M{Q}_1^\bot)^\top \right)\\
+&\times_2 \cdots \times_N \left(\mathbf{1}_{i_N=0}\M{Q}_N^\top + \mathbf{1}_{i_1=1}(\M{\Phi}_N^{Q_N})^\dag  \M{\Phi}_N^{Q_N^\bot}(\M{Q}_N^\bot)^\top \right).
+\end{aligned}
+\end{equation}
+\end{lem}
+\begin{proof}
+Let $\T{H}$ be the core sketch from \ref{alg:tensor_sketch}.
+Write %the one pass core approximation
+$\T{W}_1$ as
+\begin{equation}
+\begin{aligned}
+\T{W}_1 &= \T{H}\times_1 (\M{\Phi}_1^\top \M{Q}_1)^\dag \times_2 \cdots \times_N (\M{\Phi}^\top_N \M{Q}_N)^\dag \\
+&= (\T{X} -  \hat{\T{X}}_2)\times_1 \M{\Phi}^\top_1 \times_2 \cdots \times_N \M{\Phi}^\top_N  \times_1 (\M{\Phi}^\top_1 \M{Q}_1)^\dag \times_2 \cdots \times_N (\M{\Phi}^\top_N \M{Q}_N)^\dag
+\\
+&+ \hat{\T{X}}_2\times_1 \M{\Phi}^\top_1 \times_2 \cdots \times_N \M{\Phi}^\top_N \times_1 (\M{\Phi}^\top_1 \M{Q}_1)^\dag \times_2 \cdots \times_N (\M{\Phi}^\top_N \M{Q}_N)^\dag.\nonumber
+\end{aligned}
+\end{equation}
+Using the fact that $(\M{\Phi}^\top_n \M{Q}_n)^\dag (\M{\Phi}^\top_n \M{Q}_n) =\M{I}$, we can simplify the second term as
+\begin{equation}
+\begin{aligned}
+&\tilde{\T{X}}\times_1 \M{\Phi}^\top_1 \times_2 \cdots \times_N \M{\Phi}^\top_N \times_1 (\M{\Phi}^\top_1 \M{Q}_1)^\dag \times_2 \cdots \times_N (\M{\Phi}^\top_N \M{Q}_N)^\dag   \\
+& = \T{X}\times_1 (\M{\Phi}^\top_1 \M{Q}_1)^\dag \M{\Phi}^\top_1\M{Q}_1\M{Q}_1^\top \times_2 \cdots \times_N (\M{\Phi}_N^\top \M{Q}_N)^\dag \M{\Phi}_N^\top\M{Q}_N\M{Q}_N^\top\\
+& = \T{X}\times_1 \M{Q}_1^\top \times_2 \cdots \times_N \M{Q}_N^\top, \nonumber
+\end{aligned}
+\end{equation}
+which is exactly the two pass core approximation $\T{W}_2$.
+Therefore
+\begin{equation}
+\begin{aligned}
+&\T{W}_1 -\T{W}_2= (\T{X} -  \tilde{\T{X}})\times_1 \M{\Phi}^\top_1 \times_2 \cdots \times_N \M{\Phi}^\top_N  \times_1 (\M{\Phi}^\top_1 \M{Q}_1)^\dag \times_2 \cdots \times_N (\M{\Phi}^\top_N \M{Q}_N)^\dag. \nonumber
+\end{aligned}
+\end{equation}
+We continue to simplify this difference:
+\begin{equation}
+\begin{aligned}
+(\T{X} -  \tilde{\T{X}})&\times_1 \M{\Phi}^\top_1 \times_2 \cdots \times_N \M{\Phi}^\top_N  \times_1 (\M{\Phi}^\top_1 \M{Q}_1)^\dag \times_2\cdots \times_N (\M{\Phi}^\top_N \M{Q}_N)^\dag \label{eq:core_err_decom} \\
+& =(\T{X} -  \tilde{\T{X}})\times_1 (\M{\Phi}^\top_1\M{Q}_1)^\dag \M{\Phi}^\top_1 \times_2\cdots \times_N (\M{\Phi}^\top_N\M{Q}_N)^\dag \M{\Phi}_N^\top \\
+& =  (\T{X} -  \tilde{\T{X}}) \times_1 (\M{\Phi}^\top_1\M{Q}_1)^\dag \M{\Phi}^\top_1(\M{Q}_1\M{Q}_1^\top + \M{Q}_1^\bot (\M{Q}_1^\bot)^\top)\dots  \\
+& \times_N (\M{\Phi}^\top_N\M{Q}_N)^\dag \M{\Phi}^\top_N(\M{Q}_N\M{Q}_N^\top + \M{Q}_N^\bot (\M{Q}_N^\bot)^\top)\\
+& = (\T{X} -  \tilde{\T{X}}) \times_1 (\M{Q}_1^\top + (\M{\Phi}_1^Q)^\dag  \M{\Phi}_1^{Q^\bot}(\M{Q}_1^\bot)^\top)\times_2\dots \\
+ &\times_N (\M{Q}_N^\top + (\M{\Phi}_N^{Q_N})^\dag  \M{\Phi}_N^{Q_N^\bot}(\M{Q}_N^\bot)^\top).
+\end{aligned}
+\end{equation}
+Many terms in this sum are zero. We use the following two facts:
+\begin{enumerate}
+\item $(\T{X} - \tilde{\T{X}})\times_1 \M{Q}_1^\top\dots \times_N \M{Q}_N^\top = 0$.
+\item For each $n \in [N]$, $\tilde{\T{X}}\times_n (\M{\Phi}_n^{Q_n})^\dag  \M{\Phi}_n^{Q_n^\bot}(\M{Q}_n^\bot)^\top =  0$.
+\end{enumerate}
+Here $0$ means a tensor with all zero elements.
+These facts can be obtained from the exchange rule of the mode product and the orthogonality between $\M{Q}_n^\bot$ and $\M{Q}_n$.
+ %$\M{Q}_n^\top (\M{I} - \M{Q}_n \M{Q}_n^\top) = 0$; $(\M{Q}_n^\bot)^\top \M{Q}_n = 0$.
+Using these two facts, we find that only the terms $\T{Y}_{i_1\dots i_N}$ (defined in \eqref{eq:def_each_part})
+remain in the expression.
+Therefore, to complete the proof, we write \eqref{eq:core_err_decom} as
+\begin{equation}
+\sum_{(i_1,\dots, i_N) \in \{0,1\}^N, \sum{n=1}^N i_n\neq 0} \T{Y}_{i_1\dots i_N}.\nonumber
+\end{equation}
+\end{proof}
+
+\subsection{Probabilistic Core Error Bound}
+In this section, we derive a probabilistic error bound
+based on the core error decomposition from  Lemma \ref{lemma:core_error_decomposition}.
+\begin{lem}
+\label{lemma:err_core_sketch}
+Sketch the tensor $\T{X}$ using a Tucker sketch with parameters $\V{k}$ and $\V{s} > 2 \V{k}$
+with i.i.d. Gaussian $\mathcal N(0,1)$ DRMs.
+Define $\Delta = \max_{n=1}^N \frac{k_n}{s_n-k_n-1}$.
+Then for any natural numbers $1 \le \V{\rho} < \V{k}-1$,
+\begin{equation}
+\mathbb{E} \|\T{W}_1 - \T{X}\times_1 \M{Q}_1^\top \dots \times_N \M{Q}_N^\top\|_F^2 \le \Delta \left[ \sum_{n=1}^N \left(1+\frac{\rho_n}{k_n-\rho_n-1}\right)(\tau^{(n)}_{\rho_n})^2\right]. \nonumber
+\end{equation}
+\end{lem}
+\begin{proof}
+It suffices to show
+\begin{equation}\label{eq:factor-matrix-error-bounds-core-error}
+\mathbb{E}\left[ \|\T{W}_1 - \T{X}\times_1 \M{Q}_1^\top \dots \times_N \M{Q}_N^\top\|_F^2 \mid \M{\Omega}_1, \cdots, \M{\Omega}_N \right] \le \Delta  \|\T{X} - \hat{\T{X}}_2\|_F^2.
+\end{equation}
+Then take the expectation with respect to $\M{\Omega}_1, \cdots,  \M{\Omega}_N$
+and apply results in \ref{thm:low_rank_err_two_pass} to bound $\|\T{X} - \hat{\T{X}}_2\|_F^2$ to finish the proof.
+To show \ref{eq:factor-matrix-error-bounds-core-error},
+we will use the fact that the core DRMs $\{\M{\Omega_n}\}_{n \in [N]}$
+are independent of the factor matrix DRMs $\{\M{\Phi_n}\}_{n \in [N]}$,
+and that the randomness in
+each factor matrix approximation $\M{Q}_n$
+comes solely from $\M{\Omega}_n$.
+% each factor matrix approximation $\M{Q}_n$
+% comes solely from the factor matrix DRM $\M{\Omega}_n$.
+
+For $i\in \{0,1\}^N$, define $\T{B}_{i_1\dots i_N} =$
+\[
+\T{X}\times_1 (\mathbf{1}_{i_1=0}\M{Q}_1\M{Q}_1^\top + \mathbf{1}_{i_1=1}\M{Q}_1^\bot(\M{Q}_1^\bot)^\top)\cdots\times_N(\mathbf{1}_{i_N=0}\M{Q}_N\M{Q}_N^\top + \mathbf{1}_{i_N=1}\M{Q}_N^\bot(\M{Q}_N^\bot)^\top).
+\]
+\ref{lemma:core_error_decomposition} decomposes the core error as the sum of
+$\T{Y}_{i_1\cdots i_n}$ where $\sum_{n=1}^N i_n \geq 1$.
+Applying \ref{lemma:expectation_inverse_gaussian} and using 
+the orthogonal invariance of the Frobenius norm,  we observe
+\begin{equation}
+\mathbb{E} \left[ \|\T{Y}_{i_1\dots i_N}\|_F^2 \mid \M{\Omega}_1 \cdots \M{\Omega}_N \right] =\left(\prod_{n=1}^N \Delta_n^{i_n}\right)
+\|\T{B}_{i_1\dots i_N}\|_F^2 \le \Delta \|\T{B}_{i_1\dots i_N}\|_F^2\nonumber
+\end{equation}
+when $\sum_{n=1}^N i_n \geq 1$,
+where $\Delta_n = \frac{k_n}{s_n-k_n-1}<1$ and $\Delta = \max_{n=1}^N \Delta_n$.
+
+Suppose $\mathbf{q}_1, \mathbf{q}_2 \in \{0,1\}^N$ are  index (binary) vectors of length $N$.
+For different indices $\mathbf{q}_1$ and $\mathbf{q}_2$, there exists some $1\le r\le N$
+such that their $r$-th element is different.
+Without loss of generality, assume $\mathbf{q}_1(r) = 0$ and $\mathbf{q}_2(r)=1$ to see
+\begin{equation}\label{eq:inner_prod2}
+\langle \T{B}_{q_1}, \T{B}_{q_2}\rangle = \langle \dots \M{Q}_r^\top \M{Q}_r^\bot \dots\rangle  = 0.
+\end{equation}
+Similarly we can show that the inner product between $\T{Y}_{q_1}$ and $\T{Y}_{q_2}$ is zero with different $\mathbf{q}_1, \mathbf{q}_2$.  Noticing that  $\T{B}_{0,\ldots, 0} = \hat{\T{X}}_2$, we have
+\begin{align*}
+\|\T{X} - \hat{\T{X}}_2\|_F^2
+&= \left\|\sum_{(i_1,\dots, i_N) \in \{0,1\}^N, \sum_{n=1}^N i_n \geq 1}  \T{B}_{i_1\dots i_N}\right \|_F^2
+&= \sum_{\substack{(i_1,\dots, i_N) \in \{0,1\}^N, \\ \sum_{n=1}^N i_n \geq 1}} \|\T{B}_{i_1\dots i_N}\|_F^2.
+\end{align*}
+Putting all these together and using the Pythagorean theorem,
+to show \ref{eq:factor-matrix-error-bounds-core-error}:
+\begin{equation}
+\begin{aligned}
+&\mathbb{E}\left[ \|\T{W} - \T{X}\times_1 \M{Q}_1^\top \dots \times_N \M{Q}_N^\top\|_F^2 \mid \M{\Omega}_1, \cdots, \M{\Omega}_N \right] \\
+& = \sum_{(i_1,\dots, i_N) \in \{0,1\}^N, \sum_{n=1}^N i_n \geq 1} \mathbb{E} \left[\|\T{Y}_{i_1\dots i_N}\|_F^2 \mid \M{\Omega_1}, \dots, \M{\Omega}_N\right]\\
+&\le \Delta \left(\sum_{(i_1,\dots, i_N) \in \{0,1\}^N, \sum_{n=1}^N i_n \geq 1} \|\T{B}_{i_1\dots i_N}\|_F^2 \right)
+= \Delta \|\T{X} - \hat{\T{X}}_2\|_F^2. \nonumber
+\end{aligned}
+\end{equation}
+\end{proof}
