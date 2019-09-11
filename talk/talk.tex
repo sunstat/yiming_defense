@@ -648,9 +648,9 @@ Suppose we have a p-variate time series $\{\mathcal{X}_t\}$ which reveal its col
 
 \begin{frame}{Sketching $\mathcal{X}$}
 Using sketching algorithm \citeb{tropp2017practical} to get an approximation of $\mathcal{X}$ : $\hat{\mathcal{X}}$. 
-$\hat{d}_j = \hat{\mathcal{X}}^\top e_j$.  Simple observation: $\|e_j\| = 1$, which does averaging will not make error bound worse. 
+$\hat{d}_j = \hat{\mathcal{X}}^\top e_j$.  Simple observation: $\|e_j\| = 1$, which does averaging and averaging will not make error bound worse. 
 \[
-\|\hat{d}_j - d\| \le \|\hat{\mathcal{X}} - \mathcal{X}\|. 
+\|\hat{d}_j - d_j\| \le \|\hat{\mathcal{X}} - \mathcal{X}\|. 
 \]
 \end{frame}
 
