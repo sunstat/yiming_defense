@@ -875,6 +875,28 @@ Fix $\mathbf{x} \in \reals^{\prod_{n=1}^N d_n}$. Generate random matrix
 \end{frame}
 
 
+\begin{frame}{Property of tensor random projection}
+\red{Preserve Column Space}:
+Fix $\mathbf{x} \in \reals^{\prod_{n=1}^N d_n}$. Generate random matrix 
+\[
+\M{\Omega}= (\mathbf{A}_1 \odot \cdots \odot \mathbf{A}_N)
+\]
+\begin{thm}
+	Let $\M{X}_n\in \mathbb{R}^{m_i\times d_n}$ be a series of matrix and $\M{\Omega}_n\in \mathbb{R}^{d_n\times (k+p_n)}$ with eact element sampled from standard Gaussian distribution, let  $\tau_n(k) = \sum_{j>k} \sigma^2_j(\M(x))$ be the tail energy for $\M{X}_i$. Let $\M{Q}\in \mathbb{R}^{d\times k}$ be the orthonormal matrix from QR factorization: 
+	\[
+	\M{Q}, - = \rm{QR} [(\M{X}_1\otimes \cdots \otimes \M{X}_N)(\M{\Omega}_1\odot \cdots \odot\M{\Omega}_N)]
+	\]
+	we have
+	\begin{equation}
+	\begin{aligned}
+	&\| (\M{X}_1\otimes \cdots \otimes \M{X}_N) - \M{QQ}^\top(\M{X}_1\otimes \cdots \otimes \M{X}_N)\|^2_F \\
+	& \le \prod_{i=1}^N  \left(1+\frac{k}{p_n-1}\right)\tau^2_n(k). 
+	\end{aligned}
+	\end{equation}
+\end{thm}
+\end{frame}
+
+
 
 \section{A Small Example to Connect Two Researches}
 
