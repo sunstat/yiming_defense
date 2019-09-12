@@ -67,7 +67,7 @@ Given a weakly stationary $p$-variate time series $X$,  the spectral density at 
 \[
 f(\omega) = \sum_{\ell = -\infty} ^\infty \Gamma(\ell) e^{-i\omega \ell} 
 \]
-where $\Gamma(\ell) = \E X_0X_{-\ell}^\top$.   $X_t$ is independent with $X_s$, $t\neq s$ iff $f_{rs}(\omega) = 0$ for any $\omega$. 
+where $\Gamma(\ell) = \E X_0X_{-\ell}^\top$.   $X_r$ is independent with $X_s$, $t\neq s$ iff $f_{rs}(\omega) = 0$ for any $\omega$. 
 \end{frame}
 
 \begin{frame}{Thresholding estimator under weak sparsity- An example}
@@ -136,7 +136,7 @@ Simply estimate $\sigma_j$, say with sample standard deviation:
 and replace $B$: $\lambda_j \propto \hat{\sigma}_j \sqrt{\frac{\log p}{n}}$.  Now we can relax constraint in upper bound for $\sigma_j$ and upper bound will not appear in rate of convergence. 
 \end{frame}
 
-\begin{frame}{An Similar Example: Covariance Matrix}
+\begin{frame}{A Similar Example: Covariance Matrix}
 \[
 y_i \overset{i.i.d}{\sim} \mathcal{N}(0, \Sigma_{p\times p})
 \]
@@ -154,12 +154,12 @@ Estimate the expectation of a vector of length $p^2$:
 \item $\mathbb{P}(|\hat{\Sigma}_{rs} - \Sigma_{rs}|\ge \eta) \le c_1\exp(-c_2n\eta^2)$
 \item $\Var((y_1y_1^\top)_{rs}) = \Sigma_{rr}\Sigma_{ss}+\Sigma^2_{rs} \le 2\max_{r=1}^p\Sigma^2_{rr}$
 \end{itemize}
-Thus \cite{bickel2008covariance} presents an assumption $\max_{r=1}^p\Sigma_{rr}$ is bounded. 
+Thus \citeb{bickel2008covariance} assumes $\max_{r=1}^p\Sigma_{rr}$ is bounded. 
 \end{frame}
 
 \begin{frame}{A similar example: covariance matrix}
-\red{hard thresholding:} $\lambda_{rs} \propto (\max_{r=1}^p \Sigma_{rr}) \sqrt{\frac{\log p}{n}}$ \\ 
-\red{adaptive thresholding:} $\lambda_{rs} \propto \sqrt{\widehat{\Var(y_1y_1^\top)_{rs}}}\sqrt{\frac{\log p}{n}}$
+\red{Hard thresholding:} $\lambda_{rs} \propto (\max_{r=1}^p \Sigma_{rr}) \sqrt{\frac{\log p}{n}}$ \\ 
+\red{Adaptive thresholding:} $\lambda_{rs} \propto \sqrt{\widehat{\Var(y_1y_1^\top)_{rs}}}\sqrt{\frac{\log p}{n}}$
 where 
 \[
 \widehat{\Var(y_1y_1^\top)_{rs}} = \frac{1}{n-1}\sum_{i=1}^n \left[(y_iy_i^\top)_{rs} -  \frac{1}{n} \sum_{i=1}^n (y_iy_i^\top)_{rs} \right]^2
@@ -223,7 +223,7 @@ $\omega_k = 2\pi k/n, ~ k\in F_n$,  the set of Fourier frequencies. To be precis
 
 
 \begin{frame}{Smoothing periodogram}
-\red{periodogram}
+\red{Periodogram}
 \[
 I(\omega_j) = d_n(\omega_j) d^\dag_n(\omega_j)
 \]
@@ -268,33 +268,13 @@ Let $d_{\infty}(\omega_j)$ be r.v. whose distribution is same with limiting dist
 
 
 
-\begin{frame}{Hard thresholding for spectral density}
-\begin{equation}
-T_{\lambda}(\hat{f}_{rs}(\omega_j))= \begin{cases}
-\hat{f}_{rs}(\omega_j) & \mbox{ if } |\hat{f}_{rs}(\omega_j)|\ge \lambda \\
-0 & \mbox{ if } |\hat{f}_{rs}(\omega_j)| < \lambda,
-\end{cases}
-\end{equation}
-As discussed before, $\lambda$ should be proportional to an upper bound $\sup_{\omega}\max_{rr}$, \cite{sun2018large} choose a loose bound $\mathcal{M}(f_X) = \sup_{\omega} \|f(\omega)\|$. 
-\end{frame}
-
-
-\begin{frame}{Technical Challenge}
-\red{Quantify the error using i.i.d. approximation}  
-\bit
-\item Gap between finite sample to limiting distribution
-\item Dependency in finite sample data 
-\eit
-\end{frame}
-
-
 \begin{frame}{Theory for hard thresholding}
 \red{Quantify the error using i.i.d. approximation}  
 \bit
 \item Gap between finite sample to limiting distribution
 \item Dependency in finite sample data 
 \eit
-\red{Bias in Expectation:} $2\left[ \frac{m+1/2\pi}{n}\Omega_n(f)+\frac{1}{2\pi}L_n(f)\right]$
+\red{Bias in expectation:} $2\left[ \frac{m+1/2\pi}{n}\Omega_n(f)+\frac{1}{2\pi}L_n(f)\right]$
 \end{frame}
 
 \newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 
