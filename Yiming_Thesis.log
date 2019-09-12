@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  11 SEP 2019 04:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  12 SEP 2019 13:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1187,7 +1187,7 @@ arby fre-quen-cies to achieve
  []
 
 [81] [82] [83] [84]) (./adaptive/model_method.tex [85] [86] [87])
-(./adaptive/main_theory.tex [88] [89] [90] [91] [92] [93] [94] [95]
+(./adaptive/main_theory.tex [88] [89] [90] [91] [92] [93] [94]
 Overfull \hbox (7.23578pt too wide) in paragraph at lines 212--216
 \OT1/ptm/m/it/12 where $\OML/cmm/m/it/12 B[] \U/matha/m/n/12 ^^P []\OT1/cmr/m/n
 /12 
@@ -1198,25 +1198,23 @@ c[]\U/matha/m/n/12 p\OML/cmm/m/it/12 p\U/matha/m/n/12 q\OML/cmm/m/it/12 ; !\U/m
 atha/m/n/12 q$\OT1/ptm/m/it/12 ,
  []
 
-) (./adaptive/conclusion.tex) [96] (./adaptive/Appendix-proof-for-bias.tex
+[95]) (./adaptive/conclusion.tex) [96] (./adaptive/Appendix-proof-for-bias.tex
+Overfull \hbox (15.82747pt too wide) in paragraph at lines 35--37
+\OML/cmm/m/it/12 r; s$ \OT1/ptm/m/n/12 from no-ta-tion for sim-plic-ity) be the
+ vec-tor of length $\OML/cmm/m/it/12 m$\OT1/ptm/m/n/12 , com-posed by $[]\U/mat
+ha/m/n/12 p\OML/cmm/m/it/12 H\U/matha/m/n/12 p\OML/cmm/m/it/12 ![]\U/matha/m/n/
+12 q[]q\OML/cmm/m/it/12 ; k \U/matha/m/n/12 P
+ []
+
 [97
 
 ]
-Overfull \hbox (56.25722pt too wide) detected at line 71
+Overfull \hbox (42.11502pt too wide) detected at line 70
 [][]
  []
 
-[98]
-Overfull \hbox (91.80968pt too wide) in paragraph at lines 81--84
-\OML/cmm/m/it/12 f[]\U/matha/m/n/12 p\OML/cmm/m/it/12 ![]\U/matha/m/n/12 q$ \OT
-1/ptm/m/n/12 with-out loss of gen-er-al-ity. Now we bound last line in [], noti
-c-ing $\OT1/cmr/m/n/12 2\U/msb/m/n/12 E\U/matha/m/n/12 rx\OMS/cmsy/m/n/12 X[]\O
-ML/cmm/m/it/12 c[]; e[]\U/matha/m/n/12 yx\OMS/cmsy/m/n/12 X[]\OML/cmm/m/it/12 c
-[]; e[]\U/matha/m/n/12 ys ^^P
- []
-
-[99] [100]
-Overfull \hbox (34.28906pt too wide) in paragraph at lines 148--150
+[98] [99] [100]
+Overfull \hbox (34.28906pt too wide) in paragraph at lines 150--152
 \OT1/ptm/m/n/12 Combining these two and the fact that $\OML/cmm/m/it/12 ^^R[] \
 U/matha/m/n/12 ¥ \OML/cmm/m/it/12 f[]\U/matha/m/n/12 p\OML/cmm/m/it/12 ![]\U/ma
 tha/m/n/12 q\OML/cmm/m/it/12 f[]\U/matha/m/n/12 p\OML/cmm/m/it/12 ![]\U/matha/m
@@ -1243,7 +1241,12 @@ n/12 }[]$ \OT1/ptm/m/n/12 [Rencher and Schaalje,
  []
 
 ) (./adaptive/appendix-technical-lemmas-toeplitz.tex [103] [104])
-(./adaptive/appendix-counter-example.tex [105]) [106]
+(./adaptive/appendix-counter-example.tex
+
+LaTeX Warning: Reference `eq:variance_of_periodogram' on page 105 undefined on 
+input line 3.
+
+[105]) [106]
 Chapter 3.
 (./tensor/introduction.tex [107
 
@@ -2249,10 +2252,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 8498 strings out of 492649
- 140503 string characters out of 6129622
- 207290 words of memory out of 5000000
- 11902 multiletter control sequences out of 15000+600000
+ 8500 strings out of 492649
+ 140574 string characters out of 6129622
+ 207304 words of memory out of 5000000
+ 11904 multiletter control sequences out of 15000+600000
  59250 words of font info for 157 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,17n,43p,2426b,499s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2291,7 +2294,7 @@ s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/ur
 w/times/utmbi8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/u
 tmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb
 >
-Output written on Yiming_Thesis.pdf (211 pages, 5799909 bytes).
+Output written on Yiming_Thesis.pdf (211 pages, 5800141 bytes).
 PDF statistics:
  2027 PDF objects out of 2073 (max. 8388607)
  1360 compressed objects within 14 object streams

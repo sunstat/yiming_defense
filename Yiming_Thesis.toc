@@ -38,15 +38,15 @@
 \contentsline {subsection}{\numberline {2.2.1}Modified Periodogram and Its Smoothing Estimator}{85}
 \contentsline {subsection}{\numberline {2.2.2}Method: Adaptive Thresholding}{87}
 \contentsline {paragraph}{Estimation of Variance:}{87}
-\contentsline {paragraph}{Adaptive Estimator}{88}
+\contentsline {paragraph}{Adaptive Estimator}{87}
 \contentsline {section}{\numberline {2.3}Theoretical Properties}{89}
 \contentsline {subsection}{\numberline {2.3.1}Bounding the Bias}{89}
-\contentsline {paragraph}{Bias for Smoothing Modified Periodogram}{90}
+\contentsline {paragraph}{Bias for Smoothing Modified Periodogram}{89}
 \contentsline {paragraph}{Bias for Variance Estimation}{90}
 \contentsline {subsection}{\numberline {2.3.2}Deviation Bound}{91}
-\contentsline {subsection}{\numberline {2.3.3}Main Results}{95}
-\contentsline {subsection}{\numberline {2.3.4}Sparse Class}{95}
-\contentsline {subsection}{\numberline {2.3.5}Consistency Under Weak Sparsity}{96}
+\contentsline {subsection}{\numberline {2.3.3}Main Results}{94}
+\contentsline {subsection}{\numberline {2.3.4}Sparse Class}{94}
+\contentsline {subsection}{\numberline {2.3.5}Consistency Under Weak Sparsity}{95}
 \contentsline {section}{\numberline {2.A}Proof for Bias Bounding}{97}
 \contentsline {subsection}{\numberline {2.A.1}Proof for Lemma 2.3.2\hbox {}}{97}
 \contentsline {subsection}{\numberline {2.A.2}Proof for Lemma 2.3.3\hbox {}}{98}

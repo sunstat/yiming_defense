@@ -1,7 +1,7 @@
 \section{Proof for Bias Bounding}
 \subsection{Proof for Lemma \ref{lemma:bound_deviation}}
 \begin{proof}
-We will show proof for real part only and with same argument, we could get that of imaginary part. By triangular inequality, 
+We will show proof for real part only and with same argument, we can finish the proof for imaginary part. By triangular inequality, 
 \begin{equation}
 \label{eq:expectation_bias_decomposition}
 \begin{aligned}
@@ -32,8 +32,7 @@ Besides, Lemma A.4 in \cite{sun2018large} shows that the second term in \eqref{e
  
 \subsection{Proof for Lemma \ref{lemma:theta_bias}} 
 \begin{proof}
-We will only show that the proof for the $\hat{\theta}^{(r)}_{j,rs}$ and the same goes to
-$\hat{\theta}^{(i)}_{j,rs}$.
+We will only present the proof for building deviation bound for  $\hat{\theta}^{(r)}_{j,rs}$ and the same argument applies to achieve deviation bound for  $\hat{\theta}^{(i)}_{j,rs}$.
 For $j\in F_n$, let $y_j$(we omit $r,s$ from notation for simplicity) be the vector of length $m$, composed by  ${\bf Re}(H(\omega_k)_{rs}), k\in \mathcal{B}_j$. Then 
 \begin{equation}
 \begin{aligned}
@@ -64,9 +63,9 @@ As shown before, $2\var(\langle {\bf Re}(d_{\infty, j}), e_r\rangle) = f_{rr}(\o
 \label{eq:help_bound1}
 \begin{aligned}
 &|\var(\langle \mathcal{X}^\top c_q,e_r\rangle) -  \var(\langle {\bf Re}(d_{\infty, j}),e_r\rangle)| =\frac{1}{2} \left|e_r^\top \mathbb{E}[{\bf Re}(H(\omega_q))]e_r - e_r^\top {\bf Re}(f(\omega_j))e_r\right|\\
-& \le \frac{1}{2}|u^\top \mathbb{E}[{\bf Re}(H(\omega_q))]e_r - e_r^\top  \mathbb{E}[{\bf Re}(I_n(\omega_q))]e_r|+\frac{1}{2}|e_r^\top\mathbb{E}[{\bf Re}(I_n(\omega_q))]e_r-e_r^\top  {\bf Re}\mathbb{E}[(I_n(\omega_j))]e_r|\\
-&+ \frac{1}{2}|e_r^\top\mathbb{E}[I_n(\omega_j)]e_r - e_r^\top  f(\omega_j)e_r|\\
-&\le  \frac{\Omega_n(f_\mathcal{X})}{4n\pi}+\frac{\sqrt{2}}{4\pi}\frac{|j-k|\Omega_n(f_\mathcal{X})}{n}+ \frac{1}{4\pi}\left(\frac{\Omega_n(f_\mathcal{X})}{n} + L_n(f_\mathcal{X})\right)\\
+& \le \frac{1}{2}|u^\top \mathbb{E}[{\bf Re}(H(\omega_q))]e_r - e_r^\top  \mathbb{E}[{\bf Re}(I(\omega_q))]e_r|+\frac{1}{2}|e_r^\top\mathbb{E}[{\bf Re}(I(\omega_q))]e_r-e_r^\top  {\bf Re}\mathbb{E}[(I(\omega_j))]e_r|\\
+&+ \frac{1}{2}|e_r^\top\mathbb{E}[I(\omega_j)]e_r - e_r^\top  f(\omega_j)e_r|\\
+&\le  \frac{\Omega_n}{4n\pi}+\frac{\sqrt{2}}{4\pi}\frac{|j-k|\Omega_n}{n}+ \frac{1}{4\pi}\left(\frac{\Omega_n}{n} + L_n(f_\mathcal{X})\right)\\
 \end{aligned}
 \end{equation}
 where the first part of last line is from same technique used in lemma \ref{lemma:bound_deviation} and the second and third parts are from \cite{sun2018large}. 
@@ -79,8 +78,11 @@ Therefore,
 &\le 2f_{rr}(\omega_j) \delta_1+\delta_1^2
 \end{aligned}
 \end{equation}
-where $\delta_1 =  \frac{\Omega_n(f_\mathcal{X})}{2n\pi}+\frac{\sqrt{2}}{2\pi}\frac{m\Omega_n(f_\mathcal{X})}{n}+ \frac{1}{2\pi}\left(\frac{\Omega_n(f_\mathcal{X})}{n} + L_n(f_\mathcal{X})\right)$. Here we assume $f_{rr}(\omega_j)\geq f_{ss}(\omega_j)$ without loss of generality. 
-Now we bound last line in \eqref{eq: dif_liminting_var}, noticing $2\mathbb{E}[\langle \mathcal{X}^\top  c_{q}, e_r\rangle\langle \mathcal{X}^\top  c_{q}, e_s\rangle] = e_r^\top  f(\omega_q)e_s$, 
+where $\delta_1 =  \frac{\Omega_n}{2n\pi}+\frac{\sqrt{2}}{2\pi}\frac{m\Omega_n}{n}+ \frac{1}{2\pi}\left(\frac{\Omega_n}{n} + L_n\right)$. Here we assume $f_{rr}(\omega_j)\geq f_{ss}(\omega_j)$ without loss of generality. 
+Now we bound last line in \eqref{eq: dif_liminting_var}, noticing 
+\[
+2\mathbb{E}[\langle \mathcal{X}^\top  c_{q}, e_r\rangle\langle \mathcal{X}^\top  c_{q}, e_s\rangle] = e_r^\top  f(\omega_q)e_s
+\], 
 \begin{equation}
 \begin{aligned}
 &4|\mathbb{E}^2(\langle \mathcal{X}^\top  c_q,e_r\rangle \langle \mathcal{X}^\top  c_q,e_s\rangle) )-\mathbb{E}^2(\langle d^{r}_{\infty, j},e_r\rangle \langle d^{r}_{\infty, j},e_s\rangle) )|\\

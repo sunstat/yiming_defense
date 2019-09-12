@@ -25,14 +25,14 @@ For any $j\in F_n$, $1\le r, s\le p$,
 \end{equation}
 where $B_f = \frac{m}{n}\Omega_n + \frac{1}{2\pi}\left(\frac{\Omega_n}{n}+L_n\right) +\frac{\Omega_n}{2\pi n}$.
 \end{lem}
-The technique for proof starts with triangular inequality, 
+The technique for proof starts with the triangular inequality, 
 \begin{equation}
 \begin{aligned}
 &\left|\E[{\bf Re}(g_{rs}(\omega_j))] - {\bf Re}(f_{rs}(\omega_j))\right| \\
 &\le \left|\E[{\bf Re}(g_{rs}(\omega_j))] - \E[{\bf Re}(\hat{f}_{rs}(\omega_j))]\right|+\left|\E[{\bf Re}(\hat{f}_{rs}(\omega_j))] - {\bf Re}(f_{rs}(\omega_j))\right|, 
 \end{aligned}
 \end{equation}
-where the bound for the second part is already shown in \cite{sun2018large}, and the first part we handle properties of toeplitz matrices. We defer the detailed proof to Appendix. 
+where the bound for the second part is already shown in \cite{sun2018large}, and the first part of above inequality we can handle properties of toeplitz matrices. We defer the detailed proof to Appendix. 
 \paragraph{Bias for Variance Estimation}
 \begin{lem}
 \label{lemma:theta_bias}
@@ -46,8 +46,8 @@ and
 \begin{equation}
 \label{eq:def_delta12}
 \begin{aligned}
-&\delta_1 = \frac{\Omega_n(f_X)}{2n\pi}+\frac{\sqrt{2}}{2\pi}\frac{m\Omega_n(f_X)}{n}+ \frac{1}{2\pi}\left(\frac{\Omega_n(f_X)}{n} + L_n(f_X)\right) \\
-&\delta_2=\frac{\Omega_n(f_X)}{2n\pi}+ \frac{1}{2\pi}\left(\frac{\Omega_n(f_X)}{n} + L_n(f_X)\right).
+&\delta_1 = \frac{\Omega_n}{2n\pi}+\frac{\sqrt{2}}{2\pi}\frac{m\Omega_n}{n}+ \frac{1}{2\pi}\left(\frac{\Omega_n}{n} + L_n\right) \\
+&\delta_2=\frac{\Omega_n}{2n\pi}+ \frac{1}{2\pi}\left(\frac{\Omega_n}{n} + L_n\right).
 \end{aligned}
 \end{equation}
 \end{lem}
@@ -55,7 +55,7 @@ and
 Assuming $\Omega_n,  f_{rr}$ is bounded, then the bias in variance estimation has the same order of bias for estimator $g_{rs}(\omega_j)$: $\mathcal{O}(m/n)$. 
 \end{remark}
 The proof is deferred to Appendix. 
-Based on the bound for variance estimation, we here present another useful result. Since our intuition is that asymptotically modified periodograms are behaving like i.i.d. within $\mathcal{B}_j$. Thus,  
+Based on the bound for variance estimation, we here present another useful result. Since our intuition is that asymptotically modified periodograms are behaving like i.i.d. within $\mathcal{B}_j$, we expect that   
 \begin{equation}
 \begin{aligned}
 & \Var({\bf Re}(g_{rs}(\omega_j))) \approx \frac{1}{m} \theta^{(r)}_{j, rs}\\ 
@@ -83,7 +83,7 @@ main theory for consistency of our adaptive thresholding estimators.
 
 \begin{lem}
 \label{lemma: deviation_variance}
-There exit constants $c_1, c_2$ s.t.
+For any positive number $\eta>0$, there exit constants $c_1, c_2$ s.t.
 \begin{equation}
 \begin{aligned}
 & \mathbb{P}\left(\left|\hat{\theta}^{(r)}_{j, rs} - \theta^{(r)}_{j, rs}\right|\ge  
@@ -105,7 +105,7 @@ assuming $B_\delta\le 3$ and $B_\theta/\phi_0^2<1/4$, given $\eta\le 1$, there e
 \end{equation}
 \end{lem}
 \begin{remark}
-The conditions like $B_\delta\le 3$ and $B_\theta/\phi_0^2<1/4$ are only set for convenience of proof. In the later main results section, asymptotically, they both go to zero. 
+The conditions like $B_\delta\le 3$ and $B_\theta/\phi_0^2<1/4$ are set for convenience of proof. In the later main results section, asymptotically, they both go to zero. 
 \end{remark}
 
 \begin{proof}
@@ -184,11 +184,11 @@ ${\bf Re}(f_{rs}(\omega_j))$ as quadratic function of Gaussian random variables 
 
 \subsection{Main Results}
 \subsection{Sparse Class}
-In order to analyze the effectiveness of this estimator like consistency in $L_2$ norm, we require the following sparse class which is inspired by \cite{bickel2008covariance} and proposed by \cite{sun2018large} for spectral density: for frequency $\omega_j$, 
+In order to analyze the effectiveness of this estimator like consistency in $L_2$ norm, we require the following sparse class which is inspired by \cite{bickel2008covariance}: for frequency $\omega_j$, 
 \begin{equation}
 \mathcal{U}(q, c_0(p), \omega) = \left\{f(\omega): \sum_{s=1}^p |f_{rs}(\omega)|^q \le c_0(p) ~\text{for all}~ r\right \}. 
 \end{equation}
-\cite{sun2018large} show that a generalized thresholding estimator can achieve $L_2$ and Frobenius norm estimation consistency. For adaptive thresholding, we follow the analogous of \cite{cai2011adaptive}, defining the following sparse class:
+\cite{sun2018large} shows that a generalized thresholding estimator can achieve $L_2$ and Frobenius norm estimation consistency. For adaptive thresholding, we follow the analogy of \cite{cai2011adaptive}, defining the following sparse class:
 \begin{equation}
 \begin{aligned}
 \label{eq:sparse_class}
@@ -196,8 +196,8 @@ In order to analyze the effectiveness of this estimator like consistency in $L_2
 \end{aligned}
 \end{equation}
 There are detailed discussions by \cite{cai2011adaptive}
-on how $\mathcal{U}^a$ is compared to $\mathcal{U}$. Assuming $\max_{r=1}^n f_{rr}(\omega_j)\le M$, is bounded, then
-$\mathcal{U}(q, c_0(p), \omega) \subset \mathcal{U}^a(q, c_0(p), \omega) $. Although \cite{sun2018large} let the $\max_{r=1}^p f_{rr}(\omega_j)$ grow with dimension but the rate for growth must be controlled in order to let the thresholding value go to zero asymptotically. While in this paper,  the adaptive thresholding estimator does not put any constraint on the growth rate for this statistic, but instead, we need a lower bound for $\min_{r=1}^p f_{rr}(\omega_j)$ or control the decay rate to zero. But this lower bound only occurs in the bias term. 
+on how $\mathcal{U}^a$ is compared to $\mathcal{U}$. Assuming $\max_{r=1}^n f_{rr}(\omega_j)\le M$, is bounded, 
+$\mathcal{U}(q, c_0(p), \omega) \subset \mathcal{U}^a(q, c_0(p), \omega) $. Although \cite{sun2018large} lets the $\max_{r=1}^p f_{rr}(\omega_j)$ grow with dimension but the rate for growth must be controlled in order to make sure that the thresholding value go to zero asymptotically. While in this paper,  the adaptive thresholding estimator does not put any constraint on the growth rate for this statistic, but instead, we need a lower bound for $\min_{r=1}^p f_{rr}(\omega_j)$ or control the decay rate to zero. But this lower bound only occurs in the bias term. 
 
 \subsection{Consistency Under Weak Sparsity}
 
@@ -222,7 +222,7 @@ the estimation error of adaptive thresholding average modified periodogram satis
 \end{prop}
 
 \begin{remark}
-$B_f = \mathcal{O}(\frac{\Omega_n m}{n}/\phi_0)$, as shown in \cite{sun2018large}, in many linear processes, $\Omega_n$ is uniformly bounded. Also, if we set $m=\mathcal{O}(\sqrt{n})$, then $\log p/m \rightarrow 0$ if $p = \mathcal{O}(n^\delta)$ for any positive delta which is the same as modern high dimensional setting. Then it is not hard to find a sequence of thresholding value $\lambda$ go to zero, as $n\rightarrow \infty$ and $p\rightarrow \infty$, 
+Although $B_f$ seems to have a complicated form,  in many linear processes,  as shown in \cite{sun2018large},  $\Omega_n$ is uniformly bounded. Also, if we set $m=\mathcal{O}(\sqrt{n})$, then $\log p/m \rightarrow 0$ if $p = \mathcal{O}(n^\delta)$ for any positive delta which is the same as modern high dimensional setting. Then it is not hard to find a sequence of thresholding value $\lambda$ go to zero, as $n\rightarrow \infty$ and $p\rightarrow \infty$, 
 \end{remark}
 
 

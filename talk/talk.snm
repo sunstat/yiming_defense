@@ -1,10 +1,18 @@
-\beamer@slide {eq:low_dim_mapping}{23}
-\beamer@slide {lem:gauss-rp-vector}{24}
-\beamer@slide {eq:gauss_random_projection}{24}
-\beamer@slide {lemma:gauss-rp-matrix}{24}
-\beamer@slide {eq:gauss_col_preservation}{24}
-\beamer@slide {eq:TRP}{27}
-\beamer@slide {khatri-rao}{27}
-\beamer@slide {alg:two_pass_low_rank_appro}{28}
-\beamer@slide {lemma: equivalance_one_pass}{31}
-\beamer@slide {thm:low_rank_err_two_pass}{33}
+\beamer@slide {eq:cos_sin_coef}{16}
+\beamer@slide {assumption:finite_auto}{17}
+\beamer@slide {lemma:asy_dis_dft}{17}
+\beamer@slide {eq:limiting_dist}{17}
+\beamer@slide {eq:threshold_value}{23}
+\beamer@slide {eq:variance_of_real_periodogram}{24}
+\beamer@slide {eq:variance_estimator}{27}
+\beamer@slide {eq:threshold_value}{28}
+\beamer@slide {eq:low_dim_mapping}{35}
+\beamer@slide {lem:gauss-rp-vector}{36}
+\beamer@slide {eq:gauss_random_projection}{36}
+\beamer@slide {lemma:gauss-rp-matrix}{36}
+\beamer@slide {eq:gauss_col_preservation}{36}
+\beamer@slide {eq:TRP}{39}
+\beamer@slide {khatri-rao}{39}
+\beamer@slide {alg:two_pass_low_rank_appro}{40}
+\beamer@slide {lemma: equivalance_one_pass}{43}
+\beamer@slide {thm:low_rank_err_two_pass}{45}

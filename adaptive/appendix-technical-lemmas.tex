@@ -22,7 +22,7 @@ Let $X\in \mathbb{R}^p$, $X\sim \mathcal{N}(0, \Sigma)$ and $\sigma_{rs} = \Sigm
 
 \begin{lem}
 \label{lemma: variant_hanson_wright}
-suppose $y\in \mathbb{R}^p$ with $y\sim \mathcal{N}(0, \Sigma)$, given a symmetric real matrix $A$, there exits a positive constant $c$, s.t. 
+Let y be a Gaussian random vector,  $y\sim \mathcal{N}(0, \Sigma)$, given a symmetric real matrix $A$, there exit positive constants $c_1, c_2$, s.t. 
 \begin{equation}
 \mathbb{P}\left(\left|y^\top A y - \mathbb{E} y^\top A y\right|\ge \frac{1}{\sqrt{2}}\sqrt{\var(y^\top A y)}\eta \right)\le \exp(-c\eta^2).
 \end{equation}
@@ -34,12 +34,12 @@ Since $\var(y^\top A y) = \var(z^\top\Sigma^{1/2}A\Sigma^{1/2}z) = 2\|\Sigma^{1/
 &= \mathbb{P}\left(\left|z^\top \Sigma^{1/2}A\Sigma^{1/2} z - \mathbb{E} z^\top \Sigma^{1/2}A\Sigma^{1/2} z\right|\ge \|\Sigma^{1/2}A\Sigma^{1/2}\|_F \eta \right). 
 \end{aligned}
 \end{equation}
-Then applying Hanson Wright inequality \citep{rudelson2013hanson} into above tail probability, there exits a positive contant $c$,
+Then applying Hanson Wright inequality \citep{rudelson2013hanson} into above tail probability, there exit positive contants $c_1, c_2$,
 \begin{equation}
 \begin{aligned}
 &\mathbb{P}\left(\left|y^\top A y - \mathbb{E} y^\top A y\right|\ge \frac{1}{\sqrt{2}}\sqrt{\var(y^\top A y)}\eta \right)\\
-& \le \exp\left(-c \min \left(\eta^2, \eta \frac{\|\Sigma^{1/2}A\Sigma^{1/2}\|_F}{\|\Sigma^{1/2}A\Sigma^{1/2}\|}\right)\right)\\
-& = \exp(-c\min(\eta^2, \eta)).
+& \le c_1\exp\left(-c_2 \min \left(\eta^2, \eta \frac{\|\Sigma^{1/2}A\Sigma^{1/2}\|_F}{\|\Sigma^{1/2}A\Sigma^{1/2}\|}\right)\right)\\
+& = c_1\exp(-c_2\min(\eta^2, \eta)).
 \end{aligned}
 \end{equation}
 Here, the last equality comes from the fact that $\|\cdot\|_F\ge \|\cdot\|$. 

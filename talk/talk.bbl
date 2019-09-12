@@ -39,6 +39,12 @@ Sun, Y., Guo, Y., Tropp, J.~A., \& Udell, M. (2018).
 \newblock Tensor random projection for low memory dimension reduction.
 \newblock In {\em NeurIPS Workshop on Relational Representation Learning}.
 
+\bibitem[\protect\citeauthoryear{Sun, Li, Kuceyeski \& Basu}{Sun
+  et~al.}{2018}]{sun2018large}
+Sun, Y., Li, Y., Kuceyeski, A., \& Basu, S. (2018).
+\newblock Large spectral density matrix estimation by thresholding.
+\newblock {\em arXiv preprint arXiv:1812.00532}.
+
 \bibitem[\protect\citeauthoryear{Tropp, Yurtsever, Udell \& Cevher}{Tropp
   et~al.}{2017}]{tropp2017practical}
 Tropp, J.~A., Yurtsever, A., Udell, M., \& Cevher, V. (2017).

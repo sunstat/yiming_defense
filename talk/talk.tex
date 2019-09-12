@@ -110,7 +110,7 @@ and assume $\lambda\rightarrow 0$.
 \end{frame}
 
 \begin{frame}{Two key ingredients for thresholding}
-Two key ingredients under above example assuming weak sparsity. \cite{cai2011adaptive}
+Two key ingredients under above example assuming weak sparsity. \citeb{cai2011adaptive}
 \begin{itemize}
 \item An element-wise concentration inequality : 
 \[
@@ -140,7 +140,7 @@ and replace $B$: $\lambda_j \propto \hat{\sigma}_j \sqrt{\frac{\log p}{n}}$.  No
 \[
 y_i \overset{i.i.d}{\sim} \mathcal{N}(0, \Sigma_{p\times p})
 \]
-{\color{red} Goal:} Estimate $\Sigma$ assuming weak sparsity, $\|\Sigma\|_{1}\le c_0(p)$ .  \cite{bickel2008covariance}
+{\color{red} Goal:} Estimate $\Sigma$ assuming weak sparsity, $\|\Sigma\|_{1}\le c_0(p)$ .  \citeb{bickel2008covariance}
 \end{frame}
 
 
@@ -167,7 +167,250 @@ where
 \end{frame}
 
 
-'
+\begin{frame}{Discrete Fourier coefficient}
+Suppose $\mathcal{\mathcal{X}}_{n\times p} = [X_1:\ldots:X_n]^\top$ is a data matrix from, discrete Fourier coefficient is defined as 
+$d(\omega) = \mathcal{X}^\top(C(\omega)-iS(\omega))$ , where 
+\begin{equation}
+\label{eq:cos_sin_coef}
+\begin{aligned}
+C(\omega) = \frac{1}{\sqrt{n}} (1, \cos \omega, \dots, \cos (n-1)\omega)^\top,\\
+S(\omega) = \frac{1}{\sqrt{n}} (1, \sin \omega, \dots, \sin (n-1)\omega)^\top.
+\end{aligned}
+\end{equation}
+$\omega_k = 2\pi k/n, ~ k\in F_n$,  the set of Fourier frequencies. To be precise, $F_n$ denotes the set  $\left\{-[\frac{n-1}{2}], \dots, [\frac{n}{2}]\right\}$ where $[x]$ is the integer part of $x$. $F_n$ contains exactly the same frequencies used to calculate discrete Fourier transformation. 
+\end{frame}
+
+
+
+
+
+\begin{frame}{Asymptotic distribution of discrete Fourier coefficient}
+\begin{assumption}\label{assumption:finite_auto}
+	$\sum_{\ell=-\infty}^\infty \|\Gamma(\ell)\|<\infty$. 
+\end{assumption}
+
+\begin{lem}
+	\label{lemma:asy_dis_dft}
+	Suppose $\mathcal{\mathcal{X}}_{n\times p} = [X_1:\ldots:X_n]^\top$ is a data matrix from a strongly stationary Gaussian time series $X_t$, and assumption \ref{assumption:finite_auto} is satisfied, we have for all $j\in F_n$ with $\omega_j \neq 0$ or $\pi$, 
+	\small 
+	\begin{equation}
+	\label{eq:limiting_dist}
+	\text{vec}(d_n(\omega_j)) = 
+	\begin{bmatrix}
+	\mathbf{Re}(d_n(\omega_j))\\
+	\mathbf{Im}(d_n(\omega_j))
+	\end{bmatrix}=
+	\begin{bmatrix} 
+	\mathcal{X}^\top c_j\\
+	\mathcal{X}^\top s_j
+	\end{bmatrix}  \overset{d}{\rightarrow} \mathcal{N}\left(0, \frac{1}{2}\begin{bmatrix}
+	\mathbf{Re}(f(\omega_j) & -\mathbf{Im}(f(\omega_j))\\
+	\mathbf{Im}(f(\omega_j)) & \mathbf{Re}(f(\omega_j))
+	\end{bmatrix}
+	\right).
+	\end{equation}
+	For $k \notin \{j, -j\}$,  
+	$\begin{bmatrix}
+	\mathcal{X}^\top c_j\\
+	\mathcal{X}^\top s_j
+	\end{bmatrix}$ is asymptotically independent of 
+	$\begin{bmatrix}
+	\mathcal{X}^\top c_k\\
+	\mathcal{X}^\top s_k
+	\end{bmatrix} $. Here the convergence is convergence in distribution. 
+\end{lem} 
+\end{frame}
+
+
+\begin{frame}{Smoothing periodogram}
+\red{periodogram}
+\[
+I(\omega_j) = d_n(\omega_j) d^\dag_n(\omega_j)
+\]
+Let $\mathcal{B}_j^m$ be the set containing all indices nearest to $j$ excluding $0, [n/2]$ and all possible pairs $\{j, -j\}$. Assuming $m<n/2$.
+\red{Key Ingredient:} within $\mathcal{B}_j$, $d_n(\omega_j)$ behaves like i.i.d. , so smoothing periodogram is like MLE:
+\[
+\hat{f}(\omega_j) = \frac{1}{m} \sum_{k\in \mathcal{B}_j} I(\omega_k).
+\]
+\end{frame}
+
+
+\begin{frame}{Comparison to covariance matrix}
+\begin{minipage}{.45\textwidth}
+\[
+\Sigma =  \E y_1y_1^\top 
+\]
+\begin{equation*}
+\begin{aligned}
+&\var((y_1y_1^\top)_{rs}) = \Sigma_{rr}\Sigma_{ss}+ \Sigma^2_{rs}\\
+& \le 2\Sigma_{rr}\Sigma_{ss} \le 2\max_{r=1}^p\Sigma^2_{rr}\\
+& \text{MLE}:  \frac{1}{n} y_i y_i^\top \\ 
+& \var((y_1y_1^\top)_{rs}) \sim \Sigma_{rr}\Sigma_{ss} 
+\end{aligned}
+\end{equation*}
+
+\end{minipage}
+\hfill 
+\begin{minipage}{.45\textwidth}
+Let $d_{\infty}(\omega_j)$ be r.v. whose distribution is same with limiting distribution of $d_n(\omega_j)$
+\begin{equation}
+\begin{aligned}
+& f(\omega_j) = \E d_{\infty}(\omega_j) d^\dag_{\infty}(\omega_j)  \\
+& \var(|d_{\infty}(\omega_j) d^\dag_{\infty}(\omega_j)| )\\
+& \le \E |d_{\infty, r}(\omega_j)|^2|d_{\infty, s}(\omega_j)|^2\\
+& \le \sup_{\omega}\max_{r=1}^p f_{rr}(\omega)\\
+& \text{'MLE'}: \frac{1}{m} \sum_{k\in \mathcal{B}_j} I(\omega_k)\\
+\end{aligned}
+\end{equation}
+\end{minipage}
+\end{frame}
+
+
+
+
+\begin{frame}{Hard thresholding for spectral density}
+\begin{equation}
+T_{\lambda}(\hat{f}_{rs}(\omega_j))= \begin{cases}
+\hat{f}_{rs}(\omega_j) & \mbox{ if } |\hat{f}_{rs}(\omega_j)|\ge \lambda \\
+0 & \mbox{ if } |\hat{f}_{rs}(\omega_j)| < \lambda,
+\end{cases}
+\end{equation}
+As discussed before, $\lambda$ should be proportional to an upper bound $\sup_{\omega}\max_{rr}$, \cite{sun2018large} choose a loose bound $\mathcal{M}(f_X) = \sup_{\omega} \|f(\omega)\|$. 
+\end{frame}
+
+
+\begin{frame}{Technical Challenge}
+\red{Quantify the error using i.i.d. approximation}  
+\bit
+\item Gap between finite sample to limiting distribution
+\item Dependency in finite sample data 
+\eit
+\end{frame}
+
+
+\begin{frame}{Theory for hard thresholding}
+\red{Quantify the error using i.i.d. approximation}  
+\bit
+\item Gap between finite sample to limiting distribution
+\item Dependency in finite sample data 
+\eit
+\red{Bias in Expectation:} $2\left[ \frac{m+1/2\pi}{n}\Omega_n(f)+\frac{1}{2\pi}L_n(f)\right]$
+\end{frame}
+
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 
+		\right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+
+\begin{frame}{Theory for hard thresholding estimator}
+\[
+\vertiii{f}_q = \sup_{\omega \in [-\pi, \pi]}\|f(\omega)\|_q. \nonumber
+\]
+\begin{thm}
+	Assume ${X}_t, t=1,\cdots,n$, are $n$ consecutive observations from a stable Gaussian time series 
+	there exist universal constants $c_1, c_2 > 0$ such that choosing a threshold 
+		\begin{equation}
+	\label{eq:threshold_value}
+	\lambda = 2R \vertiii{f}\sqrt{\frac{\log p}{m}} +2\left[ \frac{m+1/2\pi}{n}\Omega_n(f)+\frac{1}{2\pi}L_n(f)\right], 
+	\end{equation}
+	estimation error of thresholded averaged periodogram satisfies 
+	\begin{equation}
+	\begin{aligned}
+	\mathbb{P}\left(\left\|T_{\lambda}(\hat{f}(\omega_j)) - f(\omega_j)\right\|\ge 7\vertiii{f}_q^q \lambda^{(1-q)} \right)
+	\le c_1 \exp\left[-(c_2 R^2-2)\log p\right]. \nonumber
+	\end{aligned}
+	\end{equation}
+\end{thm}
+\end{frame}
+
+
+\begin{frame}{Adaptive thresholding}
+We propose to perform adaptive thresholding for real and imaginary part respectively.  
+\begin{equation}
+\label{eq:variance_of_real_periodogram}
+\begin{array}{cc}
+&\Var(\mathbf{Re}(d_{\infty}(\omega_j)d^\dag_{\infty}(\omega_j))_{rs})      \\
+& = \frac{1}{2}\left[f_{rr}(\omega_j)f_{ss}(\omega_j)+\mathbf{Re}(f_{rs}(\omega_j))^2-\mathbf{Im}(f_{rs}(\omega_j))^2\right]
+\end{array}
+\end{equation}
+Not at the same order of $f_{rr}(\omega_j)f_{ss}(\omega_j)$, which is key for building theory in \citeb{cai2011adaptive}. 
+\end{frame}
+
+
+\begin{frame}{Modified periodogram}
+\[
+I(\omega_j) = d(\omega_j) d^\dag(\omega_j), 
+\]
+\[
+H(\omega_j) = 2\mathbf{Re}(d(\omega_j))  \mathbf{Re}(d(\omega_j))^\top+2\mathbf{Im}(d(\omega_j))  \mathbf{Re}(d(\omega_j))^\top i
+\]
+\begin{center}
+\red{Same expectation:}  $\E I(\omega) = \E H(\omega_j)$. 
+\end{center}
+\end{frame}
+
+
+\begin{frame}{Adaptive thresholding estimator for real part}
+\bit 
+\item \red{'MLE'}: 
+\[
+\frac{1}{m} \sum_{k\in \mathcal{B}_j} {\bf Re}(H(\omega_k)) = \frac{2}{m}  \sum_{k\in \mathcal{B}_j}\mathbf{Re}(d(\omega_k))  \mathbf{Re}(d(\omega_k))^\top
+\]
+\item \red{Variance}
+\[
+\Var(\mathbf{Re}(H_{\infty, rs}(\omega_j))) = \left[f_{rr}(\omega_j)f_{ss}(\omega_j)+\mathbf{Re}(f_{rs}(\omega_j))^2\right]
+\]
+Same order of $f_{rr}(\omega_j)f_{ss}(\omega_j)$
+\eit 
+\end{frame}
+
+
+\begin{frame}{Adaptive thresholding estimator}
+\bit 
+\item \red{Variance estimator}: 
+\begin{equation*}
+\label{eq:variance_estimator}
+\begin{aligned}
+& \hat{\theta}^{(r)}_{j,rs} = \frac{1}{m-1}\sum_{q\in \mathcal{B}_j} \left[{\bf Re}(H_{rs}(\omega_q)) - \frac{1}{m}\sum_{k\in \mathcal{B}_j} {\bf Re}(H_{rs}(\omega_k))\right]^2 \\
+\end{aligned}
+\end{equation*}
+\item \red{Adaptive thresholding estimator}
+\[
+\lambda^{(r)}_{rs} = \sqrt{\hat{\theta}^{(r)}_{j, rs}} \lambda^{(r)} 
+\]
+\[
+\lambda^{(r)}  =   \sqrt{\hat{\theta}^{(r)}_{j, rs}} \sqrt{\frac{\log p}{m}}      +\text{Bias}
+\]
+\eit 
+\end{frame}
+
+
+\begin{frame}{Theoretical guarantees}
+\bit 
+\item Sparse class:
+{
+\small
+\[
+\mathcal{U}^a(q, c_0(p), \omega) = \left\{f(\omega): \max_{r=1}^p\sum_{s=1}^p (f_{rr}(\omega)f_{ss}(\omega))^{(1-q)/2} |f_{rs}(\omega)|^q \le c_0(p)\right \}.  
+\]
+}
+\item
+\begin{equation}
+\label{eq:threshold_value}
+\lambda = R c_0(p)\sqrt{\frac{\log p}{m}} +2B_f/\phi_0,  B_f ~\text{is some bias}
+\end{equation}
+where $B_f = \frac{m}{n}\Omega_n(f_X) + \frac{1}{2\pi}\left(\frac{\Omega_n(f_X)}{n}+L_n(f_X)\right) +\frac{\Omega_n}{2\pi n}$, 
+assuming $f(\omega_j)\in \mathcal{U}^a(q, c_0(p), \omega)$, 
+the estimation error of adaptive thresholding average modified periodogram satisfies 
+{
+\small 
+\[
+\mathbb{P}\left(\left\|T_{\lambda}(\hat{f}(\omega_j)) - f(\omega_j)\right\|\ge 7 \lambda^{(1-q)/2} \right)
+\le c_1 \exp\left[-(c_2 R^2-2)\log p\right]. \nonumber
+\]
+}
+\eit 
+\end{frame}
+
+
 
 \section{Low Rank Tucker Approximation of a Tensor from Streaming Data}
 
@@ -288,7 +531,7 @@ $\T{X} \times_n \M{A} \in \reals^{I_1 \times \cdots \times I_{n-1} \times k \tim
 \eit
 \end{frame}
 
-\begin{frame}{Review of Our Tool: Linear Sketch}
+\begin{frame}{Review of our tool: linear sketch}
 A linear random projection can be represented as a random matrix $\mathbf{\Omega}\in \reals^{d\times k}$, operating on a vector $\mathbf{x}\in \reals^{d}$ or a matrix $\mathbf{X} \in \reals^{m\times d}$ to reduce the dimension:
 \begin{equation}
 \label{eq:low_dim_mapping}
@@ -299,7 +542,7 @@ A linear random projection can be represented as a random matrix $\mathbf{\Omega
 \end{equation}
 \end{frame}
 
-\begin{frame}{Properties Preserved after Projection}
+\begin{frame}{Properties preserved after projection}
 \begin{lem}[\citet{arriaga2006algorithmic}]
 	\label{lem:gauss-rp-vector}
 	Let $\mathbf{x} \in \reals^d$, assume that the entries in $\mathbf{\Omega}\in \reals^{d\times k}$ are sampled independently from $\mathcal{N}(0, 1)$. Then
@@ -653,6 +896,7 @@ $\hat{d}_j = \hat{\mathcal{X}}^\top e_j$.  Simple observation: $\|e_j\| = 1$, wh
 \|\hat{d}_j - d_j\| \le \|\hat{\mathcal{X}} - \mathcal{X}\|. 
 \]
 \end{frame}
+
 
 
 
