@@ -152,8 +152,17 @@ Now using association rule between kronecker product and khatri rao product,
 & = (\M{Q}_1 \otimes \cdots \otimes \M{Q}_N) (\M{R}_1\odot \cdots \odot \M{R}_N) 
 \end{aligned}
 \end{equation}
-Noticing $\M{Q} = \M{Q}_1\otimes \cdots \otimes \M{Q}_N$ is still orthognal,  then we finish the proof with some association rule for kronecker product in \cite{schacke2013kronecker} and result in Lemma \ref{lemma:gauss-rp-matrix}.  Also this proposition, indicate in practice, we should sketch each small matrix $\M{X}_n$ then combine them together which is equivalent to do sketch the whole matrix after kronecker product. 
- 
+Noticing $\M{Q} = \M{Q}_1\otimes \cdots \otimes \M{Q}_N$ is still orthogonal and $(\M{R}_1\odot \cdots \odot \M{R}_N)$ 
+is upper triangular matrix. Then 
+\begin{equation}
+\begin{aligned}
+& \|(\M{I} - \M{QQ}^\top)  (\M{X}_1\otimes \cdots \otimes \M{X}_N)\|_F \\
+& = \|(\M{I} - \M{Q}_1\M{Q}_1^\top) \M{X}_1 \otimes \cdots \otimes (\M{I} - \M{Q}_N\M{Q}_N^\top) \M{X}_N  \|_F\\
+& =\prod_{n=1}^N \|(\M{I} - \M{Q}_n\M{Q}_n^\top) \M{X}_n\|_F
+\end{aligned}
+\end{equation}
+The last equation comes from the property shown in \citep{schacke2013kronecker}. 
+Then applying results in \ref{lemma:gauss-rp-matrix} we finish the proof.  Also this proposition, indicates that in practice, we should sketch each small matrix $\M{X}_n$  then combine the result together with khatri rao product. 
 \end{proof}
 
 
