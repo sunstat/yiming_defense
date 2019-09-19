@@ -1,11 +1,10 @@
 \section{Application: Sketching}
 \label{appendix:sketching}
-Beyond random projection, our novel TRP also has an important application in sketching. Sketching is an important technique to accelerate expensive computations with widespread applications, such as regression, low-rank approximation, and graph sparsification, etc. \cite{halko2011finding,woodruff2014sketching} 
+Beyond random projection, our novel TRP also has an important application in sketching. Sketching is an important technique to accelerate expensive computations with widespread applications, such as regression, low-rank approximation, and graph sparsification, etc. \citep{halko2011finding,woodruff2014sketching} 
 % I have to think about how to argue tensor has a natural Khatri-Rao structure. 
 The core idea behind sketching is to compress a large dataset, typically a matrix or tensor, into a smaller one by multiplying a random matrix. 
 %Since the matrix multiplication is a linear operation, people can usually further extend sketching to distributed and online setting. 
 In this section, we will mainly focus on the low-rank matrix approximation problem. Consider a matrix $\mathbf{X} \in \mathbb{R}^{m \times d}$ with rank $r$, 
-% the standard technique to find the best rank-$r$ approximation is the randomized Singular Value Decomposition (randomized SVD) \cite{halko2011finding}. Only its first step of finding an approximation to the range of $\mathbf{X}$ involves the sketching, so we will restrict our attention to this step. 
 we want to find the best rank-$r$ approximation with the minimal amount of time. The most common method is the randomized singular value decomposition (SVD), whose underlying idea is sketching. 
 
 
@@ -34,9 +33,9 @@ With further variance reduction by taking the geometric-median over multiple run
 	\end{algorithmic}
 \end{algorithm}
 
-Furthermore, the extension of TRP to tensor data is also natural. To be specific, the $n^{th}$ unfolding of a large tensor $\mathscr{X} \in \mathbb{R}^{I_1 \times \cdots \times I_N}$, denoted as $\mathbf{X}^{(n)}$, has dimension $I_n \times I_{(-n)}$, where $I_{(-n)} = \prod_{i \neq n, i \in [N]} I_i$ . To construct a sketch for the unfolding, we need to create a random matrix of size $ I_{(-n)} \times k$. Then, our TRP becomes a natural choice to avoid the otherwise extremely expensive storage cost. For many popular tensor approximation algorithms, it is even necessary to perform sketching for every dimension of the tensor \cite{de2000multilinear,wang2015fast}. 
-%such as Higher-Order Orthogonal Iteration \cite{de2000multilinear}, Fast CANDECOMP/PARAFAC decomposition \cite{wang2015fast}, our paper ? 
-In the simulation section, we perform experiments for the unfolding of the higher-order order tensor with our structured sketching algorithms (Figure \ref{fig:col_matrix}). For more details in tensor algebra, please refer to \cite{kolda2009tensor}. 
+Furthermore, the extension of TRP to tensor data is also natural. To be specific, the $n^{th}$ unfolding of a large tensor $\mathscr{X} \in \mathbb{R}^{I_1 \times \cdots \times I_N}$, denoted as $\mathbf{X}^{(n)}$, has dimension $I_n \times I_{(-n)}$, where $I_{(-n)} = \prod_{i \neq n, i \in [N]} I_i$ . To construct a sketch for the unfolding, we need to create a random matrix of size $ I_{(-n)} \times k$. Then, our TRP becomes a natural choice to avoid the otherwise extremely expensive storage cost. For many popular tensor approximation algorithms, it is even necessary to perform sketching for every dimension of the tensor \citep{de2000multilinear,wang2015fast}. 
+%such as Higher-Order Orthogonal Iteration \citep{de2000multilinear}, Fast CANDECOMP/PARAFAC decomposition \citep{wang2015fast}, our paper ? 
+In the simulation section, we perform experiments for the unfolding of the higher-order order tensor with our structured sketching algorithms (Figure \ref{fig:col_matrix}). For more details in tensor algebra, please refer to \citep{kolda2009tensor}. 
 
 
 \paragraph{Experimental Setup}

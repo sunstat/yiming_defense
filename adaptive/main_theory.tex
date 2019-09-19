@@ -95,6 +95,7 @@ B_\theta + \eta \right) \le  c_1\exp(-c_2m\min\left(\eta, \eta^2\right)).\\
 \end{lem}
 The next lemma constitutes the key element for theoretical development. It is a non-asymptotic analysis. 
 \begin{lem}
+\label{lemma: main_lemma}
 For $j\in F_n$, and $\omega_j \notin \{0, -\pi\}$,  $1\le r, s\le p$, 
 assuming $B_\delta\le 3$ and $B_\theta/\phi_0^2<1/4$, given $\eta\le 1$, there exist universal positive constants $c_1, c_2$, s.t. 
 \begin{equation}
@@ -220,6 +221,10 @@ the estimation error of adaptive thresholding average modified periodogram satis
 \end{aligned}
 \end{equation}
 \end{prop}
+
+\begin{proof}
+The logic for proof is almost the same as proof for consistency for operator norm appears in \cite{sun2018large}. Using the concentration inequality introduced by Lemma \ref{lemma: main_lemma}  with the weakly sparse class coefficient, we can almost use exactly the same argument to finish the proof. So we omit the the details here. For those type of proof, the difficulty mainly lies in building the concentration inequality as Lemma \ref{lemma: main_lemma}. 
+\end{proof}
 
 \begin{remark}
 Although $B_f$ seems to have a complicated form,  in many linear processes,  as shown in \cite{sun2018large},  $\Omega_n$ is uniformly bounded. Also, if we set $m=\mathcal{O}(\sqrt{n})$, then $\log p/m \rightarrow 0$ if $p = \mathcal{O}(n^\delta)$ for any positive delta which is the same as modern high dimensional setting. Then it is not hard to find a sequence of thresholding value $\lambda$ go to zero, as $n\rightarrow \infty$ and $p\rightarrow \infty$, 

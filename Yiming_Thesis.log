@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  12 SEP 2019 14:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  19 SEP 2019 15:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -101,6 +101,13 @@ Package: amsthm 2017/10/31 v2.20.4
 \thm@headsep=\skip49
 \dth@everypar=\toks24
 )
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
 (/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
 
@@ -166,13 +173,6 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 )
 \c@ContinuedFloat=\count105
 Package caption Info: float package is loaded.
-)
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/amsfonts.sty
-Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\symAMSa=\mathgroup4
-\symAMSb=\mathgroup5
-LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
-(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/times.sty
 Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
@@ -705,19 +705,19 @@ LaTeX Warning: Label `appendix:more_result' multiply defined.
 )
 \openout1 = `Yiming_Thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for U/mathx/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 125.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 124.
+LaTeX Font Info:    ... okay on input line 124.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 124.
+LaTeX Font Info:    ... okay on input line 124.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 124.
+LaTeX Font Info:    ... okay on input line 124.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 124.
+LaTeX Font Info:    ... okay on input line 124.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 124.
+LaTeX Font Info:    ... okay on input line 124.
+LaTeX Font Info:    Checking defaults for U/mathx/m/n on input line 124.
+LaTeX Font Info:    ... okay on input line 124.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 124.
 
  (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -829,57 +829,60 @@ Title page
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 Copyleft page
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 128.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 127.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 128.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 127.
  [2
 
 ]
 Abstract
-LaTeX Font Info:    Try loading font information for U+msa on input line 133.
+LaTeX Font Info:    Try loading font information for U+msa on input line 132.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 133.
+LaTeX Font Info:    Try loading font information for U+msb on input line 132.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+stmry on input line 133.
+LaTeX Font Info:    Try loading font information for U+stmry on input line 132.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 133.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 132.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) [3
 
 ] [4]
-[5
-
-]
+Vita
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 160.
- [6
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 157.
+[3
 
 
-] [7] (./Yiming_Thesis.toc [8
+] [4
+
+] [5
 
 
-] [9])
+] [6] (./Yiming_Thesis.toc [7
+
+
+] [8])
 \tf@toc=\write3
 \openout3 = `Yiming_Thesis.toc'.
 
- [10] (./Yiming_Thesis.lof [11
+ [9] (./Yiming_Thesis.lof [10
 
 
 ]
-[12]
+[11]
 Overfull \hbox (11.5819pt too wide) in paragraph at lines 20--20
  \OT1/ptm/m/n/12 com-pare the per-for-mance un-der dif-fer-ent ranks ($\OML/cmm
 /m/it/12 r\U/matha/m/n/12 {\OML/cmm/m/it/12 I \U/matha/m/n/12 ^^P \OT1/cmr/m/n/
@@ -888,11 +891,11 @@ ML/cmm/m/it/12 :\OT1/cmr/m/n/12 2\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m
 /it/12 :\OT1/cmr/m/n/12 067$\OT1/ptm/m/n/12 ). 
  []
 
-[13] [14])
+[12] [13])
 \tf@lof=\write4
 \openout4 = `Yiming_Thesis.lof'.
 
- [15] (./Yiming_Thesis.lot
+ [14] (./Yiming_Thesis.lot
 
 LaTeX Font Warning: Font shape `U/stmry/b/n' undefined
 (Font)              using `U/stmry/m/n' instead on input line 7.
@@ -904,16 +907,16 @@ File: ueus.fd 2013/01/14 v3.01 Euler Script
 \tf@lot=\write5
 \openout5 = `Yiming_Thesis.lot'.
 
- [1
+ [15
 
 ]
 Chapter 1.
 (./spectral/introduction.tex
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
- [2
+ [1
 
-] [3] [4] [5] [6]) (./spectral/model_method.tex
+] [2] [3] [4] [5]) (./spectral/model_method.tex
 Overfull \hbox (32.02797pt too wide) in paragraph at lines 2--3
 \OT1/ptm/m/n/12 Consider a $\OML/cmm/m/it/12 p$\OT1/ptm/m/n/12 -dimensional wea
 kly sta-tion-ary real-valued time se-ries $\OML/cmm/m/it/12 X[] \U/matha/m/n/12
@@ -921,37 +924,37 @@ kly sta-tion-ary real-valued time se-ries $\OML/cmm/m/it/12 X[] \U/matha/m/n/12
 \U/matha/m/n/12 P
  []
 
-[7]
-Overfull \hbox (41.72574pt too wide) in paragraph at lines 14--18
+[6]
+Overfull \hbox (41.72574pt too wide) in paragraph at lines 13--17
 \OT1/ptm/m/n/12 Following Basu and Michai-lidis [2015], we will also use $[] \O
 T1/cmr/m/n/12 :\U/matha/m/n/12 ^^P [][] ^^P [][] }\OML/cmm/m/it/12 f\U/matha/m/
 n/12 p\OML/cmm/m/it/12 !\U/matha/m/n/12 q}$
  []
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 32.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 31.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 42.
-[8] [9] [10]
-Overfull \hbox (3.45927pt too wide) in paragraph at lines 119--120
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 41.
+[7] [8] [9]
+Overfull \hbox (3.45927pt too wide) in paragraph at lines 118--119
 \OT1/ptm/m/n/12 In this sec-tion, we present our pro-posed thresh-old-ing es-ti
 -ma-tors. We re-strict our method-
  []
 
-[11]
-Overfull \hbox (63.43242pt too wide) in paragraph at lines 131--132
+[10]
+Overfull \hbox (63.43242pt too wide) in paragraph at lines 130--131
 []\OT1/ptm/m/n/12 Following Roth-man et al. [2009], we also pro-pose a va-ri-et
 y of $[]$
  []
 
-[12]) (./spectral/threshold_choice.tex [13] [14]) (./spectral/main_theory.tex
-[15] [16] [17]
+[11]) (./spectral/threshold_choice.tex [12] [13]) (./spectral/main_theory.tex
+[14] [15] [16]
 Overfull \hbox (25.59949pt too wide) in paragraph at lines 54--55
 \OT1/ptm/m/n/12 tion be-haviour of av-er-aged pe-ri-odograms around the true sp
 ec-tral den-sity $[]$,
  []
 
-[18] [19] [20] [21]
+[17] [18] [19] [20]
 Overfull \hbox (13.7058pt too wide) in paragraph at lines 153--153
 []\OT1/ptm/b/n/12 Remark. []\OT1/ptm/m/it/12 These bounds show that for a large
  class of sta-tion-ary pro-cesses $\OML/cmm/m/it/12 X[]$\OT1/ptm/m/it/12 , $\OT
@@ -960,7 +963,7 @@ Overfull \hbox (13.7058pt too wide) in paragraph at lines 153--153
 tha/m/n/12 Ñ
  []
 
-[22] [23] [24] [25]
+[21] [22] [23] [24]
 Overfull \hbox (3.65082pt too wide) detected at line 272
 \U/msb/m/n/12 P [] \U/matha/m/n/12 ¤ \OML/cmm/m/it/12 c[] []\U/matha/m/n/12 r^^
 Ap\OML/cmm/m/it/12 c[]\U/matha/m/n/12 p\OML/cmm/m/it/12 ^^M \U/matha/m/n/12 ^^A
@@ -969,7 +972,7 @@ OT1/cmr/m/n/12 2\U/matha/m/n/12 q [] \OML/cmm/m/it/12 p\U/matha/m/n/12 s\OML/cm
 m/m/it/12 :
  []
 
-[26]
+[25]
 Overfull \hbox (18.92117pt too wide) detected at line 296
 \U/msb/m/n/12 P [] \U/matha/m/n/12 ¤ \OML/cmm/m/it/12 c[] []\U/matha/m/n/12 r^^
 Ap\OML/cmm/m/it/12 c[]\U/matha/m/n/12 p\OML/cmm/m/it/12 ^^M \U/matha/m/n/12 ^^A
@@ -978,7 +981,7 @@ OT1/cmr/m/n/12 2\U/matha/m/n/12 q [] \OML/cmm/m/it/12 p\U/matha/m/n/12 s\OML/cm
 m/m/it/12 :
  []
 
-) (./spectral/beyond_Gaussianity.tex [27]
+) (./spectral/beyond_Gaussianity.tex [26]
 Overfull \hbox (0.36922pt too wide) in paragraph at lines 14--15
 \OT1/ptm/m/n/12 for any $\OML/cmm/m/it/12 r; s$\OT1/ptm/m/n/12 , $\OT1/cmr/m/n/
 12 1 \U/matha/m/n/12 ¤ \OML/cmm/m/it/12 r; s \U/matha/m/n/12 ¤ \OML/cmm/m/it/12
@@ -993,13 +996,13 @@ Overfull \hbox (3.47603pt too wide) in paragraph at lines 26--27
 al-ized sub-exponential dis-tri-bu-tion de-fined in Erd[]os et al. [2012],
  []
 
-[28] [29] [30] [31]) (./spectral/simulation.tex [32] [33] [34]
+[27] [28] [29] [30]) (./spectral/simulation.tex [31] [32] [33]
 
 Package caption Warning: \label without proper reference on input line 52.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `table:rmise-homogeneous-final' on page 35 undefined o
+LaTeX Warning: Reference `table:rmise-homogeneous-final' on page 34 undefined o
 n input line 61.
 
 
@@ -1008,7 +1011,7 @@ Overfull \hbox (1.6419pt too wide) in paragraph at lines 61--62
  thresh-old-ing pro-ce-dures show some im-prove-ment over shrink-
  []
 
-[35] (./rmise_ho_table.tex
+[34] (./rmise_ho_table.tex
 Overfull \hbox (2.67424pt too wide) in paragraph at lines 4--53
 [][]
  []
@@ -1017,72 +1020,72 @@ Overfull \hbox (2.67424pt too wide) in paragraph at lines 4--53
 LaTeX Warning: Float too large for page by 52.82654pt on input line 54.
 
 )
-<spectral/img/ROC_100_96.pdf, id=184, 867.24pt x 650.43pt>
+<spectral/img/ROC_100_96.pdf, id=188, 867.24pt x 650.43pt>
 File: spectral/img/ROC_100_96.pdf Graphic file (type pdf)
 <use spectral/img/ROC_100_96.pdf>
 Package pdftex.def Info: spectral/img/ROC_100_96.pdf  used on input line 79.
 (pdftex.def)             Requested size: 199.46342pt x 149.59575pt.
-<spectral/img/ROC_200_96.pdf, id=185, 867.24pt x 650.43pt>
+<spectral/img/ROC_200_96.pdf, id=189, 867.24pt x 650.43pt>
 File: spectral/img/ROC_200_96.pdf Graphic file (type pdf)
 <use spectral/img/ROC_200_96.pdf>
 Package pdftex.def Info: spectral/img/ROC_200_96.pdf  used on input line 80.
 (pdftex.def)             Requested size: 199.46342pt x 149.59575pt.
-<spectral/img/ROC_400_96.pdf, id=186, 867.24pt x 650.43pt>
+<spectral/img/ROC_400_96.pdf, id=190, 867.24pt x 650.43pt>
 File: spectral/img/ROC_400_96.pdf Graphic file (type pdf)
 <use spectral/img/ROC_400_96.pdf>
 Package pdftex.def Info: spectral/img/ROC_400_96.pdf  used on input line 81.
 (pdftex.def)             Requested size: 199.46342pt x 149.59575pt.
-<spectral/img/ROC_600_96.pdf, id=187, 867.24pt x 650.43pt>
+<spectral/img/ROC_600_96.pdf, id=191, 867.24pt x 650.43pt>
 File: spectral/img/ROC_600_96.pdf Graphic file (type pdf)
 <use spectral/img/ROC_600_96.pdf>
 Package pdftex.def Info: spectral/img/ROC_600_96.pdf  used on input line 82.
 (pdftex.def)             Requested size: 199.46342pt x 149.59575pt.
-) (./spectral/realdata.tex [36 <./spectral/img/ROC_100_96.pdf> <./spectral/img/
+) (./spectral/realdata.tex [35 <./spectral/img/ROC_100_96.pdf> <./spectral/img/
 ROC_200_96.pdf> <./spectral/img/ROC_400_96.pdf> <./spectral/img/ROC_600_96.pdf>
-] [37]
-<spectral/img/al_hm_nl.pdf, id=215, 3107.61pt x 3107.61pt>
+] [36]
+<spectral/img/al_hm_nl.pdf, id=218, 3107.61pt x 3107.61pt>
 File: spectral/img/al_hm_nl.pdf Graphic file (type pdf)
 <use spectral/img/al_hm_nl.pdf>
 Package pdftex.def Info: spectral/img/al_hm_nl.pdf  used on input line 12.
 (pdftex.def)             Requested size: 199.46342pt x 199.44115pt.
-<spectral/img/sh_hm_nl.pdf, id=216, 3107.61pt x 3107.61pt>
+<spectral/img/sh_hm_nl.pdf, id=219, 3107.61pt x 3107.61pt>
 File: spectral/img/sh_hm_nl.pdf Graphic file (type pdf)
 <use spectral/img/sh_hm_nl.pdf>
 Package pdftex.def Info: spectral/img/sh_hm_nl.pdf  used on input line 13.
 (pdftex.def)             Requested size: 199.46342pt x 199.44115pt.
-<spectral/img/al_c.jpg, id=217, 2007.5pt x 1505.625pt>
+<spectral/img/al_c.jpg, id=220, 2007.5pt x 1505.625pt>
 File: spectral/img/al_c.jpg Graphic file (type jpg)
 <use spectral/img/al_c.jpg>
 Package pdftex.def Info: spectral/img/al_c.jpg  used on input line 14.
 (pdftex.def)             Requested size: 394.7736pt x 296.0654pt.
 
 
-Package natbib Warning: Citation `fischl2000measuring' on page 38 undefined on 
+Package natbib Warning: Citation `fischl2000measuring' on page 37 undefined on 
 input line 20.
 
 
-Package natbib Warning: Citation `Utevsky14' on page 38 undefined on input line
+Package natbib Warning: Citation `Utevsky14' on page 37 undefined on input line
  24.
 
 
-Package natbib Warning: Citation `FRANSSON20081178' on page 38 undefined on inp
+Package natbib Warning: Citation `FRANSSON20081178' on page 37 undefined on inp
 ut line 24.
 
-[38] [39 <./spectral/img/al_hm_nl.pdf> <./spectral/img/sh_hm_nl.pdf> <./spectra
-l/img/al_c.jpg>]) (./spectral/discussion.tex [40]) [41]
-(./spectral/appendix_gaussian.tex [42
+[37] [38 <./spectral/img/al_hm_nl.pdf> <./spectral/img/sh_hm_nl.pdf> <./spectra
+l/img/al_c.jpg>]) (./spectral/discussion.tex [39]) [40]
+(./spectral/appendix_gaussian.tex [41
 
-] [43] [44]
+] [42] [43]
 Overfull \hbox (59.15996pt too wide) detected at line 151
 [][]
  []
 
-[45] [46] [47] [48]
+[44] [45] [46] [47]
 Overfull \hbox (37.42155pt too wide) detected at line 281
 [][]
  []
 
-[49]
+[48]
 Overfull \hbox (60.1231pt too wide) detected at line 318
 [][]
  []
@@ -1096,23 +1099,23 @@ k-wise di-ag-o-nal ma-trix, $\U/matha/m/n/12 }\OML/cmm/m/it/12 P[]\U/matha/m/n/
 /n/12 }\OML/cmm/m/it/12 N[]\U/matha/m/n/12 }u ^^P
  []
 
-[50] [51] [52]
+[49] [50] [51]
 LaTeX Font Info:    Try loading font information for U+dsrom on input line 411.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
-) [53]
+) [52]
 Overfull \hbox (48.8185pt too wide) detected at line 452
 [][]
  []
 
-[54]
+[53]
 Overfull \hbox (4.29419pt too wide) detected at line 487
 [][]
  []
 
-[55] [56] [57] [58] [59]) (./spectral/appendix_heavy_tail.tex [60] [61]
+[54] [55] [56] [57] [58]) (./spectral/appendix_heavy_tail.tex [59] [60]
 Overfull \hbox (11.73332pt too wide) in paragraph at lines 49--52
 \OT1/ptm/m/n/12 sen-ta-tion of $\OT1/cmr/m/n/12 ^^E[]$ \OT1/ptm/m/n/12 and $\OM
 L/cmm/m/it/12 E[]$\OT1/ptm/m/n/12 . It fol-lows from Lemma 1.C.5[] that $\U/mat
@@ -1121,7 +1124,7 @@ ha/m/n/12 }[]p\OML/cmm/m/it/12 vec\U/matha/m/n/12 p\OMS/cmsy/m/n/12 X[]\U/matha
 n/12 qq} ^^P
  []
 
-[62]) (./spectral/appendix_technical_lemmas.tex
+[61]) (./spectral/appendix_technical_lemmas.tex
 Overfull \hbox (12.21599pt too wide) in paragraph at lines 6--7
 []\OT1/ptm/b/n/12 Lemma 1.C.1. []\OT1/ptm/m/it/12 For any ma-trix $\OML/cmm/m/i
 t/12 A \U/matha/m/n/12 P \U/msb/m/n/12 C[]$ \OT1/ptm/m/it/12 and $\OT1/cmr/m/n/
@@ -1131,7 +1134,7 @@ OT1/ptm/m/it/12 , de-fine $\U/matha/m/n/12 }\OML/cmm/m/it/12 A\U/matha/m/n/12 }
 2 }[]$\OT1/ptm/m/it/12 ,
  []
 
-[63]
+[62]
 Overfull \hbox (21.8847pt too wide) detected at line 113
 [][]
  []
@@ -1141,7 +1144,7 @@ Overfull \hbox (26.71494pt too wide) detected at line 127
 [][]
  []
 
-[64] [65] [66] [67] [68]
+[63] [64] [65] [66] [67]
 Overfull \hbox (1.5629pt too wide) in paragraph at lines 311--314
 \OT1/ptm/m/n/12 Since each co-or-di-nate of $\OML/cmm/m/it/12 "[]$ \OT1/ptm/m/n
 /12 has fi-nite sec-ond mo-ment ($\OT1/cmr/m/n/12 1$ \OT1/ptm/m/n/12 to be pre-
@@ -1154,9 +1157,9 @@ Overfull \hbox (58.36182pt too wide) detected at line 342
 [][]
  []
 
-[69] [70]) (./spectral/appendix_more_tables.tex [71]
+[68] [69]) (./spectral/appendix_more_tables.tex [70]
 (./three_metric_ho_table.tex)
-<spectral/img/al_hm_0.pdf, id=364, 3107.61pt x 3107.61pt>
+<spectral/img/al_hm_0.pdf, id=367, 3107.61pt x 3107.61pt>
 File: spectral/img/al_hm_0.pdf Graphic file (type pdf)
 <use spectral/img/al_hm_0.pdf>
 Package pdftex.def Info: spectral/img/al_hm_0.pdf  used on input line 10.
@@ -1166,7 +1169,7 @@ Overfull \hbox (41.55779pt too wide) in paragraph at lines 10--11
  [][] 
  []
 
-<spectral/img/sh_hm_0.pdf, id=365, 3107.61pt x 3107.61pt>
+<spectral/img/sh_hm_0.pdf, id=368, 3107.61pt x 3107.61pt>
 File: spectral/img/sh_hm_0.pdf Graphic file (type pdf)
 <use spectral/img/sh_hm_0.pdf>
 Package pdftex.def Info: spectral/img/sh_hm_0.pdf  used on input line 17.
@@ -1176,19 +1179,19 @@ Overfull \hbox (41.55779pt too wide) in paragraph at lines 17--18
  [][] 
  []
 
-) [72] [73] [74 <./spectral/img/al_hm_0.pdf>] [75 <./spectral/img/sh_hm_0.pdf>]
+) [71] [72] [73 <./spectral/img/al_hm_0.pdf>] [74 <./spectral/img/sh_hm_0.pdf>]
 Chapter 2.
-(./adaptive/introduction.tex [76
+(./adaptive/introduction.tex [75
 
-] [77] [78] [79] [80]
+] [76] [77] [78] [79]
 Overfull \hbox (3.85304pt too wide) in paragraph at lines 83--84
 []\OT1/ptm/m/n/12 It is com-mon to re-sort to smooth-ing pe-ri-odograms over ne
 arby fre-quen-cies to achieve
  []
 
-[81] [82] [83] [84]) (./adaptive/model_method.tex [85] [86] [87])
-(./adaptive/main_theory.tex [88] [89] [90] [91] [92] [93] [94]
-Overfull \hbox (7.23578pt too wide) in paragraph at lines 212--216
+[80] [81] [82] [83]) (./adaptive/model_method.tex [84] [85] [86])
+(./adaptive/main_theory.tex [87] [88] [89] [90] [91] [92] [93]
+Overfull \hbox (7.23578pt too wide) in paragraph at lines 213--217
 \OT1/ptm/m/it/12 where $\OML/cmm/m/it/12 B[] \U/matha/m/n/12 ^^P []\OT1/cmr/m/n
 /12 
 []\U/matha/m/n/12 p\OML/cmm/m/it/12 f[]\U/matha/m/n/12 q ^^@ [] [] ^^@ []$\OT1/
@@ -1198,7 +1201,7 @@ c[]\U/matha/m/n/12 p\OML/cmm/m/it/12 p\U/matha/m/n/12 q\OML/cmm/m/it/12 ; !\U/m
 atha/m/n/12 q$\OT1/ptm/m/it/12 ,
  []
 
-[95]) (./adaptive/conclusion.tex) [96] (./adaptive/Appendix-proof-for-bias.tex
+[94]) (./adaptive/conclusion.tex) [95] (./adaptive/Appendix-proof-for-bias.tex
 Overfull \hbox (15.82747pt too wide) in paragraph at lines 35--37
 \OML/cmm/m/it/12 r; s$ \OT1/ptm/m/n/12 from no-ta-tion for sim-plic-ity) be the
  vec-tor of length $\OML/cmm/m/it/12 m$\OT1/ptm/m/n/12 , com-posed by $[]\U/mat
@@ -1206,14 +1209,14 @@ ha/m/n/12 p\OML/cmm/m/it/12 H\U/matha/m/n/12 p\OML/cmm/m/it/12 ![]\U/matha/m/n/
 12 q[]q\OML/cmm/m/it/12 ; k \U/matha/m/n/12 P
  []
 
-[97
+[96
 
 ]
 Overfull \hbox (42.11502pt too wide) detected at line 70
 [][]
  []
 
-[98] [99] [100]
+[97] [98] [99]
 Overfull \hbox (34.28906pt too wide) in paragraph at lines 150--152
 \OT1/ptm/m/n/12 Combining these two and the fact that $\OML/cmm/m/it/12 ^^R[] \
 U/matha/m/n/12 ¥ \OML/cmm/m/it/12 f[]\U/matha/m/n/12 p\OML/cmm/m/it/12 ![]\U/ma
@@ -1231,8 +1234,8 @@ ngth $\OML/cmm/m/it/12 m$ \OT1/ptm/m/n/12 com-posed of $[]\U/matha/m/n/12 p\OT1
 /m/it/12 ; \OT1/cmr/m/n/12 q \U/matha/m/n/12 P
  []
 
-[101]) (./adaptive/appendix-technical-lemmas.tex [102]
-Overfull \hbox (14.764pt too wide) in paragraph at lines 30--31
+[100]) (./adaptive/appendix-technical-lemmas.tex
+Overfull \hbox (14.764pt too wide) in paragraph at lines 29--30
 []\OT1/ptm/m/n/12 Since $[]\U/matha/m/n/12 p\OML/cmm/m/it/12 y[]Ay\U/matha/m/n/
 12 q ^^P []p\OML/cmm/m/it/12 z[]\OT1/cmr/m/n/12 ^^F[]\OML/cmm/m/it/12 A\OT1/cmr
 /m/n/12 ^^F[]\OML/cmm/m/it/12 z\U/matha/m/n/12 q ^^P \OT1/cmr/m/n/12 2\U/matha/
@@ -1240,95 +1243,86 @@ m/n/12 }\OT1/cmr/m/n/12 ^^F[]\OML/cmm/m/it/12 A\OT1/cmr/m/n/12 ^^F[]\U/matha/m/
 n/12 }[]$ \OT1/ptm/m/n/12 [Rencher and Schaalje,
  []
 
-) (./adaptive/appendix-technical-lemmas-toeplitz.tex [103] [104])
+[101]) (./adaptive/appendix-technical-lemmas-toeplitz.tex [102] [103])
 (./adaptive/appendix-counter-example.tex
 
-LaTeX Warning: Reference `eq:variance_of_periodogram' on page 105 undefined on 
+LaTeX Warning: Reference `eq:variance_of_periodogram' on page 104 undefined on 
 input line 3.
 
-[105]) [106]
+[104]) [105]
 Chapter 3.
-(./tensor/introduction.tex [107
+(./tensor/introduction.tex [106
 
 
-] [108] [109] [110] [111] [112] [113] [114]
-Overfull \hbox (2.87251pt too wide) in paragraph at lines 413--419
-\OT1/ptm/m/n/12 The only pre-vi-ous work on stream-ing Tucker ap-prox-i-ma-tion
- is Ma-lik and Becker [2018],
- []
-
-[115]) (./tensor/methodology.tex [116] [117] [118] [119] [120] [121] [122]
+] [107] [108] [109] [110] [111] [112] [113]
+[114]) (./tensor/methodology.tex [115] [116] [117] [118] [119] [120] [121]
 Overfull \hbox (5.30026pt too wide) in paragraph at lines 410--421
  [][] 
  []
 
-[123] [124]) (./tensor/main_theory.tex [125] [126]
-
-LaTeX Warning: Reference `alg:ideal_fix_rank_appro' on page 127 undefined on in
-put line 124.
-
-[127]) (./tensor/numerical_experiments.tex
-<tensor/figure/fig2_lk_lnoise_600.pdf, id=560, 431.48499pt x 384.37708pt>
+[122] [123]) (./tensor/main_theory.tex [124] [125] [126])
+(./tensor/numerical_experiments.tex
+<tensor/figure/fig2_lk_lnoise_600.pdf, id=562, 431.48499pt x 384.37708pt>
 File: tensor/figure/fig2_lk_lnoise_600.pdf Graphic file (type pdf)
 <use tensor/figure/fig2_lk_lnoise_600.pdf>
 Package pdftex.def Info: tensor/figure/fig2_lk_lnoise_600.pdf  used on input li
 ne 6.
 (pdftex.def)             Requested size: 103.5585pt x 92.25238pt.
-<tensor/figure/fig2_slk_lnoise_600.pdf, id=561, 447.73122pt x 384.37708pt>
+<tensor/figure/fig2_slk_lnoise_600.pdf, id=563, 447.73122pt x 384.37708pt>
 File: tensor/figure/fig2_slk_lnoise_600.pdf Graphic file (type pdf)
 <use tensor/figure/fig2_slk_lnoise_600.pdf>
 Package pdftex.def Info: tensor/figure/fig2_slk_lnoise_600.pdf  used on input l
 ine 9.
 (pdftex.def)             Requested size: 107.45769pt x 92.25238pt.
-<tensor/figure/fig2_spd_600.pdf, id=562, 431.48499pt x 382.84673pt>
+<tensor/figure/fig2_spd_600.pdf, id=564, 431.48499pt x 382.84673pt>
 File: tensor/figure/fig2_spd_600.pdf Graphic file (type pdf)
 <use tensor/figure/fig2_spd_600.pdf>
 Package pdftex.def Info: tensor/figure/fig2_spd_600.pdf  used on input line 12.
 
 (pdftex.def)             Requested size: 103.5585pt x 91.88509pt.
-<tensor/figure/fig2_lk_mnoise_600.pdf, id=563, 431.48499pt x 384.37708pt>
+<tensor/figure/fig2_lk_mnoise_600.pdf, id=565, 431.48499pt x 384.37708pt>
 File: tensor/figure/fig2_lk_mnoise_600.pdf Graphic file (type pdf)
 <use tensor/figure/fig2_lk_mnoise_600.pdf>
 Package pdftex.def Info: tensor/figure/fig2_lk_mnoise_600.pdf  used on input li
 ne 15.
 (pdftex.def)             Requested size: 103.5585pt x 92.25238pt.
-<tensor/figure/fig2_lk_hnoise_600.pdf, id=564, 753.93553pt x 384.37708pt>
+<tensor/figure/fig2_lk_hnoise_600.pdf, id=566, 753.93553pt x 384.37708pt>
 File: tensor/figure/fig2_lk_hnoise_600.pdf Graphic file (type pdf)
 <use tensor/figure/fig2_lk_hnoise_600.pdf>
 Package pdftex.def Info: tensor/figure/fig2_lk_hnoise_600.pdf  used on input li
 ne 18.
 (pdftex.def)             Requested size: 180.94821pt x 92.25238pt.
-<tensor/figure/fig3_lk_lnoise_600.pdf, id=565, 437.90564pt x 384.37708pt>
+<tensor/figure/fig3_lk_lnoise_600.pdf, id=567, 437.90564pt x 384.37708pt>
 File: tensor/figure/fig3_lk_lnoise_600.pdf Graphic file (type pdf)
 <use tensor/figure/fig3_lk_lnoise_600.pdf>
 Package pdftex.def Info: tensor/figure/fig3_lk_lnoise_600.pdf  used on input li
 ne 33.
 (pdftex.def)             Requested size: 105.0995pt x 92.25238pt.
-<tensor/figure/fig3_slk_lnoise_600.pdf, id=566, 453.96811pt x 384.37708pt>
+<tensor/figure/fig3_slk_lnoise_600.pdf, id=568, 453.96811pt x 384.37708pt>
 File: tensor/figure/fig3_slk_lnoise_600.pdf Graphic file (type pdf)
 <use tensor/figure/fig3_slk_lnoise_600.pdf>
 Package pdftex.def Info: tensor/figure/fig3_slk_lnoise_600.pdf  used on input l
 ine 36.
 (pdftex.def)             Requested size: 108.95456pt x 92.25238pt.
-<tensor/figure/fig3_spd_600.pdf, id=567, 437.90564pt x 382.84673pt>
+<tensor/figure/fig3_spd_600.pdf, id=569, 437.90564pt x 382.84673pt>
 File: tensor/figure/fig3_spd_600.pdf Graphic file (type pdf)
 <use tensor/figure/fig3_spd_600.pdf>
 Package pdftex.def Info: tensor/figure/fig3_spd_600.pdf  used on input line 39.
 
 (pdftex.def)             Requested size: 105.0995pt x 91.88509pt.
-<tensor/figure/fig3_lk_mnoise_600.pdf, id=568, 437.90564pt x 384.37708pt>
+<tensor/figure/fig3_lk_mnoise_600.pdf, id=570, 437.90564pt x 384.37708pt>
 File: tensor/figure/fig3_lk_mnoise_600.pdf Graphic file (type pdf)
 <use tensor/figure/fig3_lk_mnoise_600.pdf>
 Package pdftex.def Info: tensor/figure/fig3_lk_mnoise_600.pdf  used on input li
 ne 42.
 (pdftex.def)             Requested size: 105.0995pt x 92.25238pt.
-<tensor/figure/fig3_lk_hnoise_600.pdf, id=569, 801.42049pt x 384.37708pt>
+<tensor/figure/fig3_lk_hnoise_600.pdf, id=571, 801.42049pt x 384.37708pt>
 File: tensor/figure/fig3_lk_hnoise_600.pdf Graphic file (type pdf)
 <use tensor/figure/fig3_lk_hnoise_600.pdf>
 Package pdftex.def Info: tensor/figure/fig3_lk_hnoise_600.pdf  used on input li
 ne 45.
 (pdftex.def)             Requested size: 192.34483pt x 92.25238pt.
- [128] [129 <./tensor/figure/fig2_lk_lnoise_600.pdf> <./tensor/figure/fig2_slk_
+ [127] [128 <./tensor/figure/fig2_lk_lnoise_600.pdf> <./tensor/figure/fig2_slk_
 lnoise_600.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./tensor/figure/fig2_slk_lno
@@ -1373,43 +1367,43 @@ pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./tensor/figure/fig3_lk_hnoi
 se_600.pdf): PDF inclusion: multiple pdfs with page group included in a single 
 page
 >]
-<tensor/figure/lk_1pass_time.pdf, id=714, 408.72469pt x 336.14742pt>
+<tensor/figure/lk_1pass_time.pdf, id=717, 408.72469pt x 336.14742pt>
 File: tensor/figure/lk_1pass_time.pdf Graphic file (type pdf)
 <use tensor/figure/lk_1pass_time.pdf>
 Package pdftex.def Info: tensor/figure/lk_1pass_time.pdf  used on input line 67
 .
 (pdftex.def)             Requested size: 86.48955pt x 71.13188pt.
-<tensor/figure/slk_1pass_time.pdf, id=715, 412.28609pt x 336.14742pt>
+<tensor/figure/slk_1pass_time.pdf, id=718, 412.28609pt x 336.14742pt>
 File: tensor/figure/slk_1pass_time.pdf Graphic file (type pdf)
 <use tensor/figure/slk_1pass_time.pdf>
 Package pdftex.def Info: tensor/figure/slk_1pass_time.pdf  used on input line 6
 8.
 (pdftex.def)             Requested size: 87.24318pt x 71.13188pt.
-<tensor/figure/fpd_1pass_time.pdf, id=716, 832.36305pt x 333.66298pt>
+<tensor/figure/fpd_1pass_time.pdf, id=719, 832.36305pt x 333.66298pt>
 File: tensor/figure/fpd_1pass_time.pdf Graphic file (type pdf)
 <use tensor/figure/fpd_1pass_time.pdf>
 Package pdftex.def Info: tensor/figure/fpd_1pass_time.pdf  used on input line 6
 9.
 (pdftex.def)             Requested size: 177.44316pt x 71.13188pt.
-<tensor/figure/lk_2pass_time.pdf, id=717, 408.72469pt x 336.14742pt>
+<tensor/figure/lk_2pass_time.pdf, id=720, 408.72469pt x 336.14742pt>
 File: tensor/figure/lk_2pass_time.pdf Graphic file (type pdf)
 <use tensor/figure/lk_2pass_time.pdf>
 Package pdftex.def Info: tensor/figure/lk_2pass_time.pdf  used on input line 71
 .
 (pdftex.def)             Requested size: 86.48955pt x 71.13188pt.
-<tensor/figure/slk_2pass_time.pdf, id=718, 408.72469pt x 336.14742pt>
+<tensor/figure/slk_2pass_time.pdf, id=721, 408.72469pt x 336.14742pt>
 File: tensor/figure/slk_2pass_time.pdf Graphic file (type pdf)
 <use tensor/figure/slk_2pass_time.pdf>
 Package pdftex.def Info: tensor/figure/slk_2pass_time.pdf  used on input line 7
 2.
 (pdftex.def)             Requested size: 86.48955pt x 71.13188pt.
-<tensor/figure/fpd_2pass_time.pdf, id=719, 832.36305pt x 333.66298pt>
+<tensor/figure/fpd_2pass_time.pdf, id=722, 832.36305pt x 333.66298pt>
 File: tensor/figure/fpd_2pass_time.pdf Graphic file (type pdf)
 <use tensor/figure/fpd_2pass_time.pdf>
 Package pdftex.def Info: tensor/figure/fpd_2pass_time.pdf  used on input line 7
 3.
 (pdftex.def)             Requested size: 177.44316pt x 71.13188pt.
- [130 <./tensor/figure/lk_1pass_time.pdf> <./tensor/figure/slk_1pass_time.pdf
+ [129 <./tensor/figure/lk_1pass_time.pdf> <./tensor/figure/slk_1pass_time.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./tensor/figure/slk_1pass_ti
 me.pdf): PDF inclusion: multiple pdfs with page group included in a single page
@@ -1448,73 +1442,73 @@ ha/m/n/12 sq$\OT1/ptm/m/n/12 . In-de-pen-dently gen-er-ate $\OML/cmm/m/it/12 N$
 /m/it/12 ; [] ; \OT1/cmr/bx/n/12 A[] \U/matha/m/n/12 P
  []
 
-[131]
-<tensor/figure/fig1_lk_lnoise.pdf, id=796, 431.48499pt x 381.31638pt>
+[130]
+<tensor/figure/fig1_lk_lnoise.pdf, id=798, 431.48499pt x 381.31638pt>
 File: tensor/figure/fig1_lk_lnoise.pdf Graphic file (type pdf)
 <use tensor/figure/fig1_lk_lnoise.pdf>
 Package pdftex.def Info: tensor/figure/fig1_lk_lnoise.pdf  used on input line 1
 78.
 (pdftex.def)             Requested size: 103.5585pt x 91.51779pt.
-<tensor/figure/fig1_slk_lnoise.pdf, id=797, 431.48499pt x 381.31638pt>
+<tensor/figure/fig1_slk_lnoise.pdf, id=799, 431.48499pt x 381.31638pt>
 File: tensor/figure/fig1_slk_lnoise.pdf Graphic file (type pdf)
 <use tensor/figure/fig1_slk_lnoise.pdf>
 Package pdftex.def Info: tensor/figure/fig1_slk_lnoise.pdf  used on input line 
 181.
 (pdftex.def)             Requested size: 103.5585pt x 91.51779pt.
-<tensor/figure/fig1_spd.pdf, id=798, 431.48499pt x 379.78604pt>
+<tensor/figure/fig1_spd.pdf, id=800, 431.48499pt x 379.78604pt>
 File: tensor/figure/fig1_spd.pdf Graphic file (type pdf)
 <use tensor/figure/fig1_spd.pdf>
 Package pdftex.def Info: tensor/figure/fig1_spd.pdf  used on input line 184.
 (pdftex.def)             Requested size: 103.5585pt x 91.15051pt.
-<tensor/figure/fig1_lk_mnoise.pdf, id=799, 431.48499pt x 381.31638pt>
+<tensor/figure/fig1_lk_mnoise.pdf, id=801, 431.48499pt x 381.31638pt>
 File: tensor/figure/fig1_lk_mnoise.pdf Graphic file (type pdf)
 <use tensor/figure/fig1_lk_mnoise.pdf>
 Package pdftex.def Info: tensor/figure/fig1_lk_mnoise.pdf  used on input line 1
 87.
 (pdftex.def)             Requested size: 103.5585pt x 91.51779pt.
-<tensor/figure/fig1_lk_hnoise.pdf, id=800, 650.97397pt x 381.31638pt>
+<tensor/figure/fig1_lk_hnoise.pdf, id=802, 650.97397pt x 381.31638pt>
 File: tensor/figure/fig1_lk_hnoise.pdf Graphic file (type pdf)
 <use tensor/figure/fig1_lk_hnoise.pdf>
 Package pdftex.def Info: tensor/figure/fig1_lk_hnoise.pdf  used on input line 1
 90.
 (pdftex.def)             Requested size: 156.23694pt x 91.51779pt.
-<tensor/figure/multi_ABSORB_frk8.pdf, id=801, 431.48499pt x 382.84673pt>
+<tensor/figure/multi_ABSORB_frk8.pdf, id=803, 431.48499pt x 382.84673pt>
 File: tensor/figure/multi_ABSORB_frk8.pdf Graphic file (type pdf)
 <use tensor/figure/multi_ABSORB_frk8.pdf>
 Package pdftex.def Info: tensor/figure/multi_ABSORB_frk8.pdf  used on input lin
 e 203.
 (pdftex.def)             Requested size: 92.99132pt x 82.51282pt.
-<tensor/figure/multi_ABSORB_frk10.pdf, id=802, 431.48499pt x 382.84673pt>
+<tensor/figure/multi_ABSORB_frk10.pdf, id=804, 431.48499pt x 382.84673pt>
 File: tensor/figure/multi_ABSORB_frk10.pdf Graphic file (type pdf)
 <use tensor/figure/multi_ABSORB_frk10.pdf>
 Package pdftex.def Info: tensor/figure/multi_ABSORB_frk10.pdf  used on input li
 ne 204.
 (pdftex.def)             Requested size: 92.99132pt x 82.51282pt.
-<tensor/figure/multi_ABSORB_frk15.pdf, id=803, 788.30135pt x 382.84673pt>
+<tensor/figure/multi_ABSORB_frk15.pdf, id=805, 788.30135pt x 382.84673pt>
 File: tensor/figure/multi_ABSORB_frk15.pdf Graphic file (type pdf)
 <use tensor/figure/multi_ABSORB_frk15.pdf>
 Package pdftex.def Info: tensor/figure/multi_ABSORB_frk15.pdf  used on input li
 ne 205.
 (pdftex.def)             Requested size: 169.89046pt x 82.51282pt.
-<tensor/figure/multi_T_frk10.pdf, id=804, 431.48499pt x 411.6263pt>
+<tensor/figure/multi_T_frk10.pdf, id=806, 431.48499pt x 411.6263pt>
 File: tensor/figure/multi_T_frk10.pdf Graphic file (type pdf)
 <use tensor/figure/multi_T_frk10.pdf>
 Package pdftex.def Info: tensor/figure/multi_T_frk10.pdf  used on input line 20
 7.
 (pdftex.def)             Requested size: 86.49298pt x 82.51282pt.
-<tensor/figure/multi_CO_frk10.pdf, id=805, 431.48499pt x 411.6263pt>
+<tensor/figure/multi_CO_frk10.pdf, id=807, 431.48499pt x 411.6263pt>
 File: tensor/figure/multi_CO_frk10.pdf Graphic file (type pdf)
 <use tensor/figure/multi_CO_frk10.pdf>
 Package pdftex.def Info: tensor/figure/multi_CO_frk10.pdf  used on input line 2
 08.
 (pdftex.def)             Requested size: 86.49298pt x 82.51282pt.
-<tensor/figure/multi_P_frk10.pdf, id=806, 788.30135pt x 411.6263pt>
+<tensor/figure/multi_P_frk10.pdf, id=808, 788.30135pt x 411.6263pt>
 File: tensor/figure/multi_P_frk10.pdf Graphic file (type pdf)
 <use tensor/figure/multi_P_frk10.pdf>
 Package pdftex.def Info: tensor/figure/multi_P_frk10.pdf  used on input line 20
 9.
 (pdftex.def)             Requested size: 158.01833pt x 82.51282pt.
-<tensor/figure/video_classification_result.pdf, id=807, 963.6pt x 542.025pt>
+<tensor/figure/video_classification_result.pdf, id=809, 963.6pt x 542.025pt>
 File: tensor/figure/video_classification_result.pdf Graphic file (type pdf)
 <use tensor/figure/video_classification_result.pdf>
 Package pdftex.def Info: tensor/figure/video_classification_result.pdf  used on
@@ -1524,18 +1518,18 @@ Package pdftex.def Info: tensor/figure/video_classification_result.pdf  used on
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<tensor/figure/frame500.pdf, id=808, 498.663pt x 303.86902pt>
+<tensor/figure/frame500.pdf, id=810, 498.663pt x 303.86902pt>
 File: tensor/figure/frame500.pdf Graphic file (type pdf)
 <use tensor/figure/frame500.pdf>
 Package pdftex.def Info: tensor/figure/frame500.pdf  used on input line 244.
 (pdftex.def)             Requested size: 112.05736pt x 68.28644pt.
-<tensor/figure/2pass_k300_r50_frame500.pdf, id=809, 498.663pt x 304.85283pt>
+<tensor/figure/2pass_k300_r50_frame500.pdf, id=811, 498.663pt x 304.85283pt>
 File: tensor/figure/2pass_k300_r50_frame500.pdf Graphic file (type pdf)
 <use tensor/figure/2pass_k300_r50_frame500.pdf>
 Package pdftex.def Info: tensor/figure/2pass_k300_r50_frame500.pdf  used on inp
 ut line 245.
 (pdftex.def)             Requested size: 111.69214pt x 68.28644pt.
-<tensor/figure/1pass_k300_r50_frame500.pdf, id=810, 498.663pt x 304.85283pt>
+<tensor/figure/1pass_k300_r50_frame500.pdf, id=812, 498.663pt x 304.85283pt>
 File: tensor/figure/1pass_k300_r50_frame500.pdf Graphic file (type pdf)
 <use tensor/figure/1pass_k300_r50_frame500.pdf>
 Package pdftex.def Info: tensor/figure/1pass_k300_r50_frame500.pdf  used on inp
@@ -1544,23 +1538,23 @@ ut line 246.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<tensor/figure/T100_original.pdf, id=811, 405.35289pt x 413.67345pt>
+<tensor/figure/T100_original.pdf, id=813, 405.35289pt x 413.67345pt>
 File: tensor/figure/T100_original.pdf Graphic file (type pdf)
 <use tensor/figure/T100_original.pdf>
 Package pdftex.def Info: tensor/figure/T100_original.pdf  used on input line 25
 7.
 (pdftex.def)             Requested size: 83.63599pt x 85.35826pt.
-<tensor/figure/T100_hooi.pdf, id=812, 434.15823pt x 443.93953pt>
+<tensor/figure/T100_hooi.pdf, id=814, 434.15823pt x 443.93953pt>
 File: tensor/figure/T100_hooi.pdf Graphic file (type pdf)
 <use tensor/figure/T100_hooi.pdf>
 Package pdftex.def Info: tensor/figure/T100_hooi.pdf  used on input line 258.
 (pdftex.def)             Requested size: 83.47137pt x 85.35826pt.
-<tensor/figure/T100_2pass.pdf, id=813, 347.823pt x 356.14357pt>
+<tensor/figure/T100_2pass.pdf, id=815, 347.823pt x 356.14357pt>
 File: tensor/figure/T100_2pass.pdf Graphic file (type pdf)
 <use tensor/figure/T100_2pass.pdf>
 Package pdftex.def Info: tensor/figure/T100_2pass.pdf  used on input line 259.
 (pdftex.def)             Requested size: 83.36246pt x 85.35826pt.
-<tensor/figure/T100_1pass.pdf, id=814, 322.28171pt x 330.60228pt>
+<tensor/figure/T100_1pass.pdf, id=816, 322.28171pt x 330.60228pt>
 File: tensor/figure/T100_1pass.pdf Graphic file (type pdf)
 <use tensor/figure/T100_1pass.pdf>
 Package pdftex.def Info: tensor/figure/T100_1pass.pdf  used on input line 260.
@@ -1568,15 +1562,7 @@ Package pdftex.def Info: tensor/figure/T100_1pass.pdf  used on input line 260.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-LaTeX Warning: Reference `tab:storage-comparison' on page 132 undefined on inpu
-t line 303.
-
-
-LaTeX Warning: Reference `appendix: time-complexity' on page 132 undefined on i
-nput line 303.
-
-[132] [133 <./tensor/figure/fig1_lk_lnoise.pdf> <./tensor/figure/fig1_slk_lnois
+[131] [132 <./tensor/figure/fig1_lk_lnoise.pdf> <./tensor/figure/fig1_slk_lnois
 e.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./tensor/figure/fig1_slk_lno
@@ -1624,7 +1610,7 @@ pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./tensor/figure/multi_CO_frk
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./tensor/figure/multi_P_frk1
 0.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->] [134 <./tensor/figure/video_classification_result.pdf> <./tensor/figure/fram
+>] [133 <./tensor/figure/video_classification_result.pdf> <./tensor/figure/fram
 e500.pdf> <./tensor/figure/2pass_k300_r50_frame500.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./tensor/figure/2pass_k300_r
@@ -1635,7 +1621,7 @@ ngle page
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./tensor/figure/1pass_k300_r
 50_frame500.pdf): PDF inclusion: multiple pdfs with page group included in a si
 ngle page
->] [135 <./tensor/figure/T100_original.pdf> <./tensor/figure/T100_hooi.pdf
+>] [134 <./tensor/figure/T100_original.pdf> <./tensor/figure/T100_hooi.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./tensor/figure/T100_hooi.pd
 f): PDF inclusion: multiple pdfs with page group included in a single page
@@ -1647,19 +1633,19 @@ df): PDF inclusion: multiple pdfs with page group included in a single page
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./tensor/figure/T100_1pass.p
 df): PDF inclusion: multiple pdfs with page group included in a single page
->] [136] [137]) (./tensor/conclusion.tex [138]) [139]
+>] [135] [136]) (./tensor/conclusion.tex [137]) [138]
 (./tensor/appendix/proof_for_main_results.tex
 
-Package natbib Warning: Citation `de2008tensor' on page 140 undefined on input 
+Package natbib Warning: Citation `de2008tensor' on page 139 undefined on input 
 line 39.
 
-[140
+[139
 
-] [141]) (./tensor/appendix/core_sketchy.tex [142] [143] [144] [145])
-(./tensor/appendix/proof_equivalent.tex [146])
+] [140]) (./tensor/appendix/core_sketchy.tex [141] [142] [143] [144])
+(./tensor/appendix/proof_equivalent.tex [145])
 (./tensor/appendix/technical_lemmas_sketchy.tex)
-(./tensor/appendix/algorithm_table.tex [147]) (./tensor/appendix/random_map.tex
-[148]) (./tensor/appendix/appendix_tensorsketch.tex [149]
+(./tensor/appendix/algorithm_table.tex [146]) (./tensor/appendix/random_map.tex
+[147]) (./tensor/appendix/appendix_tensorsketch.tex [148]
 LaTeX Font Info:    Try loading font information for OT1+phv on input line 9.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1phv.fd
@@ -1675,171 +1661,171 @@ Package amsmath Warning: Foreign command \atop;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on input line 27.
 
-[150]) (./tensor/appendix/appendix_more_simulation_results.tex
+[149]) (./tensor/appendix/appendix_more_simulation_results.tex
 Overfull \hbox (19.02788pt too wide) in paragraph at lines 40--2
 \OT1/ptm/m/n/12 By only stor-ing $[][]\OML/cmm/m/it/12 ; [] ; [][]$\OT1/ptm/m/n
 /12 , Ten-sorS-ketch only re-quires $\OT1/cmr/m/n/12 2 [][] \OML/cmm/m/it/12 I[
 ]$
  []
 
-<tensor/figure/fig2_lk_lnoise_400.pdf, id=1097, 431.48499pt x 384.37708pt>
+<tensor/figure/fig2_lk_lnoise_400.pdf, id=1099, 431.48499pt x 384.37708pt>
 File: tensor/figure/fig2_lk_lnoise_400.pdf Graphic file (type pdf)
 <use tensor/figure/fig2_lk_lnoise_400.pdf>
 Package pdftex.def Info: tensor/figure/fig2_lk_lnoise_400.pdf  used on input li
 ne 13.
 (pdftex.def)             Requested size: 103.5585pt x 92.25238pt.
-<tensor/figure/fig2_slk_lnoise_400.pdf, id=1098, 431.48499pt x 384.37708pt>
+<tensor/figure/fig2_slk_lnoise_400.pdf, id=1100, 431.48499pt x 384.37708pt>
 File: tensor/figure/fig2_slk_lnoise_400.pdf Graphic file (type pdf)
 <use tensor/figure/fig2_slk_lnoise_400.pdf>
 Package pdftex.def Info: tensor/figure/fig2_slk_lnoise_400.pdf  used on input l
 ine 16.
 (pdftex.def)             Requested size: 103.5585pt x 92.25238pt.
-<tensor/figure/fig2_spd_400.pdf, id=1099, 448.46577pt x 382.84673pt>
+<tensor/figure/fig2_spd_400.pdf, id=1101, 448.46577pt x 382.84673pt>
 File: tensor/figure/fig2_spd_400.pdf Graphic file (type pdf)
 <use tensor/figure/fig2_spd_400.pdf>
 Package pdftex.def Info: tensor/figure/fig2_spd_400.pdf  used on input line 19.
 
 (pdftex.def)             Requested size: 107.63397pt x 91.88509pt.
-<tensor/figure/fig2_lk_mnoise_400.pdf, id=1100, 431.48499pt x 384.37708pt>
+<tensor/figure/fig2_lk_mnoise_400.pdf, id=1102, 431.48499pt x 384.37708pt>
 File: tensor/figure/fig2_lk_mnoise_400.pdf Graphic file (type pdf)
 <use tensor/figure/fig2_lk_mnoise_400.pdf>
 Package pdftex.def Info: tensor/figure/fig2_lk_mnoise_400.pdf  used on input li
 ne 22.
 (pdftex.def)             Requested size: 103.5585pt x 92.25238pt.
-<tensor/figure/fig2_lk_hnoise_400.pdf, id=1101, 753.93553pt x 384.37708pt>
+<tensor/figure/fig2_lk_hnoise_400.pdf, id=1103, 753.93553pt x 384.37708pt>
 File: tensor/figure/fig2_lk_hnoise_400.pdf Graphic file (type pdf)
 <use tensor/figure/fig2_lk_hnoise_400.pdf>
 Package pdftex.def Info: tensor/figure/fig2_lk_hnoise_400.pdf  used on input li
 ne 25.
 (pdftex.def)             Requested size: 180.94821pt x 92.25238pt.
-<tensor/figure/fig2_lk_lnoise_200.pdf, id=1102, 431.48499pt x 384.37708pt>
+<tensor/figure/fig2_lk_lnoise_200.pdf, id=1104, 431.48499pt x 384.37708pt>
 File: tensor/figure/fig2_lk_lnoise_200.pdf Graphic file (type pdf)
 <use tensor/figure/fig2_lk_lnoise_200.pdf>
 Package pdftex.def Info: tensor/figure/fig2_lk_lnoise_200.pdf  used on input li
 ne 39.
 (pdftex.def)             Requested size: 107.87097pt x 96.09402pt.
-<tensor/figure/fig2_slk_lnoise_200.pdf, id=1103, 431.48499pt x 384.37708pt>
+<tensor/figure/fig2_slk_lnoise_200.pdf, id=1105, 431.48499pt x 384.37708pt>
 File: tensor/figure/fig2_slk_lnoise_200.pdf Graphic file (type pdf)
 <use tensor/figure/fig2_slk_lnoise_200.pdf>
 Package pdftex.def Info: tensor/figure/fig2_slk_lnoise_200.pdf  used on input l
 ine 42.
 (pdftex.def)             Requested size: 107.87097pt x 96.09402pt.
-<tensor/figure/fig2_spd_200.pdf, id=1104, 431.48499pt x 382.84673pt>
+<tensor/figure/fig2_spd_200.pdf, id=1106, 431.48499pt x 382.84673pt>
 File: tensor/figure/fig2_spd_200.pdf Graphic file (type pdf)
 <use tensor/figure/fig2_spd_200.pdf>
 Package pdftex.def Info: tensor/figure/fig2_spd_200.pdf  used on input line 45.
 
 (pdftex.def)             Requested size: 107.87097pt x 95.71144pt.
-<tensor/figure/fig2_lk_mnoise_200.pdf, id=1105, 431.48499pt x 384.37708pt>
+<tensor/figure/fig2_lk_mnoise_200.pdf, id=1107, 431.48499pt x 384.37708pt>
 File: tensor/figure/fig2_lk_mnoise_200.pdf Graphic file (type pdf)
 <use tensor/figure/fig2_lk_mnoise_200.pdf>
 Package pdftex.def Info: tensor/figure/fig2_lk_mnoise_200.pdf  used on input li
 ne 48.
 (pdftex.def)             Requested size: 107.87097pt x 96.09402pt.
-<tensor/figure/fig2_lk_hnoise_200.pdf, id=1106, 753.93553pt x 384.37708pt>
+<tensor/figure/fig2_lk_hnoise_200.pdf, id=1108, 753.93553pt x 384.37708pt>
 File: tensor/figure/fig2_lk_hnoise_200.pdf Graphic file (type pdf)
 <use tensor/figure/fig2_lk_hnoise_200.pdf>
 Package pdftex.def Info: tensor/figure/fig2_lk_hnoise_200.pdf  used on input li
 ne 51.
 (pdftex.def)             Requested size: 188.48341pt x 96.09402pt.
-<tensor/figure/fig3_lk_lnoise_400.pdf, id=1107, 437.90564pt x 384.37708pt>
+<tensor/figure/fig3_lk_lnoise_400.pdf, id=1109, 437.90564pt x 384.37708pt>
 File: tensor/figure/fig3_lk_lnoise_400.pdf Graphic file (type pdf)
 <use tensor/figure/fig3_lk_lnoise_400.pdf>
 Package pdftex.def Info: tensor/figure/fig3_lk_lnoise_400.pdf  used on input li
 ne 66.
 (pdftex.def)             Requested size: 105.0995pt x 92.25238pt.
-<tensor/figure/fig3_slk_lnoise_400.pdf, id=1108, 437.90564pt x 384.37708pt>
+<tensor/figure/fig3_slk_lnoise_400.pdf, id=1110, 437.90564pt x 384.37708pt>
 File: tensor/figure/fig3_slk_lnoise_400.pdf Graphic file (type pdf)
 <use tensor/figure/fig3_slk_lnoise_400.pdf>
 Package pdftex.def Info: tensor/figure/fig3_slk_lnoise_400.pdf  used on input l
 ine 69.
 (pdftex.def)             Requested size: 105.0995pt x 92.25238pt.
-<tensor/figure/fig3_spd_400.pdf, id=1109, 454.83778pt x 382.84673pt>
+<tensor/figure/fig3_spd_400.pdf, id=1111, 454.83778pt x 382.84673pt>
 File: tensor/figure/fig3_spd_400.pdf Graphic file (type pdf)
 <use tensor/figure/fig3_spd_400.pdf>
 Package pdftex.def Info: tensor/figure/fig3_spd_400.pdf  used on input line 72.
 
 (pdftex.def)             Requested size: 109.16328pt x 91.88509pt.
-<tensor/figure/fig3_lk_mnoise_400.pdf, id=1110, 437.90564pt x 384.37708pt>
+<tensor/figure/fig3_lk_mnoise_400.pdf, id=1112, 437.90564pt x 384.37708pt>
 File: tensor/figure/fig3_lk_mnoise_400.pdf Graphic file (type pdf)
 <use tensor/figure/fig3_lk_mnoise_400.pdf>
 Package pdftex.def Info: tensor/figure/fig3_lk_mnoise_400.pdf  used on input li
 ne 75.
 (pdftex.def)             Requested size: 105.0995pt x 92.25238pt.
-<tensor/figure/fig3_lk_hnoise_400.pdf, id=1111, 801.42049pt x 384.37708pt>
+<tensor/figure/fig3_lk_hnoise_400.pdf, id=1113, 801.42049pt x 384.37708pt>
 File: tensor/figure/fig3_lk_hnoise_400.pdf Graphic file (type pdf)
 <use tensor/figure/fig3_lk_hnoise_400.pdf>
 Package pdftex.def Info: tensor/figure/fig3_lk_hnoise_400.pdf  used on input li
 ne 78.
 (pdftex.def)             Requested size: 192.34483pt x 92.25238pt.
-<tensor/figure/fig3_lk_lnoise_200.pdf, id=1112, 437.90564pt x 384.37708pt>
+<tensor/figure/fig3_lk_lnoise_200.pdf, id=1114, 437.90564pt x 384.37708pt>
 File: tensor/figure/fig3_lk_lnoise_200.pdf Graphic file (type pdf)
 <use tensor/figure/fig3_lk_lnoise_200.pdf>
 Package pdftex.def Info: tensor/figure/fig3_lk_lnoise_200.pdf  used on input li
 ne 90.
 (pdftex.def)             Requested size: 109.47614pt x 96.09402pt.
-<tensor/figure/fig3_slk_lnoise_200.pdf, id=1113, 437.90564pt x 384.37708pt>
+<tensor/figure/fig3_slk_lnoise_200.pdf, id=1115, 437.90564pt x 384.37708pt>
 File: tensor/figure/fig3_slk_lnoise_200.pdf Graphic file (type pdf)
 <use tensor/figure/fig3_slk_lnoise_200.pdf>
 Package pdftex.def Info: tensor/figure/fig3_slk_lnoise_200.pdf  used on input l
 ine 93.
 (pdftex.def)             Requested size: 109.47614pt x 96.09402pt.
-<tensor/figure/fig3_spd_200.pdf, id=1114, 437.90564pt x 382.84673pt>
+<tensor/figure/fig3_spd_200.pdf, id=1116, 437.90564pt x 382.84673pt>
 File: tensor/figure/fig3_spd_200.pdf Graphic file (type pdf)
 <use tensor/figure/fig3_spd_200.pdf>
 Package pdftex.def Info: tensor/figure/fig3_spd_200.pdf  used on input line 96.
 
 (pdftex.def)             Requested size: 109.47614pt x 95.71144pt.
-<tensor/figure/fig3_lk_mnoise_200.pdf, id=1115, 437.90564pt x 384.37708pt>
+<tensor/figure/fig3_lk_mnoise_200.pdf, id=1117, 437.90564pt x 384.37708pt>
 File: tensor/figure/fig3_lk_mnoise_200.pdf Graphic file (type pdf)
 <use tensor/figure/fig3_lk_mnoise_200.pdf>
 Package pdftex.def Info: tensor/figure/fig3_lk_mnoise_200.pdf  used on input li
 ne 99.
 (pdftex.def)             Requested size: 109.47614pt x 96.09402pt.
-<tensor/figure/fig3_lk_hnoise_200.pdf, id=1116, 801.42049pt x 384.37708pt>
+<tensor/figure/fig3_lk_hnoise_200.pdf, id=1118, 801.42049pt x 384.37708pt>
 File: tensor/figure/fig3_lk_hnoise_200.pdf Graphic file (type pdf)
 <use tensor/figure/fig3_lk_hnoise_200.pdf>
 Package pdftex.def Info: tensor/figure/fig3_lk_hnoise_200.pdf  used on input li
 ne 102.
 (pdftex.def)             Requested size: 200.35463pt x 96.09402pt.
 ) (./tensor/appendix/appendix_more_real_data_examples.tex
-<tensor/figure/multi_SRFRAD_frk8.pdf, id=1117, 431.48499pt x 382.84673pt>
+<tensor/figure/multi_SRFRAD_frk8.pdf, id=1119, 431.48499pt x 382.84673pt>
 File: tensor/figure/multi_SRFRAD_frk8.pdf Graphic file (type pdf)
 <use tensor/figure/multi_SRFRAD_frk8.pdf>
 Package pdftex.def Info: tensor/figure/multi_SRFRAD_frk8.pdf  used on input lin
 e 7.
 (pdftex.def)             Requested size: 92.99132pt x 82.51282pt.
-<tensor/figure/multi_SRFRAD_frk10.pdf, id=1118, 431.48499pt x 382.84673pt>
+<tensor/figure/multi_SRFRAD_frk10.pdf, id=1120, 431.48499pt x 382.84673pt>
 File: tensor/figure/multi_SRFRAD_frk10.pdf Graphic file (type pdf)
 <use tensor/figure/multi_SRFRAD_frk10.pdf>
 Package pdftex.def Info: tensor/figure/multi_SRFRAD_frk10.pdf  used on input li
 ne 8.
 (pdftex.def)             Requested size: 92.99132pt x 82.51282pt.
-<tensor/figure/multi_SRFRAD_frk15.pdf, id=1119, 788.30135pt x 382.84673pt>
+<tensor/figure/multi_SRFRAD_frk15.pdf, id=1121, 788.30135pt x 382.84673pt>
 File: tensor/figure/multi_SRFRAD_frk15.pdf Graphic file (type pdf)
 <use tensor/figure/multi_SRFRAD_frk15.pdf>
 Package pdftex.def Info: tensor/figure/multi_SRFRAD_frk15.pdf  used on input li
 ne 9.
 (pdftex.def)             Requested size: 169.89046pt x 82.51282pt.
-<tensor/figure/multi_BURDENDUST_frk8.pdf, id=1120, 431.48499pt x 382.84673pt>
+<tensor/figure/multi_BURDENDUST_frk8.pdf, id=1122, 431.48499pt x 382.84673pt>
 File: tensor/figure/multi_BURDENDUST_frk8.pdf Graphic file (type pdf)
 <use tensor/figure/multi_BURDENDUST_frk8.pdf>
 Package pdftex.def Info: tensor/figure/multi_BURDENDUST_frk8.pdf  used on input
  line 12.
 (pdftex.def)             Requested size: 92.99132pt x 82.51282pt.
-<tensor/figure/multi_BURDENDUST_frk10.pdf, id=1121, 431.48499pt x 382.84673pt>
+<tensor/figure/multi_BURDENDUST_frk10.pdf, id=1123, 431.48499pt x 382.84673pt>
 File: tensor/figure/multi_BURDENDUST_frk10.pdf Graphic file (type pdf)
 <use tensor/figure/multi_BURDENDUST_frk10.pdf>
 Package pdftex.def Info: tensor/figure/multi_BURDENDUST_frk10.pdf  used on inpu
 t line 13.
 (pdftex.def)             Requested size: 92.99132pt x 82.51282pt.
-<tensor/figure/multi_BURDENDUST_frk15.pdf, id=1122, 788.30135pt x 382.84673pt>
+<tensor/figure/multi_BURDENDUST_frk15.pdf, id=1124, 788.30135pt x 382.84673pt>
 File: tensor/figure/multi_BURDENDUST_frk15.pdf Graphic file (type pdf)
 <use tensor/figure/multi_BURDENDUST_frk15.pdf>
 Package pdftex.def Info: tensor/figure/multi_BURDENDUST_frk15.pdf  used on inpu
 t line 14.
 (pdftex.def)             Requested size: 169.89046pt x 82.51282pt.
-) [151] [152 <./tensor/figure/fig2_lk_lnoise_400.pdf> <./tensor/figure/fig2_slk
+) [150] [151 <./tensor/figure/fig2_lk_lnoise_400.pdf> <./tensor/figure/fig2_slk
 _lnoise_400.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./tensor/figure/fig2_slk_lno
@@ -1883,7 +1869,7 @@ page
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./tensor/figure/fig2_lk_hnoi
 se_200.pdf): PDF inclusion: multiple pdfs with page group included in a single 
 page
->] [153 <./tensor/figure/fig3_lk_lnoise_400.pdf> <./tensor/figure/fig3_slk_lnoi
+>] [152 <./tensor/figure/fig3_lk_lnoise_400.pdf> <./tensor/figure/fig3_slk_lnoi
 se_400.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./tensor/figure/fig3_slk_lno
@@ -1927,7 +1913,7 @@ page
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./tensor/figure/fig3_lk_hnoi
 se_200.pdf): PDF inclusion: multiple pdfs with page group included in a single 
 page
->] [154 <./tensor/figure/multi_SRFRAD_frk8.pdf> <./tensor/figure/multi_SRFRAD_f
+>] [153 <./tensor/figure/multi_SRFRAD_frk8.pdf> <./tensor/figure/multi_SRFRAD_f
 rk10.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./tensor/figure/multi_SRFRAD
@@ -1955,10 +1941,10 @@ DUST_frk15.pdf): PDF inclusion: multiple pdfs with page group included in a sin
 gle page
 >]
 Chapter 4.
-(./projection/introduction.tex [155
+(./projection/introduction.tex [154
 
 
-] [156] [157]
+] [155] [156]
 Overfull \hbox (26.69878pt too wide) in paragraph at lines 93--98
 \OT1/ptm/m/n/12 For ma-trix $\OT1/cmr/bx/n/12 X$\OT1/ptm/m/n/12 , we de-note it
 s $\OML/cmm/m/it/12 i[]$ \OT1/ptm/m/n/12 row, $\OML/cmm/m/it/12 j[]$ \OT1/ptm/m
@@ -1967,45 +1953,52 @@ s $\OML/cmm/m/it/12 i[]$ \OT1/ptm/m/n/12 row, $\OML/cmm/m/it/12 j[]$ \OT1/ptm/m
 mr/bx/n/12 X[]\OML/cmm/m/it/12 ; \OT1/cmr/bx/n/12 X[]$\OT1/ptm/m/n/12 .
  []
 
-) (./projection/tensor-random-projection.tex [158]
+) (./projection/tensor-random-projection.tex [157]
 Overfull \hbox (4.16364pt too wide) in paragraph at lines 36--46
 []\OT1/ptm/m/n/12 In large scale database set-tings, where com-pu-ta-tional ef-
 fi-ciency is crit-i-cal and queries
  []
 
-) (./projection/theoretical-development.tex [159] [160]
+) (./projection/theoretical-development.tex [158] [159]
 Overfull \hbox (12.9102pt too wide) detected at line 72
 [][]
  []
 
-[161] [162] [163]) (./projection/simulation.tex [164]
-<projection/figure/dist_g_d2500.pdf, id=1505, 433.62pt x 361.35pt>
+[160] [161] [162]
+Overfull \hbox (3.78026pt too wide) in paragraph at lines 142--145
+\OT1/ptm/m/n/12 Let $\OT1/cmr/bx/n/12 Q[] \U/matha/m/n/12 P \U/msb/m/n/12 R[]$ 
+\OT1/ptm/m/n/12 be the or-thonor-mal ma-trix from QR fac-tor-iza-tion: $\OT1/cm
+r/bx/n/12 Q[]\OML/cmm/m/it/12 ; \U/matha/m/n/12 ^^A Ð []p[]q$\OT1/ptm/m/n/12 .
+ []
+
+) (./projection/simulation.tex [163]
+<projection/figure/dist_g_d2500.pdf, id=1507, 433.62pt x 361.35pt>
 File: projection/figure/dist_g_d2500.pdf Graphic file (type pdf)
 <use projection/figure/dist_g_d2500.pdf>
 Package pdftex.def Info: projection/figure/dist_g_d2500.pdf  used on input line
  44.
 (pdftex.def)             Requested size: 95.39668pt x 79.49724pt.
-<projection/figure/dist_sp1_d2500.pdf, id=1506, 433.62pt x 361.35pt>
+<projection/figure/dist_sp1_d2500.pdf, id=1508, 433.62pt x 361.35pt>
 File: projection/figure/dist_sp1_d2500.pdf Graphic file (type pdf)
 <use projection/figure/dist_sp1_d2500.pdf>
 Package pdftex.def Info: projection/figure/dist_sp1_d2500.pdf  used on input li
 ne 47.
 (pdftex.def)             Requested size: 95.39668pt x 79.49724pt.
-<projection/figure/dist_g_mnist.pdf, id=1507, 433.62pt x 361.35pt>
+<projection/figure/dist_g_mnist.pdf, id=1509, 433.62pt x 361.35pt>
 File: projection/figure/dist_g_mnist.pdf Graphic file (type pdf)
 <use projection/figure/dist_g_mnist.pdf>
 Package pdftex.def Info: projection/figure/dist_g_mnist.pdf  used on input line
  50.
 (pdftex.def)             Requested size: 95.39668pt x 79.49724pt.
-<projection/figure/dist_sp1_mnist.pdf, id=1508, 433.62pt x 361.35pt>
+<projection/figure/dist_sp1_mnist.pdf, id=1510, 433.62pt x 361.35pt>
 File: projection/figure/dist_sp1_mnist.pdf Graphic file (type pdf)
 <use projection/figure/dist_sp1_mnist.pdf>
 Package pdftex.def Info: projection/figure/dist_sp1_mnist.pdf  used on input li
 ne 53.
 (pdftex.def)             Requested size: 95.39668pt x 79.49724pt.
-)
-(./projection/sketching.tex [165 <./projection/figure/dist_g_d2500.pdf> <./proj
-ection/figure/dist_sp1_d2500.pdf
+ [164]) (./projection/sketching.tex
+[165 <./projection/figure/dist_g_d2500.pdf> <./projection/figure/dist_sp1_d2500
+.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./projection/figure/dist_sp1
 _d2500.pdf): PDF inclusion: multiple pdfs with page group included in a single 
@@ -2021,27 +2014,26 @@ pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./projection/figure/dist_sp1
 _mnist.pdf): PDF inclusion: multiple pdfs with page group included in a single 
 page
 >] [166] [167]
-<projection/figure/col_dim2_krao_d900.pdf, id=1590, 433.62pt x 361.35pt>
+<projection/figure/col_dim2_krao_d900.pdf, id=1595, 433.62pt x 361.35pt>
 File: projection/figure/col_dim2_krao_d900.pdf Graphic file (type pdf)
 <use projection/figure/col_dim2_krao_d900.pdf>
 Package pdftex.def Info: projection/figure/col_dim2_krao_d900.pdf  used on inpu
-t line 58.
+t line 57.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
-<projection/figure/col_dim3_krao_d160000.pdf, id=1591, 433.62pt x 361.35pt>
+<projection/figure/col_dim3_krao_d160000.pdf, id=1596, 433.62pt x 361.35pt>
 File: projection/figure/col_dim3_krao_d160000.pdf Graphic file (type pdf)
 <use projection/figure/col_dim3_krao_d160000.pdf>
 Package pdftex.def Info: projection/figure/col_dim3_krao_d160000.pdf  used on i
-nput line 61.
+nput line 60.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
-<projection/figure/col_dim4_krao_d1000000.pdf, id=1592, 433.62pt x 361.35pt>
+<projection/figure/col_dim4_krao_d1000000.pdf, id=1597, 433.62pt x 361.35pt>
 File: projection/figure/col_dim4_krao_d1000000.pdf Graphic file (type pdf)
 <use projection/figure/col_dim4_krao_d1000000.pdf>
 Package pdftex.def Info: projection/figure/col_dim4_krao_d1000000.pdf  used on 
-input line 64.
+input line 63.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
-) (./projection/conclusion.tex [168])
-(./projection/appendix_bias_variance.tex [169 <./projection/figure/col_dim2_kra
-o_d900.pdf> <./projection/figure/col_dim3_krao_d160000.pdf
+) (./projection/conclusion.tex) [168 <./projection/figure/col_dim2_krao_d900.pd
+f> <./projection/figure/col_dim3_krao_d160000.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./projection/figure/col_dim3
 _krao_d160000.pdf): PDF inclusion: multiple pdfs with page group included in a 
@@ -2051,7 +2043,7 @@ single page
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./projection/figure/col_dim4
 _krao_d1000000.pdf): PDF inclusion: multiple pdfs with page group included in a
  single page
->]
+>] (./projection/appendix_bias_variance.tex
 Overfull \hbox (1.92853pt too wide) in paragraph at lines 12--14
 \OT1/ptm/m/n/12 stacks all columns of ma-trix $\OT1/cmr/bx/n/12 A$ \OT1/ptm/m/n
 /12 and re-turns a vec-tor of length $\OML/cmm/m/it/12 kd$\OT1/ptm/m/n/12 , $\U
@@ -2061,7 +2053,7 @@ r/m/n/12 1\U/matha/m/n/12 q\OT1/cmr/m/n/12 ; []  ; \OT1/cmr/bx/n/12 A\U/matha/m
 2 s$\OT1/ptm/m/n/12 .
  []
 
-[170] [171]
+[169] [170] [171]
 Overfull \hbox (6.42332pt too wide) detected at line 94
 [][]
  []
@@ -2076,12 +2068,12 @@ Overfull \hbox (17.26982pt too wide) detected at line 155
 [][][]
  []
 
-[174]
+
 Overfull \hbox (3.09232pt too wide) detected at line 191
 [][]
  []
 
-
+[174]
 Overfull \hbox (26.01115pt too wide) in paragraph at lines 202--204
 \OT1/ptm/m/n/12 Since $[]\U/matha/m/n/12 px[][]p\OT1/cmr/bx/n/12 x\U/matha/m/n/
 12 q\OML/cmm/m/it/12 ; [][]\U/matha/m/n/12 p\OT1/cmr/bx/n/12 y\U/matha/m/n/12 q
@@ -2092,42 +2084,42 @@ q ^^A p\U/msb/m/n/12 E\U/matha/m/n/12 x[][]p\OT1/cmr/bx/n/12 x\U/matha/m/n/12 q
 $\OT1/ptm/m/n/12 ,
  []
 
-[175]
+
 Overfull \hbox (73.15121pt too wide) detected at line 237
 [][]
  []
 
-[176] [177]) (./projection/appendix_simulation.tex
+[175] [176]) (./projection/appendix_simulation.tex
 File: projection/figure/dist_g_d2500.pdf Graphic file (type pdf)
 <use projection/figure/dist_g_d2500.pdf>
 Package pdftex.def Info: projection/figure/dist_g_d2500.pdf  used on input line
  9.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
-<projection/figure/dist_g_d10000.pdf, id=1655, 433.62pt x 361.35pt>
+<projection/figure/dist_g_d10000.pdf, id=1658, 433.62pt x 361.35pt>
 File: projection/figure/dist_g_d10000.pdf Graphic file (type pdf)
 <use projection/figure/dist_g_d10000.pdf>
 Package pdftex.def Info: projection/figure/dist_g_d10000.pdf  used on input lin
 e 12.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
-<projection/figure/dist_g_d40000.pdf, id=1656, 433.62pt x 361.35pt>
+<projection/figure/dist_g_d40000.pdf, id=1659, 433.62pt x 361.35pt>
 File: projection/figure/dist_g_d40000.pdf Graphic file (type pdf)
 <use projection/figure/dist_g_d40000.pdf>
 Package pdftex.def Info: projection/figure/dist_g_d40000.pdf  used on input lin
 e 15.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
-<projection/figure/dist_sp0_d2500.pdf, id=1657, 433.62pt x 361.35pt>
+<projection/figure/dist_sp0_d2500.pdf, id=1660, 433.62pt x 361.35pt>
 File: projection/figure/dist_sp0_d2500.pdf Graphic file (type pdf)
 <use projection/figure/dist_sp0_d2500.pdf>
 Package pdftex.def Info: projection/figure/dist_sp0_d2500.pdf  used on input li
 ne 25.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
-<projection/figure/dist_sp0_d10000.pdf, id=1658, 433.62pt x 361.35pt>
+<projection/figure/dist_sp0_d10000.pdf, id=1661, 433.62pt x 361.35pt>
 File: projection/figure/dist_sp0_d10000.pdf Graphic file (type pdf)
 <use projection/figure/dist_sp0_d10000.pdf>
 Package pdftex.def Info: projection/figure/dist_sp0_d10000.pdf  used on input l
 ine 28.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
-<projection/figure/dist_sp0_d40000.pdf, id=1659, 433.62pt x 361.35pt>
+<projection/figure/dist_sp0_d40000.pdf, id=1662, 433.62pt x 361.35pt>
 File: projection/figure/dist_sp0_d40000.pdf Graphic file (type pdf)
 <use projection/figure/dist_sp0_d40000.pdf>
 Package pdftex.def Info: projection/figure/dist_sp0_d40000.pdf  used on input l
@@ -2138,37 +2130,37 @@ File: projection/figure/dist_sp1_d2500.pdf Graphic file (type pdf)
 Package pdftex.def Info: projection/figure/dist_sp1_d2500.pdf  used on input li
 ne 40.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
-<projection/figure/dist_sp1_d10000.pdf, id=1660, 433.62pt x 361.35pt>
+<projection/figure/dist_sp1_d10000.pdf, id=1663, 433.62pt x 361.35pt>
 File: projection/figure/dist_sp1_d10000.pdf Graphic file (type pdf)
 <use projection/figure/dist_sp1_d10000.pdf>
 Package pdftex.def Info: projection/figure/dist_sp1_d10000.pdf  used on input l
 ine 43.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
-<projection/figure/dist_sp1_d40000.pdf, id=1661, 433.62pt x 361.35pt>
+<projection/figure/dist_sp1_d40000.pdf, id=1664, 433.62pt x 361.35pt>
 File: projection/figure/dist_sp1_d40000.pdf Graphic file (type pdf)
 <use projection/figure/dist_sp1_d40000.pdf>
 Package pdftex.def Info: projection/figure/dist_sp1_d40000.pdf  used on input l
 ine 46.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
-<projection/figure/dist_g_d125000.pdf, id=1662, 433.62pt x 361.35pt>
+<projection/figure/dist_g_d125000.pdf, id=1665, 433.62pt x 361.35pt>
 File: projection/figure/dist_g_d125000.pdf Graphic file (type pdf)
 <use projection/figure/dist_g_d125000.pdf>
 Package pdftex.def Info: projection/figure/dist_g_d125000.pdf  used on input li
 ne 55.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
-<projection/figure/dist_sp0_d125000.pdf, id=1663, 433.62pt x 361.35pt>
+<projection/figure/dist_sp0_d125000.pdf, id=1666, 433.62pt x 361.35pt>
 File: projection/figure/dist_sp0_d125000.pdf Graphic file (type pdf)
 <use projection/figure/dist_sp0_d125000.pdf>
 Package pdftex.def Info: projection/figure/dist_sp0_d125000.pdf  used on input 
 line 58.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
-<projection/figure/dist_sp1_d125000.pdf, id=1664, 433.62pt x 361.35pt>
+<projection/figure/dist_sp1_d125000.pdf, id=1667, 433.62pt x 361.35pt>
 File: projection/figure/dist_sp1_d125000.pdf Graphic file (type pdf)
 <use projection/figure/dist_sp1_d125000.pdf>
 Package pdftex.def Info: projection/figure/dist_sp1_d125000.pdf  used on input 
 line 61.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
- [178
+ [177
 
  <./projection/figure/dist_g_d10000.pdf> <./projection/figure/dist_g_d40000.pdf
 
@@ -2198,7 +2190,7 @@ L/cmm/m/it/12 x$ \OT1/ptm/m/it/12 is said to sat-isfy the generalized-sub-expon
 ential
  []
 
-[179 <./projection/figure/dist_sp1_d10000.pdf> <./projection/figure/dist_sp1_d4
+[178 <./projection/figure/dist_sp1_d10000.pdf> <./projection/figure/dist_sp1_d4
 0000.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./projection/figure/dist_sp1
@@ -2221,26 +2213,26 @@ _d125000.pdf): PDF inclusion: multiple pdfs with page group included in a singl
 e page
 >]
 
-LaTeX Warning: Reference `lemma: norm-preserve' on page 180 undefined on input 
+LaTeX Warning: Reference `lemma: norm-preserve' on page 179 undefined on input 
 line 18.
 
 
-LaTeX Warning: Reference `lemma: norm-preserve' on page 180 undefined on input 
+LaTeX Warning: Reference `lemma: norm-preserve' on page 179 undefined on input 
 line 18.
 
-[180] [181]) (./projection/appendix_tech_lemmas.tex [182] [183]) [184]
-(./Yiming_Thesis.bbl [185
+[179] [180]) (./projection/appendix_tech_lemmas.tex [181] [182]) [183]
+(./Yiming_Thesis.bbl [184
 
 
-] [186] [187] [188] [189] [190] [191]
+] [185] [186] [187] [188] [189] [190]
 LaTeX Font Info:    Font shape `OMS/ptm/m/it' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 434.
- [192] [193]
-[194] [195])
+ [191] [192]
+[193] [194])
 
 Package natbib Warning: There were undefined citations.
 
-[196] (./Yiming_Thesis.aux)
+[195] (./Yiming_Thesis.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -2252,13 +2244,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 8500 strings out of 492649
- 140574 string characters out of 6129622
- 207304 words of memory out of 5000000
- 11904 multiletter control sequences out of 15000+600000
+ 8498 strings out of 492649
+ 140516 string characters out of 6129622
+ 207311 words of memory out of 5000000
+ 11902 multiletter control sequences out of 15000+600000
  59250 words of font info for 157 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,17n,43p,2426b,499s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,17n,43p,2427b,499s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/tex
@@ -2275,29 +2267,28 @@ f-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2018/texmf-dist/font
-s/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/
-type1/public/doublestroke/dsrom12.pfb></usr/local/texlive/2018/texmf-dist/fonts
-/type1/public/amsfonts/euler/eusb10.pfb></usr/local/texlive/2018/texmf-dist/fon
-ts/type1/public/amsfonts/euler/eusm10.pfb></usr/local/texlive/2018/texmf-dist/f
-onts/type1/public/mathabx-type1/matha10.pfb></usr/local/texlive/2018/texmf-dist
-/fonts/type1/public/mathabx-type1/matha12.pfb></usr/local/texlive/2018/texmf-di
-st/fonts/type1/public/mathabx-type1/matha6.pfb></usr/local/texlive/2018/texmf-d
-ist/fonts/type1/public/mathabx-type1/matha8.pfb></usr/local/texlive/2018/texmf-
-dist/fonts/type1/public/mathabx-type1/mathb12.pfb></usr/local/texlive/2018/texm
-f-dist/fonts/type1/public/mathabx-type1/mathx10.pfb></usr/local/texlive/2018/te
-xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/201
-8/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb></usr/local/texlive/2018/
-texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2018/texmf-di
-st/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2018/texmf-dist/font
-s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/ur
-w/times/utmbi8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/u
-tmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb
->
-Output written on Yiming_Thesis.pdf (211 pages, 5800095 bytes).
+nts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/font
+s/type1/public/doublestroke/dsrom12.pfb></usr/local/texlive/2018/texmf-dist/fon
+ts/type1/public/amsfonts/euler/eusb10.pfb></usr/local/texlive/2018/texmf-dist/f
+onts/type1/public/amsfonts/euler/eusm10.pfb></usr/local/texlive/2018/texmf-dist
+/fonts/type1/public/mathabx-type1/matha10.pfb></usr/local/texlive/2018/texmf-di
+st/fonts/type1/public/mathabx-type1/matha12.pfb></usr/local/texlive/2018/texmf-
+dist/fonts/type1/public/mathabx-type1/matha6.pfb></usr/local/texlive/2018/texmf
+-dist/fonts/type1/public/mathabx-type1/matha8.pfb></usr/local/texlive/2018/texm
+f-dist/fonts/type1/public/mathabx-type1/mathb12.pfb></usr/local/texlive/2018/te
+xmf-dist/fonts/type1/public/mathabx-type1/mathx10.pfb></usr/local/texlive/2018/
+texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2
+018/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb></usr/local/texlive/201
+8/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2018/texmf-
+dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2018/texmf-dist/fo
+nts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
+urw/times/utmbi8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times
+/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.p
+fb>
+Output written on Yiming_Thesis.pdf (212 pages, 5795400 bytes).
 PDF statistics:
- 2027 PDF objects out of 2073 (max. 8388607)
- 1360 compressed objects within 14 object streams
+ 2026 PDF objects out of 2073 (max. 8388607)
+ 1359 compressed objects within 14 object streams
  0 named destinations out of 1000 (max. 500000)
  436 words of extra memory for PDF output out of 10000 (max. 10000000)
 

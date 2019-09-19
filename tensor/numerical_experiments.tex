@@ -276,12 +276,7 @@ typically outperforms the one-pass algorithm,
 especially in the high-noise, sparse, or rank-decay case.
 Both converge at the same asymptotic rate.
 (Results for other input tensors are available
-\ifdefined \issupplement
 in the supplement.)
-\else
-%in \ref{fig:vary-k-400-compare-app} and \ref{fig:vary-k-200-compare-app}
-in \ref{appendix:more_result}.)
-\fi
 
 \subsubsection{Improvement on state-of-the-art}
 The third experiment compares the performance of our two-pass and one-pass algorithms
@@ -297,11 +292,8 @@ Our one-pass algorithm
 (with the Gaussian TRP)
 uses $((2k+1)^N + kIN)$ storage,
 whereas T.-TS uses $(Kr^{2N}+Kr^{2N-2})$ storage
-\ifdefined \issupplement
 (see supplement).
-\else
-(see \ref{tab:storage-comparison} in \ref{appendix: time-complexity}).
-\fi
+
 
 % Specifically, we choose $k$ linear in log scale within $\in [12,115]$,
 % corresponding to $K \in [0.026,12]$ in \cite{malik2018low} \ref{fig:vary-memory}.
@@ -339,7 +331,7 @@ times, longitudes, and latitudes ($1200 \times 192 \times 288$).
 Each of these quantitives has a strong impact on the absorption of solar radiation and on cloud formation.
 
 \item \emph{Combustion data.}
-We consider combustion simulation data from \cite{lapointe2015differential}.
+We consider combustion simulation data from \citet{lapointe2015differential}.
 % This paper aims to understand the effect of differential diffusion, distributed burning,
 % and local distinction under different circumstances.
 The data consists of three measured quantities ---

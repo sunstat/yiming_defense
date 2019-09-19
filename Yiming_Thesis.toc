@@ -1,134 +1,134 @@
-\contentsline {section}{Dedication}{5}
-\contentsline {section}{Acknowledgements}{6}
-\contentsline {section}{Table of Contents}{8}
-\contentsline {chapter}{\numberline {1}Large Spectral Density Matrix Estimation by Thresholding}{2}
-\contentsline {section}{\numberline {1.1}Introduction}{2}
-\contentsline {section}{\numberline {1.2}Background and Methods}{7}
-\contentsline {subsection}{\numberline {1.2.1}Background: Periodogram Smoothing and Shrinkage}{8}
-\contentsline {subsection}{\numberline {1.2.2}Method: Thresholding Averaged Periodogram}{11}
-\contentsline {subsection}{\numberline {1.2.3}Choice of Tuning Parameters}{14}
-\contentsline {section}{\numberline {1.3}Theoretical Properties}{15}
-\contentsline {subsection}{\numberline {1.3.1}Estimation Consistency: Stable Gaussian Time Series}{18}
-\contentsline {section}{\numberline {1.4}Spectral Density Estimation of Linear Processes}{27}
-\contentsline {section}{\numberline {1.5}Simulation Studies}{32}
-\contentsline {section}{\numberline {1.6}Functional Connectivity Analysis with fMRI Data}{36}
-\contentsline {section}{\numberline {1.7}Discussion}{40}
-\contentsline {section}{\numberline {1.A}Appendix: Proofs for Gaussian Time Series}{42}
-\contentsline {subsection}{\numberline {1.A.1}Proof of Lemma 1.3.2\hbox {}}{42}
-\contentsline {subsection}{\numberline {1.A.2}Proof of Proposition 1.3.3\hbox {}}{43}
-\contentsline {subsection}{\numberline {1.A.3}Proof for Proposition 1.3.4\hbox {}}{44}
-\contentsline {paragraph}{Condition 1:}{44}
-\contentsline {paragraph}{Condition 2:}{44}
-\contentsline {paragraph}{Condition 3:}{45}
-\contentsline {subsection}{\numberline {1.A.4}Proof of Proposition 1.3.5\hbox {}}{46}
-\contentsline {subsection}{\numberline {1.A.5}Proof of Proposition 2.3.7\hbox {}}{51}
-\contentsline {subsection}{\numberline {1.A.6}Proof of Proposition 1.3.8\hbox {}}{57}
-\contentsline {subsection}{\numberline {1.A.7}Proof of Proposition 1.3.9\hbox {}}{58}
-\contentsline {section}{\numberline {1.B}Appendix: Proofs for Linear Processes}{60}
-\contentsline {subsection}{\numberline {1.B.1}Proof for Lemma 1.4.1\hbox {}}{60}
-\contentsline {subsection}{\numberline {1.B.2}Proof of Proposition 1.4.2\hbox {}}{61}
-\contentsline {section}{\numberline {1.C}Appendix: Additional Proofs of Technical Results}{63}
-\contentsline {section}{\numberline {1.D}Appendix: Additional Table and Graphs}{72}
-\contentsline {chapter}{\numberline {2}Large Spectral Density Matrix Estimation for Gaussian Process by Adaptive Thresholding}{76}
-\contentsline {section}{\numberline {2.1}Introduction}{76}
-\contentsline {subsection}{\numberline {2.1.1}Why Adaptive Thresholding?}{77}
-\contentsline {subsection}{\numberline {2.1.2}Periodogram Smoothing}{80}
-\contentsline {subsection}{\numberline {2.1.3}What Variance should thresholding Value be Adaptive to?}{82}
-\contentsline {section}{\numberline {2.2}Background and Methods}{85}
-\contentsline {subsection}{\numberline {2.2.1}Modified Periodogram and Its Smoothing Estimator}{85}
-\contentsline {subsection}{\numberline {2.2.2}Method: Adaptive Thresholding}{87}
-\contentsline {paragraph}{Estimation of Variance:}{87}
-\contentsline {paragraph}{Adaptive Estimator}{87}
-\contentsline {section}{\numberline {2.3}Theoretical Properties}{89}
-\contentsline {subsection}{\numberline {2.3.1}Bounding the Bias}{89}
-\contentsline {paragraph}{Bias for Smoothing Modified Periodogram}{89}
-\contentsline {paragraph}{Bias for Variance Estimation}{90}
-\contentsline {subsection}{\numberline {2.3.2}Deviation Bound}{91}
-\contentsline {subsection}{\numberline {2.3.3}Main Results}{94}
-\contentsline {subsection}{\numberline {2.3.4}Sparse Class}{94}
-\contentsline {subsection}{\numberline {2.3.5}Consistency Under Weak Sparsity}{95}
-\contentsline {section}{\numberline {2.A}Proof for Bias Bounding}{97}
-\contentsline {subsection}{\numberline {2.A.1}Proof for Lemma 2.3.2\hbox {}}{97}
-\contentsline {subsection}{\numberline {2.A.2}Proof for Lemma 2.3.3\hbox {}}{98}
-\contentsline {subsection}{\numberline {2.A.3}Proof for Lemma 2.3.4\hbox {}}{101}
-\contentsline {section}{\numberline {2.B}Proof for Deviation Bound}{101}
-\contentsline {subsection}{\numberline {2.B.1}Proof for Lemma 2.3.5\hbox {}}{101}
-\contentsline {section}{\numberline {2.C}Technical Lemmas}{102}
-\contentsline {subsection}{\numberline {2.C.1}\bf Fourth Moments of Multivariate Normal Distribution}{102}
-\contentsline {subsection}{\numberline {2.C.2}Variance of }{103}
-\contentsline {section}{\numberline {2.D}Technical Results for Toeplitz Matrixz}{103}
-\contentsline {section}{\numberline {2.E}An Example Explaining Why We Modify the Periodogram}{105}
-\contentsline {chapter}{\numberline {3}Low-Rank Tucker Approximation of a Tensor From Streaming Data}{107}
-\contentsline {section}{\numberline {3.1}Introduction}{107}
-\contentsline {section}{\numberline {3.2}Background and Related Work}{110}
-\contentsline {subsection}{\numberline {3.2.1}Notation}{110}
-\contentsline {subsubsection}{Tail energy}{111}
-\contentsline {subsubsection}{Kronecker and Khatri-Rao product}{111}
-\contentsline {subsubsection}{Tensor basics}{111}
-\contentsline {subsubsection}{Tensor unfoldings}{112}
-\contentsline {subsubsection}{Tensor rank}{112}
-\contentsline {subsubsection}{Tensor contractions}{112}
-\contentsline {subsection}{\numberline {3.2.2}Tucker Approximation}{113}
-\contentsline {subsubsection}{HOSVD}{113}
-\contentsline {subsubsection}{ST-HOSVD}{114}
-\contentsline {subsubsection}{HOOI}{115}
-\contentsline {subsection}{\numberline {3.2.3}Previous Work}{115}
-\contentsline {section}{\numberline {3.3}Dimension Reduction Maps}{117}
-\contentsline {subsection}{\numberline {3.3.1}Dimension Reduction Map}{117}
-\contentsline {subsection}{\numberline {3.3.2}Tensor Random Projection}{118}
-\contentsline {section}{\numberline {3.4}Algorithms for Tucker approximation}{119}
-\contentsline {subsection}{\numberline {3.4.1}Tensor compression via sketching}{119}
-\contentsline {paragraph}{The Tucker sketch}{119}
-\contentsline {subsection}{\numberline {3.4.2}Low-Rank Approximation}{121}
-\contentsline {paragraph}{One-Pass Approximation}{122}
-\contentsline {subsection}{\numberline {3.4.3}Fixed-Rank Approximation}{124}
-\contentsline {section}{\numberline {3.5}Guarantees}{125}
-\contentsline {subsection}{\numberline {3.5.1}Low rank approximation}{125}
-\contentsline {subsection}{\numberline {3.5.2}Fixed rank approximation}{127}
-\contentsline {subsection}{\numberline {3.5.3}Proof sketch}{128}
-\contentsline {section}{\numberline {3.6}Numerical Experiments}{130}
-\contentsline {subsection}{\numberline {3.6.1}Synthetic experiments}{131}
-\contentsline {subsubsection}{Different dimension reduction maps perform similarly}{132}
-\contentsline {subsubsection}{A second pass reduces error}{132}
-\contentsline {subsubsection}{Improvement on state-of-the-art}{134}
-\contentsline {subsection}{\numberline {3.6.2}Applications}{136}
-\contentsline {subsubsection}{Data compression}{136}
-\contentsline {subsubsection}{Video scene classification}{137}
-\contentsline {section}{\numberline {3.7}Conclusion}{138}
-\contentsline {section}{\numberline {3.A}Proof of Main Results}{140}
-\contentsline {subsection}{\numberline {3.A.1}Error bound for the two pass approximation Algorithm 4\hbox {}}{140}
-\contentsline {subsection}{\numberline {3.A.2}Error bound for the one pass approximation Algorithm 5\hbox {}}{140}
-\contentsline {subsection}{\numberline {3.A.3}Error bound for the fixed rank approximation Algorithm 6\hbox {}}{142}
-\contentsline {section}{\numberline {3.B}Probabilistic Analysis of Core Sketch Error}{142}
-\contentsline {subsection}{\numberline {3.B.1}Decomposition of Core Approximation Error}{143}
-\contentsline {subsection}{\numberline {3.B.2}Probabilistic Core Error Bound}{144}
-\contentsline {section}{\numberline {3.C}Proof of fixed rank approximation lemma}{146}
-\contentsline {section}{\numberline {3.D}Technical Lemmas}{147}
-\contentsline {subsection}{\numberline {3.D.1}Random projections of matrices}{147}
-\contentsline {section}{\numberline {3.E}More Algorithms}{148}
-\contentsline {section}{\numberline {3.F}Scrambled Subsampled Randomized Fourier Transform}{148}
-\contentsline {section}{\numberline {3.G}TensorSketch}{150}
-\contentsline {paragraph}{CountSketch}{150}
-\contentsline {paragraph}{TensorSketch}{150}
-\contentsline {section}{\numberline {3.H}More Numerics}{151}
-\contentsline {chapter}{\numberline {4}Tensor Random Projection for Low Memory Dimension Reduction}{155}
-\contentsline {section}{\numberline {4.1}Introduction}{155}
-\contentsline {paragraph}{Memory Efficient Random Projection}{156}
-\contentsline {subsection}{\numberline {4.1.1}Notation}{158}
-\contentsline {section}{\numberline {4.2}Tensor Random Projection}{158}
-\contentsline {section}{\numberline {4.3}Main Theory}{160}
-\contentsline {subsection}{\numberline {4.3.1}Bias and Variance}{160}
-\contentsline {subsection}{\numberline {4.3.2}Asymptotic Behavior}{162}
-\contentsline {subsection}{\numberline {4.3.3}Finite Sample Bound?}{162}
-\contentsline {subsection}{\numberline {4.3.4}Column Space Preservation}{163}
-\contentsline {section}{\numberline {4.4}Experiment}{164}
-\contentsline {section}{\numberline {4.5}Application: Sketching}{166}
+\contentsline {section}{Biographical Sketch}{iii}
+\contentsline {section}{Dedication}{iv}
+\contentsline {section}{Acknowledgements}{v}
+\contentsline {section}{Table of Contents}{vii}
+\contentsline {chapter}{\numberline {1}Large Spectral Density Matrix Estimation by Thresholding}{1}
+\contentsline {section}{\numberline {1.1}Introduction}{1}
+\contentsline {section}{\numberline {1.2}Background and Methods}{6}
+\contentsline {subsection}{\numberline {1.2.1}Background: Periodogram Smoothing and Shrinkage}{7}
+\contentsline {subsection}{\numberline {1.2.2}Method: Thresholding Averaged Periodogram}{10}
+\contentsline {subsection}{\numberline {1.2.3}Choice of Tuning Parameters}{13}
+\contentsline {section}{\numberline {1.3}Theoretical Properties}{14}
+\contentsline {subsection}{\numberline {1.3.1}Estimation Consistency: Stable Gaussian Time Series}{17}
+\contentsline {section}{\numberline {1.4}Spectral Density Estimation of Linear Processes}{26}
+\contentsline {section}{\numberline {1.5}Simulation Studies}{31}
+\contentsline {section}{\numberline {1.6}Functional Connectivity Analysis with fMRI Data}{35}
+\contentsline {section}{\numberline {1.7}Discussion}{39}
+\contentsline {section}{\numberline {1.A}Appendix: Proofs for Gaussian Time Series}{41}
+\contentsline {subsection}{\numberline {1.A.1}Proof of Lemma 1.3.2\hbox {}}{41}
+\contentsline {subsection}{\numberline {1.A.2}Proof of Proposition 1.3.3\hbox {}}{42}
+\contentsline {subsection}{\numberline {1.A.3}Proof for Proposition 1.3.4\hbox {}}{43}
+\contentsline {paragraph}{Condition 1:}{43}
+\contentsline {paragraph}{Condition 2:}{43}
+\contentsline {paragraph}{Condition 3:}{44}
+\contentsline {subsection}{\numberline {1.A.4}Proof of Proposition 1.3.5\hbox {}}{45}
+\contentsline {subsection}{\numberline {1.A.5}Proof of Proposition 2.3.7\hbox {}}{50}
+\contentsline {subsection}{\numberline {1.A.6}Proof of Proposition 1.3.8\hbox {}}{56}
+\contentsline {subsection}{\numberline {1.A.7}Proof of Proposition 1.3.9\hbox {}}{57}
+\contentsline {section}{\numberline {1.B}Appendix: Proofs for Linear Processes}{59}
+\contentsline {subsection}{\numberline {1.B.1}Proof for Lemma 1.4.1\hbox {}}{59}
+\contentsline {subsection}{\numberline {1.B.2}Proof of Proposition 1.4.2\hbox {}}{60}
+\contentsline {section}{\numberline {1.C}Appendix: Additional Proofs of Technical Results}{62}
+\contentsline {section}{\numberline {1.D}Appendix: Additional Table and Graphs}{71}
+\contentsline {chapter}{\numberline {2}Large Spectral Density Matrix Estimation for Gaussian Process by Adaptive Thresholding}{75}
+\contentsline {section}{\numberline {2.1}Introduction}{75}
+\contentsline {subsection}{\numberline {2.1.1}Why Adaptive Thresholding?}{76}
+\contentsline {subsection}{\numberline {2.1.2}Periodogram Smoothing}{79}
+\contentsline {subsection}{\numberline {2.1.3}What Variance should thresholding Value be Adaptive to?}{81}
+\contentsline {section}{\numberline {2.2}Background and Methods}{84}
+\contentsline {subsection}{\numberline {2.2.1}Modified Periodogram and Its Smoothing Estimator}{84}
+\contentsline {subsection}{\numberline {2.2.2}Method: Adaptive Thresholding}{86}
+\contentsline {paragraph}{Estimation of Variance:}{86}
+\contentsline {paragraph}{Adaptive Estimator}{86}
+\contentsline {section}{\numberline {2.3}Theoretical Properties}{88}
+\contentsline {subsection}{\numberline {2.3.1}Bounding the Bias}{88}
+\contentsline {paragraph}{Bias for Smoothing Modified Periodogram}{88}
+\contentsline {paragraph}{Bias for Variance Estimation}{89}
+\contentsline {subsection}{\numberline {2.3.2}Deviation Bound}{90}
+\contentsline {subsection}{\numberline {2.3.3}Main Results}{93}
+\contentsline {subsection}{\numberline {2.3.4}Sparse Class}{93}
+\contentsline {subsection}{\numberline {2.3.5}Consistency Under Weak Sparsity}{94}
+\contentsline {section}{\numberline {2.A}Proof for Bias Bounding}{96}
+\contentsline {subsection}{\numberline {2.A.1}Proof for Lemma 2.3.2\hbox {}}{96}
+\contentsline {subsection}{\numberline {2.A.2}Proof for Lemma 2.3.3\hbox {}}{97}
+\contentsline {subsection}{\numberline {2.A.3}Proof for Lemma 2.3.4\hbox {}}{100}
+\contentsline {section}{\numberline {2.B}Proof for Deviation Bound}{100}
+\contentsline {subsection}{\numberline {2.B.1}Proof for Lemma 2.3.5\hbox {}}{100}
+\contentsline {section}{\numberline {2.C}Technical Lemmas}{101}
+\contentsline {subsection}{\numberline {2.C.1}\bf Fourth Moments of Multivariate Normal Distribution}{101}
+\contentsline {section}{\numberline {2.D}Technical Results for Toeplitz Matrixz}{102}
+\contentsline {section}{\numberline {2.E}An Example Explaining Why We Modify the Periodogram}{104}
+\contentsline {chapter}{\numberline {3}Low-Rank Tucker Approximation of a Tensor From Streaming Data}{106}
+\contentsline {section}{\numberline {3.1}Introduction}{106}
+\contentsline {section}{\numberline {3.2}Background and Related Work}{109}
+\contentsline {subsection}{\numberline {3.2.1}Notation}{109}
+\contentsline {subsubsection}{Tail energy}{110}
+\contentsline {subsubsection}{Kronecker and Khatri-Rao product}{110}
+\contentsline {subsubsection}{Tensor basics}{110}
+\contentsline {subsubsection}{Tensor unfoldings}{111}
+\contentsline {subsubsection}{Tensor rank}{111}
+\contentsline {subsubsection}{Tensor contractions}{111}
+\contentsline {subsection}{\numberline {3.2.2}Tucker Approximation}{112}
+\contentsline {subsubsection}{HOSVD}{112}
+\contentsline {subsubsection}{ST-HOSVD}{113}
+\contentsline {subsubsection}{HOOI}{114}
+\contentsline {subsection}{\numberline {3.2.3}Previous Work}{114}
+\contentsline {section}{\numberline {3.3}Dimension Reduction Maps}{116}
+\contentsline {subsection}{\numberline {3.3.1}Dimension Reduction Map}{116}
+\contentsline {subsection}{\numberline {3.3.2}Tensor Random Projection}{117}
+\contentsline {section}{\numberline {3.4}Algorithms for Tucker approximation}{118}
+\contentsline {subsection}{\numberline {3.4.1}Tensor compression via sketching}{118}
+\contentsline {paragraph}{The Tucker sketch}{118}
+\contentsline {subsection}{\numberline {3.4.2}Low-Rank Approximation}{120}
+\contentsline {paragraph}{One-Pass Approximation}{121}
+\contentsline {subsection}{\numberline {3.4.3}Fixed-Rank Approximation}{123}
+\contentsline {section}{\numberline {3.5}Guarantees}{124}
+\contentsline {subsection}{\numberline {3.5.1}Low rank approximation}{124}
+\contentsline {subsection}{\numberline {3.5.2}Fixed rank approximation}{126}
+\contentsline {subsection}{\numberline {3.5.3}Proof sketch}{127}
+\contentsline {section}{\numberline {3.6}Numerical Experiments}{129}
+\contentsline {subsection}{\numberline {3.6.1}Synthetic experiments}{130}
+\contentsline {subsubsection}{Different dimension reduction maps perform similarly}{131}
+\contentsline {subsubsection}{A second pass reduces error}{131}
+\contentsline {subsubsection}{Improvement on state-of-the-art}{133}
+\contentsline {subsection}{\numberline {3.6.2}Applications}{135}
+\contentsline {subsubsection}{Data compression}{135}
+\contentsline {subsubsection}{Video scene classification}{136}
+\contentsline {section}{\numberline {3.7}Conclusion}{137}
+\contentsline {section}{\numberline {3.A}Proof of Main Results}{139}
+\contentsline {subsection}{\numberline {3.A.1}Error bound for the two pass approximation Algorithm 4\hbox {}}{139}
+\contentsline {subsection}{\numberline {3.A.2}Error bound for the one pass approximation Algorithm 5\hbox {}}{139}
+\contentsline {subsection}{\numberline {3.A.3}Error bound for the fixed rank approximation Algorithm 6\hbox {}}{141}
+\contentsline {section}{\numberline {3.B}Probabilistic Analysis of Core Sketch Error}{141}
+\contentsline {subsection}{\numberline {3.B.1}Decomposition of Core Approximation Error}{142}
+\contentsline {subsection}{\numberline {3.B.2}Probabilistic Core Error Bound}{143}
+\contentsline {section}{\numberline {3.C}Proof of fixed rank approximation lemma}{145}
+\contentsline {section}{\numberline {3.D}Technical Lemmas}{146}
+\contentsline {subsection}{\numberline {3.D.1}Random projections of matrices}{146}
+\contentsline {section}{\numberline {3.E}More Algorithms}{147}
+\contentsline {section}{\numberline {3.F}Scrambled Subsampled Randomized Fourier Transform}{147}
+\contentsline {section}{\numberline {3.G}TensorSketch}{149}
+\contentsline {paragraph}{CountSketch}{149}
+\contentsline {paragraph}{TensorSketch}{149}
+\contentsline {section}{\numberline {3.H}More Numerics}{150}
+\contentsline {chapter}{\numberline {4}Tensor Random Projection for Low Memory Dimension Reduction}{154}
+\contentsline {section}{\numberline {4.1}Introduction}{154}
+\contentsline {paragraph}{Memory Efficient Random Projection}{155}
+\contentsline {subsection}{\numberline {4.1.1}Notation}{157}
+\contentsline {section}{\numberline {4.2}Tensor Random Projection}{157}
+\contentsline {section}{\numberline {4.3}Main Theory}{159}
+\contentsline {subsection}{\numberline {4.3.1}Bias and Variance}{159}
+\contentsline {subsection}{\numberline {4.3.2}Asymptotic Behavior}{161}
+\contentsline {subsection}{\numberline {4.3.3}Finite Sample Bound?}{161}
+\contentsline {subsection}{\numberline {4.3.4}Column Space Preservation}{162}
+\contentsline {section}{\numberline {4.4}Experiment}{163}
+\contentsline {section}{\numberline {4.5}Application: Sketching}{165}
 \contentsline {paragraph}{Experimental Setup}{167}
 \contentsline {paragraph}{Result}{168}
-\contentsline {section}{\numberline {4.6}Conclusion}{169}
+\contentsline {section}{\numberline {4.6}Conclusion}{168}
 \contentsline {section}{\numberline {4.A}Proof for Bias and Variance Analysis}{169}
-\contentsline {section}{\numberline {4.B}More Simulation Results}{178}
-\contentsline {paragraph}{Pairwise Distance Estimation}{178}
-\contentsline {paragraph}{Pairwise Cosine Similarity Estimation}{178}
-\contentsline {section}{\numberline {4.C}Appendix: Finite Sample Bound}{180}
-\contentsline {section}{\numberline {4.D}Technical Lemmas}{183}
+\contentsline {section}{\numberline {4.B}More Simulation Results}{177}
+\contentsline {paragraph}{Pairwise Distance Estimation}{177}
+\contentsline {paragraph}{Pairwise Cosine Similarity Estimation}{177}
+\contentsline {section}{\numberline {4.C}Appendix: Finite Sample Bound}{179}
+\contentsline {section}{\numberline {4.D}Technical Lemmas}{182}

@@ -117,21 +117,31 @@ Let $\M{X}_n\in \mathbb{R}^{m_i\times d_n}$ be a series of matrix and $\M{\Omega
 we have
 \begin{equation}
 \begin{aligned}
-&\| (\M{X}_1\otimes \cdots \otimes \M{X}_N) - \M{QQ}^\top(\M{X}_1\otimes \cdots \otimes \M{X}_N)\|^2_F \\
+&\E \| (\M{X}_1\otimes \cdots \otimes \M{X}_N) - \M{QQ}^\top(\M{X}_1\otimes \cdots \otimes \M{X}_N)\|^2_F \\
 & \le \prod_{i=1}^N  \left(1+\frac{k}{p_n-1}\right)\tau^2_n(k). 
 \end{aligned}
 \end{equation}
 \end{prop}
 \begin{proof}
-\cite{schacke2013kronecker} has a detailed description on property for kroneck product. Following those properties, we have 
+\citep{schacke2013kronecker} has a detailed descriptions on properties for kronecker product. Here we mainly use the association rule between kronecker product and khatri rao product, which claims for $\M{A}\in \reals^{m_n\times d_n}$ 
+and $\M{B}\in \reals^{d_n\times k}$
+\begin{equation}
+\begin{aligned}
+& (\M{A}_1\otimes \cdots \otimes \M{A}_N)(\M{B_1} \odot \cdots \odot \M{B_N})  \\
+& = ( \M{A}_1\M{B_1}\odot \cdots \odot  \M{A}_N\M{B}_N). 
+\end{aligned}
+\end{equation}
+Also, for orthogonal matrix $\M{U}_n, n = 1, \cdots, N$, ($\M{U}^\top_n \M{U}_n = \M{I}$),  $\M{U}_1\odot $
+
+Using this association rule,  
 \begin{equation}
 \begin{aligned}
 & (\M{X}_1\otimes \cdots \otimes \M{X}_N)(\M{\Omega_1} \odot \cdots \odot \M{\Omega_N})  \\
-& = ( \M{X}_1\M{\Omega_1}\odot \cdots \odot  \M{X}_N\M{\Omega_N})
+& = ( \M{X}_1\M{\Omega_1}\odot \cdots \odot  \M{X}_N\M{\Omega_N}). 
 \end{aligned}
 \end{equation}
- Let $\M{Q}_n\in \mathbb{R}^{d_n\times k}$ be the orthonormal matrix from QR factorization: $\mathbf{Q}_i, \rm{QR}(\M{X_i\Omega_i})$. The key observation is that 
- $\M{Q} = \M{Q}_1\otimes \cdots \otimes \M{Q}_N$ then we finish the proof with some association rule for kroneck product in \cite{schacke2013kronecker} and result in Lemma \ref{lemma:gauss-rp-matrix}.  Also this proposition, indicate in practice, we should sketch each small matrix $\M{X}_n$ then combine them together which is equivalent to do sketch the whole matrix after kroneck product. 
+ Let $\M{Q}_n\in \mathbb{R}^{d_n\times k}$ be the orthonormal matrix from QR factorization: $\mathbf{Q}_i, - \gets  \rm{QR}(\M{X_i\Omega_i})$. The key observation is that 
+ $\M{Q} = \M{Q}_1\otimes \cdots \otimes \M{Q}_N$ then we finish the proof with some association rule for kronecker product in \cite{schacke2013kronecker} and result in Lemma \ref{lemma:gauss-rp-matrix}.  Also this proposition, indicate in practice, we should sketch each small matrix $\M{X}_n$ then combine them together which is equivalent to do sketch the whole matrix after kronecker product. 
  
 \end{proof}
 

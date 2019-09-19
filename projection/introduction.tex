@@ -1,6 +1,6 @@
 
 \section{Introduction}
-Linear random projection is  operating a random matrix onto the data which could be either high dimension vector or matrix to reduce the dimension while preserving the useful information residing in the data. Then a linear random projection can be represented as a random matrix $\mathbf{\Omega}\in \real^{d\times k}$, operating on a vector $\mathbf{x}\in \real^{d}$ or a matrix $\mathbf{X} \in \real^{m\times d}$ to reduce the dimension:
+Linear random projection is  operating a random matrix onto the data which could be either high dimension vector or matrix to reduce the dimension while preserving the useful information residing in the data. A linear random projection can be represented as a random matrix $\mathbf{\Omega}\in \real^{d\times k}$, operating on a vector $\mathbf{x}\in \real^{d}$ or a matrix $\mathbf{X} \in \real^{m\times d}$ to reduce the dimension:
 \begin{equation}
 \label{eq:low_dim_mapping}
 \begin{aligned}
@@ -9,11 +9,11 @@ Linear random projection is  operating a random matrix onto the data which could
 \end{aligned}
 \end{equation}
 
-Random projection application to vector has a very long history which enables a broad range of modern applications from bio-informatics, informational retrieval to computer vision like \cite{wright2009robust,buhler2002finding,allen2014sparse,bingham2001random,fradkin2003experiments, halko2011finding, wang2012semi, jegou2008hamming}. In the context of large-scale relational databases, these maps enable
-applications like information retrieval \cite{papadimitriou2000latent},
-similarity search \cite{sahin2005prism,kaski1998dimensionality},
-and privacy preserving distributed data mining \cite{liu2006random}. 
-Later, along with the fast development in randomized algorithm, linear random projections are widely employed in constructing fast randomized algorithms in fields like matrix and tensor decomposition \cite{woolfe2008fast, tropp2017practical}, optimization \cite{yurtsever2017sketchy}, streaming data compression \cite{Tropp2019-SketchingScientificSimulation, sun2019low}. The much smaller matrix after random projection in the second line in \eqref{eq:low_dim_mapping} is named \emph{sketch}.  
+Random projection application to vector has a very long history which enables a broad range of modern applications from bio-informatics, informational retrieval to computer vision like \citep{wright2009robust,buhler2002finding,allen2014sparse,bingham2001random,fradkin2003experiments, halko2011finding, wang2012semi, jegou2008hamming}. In the context of large-scale relational databases, these maps enable
+applications like information retrieval \citep{papadimitriou2000latent},
+similarity search \citep{sahin2005prism,kaski1998dimensionality},
+and privacy preserving distributed data mining \citep{liu2006random}. 
+Later, along with the fast development in randomized algorithm, linear random projections are widely employed in constructing fast randomized algorithms in fields like matrix and tensor decomposition \citep{woolfe2008fast, tropp2017practical}, optimization \citep{yurtsever2017sketchy}, streaming data compression \citep{Tropp2019-SketchingScientificSimulation, sun2019low}. The much smaller matrix after random projection in the second line in \eqref{eq:low_dim_mapping} is named \emph{sketch}.  
 The term 'sketch' describes the fact that the matrix after random projection captures most of the action of the original matrix.  \par 
 The effectiveness of random projection is measured by whether the information inside data is well preserved in the low dimensional embedding after random projection. For the case where we operates random matrix $\mathbf{\Omega}$ onto vector $\mathbf{x}$, we require 
 \begin{equation}
@@ -48,33 +48,33 @@ For the case where $\mathbf{\Omega}$ has i.i.d. elements, there are many literat
 
 \paragraph{Memory Efficient Random Projection}
 Sparse random maps for low memory dimension reduction
-were first proposed by \cite{achlioptas2003database}, 
+were first proposed by \citep{achlioptas2003database}, 
 and further work has improved the memory requirements and guarantees of these methods
-\cite{li2006very, ailon2006approximate, bourgain2015toward}.  Usually they propose the random projection to be sparse.  But under modern 'big data' setting, their cost in storage/memory cost is still to big to be practical. Consider
+\citep{li2006very, ailon2006approximate, bourgain2015toward}.  Usually they propose the random projection to be sparse.  But under modern 'big data' setting, their cost in storage/memory cost is still to big to be practical. Consider
 
 
 
 
 
-Most closely related to our work is Rudelson's foundational study \cite{rudelson2012row},
+Most closely related to our work is Rudelson's foundational study \citep{rudelson2012row},
 which considers how the spectral and geometric properties of
 the random maps we use in this paper resemble a random map with iid entries,
 and shows that their largest and smallest singular values are of the same order.
 These results have been widely used to obtain guarantees for algorithmic privacy,
 but not for random projection.
-Battaglino et al. \cite{battaglino2018practical} use random projections
+Battaglino et al. \citep{battaglino2018practical} use random projections
 of Khatri-Rao products to develop a randomized least squares algorithm
 for tensor factorization;
 in contrast, our method uses the (full) Khatri-Rao product to enable random projection.
 Sparse random projections to solve least squares problems were
-also explored in \cite{wang2015fast} and \cite{woodruff2014sketching}.
+also explored in \citep{wang2015fast} and \citep{woodruff2014sketching}.
 To our knowledge, this paper is the first to consider using the Khatri-Rao product
 for low memory random projection.
 However, if the dimension of vectors before reduction
 (here, the size of the lexicon) is too big,
 the storage cost of the random map is not negligible.
 Furthermore, even generating the pseudo-random numbers used to produce the random projection
-is expensive \cite{matsumoto1998mersenne}.
+is expensive \citep{matsumoto1998mersenne}.
 
 To reduce the storage burden, we propose a novel use of the row-product random matrices in random projection, and call it the \textit{Tensor Random Projection} (TRP),
 formed as the Khatri-Rao product of a list of smaller dimension reduction maps.
@@ -108,3 +108,4 @@ We let $\mathbf{X} \odot \mathbf{Y}$ denotes the \textit{Khatri-Rao product}, $\
 \begin{equation}\label{khatri-rao}
 \mathbf{A} \odot \mathbf{B} = [\mathbf{A}_{(1,.)} \otimes \mathbf{B}_{(1,.)}, \dots, \mathbf{A}_{(K, .)} \otimes \mathbf{B}_{(K,.)}].
 \end{equation}
+

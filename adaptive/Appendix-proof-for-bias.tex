@@ -26,8 +26,8 @@ Let $\Sigma^{v,u} = \cov(\mathcal{X}v, \mathcal{X}u)$, then $\Sigma^{v,u}$ is a 
 \begin{equation}
 \Sigma^{v,u}_{k,q} = u^\top  \Gamma(q-k)v.
 \end{equation}
-Then by first part of lemma \ref{lemma: bound_toeplitz}, we know $\left|c_j^\top  \Sigma^{v,u}c_j-s_j^\top  \Sigma^{v,u}s_j\right|\le \frac{\Omega(\Sigma^{v,u})}{2\pi n}$. Besides, $\Omega(\Sigma^{v,u}) \le \Omega_n(f_\mathcal{X})$ since  $\left|u^\top  \Gamma(q-k)v\right| \le \|\Gamma(q-k) \| $. Hence,we could bound \eqref{eq:ada_periodogram_real_part_dif} with $\frac{1}{2\pi} \Omega_n(f_\mathcal{X})$. \par 
-Besides, Lemma A.4 in \cite{sun2018large} shows that the second term in \eqref{eq:expectation_bias_decomposition} is bounded by $\frac{m}{n}\Omega_n(f_\mathcal{X}) + \frac{1}{2\pi}\left(\frac{\Omega_n(f_\mathcal{X})}{n}+L_n(f_\mathcal{X})\right)$. Combining these two bounds, we complete the proof. 
+Then by first part of lemma \ref{lemma: bound_toeplitz}, we know $\left|c_j^\top  \Sigma^{v,u}c_j-s_j^\top  \Sigma^{v,u}s_j\right|\le \frac{\Omega(\Sigma^{v,u})}{2\pi n}$. Besides, $\Omega(\Sigma^{v,u}) \le \Omega_n(f_\mathcal{X})$ since  $\left|u^\top  \Gamma(q-k)v\right| \le \|\Gamma(q-k) \| $. Hence,we could bound \eqref{eq:ada_periodogram_real_part_dif} with $\frac{1}{2\pi} \Omega_n$. \par 
+Besides, Lemma A.4 in \cite{sun2018large} shows that the second term in \eqref{eq:expectation_bias_decomposition} is bounded by $\frac{m}{n}\Omega_n + \frac{1}{2\pi}\left(\frac{\Omega_n}{n}+L_n\right)$. Combining these two bounds, we complete the proof. 
  \end{proof}
  
 \subsection{Proof for Lemma \ref{lemma:theta_bias}} 
@@ -65,7 +65,7 @@ As shown before, $2\var(\langle {\bf Re}(d_{\infty, j}), e_r\rangle) = f_{rr}(\o
 &|\var(\langle \mathcal{X}^\top c_q,e_r\rangle) -  \var(\langle {\bf Re}(d_{\infty, j}),e_r\rangle)| =\frac{1}{2} \left|e_r^\top \mathbb{E}[{\bf Re}(H(\omega_q))]e_r - e_r^\top {\bf Re}(f(\omega_j))e_r\right|\\
 & \le \frac{1}{2}|u^\top \mathbb{E}[{\bf Re}(H(\omega_q))]e_r - e_r^\top  \mathbb{E}[{\bf Re}(I(\omega_q))]e_r|+\frac{1}{2}|e_r^\top\mathbb{E}[{\bf Re}(I(\omega_q))]e_r-e_r^\top  {\bf Re}\mathbb{E}[(I(\omega_j))]e_r|\\
 &+ \frac{1}{2}|e_r^\top\mathbb{E}[I(\omega_j)]e_r - e_r^\top  f(\omega_j)e_r|\\
-&\le  \frac{\Omega_n}{4n\pi}+\frac{\sqrt{2}}{4\pi}\frac{|j-k|\Omega_n}{n}+ \frac{1}{4\pi}\left(\frac{\Omega_n}{n} + L_n(f_\mathcal{X})\right)\\
+&\le  \frac{\Omega_n}{4n\pi}+\frac{\sqrt{2}}{4\pi}\frac{|j-k|\Omega_n}{n}+ \frac{1}{4\pi}\left(\frac{\Omega_n}{n} + L_n\right)\\
 \end{aligned}
 \end{equation}
 where the first part of last line is from same technique used in lemma \ref{lemma:bound_deviation} and the second and third parts are from \cite{sun2018large}. 

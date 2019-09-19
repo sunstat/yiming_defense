@@ -1,13 +1,12 @@
 \documentclass[phd,tocprelim]{cornell}
+\let\ifpdf\relax
 
 \usepackage{dsfont}
-\usepackage{amsmath, amsthm}
+\usepackage{amsmath, amsthm, amsfonts}
 \usepackage{color}
 \usepackage{float}
 \usepackage[left=1.25in, bottom=1.5in, right=1.5in, top=1in]{geometry}
 \usepackage{caption}
-
-\usepackage{amsfonts}
 \usepackage{times}
 \usepackage{bm}
 \usepackage{enumerate}
@@ -23,7 +22,7 @@
 \usepackage{subcaption}
 \captionsetup{compatibility=false}
 
-\usepackage[square,sort,comma]{natbib}
+\usepackage[square, sort]{natbib}
 \usepackage[toc,page]{appendix}
 \usepackage{stmaryrd}
 \usepackage{mathrsfs}
@@ -77,15 +76,15 @@
 
 
 \newcommand{\beas}{\begin{eqnarray*}}
-\newcommand{\eeas}{\end{eqnarray*}}
+	\newcommand{\eeas}{\end{eqnarray*}}
 \newcommand{\bea}{\begin{eqnarray}}
 \newcommand{\eea}{\end{eqnarray}}
 \newcommand{\beq}{\begin{equation}}
 \newcommand{\eeq}{\end{equation}}
 \newcommand{\bit}{\begin{itemize}}
-\newcommand{\eit}{\end{itemize}}
+	\newcommand{\eit}{\end{itemize}}
 \newcommand{\ben}{\begin{enumerate}}
-\newcommand{\een}{\end{enumerate}}
+	\newcommand{\een}{\end{enumerate}}
 
 
 \newcommand{\cf}{cf.}
@@ -114,91 +113,92 @@
 
 \title {High Dimensional Data Analysis With Dependency and Under Limited Memory}
 \author {Yiming Sun}
-\conferraldate {September}{2019}
+\conferraldate {December}{2019}
 \degreefield {Ph.D.}
 \copyrightholder{Yiming Sun}
 \copyrightyear{2019}
 
 
-
+\pagenumbering{roman}
 
 \begin{document}
-\maketitle
-
-\makecopyright
-
-\begin{abstract}
-	Several methods for high dimensional analysis are proposed  in this thesis under the condition that there are data dependency and limited memory. The first part of the work proposes a model free method for building networks for time series data when data are dependent from weakly stationary time series. We develop a thresholding based on methods to estimate multivariate spectral density under weakly sparsity assumption for high dimensional time series.
-	Our theoretical analysis ensures that consistent estimations of spectral density matrix of a p-dimensional time series using n samples
-	are possible under high-dimensional regime $\log p/n \rightarrow 0$ as long as the true spectral density is approximately sparse. A key technical component of our analysis is a new concentration inequality of
-	average periodogram around its expectation, which is of independent interest. Our estimation consistency results complement existing results for shrinkage based estimators of multivariate spectral
-	density, which require no assumption on sparsity but only ensure consistent estimation in a regime
-	$p^2/n \rightarrow 0$. In addition, our proposed thresholding based estimators perform consistent and automatic
-	edge selection when coherence networks among the components of a multivariate time series are learned.
-	We demonstrate the advantages of our estimators using simulation studies and a real data application
-	on functional connectivity analysis with fMRI data. \par 
-	We further show that with a simple modification in the classic estimator, we can build a rigorous theory for adaptive thresholding in estimating multivariate spectral density for Gaussian process. This adaptive estimator can capture the heterogeneity across different positions in spectral density matrix at a better convergence rate in comparison to the hard thresholding estimator.   \par 
-	The second part delves into compressing/analyzing high dimensional data with limited memory. We fixate on developing a streaming algorithm for Tucker Decomposition, generalization of singular value decomposition. The method applies a randomized linear map to the tensor to obtain a \emph{sketch}
-	that captures the important directions within each mode as well as the interactions among the modes.
-	The sketch can be extracted from streaming or distributed data or with a single pass over the tensor which uses storage proportional to the degrees of freedom in the output Tucker approximation.
-	Although the algorithm can exploit another view
-	to compute a superior approximation, it does not require a second pass over the tensor. In conclusion, the paper provides a rigorous theoretical guarantee
-	on elimination of the approximation error. Extensive numerical experiments show that the algorithm
-	produces useful results that improve the state of the art for streaming Tucker decomposition. \par 
-	Along the development of one-pass Tucke decomposition, we propose a memory efficient random mapping which we call Tensor random projection. We further study its theoretical property in application to several areas like random projection, sketching algorithms for fast computation for tensor regression. 
-\end{abstract}
-
-%\begin{biosketch}
-%Your biosketch goes here. Make sure it sits inside
-%the brackets.
-%\end{biosketch}
-
-\begin{dedication}
-	To my parents 
-\end{dedication}
-
-\begin{acknowledgements}
-	First and foremost, I would like to extend my sincere gratitude towards my PhD advisers, Sumanta Basu and Madeleine Udell for their guidance, time and commitment to my development towards an independent researcher. In particular, professor Udell's enthusiasm toward almost all novelties and energetic working style are an inspiration to me, while her ability to address numerous issues also leaves me a deep impression. I deeply appreciate the precious assistance my professor Udell offered who has quickly ushered me into new fields and provided me with insightful suggestions.
-	 It is professor Basu that imparts the necessity of cooperation with people of different backgrounds like economics and biology to me.  I appreciate the precious assistance professor Basu offered who has taught me how to conduct research independently. \par 
-	In addition, professor Michael Nussbaum and Yudong Chen always provide innovative and rigorous mathematical insights. I really appreciate that during the winter time, professor Nussbaum went through many results in spectral density estimation with me purely out of fervent devotion to researches. Every time talking with professor Yudong, I can learn many refreshing updates ranging from optimization, high dimensional statistics under various settings. \par 
-	My heartfelt tribute would also be payed to the talented and intellectual people who have enlightened me during my PhD pursuit. I acquired the down to earth work ethics from Congzheng Song and Zhengqi Li, two PhDs in computer science who are my project partners. Ding Ma, who has already become an assistant professor, shared lots of her stories to assist me in facing uncertainties and anxiety in life. Lots of my old friends like Chengcheng Liu, Kuangyan Song always provides me with support. 
+	\maketitle
 	
-	During my several industrial interns, I was fortunate enough to be mentored by Olivia Simpson, Jessica Stauth, David Sargent etc.. What I appreciate the most is their genuine collaborative and caring working style besides numerous expertise that they have embedded in me. 
+	\makecopyright
 	
+	\begin{abstract}
+		Several methods for high dimensional analysis are proposed  in this thesis under the condition that there are data dependency and limited memory. The first part of the work proposes a model free method for building networks for time series data when data are dependent from weakly stationary time series. We develop a thresholding based on methods to estimate multivariate spectral density under weakly sparsity assumption for high dimensional time series.
+		Our theoretical analysis ensures that consistent estimations of spectral density matrix of a p-dimensional time series using n samples
+		are possible under high-dimensional regime $\log p/n \rightarrow 0$ as long as the true spectral density is approximately sparse. A key technical component of our analysis is a new concentration inequality of
+		average periodogram around its expectation, which is of independent interest. Our estimation consistency results complement existing results for shrinkage based estimators of multivariate spectral
+		density, which require no assumption on sparsity but only ensure consistent estimation in a regime
+		$p^2/n \rightarrow 0$. In addition, our proposed thresholding based estimators perform consistent and automatic
+		edge selection when coherence networks among the components of a multivariate time series are learned.
+		We demonstrate the advantages of our estimators using simulation studies and a real data application
+		on functional connectivity analysis with fMRI data. \par 
+		We further show that with a simple modification in the classic estimator, we can build a rigorous theory for adaptive thresholding in estimating multivariate spectral density for Gaussian process. This adaptive estimator can capture the heterogeneity across different positions in spectral density matrix at a better convergence rate in comparison to the hard thresholding estimator.   \par 
+		The second part delves into compressing/analyzing high dimensional data with limited memory. We fixate on developing a streaming algorithm for Tucker Decomposition, generalization of singular value decomposition. The method applies a randomized linear map to the tensor to obtain a \emph{sketch}
+		that captures the important directions within each mode as well as the interactions among the modes.
+		The sketch can be extracted from streaming or distributed data or with a single pass over the tensor which uses storage proportional to the degrees of freedom in the output Tucker approximation.
+		Although the algorithm can exploit another view
+		to compute a superior approximation, it does not require a second pass over the tensor. In conclusion, the paper provides a rigorous theoretical guarantee
+		on elimination of the approximation error. Extensive numerical experiments show that the algorithm
+		produces useful results that improve the state of the art for streaming Tucker decomposition. \par 
+		Along the development of one-pass Tucke decomposition, we propose a memory efficient random mapping which we call Tensor random projection. We further study its theoretical property in application to several areas like random projection, sketching algorithms for fast computation for tensor regression. 
+		\end{abstract}
+	
+	%\begin{biosketch}
+	%Your biosketch goes here. Make sure it sits inside
+	%the brackets.
+	%\end{biosketch}
+	
+	
+	
+\begin{biosketch}
+Yiming Sun was born in Yancheng Jiangsu, China. His general interest lies in interplay of machine learning and statistics. He is generally interested in any innovative things and enjoys discussing with any person who can provide him with different perspective. Yiming entered Cornell for PhD in statistics in 2016. After that he never stopped his steps to acquire the ability to implement end to end machine learning product while understanding statistical guarantees behind it.  
+\end{biosketch}
+
+
+	\begin{dedication}
+		To my parents 
+	\end{dedication}
+	
+	\begin{acknowledgements}
+		First and foremost, I would like to extend my sincere gratitude towards my PhD advisers, Sumanta Basu and Madeleine Udell for their guidance, time and commitment to my development towards an independent researcher. In particular, professor Udell's enthusiasm toward almost all novelties and energetic working style are an inspiration to me, while her ability to address numerous issues also leaves me a deep impression. I deeply appreciate the precious assistance my professor Udell offered who has quickly ushered me into new fields and provided me with insightful suggestions.
+		It is professor Basu that imparts the necessity of cooperation with people of different backgrounds like economics and biology to me.  I appreciate the precious assistance professor Basu offered who has taught me how to conduct research independently. \par 
+		In addition, professor Michael Nussbaum and Yudong Chen always provide innovative and rigorous mathematical insights. I really appreciate that during the winter time, professor Nussbaum went through many results in spectral density estimation with me purely out of fervent devotion to researches. Every time talking with professor Yudong, I can learn many refreshing updates ranging from optimization, high dimensional statistics under various settings. \par 
+		My heartfelt tribute would also be payed to the talented and intellectual people who have enlightened me during my PhD pursuit. I acquired the down to earth work ethics from Congzheng Song and Zhengqi Li, two PhDs in computer science who are my project partners. Ding Ma, who has already become an assistant professor, shared lots of her stories to assist me in facing uncertainties and anxiety in life. Lots of my old friends like Chengcheng Liu, Kuangyan Song always provides me with support. \par 
+		During my several industrial interns, I was fortunate enough to be mentored by Olivia Simpson, Jessica Stauth, David Sargent etc.. What I appreciate the most is their genuine collaborative and caring working style besides numerous expertise that they have embedded in me. 
+		
 \end{acknowledgements}
-
+	
 \contentspage
 \listoffigures
 \listoftables
-
-\normalspacing \setcounter{page}{1} \pagenumbering{arabic}
-\pagestyle{cornell} \addtolength{\parskip}{0.5\baselineskip}
+	
 
 
-
-
-
-
-
-
-\chapter{Large Spectral Density Matrix Estimation by Thresholding}
-\input{spectral/introduction.tex}
-\input{spectral/model_method.tex}
-\input{spectral/threshold_choice}
-\input{spectral/main_theory}
-\input{spectral/beyond_Gaussianity}
-\input{spectral/simulation}
-\input{spectral/realdata}
-\input{spectral/discussion}
-\clearpage
-\begin{subappendices}
-\input{spectral/appendix_gaussian}
-\input{spectral/appendix_heavy_tail}
-\input{spectral/appendix_technical_lemmas.tex}
-\input{spectral/appendix_more_tables.tex}
-\end{subappendices}
-
-
+	\chapter{Large Spectral Density Matrix Estimation by Thresholding}
+	\setcounter{page}{1} 
+	\pagenumbering{arabic}
+	\addtolength{\parskip}{0.5\baselineskip}
+	\input{spectral/introduction.tex}
+	\input{spectral/model_method.tex}
+	\input{spectral/threshold_choice}
+	\input{spectral/main_theory}
+	\input{spectral/beyond_Gaussianity}
+	\input{spectral/simulation}
+	\input{spectral/realdata}
+	\input{spectral/discussion}
+	\clearpage
+	\begin{subappendices}
+	\input{spectral/appendix_gaussian}
+	\input{spectral/appendix_heavy_tail}
+	\input{spectral/appendix_technical_lemmas.tex}
+	\input{spectral/appendix_more_tables.tex}
+	\end{subappendices}
+	
+	
 \chapter{Large Spectral Density Matrix Estimation for Gaussian Process by Adaptive Thresholding}
 \input{adaptive/introduction.tex}
 \input{adaptive/model_method.tex}
@@ -210,27 +210,26 @@
 \input{adaptive/Appendix-variance-proof.tex}
 \input{adaptive/appendix-technical-lemmas.tex}
 \input{adaptive/appendix-technical-lemmas-toeplitz.tex}
-\input{adaptive/appendix-counter-example.tex}
-\end{subappendices}
-\clearpage 
-\chapter{Low-Rank Tucker Approximation of a Tensor From Streaming Data}
-\input{tensor/introduction.tex}
-\input{tensor/methodology.tex}
-\input{tensor/main_theory.tex}
-\input{tensor/numerical_experiments.tex}
-\input{tensor/conclusion.tex}
-\clearpage
-\begin{subappendices}
-\input{tensor/appendix/proof_for_main_results.tex}
-\input{tensor/appendix/core_sketchy.tex}
-\input{tensor/appendix/proof_equivalent.tex}
-\input{tensor/appendix/technical_lemmas_sketchy.tex}
-\input{tensor/appendix/algorithm_table.tex}
-\input{tensor/appendix/random_map.tex}
-\input{tensor/appendix/appendix_tensorsketch.tex}
-%\input{tensor/appendix/time-storage-complexity.tex}
-\input{tensor/appendix/appendix_more_simulation_results.tex}
-\input{tensor/appendix/appendix_more_real_data_examples.tex}
+	\input{adaptive/appendix-counter-example.tex}
+	\end{subappendices}
+	\clearpage 
+	\chapter{Low-Rank Tucker Approximation of a Tensor From Streaming Data}
+	\input{tensor/introduction.tex}
+	\input{tensor/methodology.tex}
+	\input{tensor/main_theory.tex}
+	\input{tensor/numerical_experiments.tex}
+	\input{tensor/conclusion.tex}
+	\clearpage
+	\begin{subappendices}
+	\input{tensor/appendix/proof_for_main_results.tex}
+	\input{tensor/appendix/core_sketchy.tex}
+	\input{tensor/appendix/proof_equivalent.tex}
+	\input{tensor/appendix/technical_lemmas_sketchy.tex}
+	\input{tensor/appendix/algorithm_table.tex}
+	\input{tensor/appendix/random_map.tex}
+	\input{tensor/appendix/appendix_tensorsketch.tex}
+	\input{tensor/appendix/appendix_more_simulation_results.tex}
+	\input{tensor/appendix/appendix_more_real_data_examples.tex}
 \end{subappendices}
 \clearpage 
 \chapter{Tensor Random Projection for Low Memory Dimension Reduction}
@@ -240,7 +239,6 @@
 \input{projection/simulation.tex}
 \input{projection/sketching.tex}
 \input{projection/conclusion.tex}
-
 \begin{subappendices}
 \input{projection/appendix_bias_variance.tex}
 \input{projection/appendix_simulation.tex}
@@ -248,7 +246,7 @@
 \input{projection/appendix_tech_lemmas.tex}
 \end{subappendices}
 \clearpage
-\bibliographystyle{plainnat}
+\bibliographystyle{abbrvnat}
 \bibliography{biblio1,biblio2,biblio3,biblio4}
-
+	
 \end{document}
