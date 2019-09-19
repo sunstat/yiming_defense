@@ -121,7 +121,7 @@
 \contentsline {subsection}{\numberline {4.3.2}Asymptotic Behavior}{161}
 \contentsline {subsection}{\numberline {4.3.3}Finite Sample Bound?}{161}
 \contentsline {subsection}{\numberline {4.3.4}Column Space Preservation}{162}
-\contentsline {section}{\numberline {4.4}Experiment}{163}
+\contentsline {section}{\numberline {4.4}Experiment}{164}
 \contentsline {section}{\numberline {4.5}Application: Sketching}{165}
 \contentsline {paragraph}{Experimental Setup}{167}
 \contentsline {paragraph}{Result}{168}
