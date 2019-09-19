@@ -125,7 +125,7 @@
 \contentsline {section}{\numberline {4.5}Application: Sketching}{165}
 \contentsline {paragraph}{Experimental Setup}{167}
 \contentsline {paragraph}{Result}{168}
-\contentsline {section}{\numberline {4.6}Conclusion}{169}
+\contentsline {section}{\numberline {4.6}Conclusion}{168}
 \contentsline {section}{\numberline {4.A}Proof for Bias and Variance Analysis}{169}
 \contentsline {section}{\numberline {4.B}More Simulation Results}{177}
 \contentsline {paragraph}{Pairwise Distance Estimation}{177}
