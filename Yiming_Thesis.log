@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  19 SEP 2019 18:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  20 SEP 2019 10:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1964,42 +1964,34 @@ Overfull \hbox (12.9102pt too wide) detected at line 72
 [][]
  []
 
-[160] [161] [162]
-Overfull \hbox (8.10703pt too wide) in paragraph at lines 146--148
-\OT1/ptm/m/n/12 Let $\OT1/cmr/bx/n/12 Q[] \U/matha/m/n/12 P \U/msb/m/n/12 R[]$ 
-\OT1/ptm/m/n/12 be the or-thonor-mal ma-trix from QR fac-tor-iza-tion: $\OT1/cm
-r/bx/n/12 Q[]\OML/cmm/m/it/12 ; \OT1/cmr/bx/n/12 R[] \U/matha/m/n/12 Ð []p[]q$\
-OT1/ptm/m/n/12 .
- []
-
-) (./projection/simulation.tex [163]
-<projection/figure/dist_g_d2500.pdf, id=1507, 433.62pt x 361.35pt>
+[160] [161] [162] [163]) (./projection/simulation.tex [164]
+<projection/figure/dist_g_d2500.pdf, id=1511, 433.62pt x 361.35pt>
 File: projection/figure/dist_g_d2500.pdf Graphic file (type pdf)
 <use projection/figure/dist_g_d2500.pdf>
 Package pdftex.def Info: projection/figure/dist_g_d2500.pdf  used on input line
  44.
 (pdftex.def)             Requested size: 95.39668pt x 79.49724pt.
-<projection/figure/dist_sp1_d2500.pdf, id=1508, 433.62pt x 361.35pt>
+<projection/figure/dist_sp1_d2500.pdf, id=1512, 433.62pt x 361.35pt>
 File: projection/figure/dist_sp1_d2500.pdf Graphic file (type pdf)
 <use projection/figure/dist_sp1_d2500.pdf>
 Package pdftex.def Info: projection/figure/dist_sp1_d2500.pdf  used on input li
 ne 47.
 (pdftex.def)             Requested size: 95.39668pt x 79.49724pt.
-<projection/figure/dist_g_mnist.pdf, id=1509, 433.62pt x 361.35pt>
+<projection/figure/dist_g_mnist.pdf, id=1513, 433.62pt x 361.35pt>
 File: projection/figure/dist_g_mnist.pdf Graphic file (type pdf)
 <use projection/figure/dist_g_mnist.pdf>
 Package pdftex.def Info: projection/figure/dist_g_mnist.pdf  used on input line
  50.
 (pdftex.def)             Requested size: 95.39668pt x 79.49724pt.
-<projection/figure/dist_sp1_mnist.pdf, id=1510, 433.62pt x 361.35pt>
+<projection/figure/dist_sp1_mnist.pdf, id=1514, 433.62pt x 361.35pt>
 File: projection/figure/dist_sp1_mnist.pdf Graphic file (type pdf)
 <use projection/figure/dist_sp1_mnist.pdf>
 Package pdftex.def Info: projection/figure/dist_sp1_mnist.pdf  used on input li
 ne 53.
 (pdftex.def)             Requested size: 95.39668pt x 79.49724pt.
- [164]) (./projection/sketching.tex
-[165 <./projection/figure/dist_g_d2500.pdf> <./projection/figure/dist_sp1_d2500
-.pdf
+)
+(./projection/sketching.tex [165 <./projection/figure/dist_g_d2500.pdf> <./proj
+ection/figure/dist_sp1_d2500.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./projection/figure/dist_sp1
 _d2500.pdf): PDF inclusion: multiple pdfs with page group included in a single 
@@ -2033,8 +2025,9 @@ File: projection/figure/col_dim4_krao_d1000000.pdf Graphic file (type pdf)
 Package pdftex.def Info: projection/figure/col_dim4_krao_d1000000.pdf  used on 
 input line 63.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
-) (./projection/conclusion.tex) [168 <./projection/figure/col_dim2_krao_d900.pd
-f> <./projection/figure/col_dim3_krao_d160000.pdf
+) (./projection/conclusion.tex [168])
+(./projection/appendix_bias_variance.tex [169 <./projection/figure/col_dim2_kra
+o_d900.pdf> <./projection/figure/col_dim3_krao_d160000.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./projection/figure/col_dim3
 _krao_d160000.pdf): PDF inclusion: multiple pdfs with page group included in a 
@@ -2044,7 +2037,7 @@ single page
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./projection/figure/col_dim4
 _krao_d1000000.pdf): PDF inclusion: multiple pdfs with page group included in a
  single page
->] (./projection/appendix_bias_variance.tex
+>]
 Overfull \hbox (1.92853pt too wide) in paragraph at lines 12--14
 \OT1/ptm/m/n/12 stacks all columns of ma-trix $\OT1/cmr/bx/n/12 A$ \OT1/ptm/m/n
 /12 and re-turns a vec-tor of length $\OML/cmm/m/it/12 kd$\OT1/ptm/m/n/12 , $\U
@@ -2054,7 +2047,7 @@ r/m/n/12 1\U/matha/m/n/12 q\OT1/cmr/m/n/12 ; []  ; \OT1/cmr/bx/n/12 A\U/matha/m
 2 s$\OT1/ptm/m/n/12 .
  []
 
-[169] [170] [171]
+[170] [171]
 Overfull \hbox (6.42332pt too wide) detected at line 94
 [][]
  []
@@ -2069,12 +2062,12 @@ Overfull \hbox (17.26982pt too wide) detected at line 155
 [][][]
  []
 
-
+[174]
 Overfull \hbox (3.09232pt too wide) detected at line 191
 [][]
  []
 
-[174]
+
 Overfull \hbox (26.01115pt too wide) in paragraph at lines 202--204
 \OT1/ptm/m/n/12 Since $[]\U/matha/m/n/12 px[][]p\OT1/cmr/bx/n/12 x\U/matha/m/n/
 12 q\OML/cmm/m/it/12 ; [][]\U/matha/m/n/12 p\OT1/cmr/bx/n/12 y\U/matha/m/n/12 q
@@ -2085,42 +2078,42 @@ q ^^A p\U/msb/m/n/12 E\U/matha/m/n/12 x[][]p\OT1/cmr/bx/n/12 x\U/matha/m/n/12 q
 $\OT1/ptm/m/n/12 ,
  []
 
-
+[175]
 Overfull \hbox (73.15121pt too wide) detected at line 237
 [][]
  []
 
-[175] [176]) (./projection/appendix_simulation.tex
+[176] [177]) (./projection/appendix_simulation.tex
 File: projection/figure/dist_g_d2500.pdf Graphic file (type pdf)
 <use projection/figure/dist_g_d2500.pdf>
 Package pdftex.def Info: projection/figure/dist_g_d2500.pdf  used on input line
  9.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
-<projection/figure/dist_g_d10000.pdf, id=1658, 433.62pt x 361.35pt>
+<projection/figure/dist_g_d10000.pdf, id=1661, 433.62pt x 361.35pt>
 File: projection/figure/dist_g_d10000.pdf Graphic file (type pdf)
 <use projection/figure/dist_g_d10000.pdf>
 Package pdftex.def Info: projection/figure/dist_g_d10000.pdf  used on input lin
 e 12.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
-<projection/figure/dist_g_d40000.pdf, id=1659, 433.62pt x 361.35pt>
+<projection/figure/dist_g_d40000.pdf, id=1662, 433.62pt x 361.35pt>
 File: projection/figure/dist_g_d40000.pdf Graphic file (type pdf)
 <use projection/figure/dist_g_d40000.pdf>
 Package pdftex.def Info: projection/figure/dist_g_d40000.pdf  used on input lin
 e 15.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
-<projection/figure/dist_sp0_d2500.pdf, id=1660, 433.62pt x 361.35pt>
+<projection/figure/dist_sp0_d2500.pdf, id=1663, 433.62pt x 361.35pt>
 File: projection/figure/dist_sp0_d2500.pdf Graphic file (type pdf)
 <use projection/figure/dist_sp0_d2500.pdf>
 Package pdftex.def Info: projection/figure/dist_sp0_d2500.pdf  used on input li
 ne 25.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
-<projection/figure/dist_sp0_d10000.pdf, id=1661, 433.62pt x 361.35pt>
+<projection/figure/dist_sp0_d10000.pdf, id=1664, 433.62pt x 361.35pt>
 File: projection/figure/dist_sp0_d10000.pdf Graphic file (type pdf)
 <use projection/figure/dist_sp0_d10000.pdf>
 Package pdftex.def Info: projection/figure/dist_sp0_d10000.pdf  used on input l
 ine 28.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
-<projection/figure/dist_sp0_d40000.pdf, id=1662, 433.62pt x 361.35pt>
+<projection/figure/dist_sp0_d40000.pdf, id=1665, 433.62pt x 361.35pt>
 File: projection/figure/dist_sp0_d40000.pdf Graphic file (type pdf)
 <use projection/figure/dist_sp0_d40000.pdf>
 Package pdftex.def Info: projection/figure/dist_sp0_d40000.pdf  used on input l
@@ -2131,37 +2124,37 @@ File: projection/figure/dist_sp1_d2500.pdf Graphic file (type pdf)
 Package pdftex.def Info: projection/figure/dist_sp1_d2500.pdf  used on input li
 ne 40.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
-<projection/figure/dist_sp1_d10000.pdf, id=1663, 433.62pt x 361.35pt>
+<projection/figure/dist_sp1_d10000.pdf, id=1666, 433.62pt x 361.35pt>
 File: projection/figure/dist_sp1_d10000.pdf Graphic file (type pdf)
 <use projection/figure/dist_sp1_d10000.pdf>
 Package pdftex.def Info: projection/figure/dist_sp1_d10000.pdf  used on input l
 ine 43.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
-<projection/figure/dist_sp1_d40000.pdf, id=1664, 433.62pt x 361.35pt>
+<projection/figure/dist_sp1_d40000.pdf, id=1667, 433.62pt x 361.35pt>
 File: projection/figure/dist_sp1_d40000.pdf Graphic file (type pdf)
 <use projection/figure/dist_sp1_d40000.pdf>
 Package pdftex.def Info: projection/figure/dist_sp1_d40000.pdf  used on input l
 ine 46.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
-<projection/figure/dist_g_d125000.pdf, id=1665, 433.62pt x 361.35pt>
+<projection/figure/dist_g_d125000.pdf, id=1668, 433.62pt x 361.35pt>
 File: projection/figure/dist_g_d125000.pdf Graphic file (type pdf)
 <use projection/figure/dist_g_d125000.pdf>
 Package pdftex.def Info: projection/figure/dist_g_d125000.pdf  used on input li
 ne 55.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
-<projection/figure/dist_sp0_d125000.pdf, id=1666, 433.62pt x 361.35pt>
+<projection/figure/dist_sp0_d125000.pdf, id=1669, 433.62pt x 361.35pt>
 File: projection/figure/dist_sp0_d125000.pdf Graphic file (type pdf)
 <use projection/figure/dist_sp0_d125000.pdf>
 Package pdftex.def Info: projection/figure/dist_sp0_d125000.pdf  used on input 
 line 58.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
-<projection/figure/dist_sp1_d125000.pdf, id=1667, 433.62pt x 361.35pt>
+<projection/figure/dist_sp1_d125000.pdf, id=1670, 433.62pt x 361.35pt>
 File: projection/figure/dist_sp1_d125000.pdf Graphic file (type pdf)
 <use projection/figure/dist_sp1_d125000.pdf>
 Package pdftex.def Info: projection/figure/dist_sp1_d125000.pdf  used on input 
 line 61.
 (pdftex.def)             Requested size: 130.087pt x 108.40584pt.
- [177
+ [178
 
  <./projection/figure/dist_g_d10000.pdf> <./projection/figure/dist_g_d40000.pdf
 
@@ -2191,7 +2184,7 @@ L/cmm/m/it/12 x$ \OT1/ptm/m/it/12 is said to sat-isfy the generalized-sub-expon
 ential
  []
 
-[178 <./projection/figure/dist_sp1_d10000.pdf> <./projection/figure/dist_sp1_d4
+[179 <./projection/figure/dist_sp1_d10000.pdf> <./projection/figure/dist_sp1_d4
 0000.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./projection/figure/dist_sp1
@@ -2214,26 +2207,26 @@ _d125000.pdf): PDF inclusion: multiple pdfs with page group included in a singl
 e page
 >]
 
-LaTeX Warning: Reference `lemma: norm-preserve' on page 179 undefined on input 
+LaTeX Warning: Reference `lemma: norm-preserve' on page 180 undefined on input 
 line 18.
 
 
-LaTeX Warning: Reference `lemma: norm-preserve' on page 179 undefined on input 
+LaTeX Warning: Reference `lemma: norm-preserve' on page 180 undefined on input 
 line 18.
 
-[179] [180]) (./projection/appendix_tech_lemmas.tex [181] [182]) [183]
-(./Yiming_Thesis.bbl [184
+[180] [181]) (./projection/appendix_tech_lemmas.tex [182] [183]) [184]
+(./Yiming_Thesis.bbl [185
 
 
-] [185] [186] [187] [188] [189] [190]
+] [186] [187] [188] [189] [190] [191]
 LaTeX Font Info:    Font shape `OMS/ptm/m/it' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 434.
- [191] [192]
-[193] [194])
+ [192] [193]
+[194] [195])
 
 Package natbib Warning: There were undefined citations.
 
-[195] (./Yiming_Thesis.aux)
+[196] (./Yiming_Thesis.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -2245,10 +2238,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 8499 strings out of 492649
- 140542 string characters out of 6129622
- 207325 words of memory out of 5000000
- 11903 multiletter control sequences out of 15000+600000
+ 8500 strings out of 492649
+ 140564 string characters out of 6129622
+ 207339 words of memory out of 5000000
+ 11904 multiletter control sequences out of 15000+600000
  59250 words of font info for 157 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,17n,43p,2427b,499s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2286,10 +2279,10 @@ nts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
 urw/times/utmbi8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times
 /utmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.p
 fb>
-Output written on Yiming_Thesis.pdf (212 pages, 5796163 bytes).
+Output written on Yiming_Thesis.pdf (213 pages, 5796588 bytes).
 PDF statistics:
- 2026 PDF objects out of 2073 (max. 8388607)
- 1359 compressed objects within 14 object streams
+ 2029 PDF objects out of 2073 (max. 8388607)
+ 1361 compressed objects within 14 object streams
  0 named destinations out of 1000 (max. 500000)
  436 words of extra memory for PDF output out of 10000 (max. 10000000)
 

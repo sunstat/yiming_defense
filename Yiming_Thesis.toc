@@ -122,13 +122,13 @@
 \contentsline {subsection}{\numberline {4.3.3}Finite Sample Bound?}{161}
 \contentsline {subsection}{\numberline {4.3.4}Column Space Preservation}{162}
 \contentsline {section}{\numberline {4.4}Experiment}{164}
-\contentsline {section}{\numberline {4.5}Application: Sketching}{165}
+\contentsline {section}{\numberline {4.5}Application: Sketching}{166}
 \contentsline {paragraph}{Experimental Setup}{167}
 \contentsline {paragraph}{Result}{168}
-\contentsline {section}{\numberline {4.6}Conclusion}{168}
+\contentsline {section}{\numberline {4.6}Conclusion}{169}
 \contentsline {section}{\numberline {4.A}Proof for Bias and Variance Analysis}{169}
-\contentsline {section}{\numberline {4.B}More Simulation Results}{177}
-\contentsline {paragraph}{Pairwise Distance Estimation}{177}
-\contentsline {paragraph}{Pairwise Cosine Similarity Estimation}{177}
-\contentsline {section}{\numberline {4.C}Appendix: Finite Sample Bound}{179}
-\contentsline {section}{\numberline {4.D}Technical Lemmas}{182}
+\contentsline {section}{\numberline {4.B}More Simulation Results}{178}
+\contentsline {paragraph}{Pairwise Distance Estimation}{178}
+\contentsline {paragraph}{Pairwise Cosine Similarity Estimation}{178}
+\contentsline {section}{\numberline {4.C}Appendix: Finite Sample Bound}{180}
+\contentsline {section}{\numberline {4.D}Technical Lemmas}{183}

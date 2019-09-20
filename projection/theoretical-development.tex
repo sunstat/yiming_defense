@@ -123,20 +123,27 @@ we have
 \end{equation}
 \end{prop}
 \begin{proof}
-\citep{schacke2013kronecker} has a detailed descriptions on properties for kronecker product. Here we mainly use the association rule in kronecker product and khatri rao product, which claims for $\M{A}_n \in \reals^{m_n\times d_n}$ 
+\citep{schacke2013kronecker} has a detailed descriptions on properties for kronecker product. Here we list properties of kronecker product and Katri rao product our proof will use.  The first is the association rule in kronecker product and khatri rao product, which claims for $\M{A}_n \in \reals^{m_n\times d_n}$ 
 $\M{B}_n \in \reals^{d_n\times k}$, and $\M{D}\in \reals^{d_n\times I_n}$
 \begin{equation}
 \label{eq:kronecker_association}
 \begin{aligned}
 & (\M{A}_1\otimes  \M{A}_2)(\M{B_1} \odot  \M{B_2}) = (\M{A}_1\M{B}_1)\odot   (\M{A}_2\M{B}_2)\\
-& (\M{A}_1\otimes  \M{A}_2)(\M{D}_1 \otimes  \M{D}_2) = (\M{A}_1\M{D}_1)\otimes  (\M{A}_2\M{D}_2)
+& (\M{A}_1\otimes  \M{A}_2)(\M{D}_1 \otimes  \M{D}_2) = (\M{A}_1\M{D}_1)\otimes  (\M{A}_2\M{D}_2).
 \end{aligned}
 \end{equation}
 Also, for orthogonal matrix $\M{U}_n, n = 1, \cdots, N$, ($\M{U}^\top_n \M{U}_n = \M{I}$),  
 \[
 \M{U}_1 \otimes \cdots \otimes \M{U}_n \otimes \cdots \otimes \M{U}_N
 \]
-is still orthogonal which can be shown easily with the second line in \eqref{eq:kronecker_association}. \par 
+is still orthogonal which can be shown easily with the second line in \eqref{eq:kronecker_association}.  The second property we use is 
+\begin{equation}
+\label{eq:kronecker_product}
+\|\M{A}_1 \otimes \M{A}_2\|_F = \|\M{A}_1\|_F \|\M{A}_2\|_F. 
+\end{equation}
+
+
+
 Now using association rule between kronecker product and khatri rao product,   
 \begin{equation}
 \begin{aligned}
@@ -144,7 +151,7 @@ Now using association rule between kronecker product and khatri rao product,
 & = ( \M{X}_1\M{\Omega_1}\odot \cdots \odot  \M{X}_N\M{\Omega_N}). 
 \end{aligned}
 \end{equation}
- Let $\M{Q}_n\in \mathbb{R}^{d_n\times k}$ be the orthonormal matrix from QR factorization: $\mathbf{Q}_i, \M{R}_i \gets  \rm{QR}(\M{X_i\Omega_i})$. The key observation is that 
+ Let $\M{Q}_n\in \mathbb{R}^{d_n\times k}$ be the orthonormal matrix and $\M{R}_n$ be the upper triangular matrix from QR factorization: $\mathbf{Q}_n, \M{R}_n \gets  \rm{QR}(\M{X_n\Omega_n})$. The key observation is that 
 \begin{equation}
 \begin{aligned}
 & (\M{X}_1\otimes \cdots \otimes \M{X}_N)(\M{\Omega_1} \odot \cdots \odot \M{\Omega_N})  \\
@@ -153,7 +160,7 @@ Now using association rule between kronecker product and khatri rao product,
 \end{aligned}
 \end{equation}
 Noticing $\M{Q} = \M{Q}_1\otimes \cdots \otimes \M{Q}_N$ is still orthogonal and $(\M{R}_1\odot \cdots \odot \M{R}_N)$ 
-is upper triangular matrix,  
+is an upper triangular matrix,  
 \begin{equation}
 \begin{aligned}
 & \|(\M{I} - \M{QQ}^\top)  (\M{X}_1\otimes \cdots \otimes \M{X}_N)\|_F \\
@@ -161,8 +168,8 @@ is upper triangular matrix,
 & =\prod_{n=1}^N \|(\M{I} - \M{Q}_n\M{Q}_n^\top) \M{X}_n\|_F
 \end{aligned}
 \end{equation}
-The last equation is shown in \citep{schacke2013kronecker}. 
-Then applying results in \ref{lemma:gauss-rp-matrix} we finish the proof.  Also this proposition, indicates that in practice, we should sketch each small matrix $\M{X}_n$  then combine the result together with khatri rao product. 
+The last equation comes from \eqref{eq:kronecker_product}.
+Then taking expectation in $\M{Q}_n$ and applying results in \ref{lemma:gauss-rp-matrix} we finish the proof.  Also this proposition, indicates that in practice, we should sketch each small matrix $\M{X}_n$  then combine the result together with khatri rao product. 
 \end{proof}
 
 
